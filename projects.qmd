@@ -1,0 +1,12 @@
+---
+title: "Projelerim"
+subtitle: "Üzerinde çalıştığım ve tamamladığım projelerin bir özeti."
+
+listing:
+  contents: projects  # 'projects' klasöründeki içeriği listele
+  type: grid        # 'Grid' (Izgara) portfolyo görünümü
+  sort: "date desc"
+  categories: true
+  image-height: 200px
+  grid-item-border: false
+---

@@ -1,7 +1,28 @@
 ---
-title: "unusual-data.github.io"
+title: "İbrahim Çapar"
+subtitle: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme"
+image: /pictures/pp/pic.png
+
+about:
+  template: trestles
+  image-shape: round
+  links:
+    # - icon: github
+    #   text: GitHub
+    #   href: https://github.com/unusual-data
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/ibrahimcapar1
+    - icon: envelope-fill
+      text: E-posta
+      href: "mailto:ibrahimcaparr1@gmail.com"
+    # - text: "CV"
+    #   href: cv.pdf
+toc: false
 ---
 
-This is a Quarto website.
+## 👋 Hoş Geldiniz!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.
+
+İlgi alanlarım arasında...
