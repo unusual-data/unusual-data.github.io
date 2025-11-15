@@ -1,10 +1,17 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "unusual-data.github.io",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projelerim",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "No matching items"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog Yazılarım",
+    "section": "",
+    "text": "No matching items"
   },
   {
     "objectID": "about.html",
@@ -12,5 +19,19 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "İbrahim Çapar",
+    "section": "",
+    "text": "Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.\nİlgi alanlarım arasında…"
+  },
+  {
+    "objectID": "index.html#hoş-geldiniz",
+    "href": "index.html#hoş-geldiniz",
+    "title": "İbrahim Çapar",
+    "section": "",
+    "text": "Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.\nİlgi alanlarım arasında…"
   }
 ]

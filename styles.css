@@ -1,1 +1,211 @@
-/* css styles */
+/* Dark Theme Professional Styling for Quarto */
+
+:root {
+  /* ANA RENK (Yeşil): 
+    Sitenin ana marka rengidir. Linkler, H1 altı çizgisi,
+    navbar başlığı, tablo başlıkları ve alıntı çizgileri gibi
+    en belirgin yerlerde kullanılır.
+  */
+  --primary-color: #4CAF50;
+  
+  /* VURGU RENGİ (Mavi):
+    İkincil eylem rengi. Genellikle fare ile üzerine gelme (hover)
+    durumlarında (örn: linkler) ve alıntı bloklarının yazı rengi
+    olarak kullanılır.
+  */
+  --accent-color: #64B5F6;
+
+  /*
+    AÇIK YAZI RENGİ (Açık Gri):
+    Koyu arka plan üzerindeki tüm ana metinlerin, başlıkların
+    ve liste yazılarının varsayılan rengidir.
+  */
+  --text-light: #e0e0e0;
+
+  /*
+    KOYU ARKA PLAN (Koyu Gri):
+    Tüm sayfanın (body) ana arka plan rengidir.
+  */
+  --bg-dark: #1a1a1a;
+
+  /*
+    DAHA KOYU ARKA PLAN (Çok Koyu Gri):
+    Navbar ve Footer gibi bölümleri ana arka plandan ayırmak
+    için kullanılan, daha koyu olan arka plan rengidir.
+  */
+  --bg-darker: #0d0d0d;
+
+  /*
+    KENARLIK RENGİ (Gri):
+    Bölümler arası (navbar altı, footer üstü), kod blokları
+    ve tablo satırları arasındaki ince ayırıcı çizgilerin rengidir.
+  */
+  --border-color: #333;
+  
+  /* --- KULLANILMAYAN DEĞİŞKENLER --- */
+  /* Bu iki değişken aşağıda tanımlanmış ancak mevcut CSS'te kullanılmamıştır. */
+  --primary-dark: #2e7d32;
+  --text-dark: #121212;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-light); /* Ana metin rengi */
+  background-color: var(--bg-dark); /* Ana sayfa arka planı */
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-light); /* Tüm başlıkların rengi */
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+h1 {
+  border-bottom: 3px solid var(--primary-color); /* H1 altı çizgi rengi */
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+a {
+  color: var(--primary-color); /* Varsayılan link rengi */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color); /* Link üzerine gelme rengi */
+  text-decoration: underline;
+}
+
+/* Code */
+code {
+  background-color: #262626;
+  /* NOT: Buradaki renk doğrudan atanmış (#4CAF50).
+    Eğer --primary-color değiştiğinde buranın da değişmesini isterseniz,
+    'color: var(--primary-color);' olarak değiştirin.
+  */
+  color: #4CAF50;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+pre {
+  background-color: #262626 !important;
+  border: 1px solid var(--border-color); /* Kod bloğu kenarlığı */
+  border-left: 3px solid var(--primary-color); /* Kod bloğu sol vurgu çizgisi */
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  color: var(--text-light); /* Kod bloğu içindeki yazının rengi */
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bg-darker) !important; /* Navbar arka planı */
+  border-bottom: 1px solid var(--border-color); /* Navbar alt çizgisi */
+}
+
+.navbar-title {
+  color: var(--primary-color); /* Navbar'daki site başlığı rengi */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-link {
+  color: var(--text-light) !important; /* Navbar linklerinin varsayılan rengi */
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important; /* Navbar linklerinin üzerine gelme rengi */
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-darker); /* Footer arka planı */
+  border-top: 1px solid var(--border-color); /* Footer üst çizgisi */
+  color: var(--text-light); /* Footer'daki ana metin rengi */
+}
+
+footer a {
+  color: var(--primary-color); /* Footer'daki linklerin rengi */
+}
+
+/* Lists */
+ul, ol {
+  color: var(--text-light); /* Liste elemanlarının rengi */
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+thead {
+  background-color: #262626;
+  border-bottom: 2px solid var(--primary-color); /* Tablo başlığı alt çizgisi */
+}
+
+th {
+  padding: 1rem;
+  text-align: left;
+  color: var(--primary-color); /* Tablo başlık yazısı rengi */
+  font-weight: 600;
+}
+
+td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color); /* Tablo satır çizgisi */
+  color: var(--text-light); /* Tablo hücre yazısı rengi */
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--primary-color); /* Alıntı sol vurgu çizgisi */
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: var(--accent-color); /* Alıntı metninin rengi */
+  font-style: italic;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.g-col-12 {
+  grid-column: span 12;
+}
+
+@media (min-width: 768px) {
+  .g-col-md-8 {
+    grid-column: span 8;
+  }
+  
+  .g-col-md-4 {
+    grid-column: span 4;
+  }
+}
+
+/*Resim büyüklüğü piksel ayarı*/
+.quarto-about-trestles .about-entity .about-image {
+  width: 16rem !important; 
+  height: 16rem !important; 
+
+  /* Resmi ortalamak için marj ayarı */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
