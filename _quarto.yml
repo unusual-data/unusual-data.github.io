@@ -1,21 +1,32 @@
+---
 project:
   type: website
 
 website:
-  title: "unusual-data.github.io"
+  title: "İbrahim ÇAPAR"
+  site-url: "https://ibrahimcapar.com"
+  
+
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - about.qmd
+        text: Ana Sayfa  
+      - href: blog.qmd
+        text: Blog
+      - href: projects.qmd
+        text: Projelerim
+    
+    right:
+      - icon: github
+        href: https://github.com/kullanici-adiniz
+      - icon: linkedin
+        href: https://linkedin.com/in/kullanici-adiniz
+      - icon: envelope-fill
+        href: "mailto:email@adresiniz.com"
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
+    theme: litera
     css: styles.css
-    toc: true
-
-
-
+    toc: true 
+...
