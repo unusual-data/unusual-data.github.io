@@ -9,8 +9,8 @@ website:
 
   navbar:
     left:
-      - href: index.qmd
-        text: Ana Sayfa  
+      # - href: index.qmd
+      #   text: Ana Sayfa  
       - href: blog.qmd
         text: Blog
       - href: projects.qmd
