@@ -7,21 +7,16 @@ about:
   template: trestles
   image-shape: round
   links:
-    # - icon: github
-    #   text: GitHub
-    #   href: https://github.com/unusual-data
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/ibrahimcapar1
     - icon: envelope-fill
       text: E-posta
       href: "mailto:ibrahimcaparr1@gmail.com"
-    # - text: "CV"
-    #   href: cv.pdf
 toc: false
 ---
 
-## 👋 Hoş Geldiniz!
+### Hoş Geldiniz!
 
 Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.
 

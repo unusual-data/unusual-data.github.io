@@ -22,8 +22,8 @@ website:
 
 format:
   html:
+    link-external-newwindow: true
     theme: litera
     css: styles.css
     toc: true 
-    link-external-newwindow: true
 ...
