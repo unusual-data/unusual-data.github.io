@@ -15,12 +15,10 @@ website:
         text: Projelerim
     
     right:
-      - icon: github
-        href: https://github.com/unusal-data
       - icon: linkedin
-        href: https://linkedin.com/in/kullanici-adiniz
+        href: https://linkedin.com/in/ibrahimcapar1
       - icon: envelope-fill
-        href: "mailto:email@adresiniz.com"
+        href: "mailto:ibrahimcaparr1@gmail.com"
 
 format:
   html:
