@@ -16,9 +16,9 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Yetkinlikler & Projeler",
     "section": "",
-    "text": "About this site"
+    "text": "Date\nTitle\nCategories\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -33,5 +33,19 @@
     "title": "İbrahim Çapar",
     "section": "",
     "text": "Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.\nİlgi alanlarım arasında…"
+  },
+  {
+    "objectID": "about.html#uzmanlık-alanlarım-teknoloji-yığını",
+    "href": "about.html#uzmanlık-alanlarım-teknoloji-yığını",
+    "title": "About",
+    "section": "",
+    "text": "Fabrika otomasyonu ve makine kontrol süreçlerinde uçtan uca çözümler.\n\nSiemens PLC (TIA Portal, S7-1200/1500)\nMitsubishi PLC (GX Works)\nBeckhoff (TwinCAT 3)\nEPLAN (Elektrik Proje Çizimi)\nCODESYS (IEC 61131-3)\n\n\n\n\nDonanım ile konuşan yüksek performanslı yazılım geliştirme.\n\nC / C++ (Gömülü Sistemler, Algoritma)\nPython (Scripting, Otomasyon)\nIoT Protokolleri (MQTT, Modbus TCP/RTU)\n\n\n\n\nSaha verilerinin anlamlı raporlara dönüştürülmesi.\n\nR Dili (İstatistiksel Analiz, Quarto)\nPython Pandas/NumPy\nVeri Görselleştirme"
+  },
+  {
+    "objectID": "about.html#yetkinlik-ağacı",
+    "href": "about.html#yetkinlik-ağacı",
+    "title": "About",
+    "section": "🛠 Yetkinlik Ağacı",
+    "text": "🛠 Yetkinlik Ağacı\n\n📂 Veri & Dokümantasyon\n\n☑ Obsidian: Zettelkasten metodolojisi uygulamaları\n☑ Quarto: .qmd dosyalarından çoklu format çıktı (PDF/HTML)\nSQL: Veri sorgulama (Geliştiriliyor)\n\n📂 Mühendislik Yazılımları\n\n☑ AutoCAD: 2D Çizim\nEPLAN: Elektrik proje tasarımı (Aktif Kurs)"
   }
 ]

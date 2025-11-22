@@ -9,8 +9,6 @@ website:
 
   navbar:
     left:
-      # - href: index.qmd
-      #   text: Ana Sayfa  
       - href: blog.qmd
         text: Blog
       - href: projects.qmd
@@ -18,7 +16,7 @@ website:
     
     right:
       - icon: github
-        href: https://github.com/kullanici-adiniz
+        href: https://github.com/unusal-data
       - icon: linkedin
         href: https://linkedin.com/in/kullanici-adiniz
       - icon: envelope-fill
@@ -29,4 +27,5 @@ format:
     theme: litera
     css: styles.css
     toc: true 
+    link-external-newwindow: true
 ...
