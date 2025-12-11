@@ -5,6 +5,8 @@
   },
   {
     "listing": "/blog.html",
-    "items": []
+    "items": [
+      "/posts/visual-components-layout/index.html"
+    ]
   }
 ]

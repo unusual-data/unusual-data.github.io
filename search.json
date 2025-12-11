@@ -4,14 +4,14 @@
     "href": "projects.html",
     "title": "Projelerim",
     "section": "",
-    "text": "No matching items"
+    "text": "Eşleşen öğe yok"
   },
   {
     "objectID": "blog.html",
     "href": "blog.html",
     "title": "Blog Yazılarım",
     "section": "",
-    "text": "No matching items"
+    "text": "Sıralama Öğesi\n      Varsayılan\n      \n        Başlık\n      \n      \n        Tarih - En eski\n      \n      \n        Tarih - En yeni\n      \n      \n        Yazar\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nVisual Components #1: Layout Konfigürasyonu\n\n\nVisual Components\n\n\nVisual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.\n\n\n\n\n\n11 Ara 2025\n\n\n\n\n\nEşleşen öğe yok"
   },
   {
     "objectID": "index.html",
@@ -19,5 +19,47 @@
     "title": "İbrahim ÇAPAR",
     "section": "",
     "text": "Hoş Geldiniz!\nBurası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum."
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html",
+    "href": "posts/visual-components-layout/index.html",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "",
+    "text": "Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için Visual Components programını öğrenmeye başladım. Bu yazıda, Visual Component Academy’deki Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum."
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html#giriş",
+    "href": "posts/visual-components-layout/index.html#giriş",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "",
+    "text": "Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için Visual Components programını öğrenmeye başladım. Bu yazıda, Visual Component Academy’deki Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum."
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html#neler-yaptım",
+    "href": "posts/visual-components-layout/index.html#neler-yaptım",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "Neler Yaptım?",
+    "text": "Neler Yaptım?\nBu çalışmada temel olarak şu adımları uyguladım:\n\ne-Catalog Kullanımı: Kütüphaneden konveyör, besleyici (Feeder), eklemli robot (Articulated Robot), torna tezgahı (Lathe), fens (Fence), masa (Table) ve rafların (Warehouse Shelf) sahneye eklenmesi.\nPnP (Plug and Play): Bileşenlerin birbirine otomatik olarak bağlanması ve hizalanması.\nLayout Düzenleme: Eklenen bileşenlerin “Clone” ile çoğaltılması, “Move” ile yerleşimlerin ayarlanması, bileşen ayarları (Component Properties) kullanarak bileşenlerin açılarının ayarlanması.\nProcess Flow Editor: Oluşturulan senaryoda prosesin hangi işlem sırası ile gerçekleştirileceğinin ayarlanması.\nInteract: Sahneye eklenen robotun eksen hareketlerinin mause ile hareket ettirilerek çalışma uzayının (Work Envelope) incelenmesi.\nStatements: Oluşturulan senaryo kapsamında konveyör hattından gelen Piston Head ile raftan alınan Piston Rod bileşenlerinin, Process Node kullanılarak A masasında montajının yapılması, ardından B masasında son işlemlerin tamamlanarak ürünün sistemden çıkışının sağlanması.\nSimülasyon Testi: Oluşturulan senaryonun gözlemlenmesi ve hataların giderilmesi."
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html#ekran-görüntüsü",
+    "href": "posts/visual-components-layout/index.html#ekran-görüntüsü",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "Ekran Görüntüsü",
+    "text": "Ekran Görüntüsü\nAşağıda kendi oluşturduğum simülasyonun görüntüsü yer almaktadır:"
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html#simülasyon-adımları",
+    "href": "posts/visual-components-layout/index.html#simülasyon-adımları",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "Simülasyon Adımları",
+    "text": "Simülasyon Adımları\n\n  \n    \n    Tarayıcınız video etiketini desteklemiyor.\n  \n\n\n\n  \n    \n    Tarayıcınız video etiketini desteklemiyor."
+  },
+  {
+    "objectID": "posts/visual-components-layout/index.html#çıkarımlarım-key-takeaways",
+    "href": "posts/visual-components-layout/index.html#çıkarımlarım-key-takeaways",
+    "title": "Visual Components #1: Layout Konfigürasyonu",
+    "section": "Çıkarımlarım (Key Takeaways)",
+    "text": "Çıkarımlarım (Key Takeaways)\n\nVisual Components’in manuel pozisyonlama yerine PnP (Plug and Play) özelliği tasarım sürecini kolaylaştırıyor. Ayrıca “Snap” özelliği ile bileşenleri birbiriyle kolay bir şekilde birleştirilmesini sağlıyor.\nVisual Components’in içerisinde bulunan e-Catalog ile birçok önemli markalara ait ürünlerin aynı ortamda bulunması gerçek durumları simüle etmeyi kolaylaştırıyor.\nProcess Flow Editor ile, layoutta bulunan bileşenlerin prosesi hangi sıra ve ilişki ile gerçekleştireceği kolay bir şekilde yönetiliyor.\nİnsan bileşenini de üretim sürecine dahil ederek prosesi daha gelişmiş bir şekilde simüle edilmesini sağlıyor.\n\n\nKaynak: Bu çalışma Visual Components Academy dersleri baz alınarak yapılmıştır."
   }
 ]
