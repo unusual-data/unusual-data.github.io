@@ -1,5 +1,5 @@
 ---
-title: "İbrahim Çapar"
+#title: "İbrahim ÇAPAR"
 subtitle: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme"
 image: /pictures/pp/pic.png
 
@@ -19,5 +19,3 @@ toc: false
 ### Hoş Geldiniz!
 
 Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.
-
-İlgi alanlarım arasında...
