@@ -323,3 +323,10 @@ header#title-block-header .abstract,
   font-size: 1.1rem;          /* Hafifçe büyüt, daha okunaklı olsun */
   font-weight: 400;
 }
+
+/* Mobilde başlığın kesilmesini önle */
+.navbar-brand, .navbar-title {
+    white-space: normal !important; /* Metnin alt satıra geçmesine izin ver */
+    overflow: visible !important;   /* Taşan kısmı gizleme */
+    text-overflow: clip !important; /* "..." üç nokta işaretini kaldır */
+}
