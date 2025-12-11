@@ -1,8 +1,7 @@
 ---
 #title: "İbrahim ÇAPAR"
 subtitle: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme"
-image: /pictures/pp/pic.png
-
+image: /media/pictures/pp/pic.png
 about:
   template: trestles
   image-shape: round

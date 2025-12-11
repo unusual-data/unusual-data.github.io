@@ -2,6 +2,8 @@
 project:
   type: website
 
+lang: tr
+
 website:
   title: "İbrahim ÇAPAR"
   site-url: "https://ibrahimcapar.com"
@@ -17,6 +19,7 @@ website:
     right:
       - icon: linkedin
         href: https://linkedin.com/in/ibrahimcapar1
+        target: _blank
       - icon: envelope-fill
         href: "mailto:ibrahimcaparr1@gmail.com"
 
@@ -26,4 +29,7 @@ format:
     theme: litera
     css: styles.css
     toc: true 
+
+execute:
+  freeze: auto
 ...

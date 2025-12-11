@@ -1,148 +1,152 @@
-/* Dark Theme Professional Styling for Quarto */
-
 :root {
-  /* ANA RENK (Yeşil): 
-    Sitenin ana marka rengidir. Linkler, H1 altı çizgisi,
-    navbar başlığı, tablo başlıkları ve alıntı çizgileri gibi
-    en belirgin yerlerde kullanılır.
+  /* ANA RENK (Electric Blue / Camgöbeği): 
+     Mühendislik çizimlerini (blueprint) ve elektriği çağrıştırır. 
+     Modern, temiz ve güven vericidir.
   */
-  --primary-color: #4CAF50;
+  --primary-color: #38bdf8; 
   
-  /* VURGU RENGİ (Mavi):
-    İkincil eylem rengi. Genellikle fare ile üzerine gelme (hover)
-    durumlarında (örn: linkler) ve alıntı bloklarının yazı rengi
-    olarak kullanılır.
+  /* VURGU RENGİ (Amber / Altın):
+     Dikkat çekmesi gereken yerler için mükemmel kontrast oluşturur.
+     Endüstriyel uyarı ışıklarını ve enerjiyi simgeler.
   */
-  --accent-color: #64B5F6;
+  --accent-color: #fbbf24;
 
   /*
-    AÇIK YAZI RENGİ (Açık Gri):
-    Koyu arka plan üzerindeki tüm ana metinlerin, başlıkların
-    ve liste yazılarının varsayılan rengidir.
+    AÇIK YAZI RENGİ (Kırık Beyaz / Gümüş):
+    Tam beyaz (#fff) gözü yorar. Hafif maviye çalan gümüş rengi,
+    koyu arka planda uzun süre okumayı kolaylaştırır.
   */
-  --text-light: #e0e0e0;
+  --text-light: #e2e8f0;
 
   /*
-    KOYU ARKA PLAN (Koyu Gri):
-    Tüm sayfanın (body) ana arka plan rengidir.
+    KOYU ARKA PLAN (Slate / Arduvaz):
+    Simsiyah (#000) yerine derin, mat bir lacivert-gri karışımı.
+    Derinlik hissi verir ve premium durur.
   */
-  --bg-dark: #1a1a1a;
+  --bg-dark: #0f172a;
 
   /*
-    DAHA KOYU ARKA PLAN (Çok Koyu Gri):
-    Navbar ve Footer gibi bölümleri ana arka plandan ayırmak
-    için kullanılan, daha koyu olan arka plan rengidir.
+    DAHA KOYU ARKA PLAN:
+    Navbar ve Footer için ana zeminden bir ton daha koyu.
   */
-  --bg-darker: #0d0d0d;
+  --bg-darker: #020617;
 
   /*
-    KENARLIK RENGİ (Gri):
-    Bölümler arası (navbar altı, footer üstü), kod blokları
-    ve tablo satırları arasındaki ince ayırıcı çizgilerin rengidir.
+    KENARLIK RENGİ:
+    Arka planla uyumlu, yumuşak geçişli bir gri.
   */
-  --border-color: #333;
+  --border-color: #1e293b;
   
-  /* --- KULLANILMAYAN DEĞİŞKENLER --- */
-  /* Bu iki değişken aşağıda tanımlanmış ancak mevcut CSS'te kullanılmamıştır. */
-  --primary-dark: #2e7d32;
-  --text-dark: #121212;
+  /* --- KULLANILMAYAN DEĞİŞKENLER (İsteğe bağlı tutuldu) --- */
+  --primary-dark: #0284c7;
+  --text-dark: #0f172a;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--text-light); /* Ana metin rengi */
-  background-color: var(--bg-dark); /* Ana sayfa arka planı */
-  line-height: 1.6;
+  color: var(--text-light);
+  background-color: var(--bg-dark);
+  line-height: 1.7; /* Okunabilirlik için satır aralığı hafif artırıldı */
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--text-light); /* Tüm başlıkların rengi */
+  color: #f1f5f9; /* Başlıklar metinden bir tık daha parlak */
   font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px; /* Daha teknik bir duruş için */
 }
 
 h1 {
-  border-bottom: 3px solid var(--primary-color); /* H1 altı çizgi rengi */
+  border-bottom: 2px solid var(--primary-color); /* Kalınlık 3px'ten 2px'e çekildi, daha zarif */
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
 a {
-  color: var(--primary-color); /* Varsayılan link rengi */
+  color: var(--primary-color);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
 }
 
 a:hover {
-  color: var(--accent-color); /* Link üzerine gelme rengi */
-  text-decoration: underline;
+  color: var(--accent-color);
+  text-decoration: none; /* Alt çizgi yerine renk değişimi yeterli, daha modern */
 }
 
-/* Code */
+/* Code - ÖNEMLİ DÜZELTME */
 code {
-  background-color: #262626;
-  /* NOT: Buradaki renk doğrudan atanmış (#4CAF50).
-    Eğer --primary-color değiştiğinde buranın da değişmesini isterseniz,
-    'color: var(--primary-color);' olarak değiştirin.
+  background-color: #1e293b; /* Arka plan temaya uyduruldu */
+  /* ESKİ KODUNDA BURASI SABİT YEŞİLDİ (#4CAF50). 
+     Bunu primary-color değişkenine bağladım ki tema değişince burası da değişsin.
   */
-  color: #4CAF50;
+  color: var(--primary-color); 
   padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-family: 'Monaco', 'Courier New', monospace;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace; /* Fira Code eklendi (varsa) */
   font-size: 0.9rem;
+  border: 1px solid rgba(56, 189, 248, 0.1); /* Hafif bir çerçeve eklendi */
 }
 
 pre {
-  background-color: #262626 !important;
-  border: 1px solid var(--border-color); /* Kod bloğu kenarlığı */
-  border-left: 3px solid var(--primary-color); /* Kod bloğu sol vurgu çizgisi */
+  background-color: #1e293b !important;
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--primary-color);
   padding: 1rem;
-  border-radius: 6px;
+  border-radius: 8px; /* Köşeler biraz daha yumuşatıldı */
   overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Hafif gölge */
 }
 
 pre code {
   background-color: transparent;
-  color: var(--text-light); /* Kod bloğu içindeki yazının rengi */
+  color: var(--text-light);
   padding: 0;
+  border: none;
 }
 
 /* Navbar */
 .navbar {
-  background-color: var(--bg-darker) !important; /* Navbar arka planı */
-  border-bottom: 1px solid var(--border-color); /* Navbar alt çizgisi */
+  background-color: var(--bg-darker) !important;
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px); /* Modern cam efekti (destekleyen tarayıcılarda) */
 }
 
 .navbar-title {
-  color: var(--primary-color); /* Navbar'daki site başlığı rengi */
+  color: var(--primary-color);
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .nav-link {
-  color: var(--text-light) !important; /* Navbar linklerinin varsayılan rengi */
+  color: #94a3b8 !important; /* Pasif linkler daha sönük (slate-400) */
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: var(--primary-color) !important; /* Navbar linklerinin üzerine gelme rengi */
+  color: var(--primary-color) !important;
 }
 
 /* Footer */
 footer {
-  background-color: var(--bg-darker); /* Footer arka planı */
-  border-top: 1px solid var(--border-color); /* Footer üst çizgisi */
-  color: var(--text-light); /* Footer'daki ana metin rengi */
+  background-color: var(--bg-darker);
+  border-top: 1px solid var(--border-color);
+  color: #64748b; /* Footer yazısı gözü almasın diye daha sönük yapıldı */
+  font-size: 0.9rem;
 }
 
 footer a {
-  color: var(--primary-color); /* Footer'daki linklerin rengi */
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+footer a:hover {
+  opacity: 1;
 }
 
 /* Lists */
 ul, ol {
-  color: var(--text-light); /* Liste elemanlarının rengi */
+  color: var(--text-light);
 }
 
 /* Tables */
@@ -150,33 +154,43 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
+  font-size: 0.95rem;
 }
 
 thead {
-  background-color: #262626;
-  border-bottom: 2px solid var(--primary-color); /* Tablo başlığı alt çizgisi */
+  background-color: #1e293b;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 th {
   padding: 1rem;
   text-align: left;
-  color: var(--primary-color); /* Tablo başlık yazısı rengi */
+  color: var(--primary-color);
   font-weight: 600;
+  text-transform: uppercase; /* Tablo başlıkları teknik görünsün diye büyük harf */
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
 }
 
 td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-color); /* Tablo satır çizgisi */
-  color: var(--text-light); /* Tablo hücre yazısı rengi */
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-light);
+}
+
+tr:hover td {
+  background-color: rgba(255,255,255,0.02); /* Satır üzerine gelince çok hafif aydınlatma */
 }
 
 /* Blockquotes */
 blockquote {
-  border-left: 4px solid var(--primary-color); /* Alıntı sol vurgu çizgisi */
-  padding-left: 1.5rem;
-  margin-left: 0;
-  color: var(--accent-color); /* Alıntı metninin rengi */
+  border-left: 4px solid var(--accent-color); /* Vurgu rengi ile değiştirildi */
+  background-color: rgba(251, 191, 36, 0.05); /* Arka plana çok hafif renk verildi */
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  color: #e2e8f0;
   font-style: italic;
+  border-radius: 0 8px 8px 0;
 }
 
 /* Grid */
@@ -199,13 +213,113 @@ blockquote {
   }
 }
 
-/*Resim büyüklüğü piksel ayarı*/
+/* About Image */
 .quarto-about-trestles .about-entity .about-image {
   width: 16rem !important; 
   height: 16rem !important; 
-
-  /* Resmi ortalamak için marj ayarı */
   margin-left: auto !important;
   margin-right: auto !important;
   display: block !important;
+  
+}
+
+/* --- BLOG LISTING & SEARCH FIXES --- */
+
+/* 1. Blog Başlıklarını Görünür Yap */
+div.quarto-listing .listing-title,
+div.quarto-listing .listing-title a {
+  color: var(--primary-color) !important; /* Başlıklar artık 'Electric Blue' */
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+div.quarto-listing .listing-title a:hover {
+  color: var(--accent-color) !important; /* Üzerine gelince 'Amber' */
+  text-decoration: none;
+}
+
+/* 2. Blog Açıklamaları ve Tarihleri Parlat */
+div.quarto-listing .listing-description,
+div.quarto-listing .listing-date {
+  color: #cbd5e1 !important; /* Açık gümüş rengi (daha okunur) */
+}
+
+/* 3. Sayfa Üstü Açıklama Metni (Subtitle) */
+p.subtitle, .description {
+  color: #94a3b8 !important; /* H1 altındaki açıklama biraz daha belirgin olsun */
+  font-size: 1.1rem;
+}
+
+/* 4. Arama Kutusu ve Sıralama Menüsü (Input Fields) 
+   Şu an bembeyaz duruyorlar, onları da koyu temaya gömelim.
+*/
+.quarto-listing .list-input,
+.quarto-listing select {
+  background-color: #1e293b !important; /* Koyu arka plan */
+  color: var(--text-light) !important;   /* Açık yazı */
+  border: 1px solid var(--border-color) !important;
+  border-radius: 6px;
+}
+
+/* Arama kutusu placeholder (silik yazı) rengi */
+.quarto-listing ::placeholder { 
+  color: #64748b;
+  opacity: 1; 
+}
+
+/* 5. Sağ Taraftaki Kategoriler */
+div.quarto-listing-category .category {
+  background-color: #1e293b; /* Kategori haplarının arka planı */
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+
+div.quarto-listing-category .category:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-dark); /* Hover olunca yazı koyu olsun */
+}
+
+/* 6. Pagination (Sayfa Numaraları - Eğer varsa) */
+.page-item .page-link {
+  background-color: var(--bg-darker) !important;
+  border-color: var(--border-color) !important;
+  color: var(--primary-color) !important;
+}
+
+.page-item.active .page-link {
+  background-color: var(--primary-color) !important;
+  color: var(--bg-dark) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* v3*/ 
+
+/* Description Rengi İçin Kesin Çözüm */
+
+/* 1. Description kutusunu ve içindeki TÜM elemanları (p, span, div) yakala */
+div.quarto-listing .listing-description,
+div.quarto-listing .listing-description * {
+  color: #e2e8f0 !important; /* Direkt renk kodu (Açık Gümüş) */
+  opacity: 1 !important;      /* Şeffaflığı iptal et */
+  filter: none !important;
+}
+
+/* 2. Eğer Bootstrap "text-muted" sınıfı kullanılmışsa, sadece bu alanda onu etkisiz kıl */
+div.quarto-listing .text-muted {
+  color: #e2e8f0 !important;
+}
+
+/* v4 */
+
+/* --- YAZI İÇİNDEKİ DESCRIPTION DÜZELTMESİ --- */
+
+/* Yazının tepesindeki başlık bloğu içindeki description alanı */
+header#title-block-header .description,
+header#title-block-header .abstract,
+.quarto-title-block .description {
+  color: var(--text-light) !important; /* Gümüş/Beyaz renk */
+  opacity: 1 !important;      /* Silikliği kaldır */
+  font-size: 1.1rem;          /* Hafifçe büyüt, daha okunaklı olsun */
+  font-weight: 400;
 }
