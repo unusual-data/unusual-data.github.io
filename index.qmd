@@ -9,6 +9,7 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/ibrahimcapar1
+      target: _blank
     - icon: envelope-fill
       text: E-posta
       href: "mailto:ibrahimcaparr1@gmail.com"

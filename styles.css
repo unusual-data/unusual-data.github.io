@@ -333,3 +333,92 @@ header#title-block-header .abstract,
         width: auto !important;         /* Genişliği serbest bırak */
     }
 }
+
+/* v5*/
+/* Tüm paragraflar için genel ayar */
+p {
+  text-align: justify;       /* İki yana yasla */
+  line-height: 1.75;         /* Satır yüksekliği (nefes aldıran boşluk) */
+  margin-bottom: 1.5rem;     /* Paragraflar arası boşluk */
+  font-weight: 300;          /* Yazı kalınlığını hafifçe inceltir (daha zarif durur) */
+}
+
+/*v6*/
+/* Türkçe karakterlerde tireleme (hyphenation) sorunu olmaması için */
+body {
+  hyphens: auto;             /* Uzun kelimeleri satır sonunda tire ile böler */
+  -webkit-hyphens: auto;
+}
+
+/* v7*/
+/* Metin içindeki kalın ifadelerin canlılığını ve baskınlığını artırır */
+strong {
+    /* font-weight: 700; genellikle koyu modda en iyi görünendir. 
+    Bu, p etiketindeki font-weight: 300 kuralını geçersiz kılar. 
+    */
+    font-weight: 700 !important; 
+    
+    /* Eğer beyaz renk de soluksa, rengi saf beyaza zorlayın. 
+    Koyu temalarda bu genellikle gereklidir.
+    */
+    color: #FFFFFF !important; 
+}
+
+/*v8*/
+/* Tüm videolar için standart stil */
+video {
+  border-radius: 8px; /* Köşeleri yuvarlar */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Gölge ekler */
+  width: 100%; /* Genişliği kapsayıcıya oturtur */
+  margin-bottom: 40px; /* Alt boşluk */
+  display: block;
+}
+
+/*v9*/
+/* Resim altı yazılarını (caption) ortalar */
+figcaption, .figure-caption {
+  text-align: center;
+  margin-top: 0.5rem; /* Resim ile yazı arasına hafif boşluk */
+  color: #f8f9fa;     /* Standart gri ton (isteğe bağlı) */
+  font-size: 0.9em;   /* Yazıyı bir tık küçültür (isteğe bağlı) */
+}
+
+/*v10*/
+/* Quarto Proje Kartları İçin Modern Stil - Seçenek 1 */
+.card {
+  background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf beyaz */
+  backdrop-filter: blur(10px);           /* Arkadaki renkleri bulanıklaştırır */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* İnce, zarif bir kenarlık */
+  border-radius: 12px;                   /* Köşeleri yumuşat */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Mouse ile üzerine gelince */
+.card:hover {
+  transform: translateY(-5px);           /* Kart hafifçe yukarı kalkar */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Altına gölge ekler */
+  border-color: rgba(69, 162, 158, 0.5); /* Kenarlık rengi hafifçe parlar (Tema renginize göre) */
+}
+
+/* Başlık Rengi */
+.card-title, .card-title a {
+  color: #66b2ff !important; /* Canlı bir mavi ton */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Açıklama Yazısı Rengi - Griden kurtuluyoruz */
+.card-text {
+  color: #e0e0e0 !important; /* Neredeyse beyaz, çok net okunur */
+  font-weight: 300;
+}
+
+/* Tarih ve diğer küçük yazılar */
+.card-footer, .text-muted {
+  color: #a0a0a0 !important; /* İkincil bilgiler için açık gri */
+}
+
+/* Kart içindeki metinleri sola yasla (okumayı kolaylaştırır) */
+.card-text {
+  text-align: left !important;
+}

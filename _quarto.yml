@@ -26,11 +26,22 @@ website:
 
 format:
   html:
+    code-overflow: wrap
     link-external-newwindow: true
-    theme: litera
+    theme: darkly #flatly #litera
     css: styles.css
     toc: true 
+    highlight-style: dracula
 
 execute:
   freeze: auto
+
+mainfont: "Inter"    # Yazı tipi ailesi
+fontsize: 1.1em      # Yazı boyutu (Standarttan %10 büyük)
+linestretch: 1.5   # Satır aralığı (Satırlar arası genişlik)
+
+lightbox:
+  effect: fade
+  desc-position: bottom
+  loop: true
 ...

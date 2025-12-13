@@ -4,9 +4,9 @@ subtitle: "Üzerinde çalıştığım ve tamamladığım projelerin bir özeti."
 
 listing:
   contents: projects  # 'projects' klasöründeki içeriği listele
-  type: grid        # 'Grid' (Izgara) portfolyo görünümü
+  type: grid        
   sort: "date desc"
-  categories: true
+  categories: false
   image-height: 200px
   grid-item-border: false
 ---
