@@ -6,11 +6,16 @@ lang: tr
 
 website:
   title: "İbrahim ÇAPAR"
+  description: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine kişisel portfolyo ve blog."
   site-url: "https://ibrahimcapar.com"
   google-analytics: "G-SRL55MJHF7"
   
-
+  # Sosyal medya paylaşımları için OpenGraph verisi
+  open-graph: true
+  twitter-card: true
+  
   navbar:
+    background: "#020617" # styles.css yüklenmezse diye fallback renk
     left:
       - href: blog.qmd
         text: Blog
@@ -21,17 +26,23 @@ website:
       - icon: linkedin
         href: https://linkedin.com/in/ibrahimcapar1
         target: _blank
+        aria-label: "LinkedIn"
       - icon: envelope-fill
         href: "mailto:ibrahimcaparr1@gmail.com"
+        aria-label: "Email"
 
 format:
   html:
     code-overflow: wrap
     link-external-newwindow: true
-    theme: darkly #flatly #litera
+    theme: darkly
     css: styles.css
     toc: true 
     highlight-style: dracula
+    # HTML Sıkıştırma ve Optimizasyon
+    minify:
+      css: true
+      js: true
 
 execute:
   freeze: auto
