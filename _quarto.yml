@@ -36,9 +36,9 @@ format:
 execute:
   freeze: auto
 
-mainfont: "Inter"    # Yazı tipi ailesi
-fontsize: 1.1em      # Yazı boyutu (Standarttan %10 büyük)
-linestretch: 1.5   # Satır aralığı (Satırlar arası genişlik)
+mainfont: "Inter"   
+fontsize: 1.0em      
+linestretch: 1.6   
 
 lightbox:
   effect: fade
