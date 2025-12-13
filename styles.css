@@ -1,5 +1,4 @@
 :root {
-  /* Renk Paleti */
   --primary-color: #38bdf8; 
   --accent-color: #fbbf24;
   --text-light: #e2e8f0;
@@ -8,30 +7,20 @@
   --border-color: #1e293b;
 }
 
-/* --- TEMEL YAPILANDIRMA --- */
 body {
-  font-family: 'Inter', 'Segoe UI', sans-serif; /* Inter fontu YML'de tanımlı, burada da öncelikli olmalı */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
   color: var(--text-light);
   background-color: var(--bg-dark);
   line-height: 1.75;
   hyphens: auto;
 }
 
-/* Okunabilirlik İyileştirmesi: Koyu temada metin kalınlığı artırıldı */
 p {
   margin-bottom: 1.5rem;
-  font-weight: 400; /* 300 yerine 400 yapıldı, erişilebilirlik için kritik */
-  text-align: left; /* Mobilde varsayılan sola dayalı */
+  font-weight: 400; 
+  text-align: left; 
 }
 
-/* Sadece tablet ve üzeri (768px+) cihazlarda iki yana yasla */
-@media (min-width: 768px) {
-  p {
-    text-align: justify;
-  }
-}
-
-/* Typography Başlıklar */
 h1, h2, h3, h4, h5, h6 {
   color: #f1f5f9;
   font-weight: 600;
@@ -55,27 +44,26 @@ a:hover {
   color: var(--accent-color);
 }
 
-/* --- KOD BLOKLARI --- */
+
 code {
   background-color: #1e293b;
   color: var(--primary-color);
   padding: 0.2rem 0.4rem;
   border-radius: 6px;
   font-family: 'Fira Code', monospace;
-  font-size: 0.9em; /* rem yerine em kullanımı component içi ölçekleme sağlar */
+  font-size: 0.9em; 
   border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
 pre {
-  background-color: #1e293b !important;
+  background-color: #1e293b;
   border: 1px solid var(--border-color);
   border-left: 3px solid var(--primary-color);
   border-radius: 8px;
 }
 
-/* --- NAVBAR & FOOTER --- */
-.navbar {
-  background-color: var(--bg-darker) !important;
+#quarto-header .navbar {
+  background-color: var(--bg-darker);
   border-bottom: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
 }
@@ -86,12 +74,12 @@ pre {
   letter-spacing: 1px;
 }
 
-.nav-link {
-  color: #94a3b8 !important;
+#quarto-header .navbar-nav .nav-link {
+  color: #94a3b8;
 }
 
-.nav-link:hover {
-  color: var(--primary-color) !important;
+#quarto-header .navbar-nav .nav-link:hover {
+  color: var(--primary-color);
 }
 
 footer {
@@ -100,44 +88,42 @@ footer {
   color: #64748b;
 }
 
-/* --- ABOUT SAYFASI VE GÖRSELİ (KRİTİK DÜZELTME) --- */
-/* Quarto Trestles şablonu için görsel optimizasyonu */
-.quarto-about-trestles .about-entity .about-image {
-  width: 100% !important;        /* Konteyner genişliğine yayıl */
-  max-width: 16rem !important;   /* Maksimum genişliği sınırla */
-  height: auto !important;       /* Orantıyı koru */
-  aspect-ratio: 1 / 1;           /* Kare formatı zorla */
-  object-fit: cover;             /* Görseli kutuya sığdır */
-  margin: 0 auto 1.5rem auto !important;
+div.quarto-about-trestles .about-entity .about-image {
+  width: 100%;
+  max-width: 16rem;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 0 auto 1.5rem auto;
   display: block;
 }
 
-/* --- LISTING & BLOG --- */
+
 div.quarto-listing .listing-title a {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
   font-weight: 600;
 }
 
 div.quarto-listing .listing-title a:hover {
-  color: var(--accent-color) !important;
+  color: var(--accent-color);
 }
 
 div.quarto-listing .listing-description,
 div.quarto-listing .listing-date,
 .quarto-title-block .description {
-  color: var(--text-light) !important;
+  color: var(--text-light);
   opacity: 0.9;
 }
 
-/* Arama ve Filtreleme Alanları */
+
 .quarto-listing .list-input,
 .quarto-listing select {
-  background-color: #1e293b !important;
-  color: var(--text-light) !important;
-  border: 1px solid var(--border-color) !important;
+  background-color: #1e293b;
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
 }
 
-/* Kategori Etiketleri */
+
 div.quarto-listing-category .category {
   background-color: #1e293b;
   color: var(--primary-color);
@@ -149,7 +135,7 @@ div.quarto-listing-category .category:hover {
   color: var(--bg-dark);
 }
 
-/* --- DİĞER BİLEŞENLER --- */
+
 blockquote {
   border-left: 4px solid var(--accent-color);
   background-color: rgba(251, 191, 36, 0.05);
@@ -159,7 +145,7 @@ blockquote {
   border-radius: 0 8px 8px 0;
 }
 
-/* Kart Stili (Projeler Sayfası İçin) */
+
 .card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color);
@@ -174,36 +160,48 @@ blockquote {
 }
 
 .card-title, .card-title a {
-  color: var(--primary-color) !important;
+  color: var(--primary-color);
 }
 
 .card-text {
-  color: var(--text-light) !important;
+  color: var(--text-light);
 }
 
-/* --- MOBİL ÖZEL AYARLAR --- */
+
 @media (max-width: 576px) {
   .navbar-brand, .navbar-title {
-    font-size: 1rem !important;
-    white-space: normal !important; /* İsim uzunsa alt satıra geçebilsin, taşmasın */
+    font-size: 1rem;
+    white-space: normal;
   }
   
   .about-entity {
-    text-align: center; /* Mobilde profil bilgilerini ortala */
+    text-align: center;
   }
 }
 
-/* v11*/
+
+@media (max-width: 576px) {
+  .navbar-brand, .navbar-title {
+    font-size: 1rem !important;
+    white-space: normal !important; 
+  }
+  
+  .about-entity {
+    text-align: center; 
+  }
+}
+
+
 @media (max-width: 768px) {
     html {
-        font-size: 16px !important;
+        font-size: 16px;
     }
     
     body {
-        font-size: 1rem !important; 
-        line-height: 1.55;          
+        font-size: 1rem;
+        line-height: 1.55;
     }
-    h1 { font-size: 1.75rem !important; }
-    h2 { font-size: 1.5rem !important; }
-    h3 { font-size: 1.25rem !important; }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
 }

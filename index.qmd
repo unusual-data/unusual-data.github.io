@@ -1,8 +1,8 @@
 ---
 title: "İbrahim ÇAPAR"
 subtitle: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme"
-image: /media/pictures/pp/pic.png
-# about bloğundaki image-width ayarları CSS ile override edildiği için burada belirtmeye gerek yok
+image: media/pictures/pp/pic.png
+
 about:
   template: trestles
   image-shape: round
