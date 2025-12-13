@@ -1,63 +1,45 @@
 :root {
-  /* ANA RENK (Electric Blue / Camgöbeği): 
-     Mühendislik çizimlerini (blueprint) ve elektriği çağrıştırır. 
-     Modern, temiz ve güven vericidir.
-  */
+  /* Renk Paleti */
   --primary-color: #38bdf8; 
-  
-  /* VURGU RENGİ (Amber / Altın):
-     Dikkat çekmesi gereken yerler için mükemmel kontrast oluşturur.
-     Endüstriyel uyarı ışıklarını ve enerjiyi simgeler.
-  */
   --accent-color: #fbbf24;
-
-  /*
-    AÇIK YAZI RENGİ (Kırık Beyaz / Gümüş):
-    Tam beyaz (#fff) gözü yorar. Hafif maviye çalan gümüş rengi,
-    koyu arka planda uzun süre okumayı kolaylaştırır.
-  */
   --text-light: #e2e8f0;
-
-  /*
-    KOYU ARKA PLAN (Slate / Arduvaz):
-    Simsiyah (#000) yerine derin, mat bir lacivert-gri karışımı.
-    Derinlik hissi verir ve premium durur.
-  */
   --bg-dark: #0f172a;
-
-  /*
-    DAHA KOYU ARKA PLAN:
-    Navbar ve Footer için ana zeminden bir ton daha koyu.
-  */
   --bg-darker: #020617;
-
-  /*
-    KENARLIK RENGİ:
-    Arka planla uyumlu, yumuşak geçişli bir gri.
-  */
   --border-color: #1e293b;
-  
-  /* --- KULLANILMAYAN DEĞİŞKENLER (İsteğe bağlı tutuldu) --- */
-  --primary-dark: #0284c7;
-  --text-dark: #0f172a;
 }
 
+/* --- TEMEL YAPILANDIRMA --- */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif; /* Inter fontu YML'de tanımlı, burada da öncelikli olmalı */
   color: var(--text-light);
   background-color: var(--bg-dark);
-  line-height: 1.7; /* Okunabilirlik için satır aralığı hafif artırıldı */
+  line-height: 1.75;
+  hyphens: auto;
 }
 
-/* Typography */
+/* Okunabilirlik İyileştirmesi: Koyu temada metin kalınlığı artırıldı */
+p {
+  margin-bottom: 1.5rem;
+  font-weight: 400; /* 300 yerine 400 yapıldı, erişilebilirlik için kritik */
+  text-align: left; /* Mobilde varsayılan sola dayalı */
+}
+
+/* Sadece tablet ve üzeri (768px+) cihazlarda iki yana yasla */
+@media (min-width: 768px) {
+  p {
+    text-align: justify;
+  }
+}
+
+/* Typography Başlıklar */
 h1, h2, h3, h4, h5, h6 {
-  color: #f1f5f9; /* Başlıklar metinden bir tık daha parlak */
+  color: #f1f5f9;
   font-weight: 600;
-  letter-spacing: 0.5px; /* Daha teknik bir duruş için */
+  letter-spacing: 0.5px;
 }
 
 h1 {
-  border-bottom: 2px solid var(--primary-color); /* Kalınlık 3px'ten 2px'e çekildi, daha zarif */
+  border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -66,50 +48,36 @@ a {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
   color: var(--accent-color);
-  text-decoration: none; /* Alt çizgi yerine renk değişimi yeterli, daha modern */
 }
 
-/* Code - ÖNEMLİ DÜZELTME */
+/* --- KOD BLOKLARI --- */
 code {
-  background-color: #1e293b; /* Arka plan temaya uyduruldu */
-  /* ESKİ KODUNDA BURASI SABİT YEŞİLDİ (#4CAF50). 
-     Bunu primary-color değişkenine bağladım ki tema değişince burası da değişsin.
-  */
-  color: var(--primary-color); 
+  background-color: #1e293b;
+  color: var(--primary-color);
   padding: 0.2rem 0.4rem;
   border-radius: 6px;
-  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace; /* Fira Code eklendi (varsa) */
-  font-size: 0.9rem;
-  border: 1px solid rgba(56, 189, 248, 0.1); /* Hafif bir çerçeve eklendi */
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em; /* rem yerine em kullanımı component içi ölçekleme sağlar */
+  border: 1px solid rgba(56, 189, 248, 0.1);
 }
 
 pre {
   background-color: #1e293b !important;
   border: 1px solid var(--border-color);
   border-left: 3px solid var(--primary-color);
-  padding: 1rem;
-  border-radius: 8px; /* Köşeler biraz daha yumuşatıldı */
-  overflow-x: auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  border-radius: 8px;
 }
 
-pre code {
-  background-color: transparent;
-  color: var(--text-light);
-  padding: 0;
-  border: none;
-}
-
-/* Navbar */
+/* --- NAVBAR & FOOTER --- */
 .navbar {
   background-color: var(--bg-darker) !important;
   border-bottom: 1px solid var(--border-color);
-  backdrop-filter: blur(10px); /* Modern cam efekti (destekleyen tarayıcılarda) */
+  backdrop-filter: blur(10px);
 }
 
 .navbar-title {
@@ -119,306 +87,108 @@ pre code {
 }
 
 .nav-link {
-  color: #94a3b8 !important; /* Pasif linkler daha sönük (slate-400) */
-  transition: color 0.3s ease;
+  color: #94a3b8 !important;
 }
 
 .nav-link:hover {
   color: var(--primary-color) !important;
 }
 
-/* Footer */
 footer {
   background-color: var(--bg-darker);
   border-top: 1px solid var(--border-color);
-  color: #64748b; /* Footer yazısı gözü almasın diye daha sönük yapıldı */
-  font-size: 0.9rem;
+  color: #64748b;
 }
 
-footer a {
-  color: var(--primary-color);
-  opacity: 0.8;
+/* --- ABOUT SAYFASI VE GÖRSELİ (KRİTİK DÜZELTME) --- */
+/* Quarto Trestles şablonu için görsel optimizasyonu */
+.quarto-about-trestles .about-entity .about-image {
+  width: 100% !important;        /* Konteyner genişliğine yayıl */
+  max-width: 16rem !important;   /* Maksimum genişliği sınırla */
+  height: auto !important;       /* Orantıyı koru */
+  aspect-ratio: 1 / 1;           /* Kare formatı zorla */
+  object-fit: cover;             /* Görseli kutuya sığdır */
+  margin: 0 auto 1.5rem auto !important;
+  display: block;
 }
 
-footer a:hover {
-  opacity: 1;
-}
-
-/* Lists */
-ul, ol {
-  color: var(--text-light);
-}
-
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.95rem;
-}
-
-thead {
-  background-color: #1e293b;
-  border-bottom: 2px solid var(--primary-color);
-}
-
-th {
-  padding: 1rem;
-  text-align: left;
-  color: var(--primary-color);
+/* --- LISTING & BLOG --- */
+div.quarto-listing .listing-title a {
+  color: var(--primary-color) !important;
   font-weight: 600;
-  text-transform: uppercase; /* Tablo başlıkları teknik görünsün diye büyük harf */
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
 }
 
-td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--text-light);
+div.quarto-listing .listing-title a:hover {
+  color: var(--accent-color) !important;
 }
 
-tr:hover td {
-  background-color: rgba(255,255,255,0.02); /* Satır üzerine gelince çok hafif aydınlatma */
+div.quarto-listing .listing-description,
+div.quarto-listing .listing-date,
+.quarto-title-block .description {
+  color: var(--text-light) !important;
+  opacity: 0.9;
 }
 
-/* Blockquotes */
+/* Arama ve Filtreleme Alanları */
+.quarto-listing .list-input,
+.quarto-listing select {
+  background-color: #1e293b !important;
+  color: var(--text-light) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Kategori Etiketleri */
+div.quarto-listing-category .category {
+  background-color: #1e293b;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+div.quarto-listing-category .category:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-dark);
+}
+
+/* --- DİĞER BİLEŞENLER --- */
 blockquote {
-  border-left: 4px solid var(--accent-color); /* Vurgu rengi ile değiştirildi */
-  background-color: rgba(251, 191, 36, 0.05); /* Arka plana çok hafif renk verildi */
+  border-left: 4px solid var(--accent-color);
+  background-color: rgba(251, 191, 36, 0.05);
   padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
   color: #e2e8f0;
   font-style: italic;
   border-radius: 0 8px 8px 0;
 }
 
-/* Grid */
-.grid {
-  display: grid;
-  gap: 2rem;
-}
-
-.g-col-12 {
-  grid-column: span 12;
-}
-
-@media (min-width: 768px) {
-  .g-col-md-8 {
-    grid-column: span 8;
-  }
-  
-  .g-col-md-4 {
-    grid-column: span 4;
-  }
-}
-
-/* About Image */
-.quarto-about-trestles .about-entity .about-image {
-  width: 16rem !important; 
-  height: 16rem !important; 
-  margin-left: auto !important;
-  margin-right: auto !important;
-  display: block !important;
-  
-}
-
-/* --- BLOG LISTING & SEARCH FIXES --- */
-
-/* 1. Blog Başlıklarını Görünür Yap */
-div.quarto-listing .listing-title,
-div.quarto-listing .listing-title a {
-  color: var(--primary-color) !important; /* Başlıklar artık 'Electric Blue' */
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-div.quarto-listing .listing-title a:hover {
-  color: var(--accent-color) !important; /* Üzerine gelince 'Amber' */
-  text-decoration: none;
-}
-
-/* 2. Blog Açıklamaları ve Tarihleri Parlat */
-div.quarto-listing .listing-description,
-div.quarto-listing .listing-date {
-  color: #cbd5e1 !important; /* Açık gümüş rengi (daha okunur) */
-}
-
-/* 3. Sayfa Üstü Açıklama Metni (Subtitle) */
-p.subtitle, .description {
-  color: #94a3b8 !important; /* H1 altındaki açıklama biraz daha belirgin olsun */
-  font-size: 1.1rem;
-}
-
-/* 4. Arama Kutusu ve Sıralama Menüsü (Input Fields) 
-   Şu an bembeyaz duruyorlar, onları da koyu temaya gömelim.
-*/
-.quarto-listing .list-input,
-.quarto-listing select {
-  background-color: #1e293b !important; /* Koyu arka plan */
-  color: var(--text-light) !important;   /* Açık yazı */
-  border: 1px solid var(--border-color) !important;
-  border-radius: 6px;
-}
-
-/* Arama kutusu placeholder (silik yazı) rengi */
-.quarto-listing ::placeholder { 
-  color: #64748b;
-  opacity: 1; 
-}
-
-/* 5. Sağ Taraftaki Kategoriler */
-div.quarto-listing-category .category {
-  background-color: #1e293b; /* Kategori haplarının arka planı */
-  color: var(--primary-color);
-  border: 1px solid var(--border-color);
-  transition: all 0.2s;
-}
-
-div.quarto-listing-category .category:hover {
-  background-color: var(--primary-color);
-  color: var(--bg-dark); /* Hover olunca yazı koyu olsun */
-}
-
-/* 6. Pagination (Sayfa Numaraları - Eğer varsa) */
-.page-item .page-link {
-  background-color: var(--bg-darker) !important;
-  border-color: var(--border-color) !important;
-  color: var(--primary-color) !important;
-}
-
-.page-item.active .page-link {
-  background-color: var(--primary-color) !important;
-  color: var(--bg-dark) !important;
-  border-color: var(--primary-color) !important;
-}
-
-/* v3*/ 
-
-/* Description Rengi İçin Kesin Çözüm */
-
-/* 1. Description kutusunu ve içindeki TÜM elemanları (p, span, div) yakala */
-div.quarto-listing .listing-description,
-div.quarto-listing .listing-description * {
-  color: #e2e8f0 !important; /* Direkt renk kodu (Açık Gümüş) */
-  opacity: 1 !important;      /* Şeffaflığı iptal et */
-  filter: none !important;
-}
-
-/* 2. Eğer Bootstrap "text-muted" sınıfı kullanılmışsa, sadece bu alanda onu etkisiz kıl */
-div.quarto-listing .text-muted {
-  color: #e2e8f0 !important;
-}
-
-/* v4 */
-
-/* --- YAZI İÇİNDEKİ DESCRIPTION DÜZELTMESİ --- */
-
-/* Yazının tepesindeki başlık bloğu içindeki description alanı */
-header#title-block-header .description,
-header#title-block-header .abstract,
-.quarto-title-block .description {
-  color: var(--text-light) !important; /* Gümüş/Beyaz renk */
-  opacity: 1 !important;      /* Silikliği kaldır */
-  font-size: 1.1rem;          /* Hafifçe büyüt, daha okunaklı olsun */
-  font-weight: 400;
-}
-
-/* Mobilde İsim Soyisim Düzeni */
-@media (max-width: 576px) {
-    .navbar-brand, .navbar-title {
-        white-space: nowrap !important; /* Kesinlikle alt satıra inme */
-        font-size: 1rem !important;     /* Fontu mobilde biraz küçült (Orjinali genelde 1.25rem'dir) */
-        letter-spacing: -0.5px;         /* Harfleri çok hafif birbirine yaklaştır */
-        width: auto !important;         /* Genişliği serbest bırak */
-    }
-}
-
-/* v5*/
-/* Tüm paragraflar için genel ayar */
-p {
-  text-align: justify;       /* İki yana yasla */
-  line-height: 1.75;         /* Satır yüksekliği (nefes aldıran boşluk) */
-  margin-bottom: 1.5rem;     /* Paragraflar arası boşluk */
-  font-weight: 300;          /* Yazı kalınlığını hafifçe inceltir (daha zarif durur) */
-}
-
-/*v6*/
-/* Türkçe karakterlerde tireleme (hyphenation) sorunu olmaması için */
-body {
-  hyphens: auto;             /* Uzun kelimeleri satır sonunda tire ile böler */
-  -webkit-hyphens: auto;
-}
-
-/* v7*/
-/* Metin içindeki kalın ifadelerin canlılığını ve baskınlığını artırır */
-strong {
-    /* font-weight: 700; genellikle koyu modda en iyi görünendir. 
-    Bu, p etiketindeki font-weight: 300 kuralını geçersiz kılar. 
-    */
-    font-weight: 700 !important; 
-    
-    /* Eğer beyaz renk de soluksa, rengi saf beyaza zorlayın. 
-    Koyu temalarda bu genellikle gereklidir.
-    */
-    color: #FFFFFF !important; 
-}
-
-/*v8*/
-/* Tüm videolar için standart stil */
-video {
-  border-radius: 8px; /* Köşeleri yuvarlar */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Gölge ekler */
-  width: 100%; /* Genişliği kapsayıcıya oturtur */
-  margin-bottom: 40px; /* Alt boşluk */
-  display: block;
-}
-
-/*v9*/
-/* Resim altı yazılarını (caption) ortalar */
-figcaption, .figure-caption {
-  text-align: center;
-  margin-top: 0.5rem; /* Resim ile yazı arasına hafif boşluk */
-  color: #f8f9fa;     /* Standart gri ton (isteğe bağlı) */
-  font-size: 0.9em;   /* Yazıyı bir tık küçültür (isteğe bağlı) */
-}
-
-/*v10*/
-/* Quarto Proje Kartları İçin Modern Stil - Seçenek 1 */
+/* Kart Stili (Projeler Sayfası İçin) */
 .card {
-  background: rgba(255, 255, 255, 0.05); /* Çok hafif şeffaf beyaz */
-  backdrop-filter: blur(10px);           /* Arkadaki renkleri bulanıklaştırır */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* İnce, zarif bir kenarlık */
-  border-radius: 12px;                   /* Köşeleri yumuşat */
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Mouse ile üzerine gelince */
 .card:hover {
-  transform: translateY(-5px);           /* Kart hafifçe yukarı kalkar */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3); /* Altına gölge ekler */
-  border-color: rgba(69, 162, 158, 0.5); /* Kenarlık rengi hafifçe parlar (Tema renginize göre) */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  border-color: var(--primary-color);
 }
 
-/* Başlık Rengi */
 .card-title, .card-title a {
-  color: #66b2ff !important; /* Canlı bir mavi ton */
-  font-weight: 600;
-  text-decoration: none;
+  color: var(--primary-color) !important;
 }
 
-/* Açıklama Yazısı Rengi - Griden kurtuluyoruz */
 .card-text {
-  color: #e0e0e0 !important; /* Neredeyse beyaz, çok net okunur */
-  font-weight: 300;
+  color: var(--text-light) !important;
 }
 
-/* Tarih ve diğer küçük yazılar */
-.card-footer, .text-muted {
-  color: #a0a0a0 !important; /* İkincil bilgiler için açık gri */
-}
-
-/* Kart içindeki metinleri sola yasla (okumayı kolaylaştırır) */
-.card-text {
-  text-align: left !important;
+/* --- MOBİL ÖZEL AYARLAR --- */
+@media (max-width: 576px) {
+  .navbar-brand, .navbar-title {
+    font-size: 1rem !important;
+    white-space: normal !important; /* İsim uzunsa alt satıra geçebilsin, taşmasın */
+  }
+  
+  .about-entity {
+    text-align: center; /* Mobilde profil bilgilerini ortala */
+  }
 }
