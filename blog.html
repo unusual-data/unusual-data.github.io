@@ -80,9 +80,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -198,9 +198,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Kategoriler</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Hepsi <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGlnaXRhbCUyMHR3aW4=">digital twin <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGVhcm5pbmctbG9n">learning-log <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm9ib3RpY3M=">robotics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2ltdWxhdGlvbg==">simulation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlzdWFsJTIwY29tcG9uZW50cw==">visual components <span class="quarto-category-count">(1)</span></div></div></div>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -255,7 +255,7 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dmlzdWFsJTIwY29tcG9uZW50cyUyQ3NpbXVsYXRpb24lMkNkaWdpdGFsJTIwdHdpbiUyQ2xlYXJuaW5nLWxvZyUyQ3JvYm90aWNz" data-listing-date-sort="1765411200000" data-listing-file-modified-sort="1765659457816" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="292">
+<div class="quarto-post image-right" data-index="0" data-categories="dmlzdWFsJTIwY29tcG9uZW50cyUyQ3NpbXVsYXRpb24lMkNkaWdpdGFsJTIwdHdpbiUyQ2xlYXJuaW5nLWxvZyUyQ3JvYm90aWNz" data-listing-date-sort="1765411200000" data-listing-file-modified-sort="1765660380780" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="292">
 <div class="thumbnail"><a href="./posts/visual-components-layout/index.html" class="no-external">
 
 <img loading="lazy" src="./posts/visual-components-layout/VC-cover.jpg" class="thumbnail-image">
@@ -267,19 +267,6 @@ window.Quarto = {
 </h3>
 <div class="listing-subtitle">
 <a href="./posts/visual-components-layout/index.html" class="no-external">Visual Components</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsJTIwY29tcG9uZW50cw=='); return false;">visual components</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c2ltdWxhdGlvbg=='); return false;">simulation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlnaXRhbCUyMHR3aW4='); return false;">digital twin</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGVhcm5pbmctbG9n'); return false;">learning-log</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cm9ib3RpY3M='); return false;">robotics</div>
-
 </div>
 <div class="delink listing-description"><a href="./posts/visual-components-layout/index.html" class="no-external">
 <p>Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.</p>
