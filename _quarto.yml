@@ -48,7 +48,7 @@ execute:
   freeze: auto
 
 mainfont: "Inter"   
-fontsize: 1.0em      
+fontsize: 1.1em      
 linestretch: 1.6   
 
 lightbox:
