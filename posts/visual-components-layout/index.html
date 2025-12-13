@@ -38,10 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-fa6ebe1abc24c69c1ddb9a141d0fa116.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-460f978fb67734852a69aa9aebbafb3b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -180,7 +182,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <section id="giriş" class="level2">
 <h2 class="anchored" data-anchor-id="giriş">Giriş</h2>
-<p>Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için <strong>Visual Components</strong> programını öğrenmeye başladım. Bu yazıda, <a href="https://academy.visualcomponents.com/lessons/introduction-to-layout-configuration/?course=134">Visual Component Academy</a>’deki Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum.</p>
+<p>Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için <strong>Visual Components</strong> programını öğrenmeye başladım. Bu yazıda, <a href="https://academy.visualcomponents.com/lessons/introduction-to-layout-configuration/?course=134">Visual Component Academy</a> de bulunan Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum.</p>
 </section>
 <section id="neler-yaptım" class="level2">
 <h2 class="anchored" data-anchor-id="neler-yaptım">Neler Yaptım?</h2>
@@ -202,49 +204,19 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </section>
 <section id="simülasyon-adımları" class="level2">
 <h2 class="anchored" data-anchor-id="simülasyon-adımları">Simülasyon Adımları</h2>
-<div style="margin-bottom: 40px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-  <video class="scroll-video" width="100%" loop="" muted="" playsinline="" preload="metadata" poster="poster.jpg">
-    <source src="stage_1.mp4" type="video/mp4">
-    <p>Tarayıcınız video etiketini desteklemiyor.</p>
-  </video>
-</div>
-
-<div style="margin-bottom: 40px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-  <video class="scroll-video" width="100%" loop="" muted="" playsinline="" preload="metadata" poster="poster_final.jpg">
-    <source src="stage_2.mp4" type="video/mp4">
-    <p>Tarayıcınız video etiketini desteklemiyor.</p>
-  </video>
-</div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_1.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_2.mp4"></video></div>
 </section>
 <section id="çıkarımlarım-key-takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</h2>
 <ul>
 <li>Visual Components’in manuel pozisyonlama yerine PnP (Plug and Play) özelliği tasarım sürecini kolaylaştırıyor. Ayrıca “Snap” özelliği ile bileşenleri birbiriyle kolay bir şekilde birleştirilmesini sağlıyor.</li>
 <li>Visual Components’in içerisinde bulunan e-Catalog ile birçok önemli markalara ait ürünlerin aynı ortamda bulunması gerçek durumları simüle etmeyi kolaylaştırıyor.</li>
-<li>Process Flow Editor ile, layoutta bulunan bileşenlerin prosesi hangi sıra ve ilişki ile gerçekleştireceği kolay bir şekilde yönetiliyor.</li>
-<li>İnsan bileşenini de üretim sürecine dahil ederek prosesi daha gelişmiş bir şekilde simüle edilmesini sağlıyor.</li>
+<li>Process Flow Editor ile, layoutta bulunan bileşenlerin prosesi hangi sıra ve ilişki ile gerçekleştireceği kolay bir şekilde yönetiliyor. Bununla birlikte “Statement” kullanarak daha gelişmiş sonuçlar elde edilebiliyor.</li>
+<li>Dijital İkiz yaklaşımına insan bileşenini de üretim sürecine dahil ederek prosesi daha gelişmiş bir şekilde simüle edilmesini sağlıyor.</li>
 </ul>
 <hr>
 <p><em>Kaynak: Bu çalışma <a href="https://academy.visualcomponents.com/">Visual Components Academy</a> dersleri baz alınarak yapılmıştır.</em></p>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const videos = document.querySelectorAll(".scroll-video");
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.play();
-      } else {
-        entry.target.pause();
-      }
-    });
-  }, { threshold: 0.5 });
-
-  videos.forEach(video => {
-    observer.observe(video);
-  });
-});
-</script>
 
 
 </section>
@@ -656,6 +628,8 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   </script>
 </div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 
