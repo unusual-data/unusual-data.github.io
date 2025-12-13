@@ -2,26 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ibrahimcapar.com/projects.html</loc>
-    <lastmod>2025-12-13T21:13:00.786Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/blog.html</loc>
-    <lastmod>2025-12-13T21:13:00.767Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/index.html</loc>
-    <lastmod>2025-12-13T21:13:00.777Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/index.html</loc>
-    <lastmod>2025-12-13T21:13:00.791Z</lastmod>
+    <lastmod>2025-12-13T21:25:02.242Z</lastmod>
   </url>
   <url>
     <loc>https://ibrahimcapar.com/posts/visual-components-layout/index.html</loc>
-    <lastmod>2025-12-13T21:13:00.780Z</lastmod>
+    <lastmod>2025-12-13T21:25:02.236Z</lastmod>
   </url>
   <url>
-    <loc>https://ibrahimcapar.com/about.html</loc>
-    <lastmod>2025-12-13T21:13:00.767Z</lastmod>
+    <loc>https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/index.html</loc>
+    <lastmod>2025-12-13T21:25:02.247Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/index.html</loc>
+    <lastmod>2025-12-13T21:25:02.233Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/blog.html</loc>
+    <lastmod>2025-12-13T21:25:02.224Z</lastmod>
   </url>
 </urlset>
