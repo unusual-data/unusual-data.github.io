@@ -6,7 +6,7 @@ listing:
   contents: posts   # 'posts' klasöründeki içeriği listele
   sort: "date desc" # Tarihe göre (yeniden eskiye) sırala
   type: default     # Standart blog listeleme (Julia Silge gibi)
-  categories: true  # Kategorileri göster
+  categories: false  # Kategorileri göster
   sort-ui: true     # Kullanıcının sıralama yapmasına izin ver
   filter-ui: true   # Kullanıcının filtreleme yapmasına izin ver
 ---
