@@ -3,10 +3,10 @@ title: "Projelerim"
 subtitle: "Üzerinde çalıştığım ve tamamladığım projelerin bir özeti."
 
 listing:
-  contents: projects  # 'projects' klasöründeki içeriği listele
+  contents: projects  
   type: grid        
   sort: "date desc"
-  categories: false
+  categories: true
   image-height: 200px
   grid-item-border: false
 ---
