@@ -1,14 +1,24 @@
 [
   {
-    "listing": "/projects.html",
+    "listing": "/notes/learning/index.html",
+    "items": []
+  },
+  {
+    "listing": "/posts/index.html",
     "items": [
-      "/projects/sanal-akilli-ayiklama/index.html"
+      "/posts/sanal-ayiklama/index.html",
+      "/posts/visual-components-layout/index.html"
     ]
   },
   {
-    "listing": "/blog.html",
+    "listing": "/projects/index.html",
     "items": [
-      "/posts/visual-components-layout/index.html"
+      "/projects/sanal-akilli-ayiklama/index.html",
+      "/projects/trafik-light-control-codesys/index.html"
     ]
+  },
+  {
+    "listing": "/notes/technical/index.html",
+    "items": []
   }
 ]

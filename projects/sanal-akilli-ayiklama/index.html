@@ -6,9 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
+<meta name="author" content="İbrahim Çapar">
+<meta name="description" content="[Projenin sağladığı temel çözümün tek cümlelik özeti]">
 
-<title>#1 TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR</title>
+<title>[Proje Başlığı: Teknik ve Tanımlayıcı] – İbrahim ÇAPAR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -77,8 +78,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,13 +117,14 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="#1 TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
-<meta property="og:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
-<meta property="og:image" content="https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/factoryio.jpg">
+<link rel="stylesheet" href="../../lightbox-style.css">
+<meta property="og:title" content="[Proje Başlığı: Teknik ve Tanımlayıcı] – İbrahim ÇAPAR">
+<meta property="og:description" content="[Projenin sağladığı temel çözümün tek cümlelik özeti]">
+<meta property="og:image" content="https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/images/hero-demo.gif">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
-<meta name="twitter:title" content="#1 TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
-<meta name="twitter:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
-<meta name="twitter:image" content="https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/factoryio.jpg">
+<meta name="twitter:title" content="[Proje Başlığı: Teknik ve Tanımlayıcı] – İbrahim ÇAPAR">
+<meta name="twitter:description" content="[Projenin sağladığı temel çözümün tek cümlelik özeti]">
+<meta name="twitter:image" content="https://ibrahimcapar.com/projects/sanal-akilli-ayiklama/images/hero-demo.gif">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -146,12 +146,20 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="../../posts/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
+    <a class="nav-link" href="../../projects/index.html"> 
 <span class="menu-text">Projelerim</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/technical/index.html"> 
+<span class="menu-text">Teknik Hafıza</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/learning/index.html"> 
+<span class="menu-text">Öğrenme Günlüğü</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -177,34 +185,27 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Bu sayfada</h2>
    
   <ul>
-  <li><a href="#proje-özeti" id="toc-proje-özeti" class="nav-link active" data-scroll-target="#proje-özeti">Proje Özeti</a></li>
-  <li><a href="#senaryo" id="toc-senaryo" class="nav-link" data-scroll-target="#senaryo">Senaryo</a></li>
-  <li><a href="#işlem-adımları" id="toc-işlem-adımları" class="nav-link" data-scroll-target="#işlem-adımları">İşlem Adımları</a>
-  <ul>
-  <li><a href="#factory-io-tia-portal-template-indirme" id="toc-factory-io-tia-portal-template-indirme" class="nav-link" data-scroll-target="#factory-io-tia-portal-template-indirme">1. Factory I/O TIA Portal Template İndirme</a></li>
-  <li><a href="#factory-io-template-ile-tia-portal-programı-oluşturma" id="toc-factory-io-template-ile-tia-portal-programı-oluşturma" class="nav-link" data-scroll-target="#factory-io-template-ile-tia-portal-programı-oluşturma">2. Factory I/O Template ile TIA Portal Programı Oluşturma</a></li>
-  <li><a href="#plcsim---tia-portal-haberleşmesi" id="toc-plcsim---tia-portal-haberleşmesi" class="nav-link" data-scroll-target="#plcsim---tia-portal-haberleşmesi">3. PLCSIM - TIA Portal Haberleşmesi</a></li>
-  <li><a href="#nettoplcsim-ayarları" id="toc-nettoplcsim-ayarları" class="nav-link" data-scroll-target="#nettoplcsim-ayarları">4. NetToPLCSim Ayarları</a></li>
-  <li><a href="#factory-io-sahnesi-oluşturma" id="toc-factory-io-sahnesi-oluşturma" class="nav-link" data-scroll-target="#factory-io-sahnesi-oluşturma">5. Factory I/O Sahnesi Oluşturma</a></li>
-  <li><a href="#factory-io-konfigürasyon" id="toc-factory-io-konfigürasyon" class="nav-link" data-scroll-target="#factory-io-konfigürasyon">6. Factory I/O Konfigürasyon</a></li>
-  <li><a href="#python-programlama-adımları" id="toc-python-programlama-adımları" class="nav-link" data-scroll-target="#python-programlama-adımları">6. Python Programlama Adımları</a>
-  <ul>
-  <li><a href="#kullanılan-kütüphanelerin-import-edilmesi" id="toc-kullanılan-kütüphanelerin-import-edilmesi" class="nav-link" data-scroll-target="#kullanılan-kütüphanelerin-import-edilmesi">6.1 Kullanılan Kütüphanelerin “Import” edilmesi</a></li>
-  <li><a href="#sistem-konfigürasyonu" id="toc-sistem-konfigürasyonu" class="nav-link" data-scroll-target="#sistem-konfigürasyonu">6.2 Sistem Konfigürasyonu</a></li>
-  <li><a href="#algılama-ve-karar-üretme" id="toc-algılama-ve-karar-üretme" class="nav-link" data-scroll-target="#algılama-ve-karar-üretme">6.3 Algılama ve Karar Üretme</a></li>
-  <li><a href="#plc-bit-güncelleme" id="toc-plc-bit-güncelleme" class="nav-link" data-scroll-target="#plc-bit-güncelleme">6.4 PLC Bit Güncelleme</a></li>
-  <li><a href="#periyodik-durum-log" id="toc-periyodik-durum-log" class="nav-link" data-scroll-target="#periyodik-durum-log">6.5 Periyodik Durum Log</a></li>
-  <li><a href="#debug-amaçlı-görüntü-gösterimi" id="toc-debug-amaçlı-görüntü-gösterimi" class="nav-link" data-scroll-target="#debug-amaçlı-görüntü-gösterimi">6.6 Debug Amaçlı Görüntü Gösterimi</a></li>
-  <li><a href="#döngü-zamanlama-kontrolü" id="toc-döngü-zamanlama-kontrolü" class="nav-link" data-scroll-target="#döngü-zamanlama-kontrolü">6.7 Döngü Zamanlama Kontrolü</a></li>
-  <li><a href="#uygulama-sonlandırma-aşaması" id="toc-uygulama-sonlandırma-aşaması" class="nav-link" data-scroll-target="#uygulama-sonlandırma-aşaması">6.8 Uygulama Sonlandırma Aşaması</a></li>
+  <li><a href="#proje-tanıtımı" id="toc-proje-tanıtımı" class="nav-link active" data-scroll-target="#proje-tanıtımı">Proje Tanıtımı</a>
+  <ul class="collapse">
+  <li><a href="#genel-bakış" id="toc-genel-bakış" class="nav-link" data-scroll-target="#genel-bakış">Genel Bakış</a></li>
   </ul></li>
-  <li><a href="#python-programı" id="toc-python-programı" class="nav-link" data-scroll-target="#python-programı">7. Python Programı</a></li>
-  <li><a href="#sonuçlar" id="toc-sonuçlar" class="nav-link" data-scroll-target="#sonuçlar">8. Sonuçlar</a></li>
+  <li><a href="#teknik-spesifikasyonlar" id="toc-teknik-spesifikasyonlar" class="nav-link" data-scroll-target="#teknik-spesifikasyonlar">Teknik Spesifikasyonlar</a></li>
+  <li><a href="#sistem-tasarımı-ve-mimari" id="toc-sistem-tasarımı-ve-mimari" class="nav-link" data-scroll-target="#sistem-tasarımı-ve-mimari">Sistem Tasarımı ve Mimari</a>
+  <ul class="collapse">
+  <li><a href="#sistem-mimarisi-blok-diyagramı" id="toc-sistem-mimarisi-blok-diyagramı" class="nav-link" data-scroll-target="#sistem-mimarisi-blok-diyagramı">1. Sistem Mimarisi (Blok Diyagramı)</a></li>
+  <li><a href="#algoritmik-yaklaşım-ve-mantık" id="toc-algoritmik-yaklaşım-ve-mantık" class="nav-link" data-scroll-target="#algoritmik-yaklaşım-ve-mantık">2. Algoritmik Yaklaşım ve Mantık</a></li>
   </ul></li>
+  <li><a href="#uygulama-ve-kritik-kod-analizi" id="toc-uygulama-ve-kritik-kod-analizi" class="nav-link" data-scroll-target="#uygulama-ve-kritik-kod-analizi">Uygulama ve Kritik Kod Analizi</a>
+  <ul class="collapse">
+  <li><a href="#kritik-algoritma-fonksiyon" id="toc-kritik-algoritma-fonksiyon" class="nav-link" data-scroll-target="#kritik-algoritma-fonksiyon">Kritik Algoritma / Fonksiyon</a></li>
+  </ul></li>
+  <li><a href="#mühendislik-zorlukları-ve-çözüm-süreçleri" id="toc-mühendislik-zorlukları-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#mühendislik-zorlukları-ve-çözüm-süreçleri">Mühendislik Zorlukları ve Çözüm Süreçleri</a></li>
+  <li><a href="#performans-analizi-ve-sonuçlar" id="toc-performans-analizi-ve-sonuçlar" class="nav-link" data-scroll-target="#performans-analizi-ve-sonuçlar">Performans Analizi ve Sonuçlar</a></li>
+  <li><a href="#proje-kaynakları" id="toc-proje-kaynakları" class="nav-link" data-scroll-target="#proje-kaynakları">Proje Kaynakları</a></li>
   </ul>
 </nav>
     </div>
@@ -213,27 +214,43 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">#1 TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması</h1>
-<p class="subtitle lead">Python Programlama ile Sanal Ayıklama Uygulaması</p>
+<h1 class="title">[Proje Başlığı: Teknik ve Tanımlayıcı]</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Alan 1</div>
+    <div class="quarto-category">Alan 2</div>
+    <div class="quarto-category">Teknoloji</div>
+  </div>
   </div>
 
 <div>
   <div class="description">
-    Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.
+    [Projenin sağladığı temel çözümün tek cümlelik özeti]
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Yazar</div>
+    <div class="quarto-title-meta-contents">
+             <p>İbrahim Çapar </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 Aralık 2025</p>
+      <p class="date">Invalid Date</p>
     </div>
   </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">19 Aralık 2025</p>
+    </div>
+  </div>
     
   </div>
   
@@ -242,499 +259,122 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </header>
 
 
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Kullanılan Yazılımlar">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">İpucu</span>Kullanılan Yazılımlar
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TIA Portal V20, PLCSIM V20, Factory I/O, Spyder IDE, NetToPLCsim</p>
-</div>
-</div>
-<section id="proje-özeti" class="level3">
-<h3 class="anchored" data-anchor-id="proje-özeti">Proje Özeti</h3>
-<p>Bu projede, TIA Portal ve Factory I/O ortamları kullanılarak bir <strong>Sanal Ayıklama Uygulaması</strong> geliştirilmiştir. Görüntü işleme senaryosu, Python programlama dili ve OpenCV kütüphanesi kullanılarak gerçekleştirilmiştir. Simülasyon ortamları arasındaki veri alışverişi, NetToPLCSim aracılığıyla TIA Portal (PLCSIM) ve Factory I/O arasında sağlanmıştır. Geliştirilen sistemde, kamera görüntüsünden elde edilen renk bilgileri işlenerek ayıklama mekanizmalarının kontrolü sağlanmış ve sistemin senaryo doğrultusunda çalışması sağlanmıştır.</p>
-</section>
-<section id="senaryo" class="level3">
-<h3 class="anchored" data-anchor-id="senaryo">Senaryo</h3>
-<p>Factory I/O ortamında sahneye eklenen konveyör üzerinde yayıcı (Emitter) aracılığı ile mavi hammadde ve yeşil hammadde (Blue Raw Material, Green Raw Material) üretilecektir. Simülasyon çalışmaya başladığında “<strong>Start</strong>” butonuna basılınca konveyör hareket etmeye başlayacak, 1. kontrol noktasında kamera mavi hammadeyi görünce “<strong>Pusher-1</strong>” mavi hammaddeyi ileri itecek ve başlangıç konumuna dönecektir. 2. kontrol noktasında kamera yeşil hammaddeyi görünce “<strong>Pusher-2</strong>” yeşil hammaddeyi ileri itecek ve başlangıç konumuna dönecektir. Simülasyonun herhangi bir anında “<strong>Acil Stop</strong>” veya “<strong>Stop</strong>” butonuna basılınca konveyör hareketini durduracaktır. Tekrardan “<strong>Start</strong>” butonuna basılması durumunda sistem kaldığı yerden çalışmasını sürdürecektir.</p>
-</section>
-<section id="işlem-adımları" class="level2">
-<h2 class="anchored" data-anchor-id="işlem-adımları">İşlem Adımları</h2>
-<section id="factory-io-tia-portal-template-indirme" class="level4">
-<h4 class="anchored" data-anchor-id="factory-io-tia-portal-template-indirme">1. Factory I/O TIA Portal Template İndirme</h4>
-<p>Bu projede gerçekleştirilen senaryoda TIA Portal V20 ile PLCSIM üzerinden Factory I/O haberleşmektedir. Bu işlemin gerçekleşebilmesi için Factory I/O template dosyası gerekmektedir. Bunun için <a href="https://docs.factoryio.com/tutorials/siemens/setting-up-s7-plcsim-v20/#tia-portal-template-projects">Factory I/O Template</a> adresinden ilgili dosya edinilmiştir.</p>
-<div class="callout callout-style-default callout-caution no-icon callout-titled" title="Uyarı">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Dikkat</span>Uyarı
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Gerçekleştirilen senaryoda TIA Portal V20 ile PLCSIM V20 kullanıldığı için<br>
-“<strong>FactoryIO_Template_S7-1200_V20.zip</strong>” dosyası indirilmiştir. Farklı bir sürüm kullanılması durumunda<br>
-kullanılan sürüme uygun template dosyasını edinilmelidir.</p>
-</div>
-</div>
-</section>
-<section id="factory-io-template-ile-tia-portal-programı-oluşturma" class="level4">
-<h4 class="anchored" data-anchor-id="factory-io-template-ile-tia-portal-programı-oluşturma">2. Factory I/O Template ile TIA Portal Programı Oluşturma</h4>
-<p>İndirilen bu template dosyası TIA Portal ile birlikte açılarak kullanılmıştır.</p>
-<p><img src="TIA-1.jpg" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p>Template dosyası ayrıca TIA Portal arayüzü üzerinden “Open Project” menüsünden de açılabilmektedir.</p>
-</blockquote>
-<p>Template dosyası TIA Portal arayüzünde açıldıktan sonra uygulanmak istenen senaryoya yönelik program hazırlanmıştır.<br>
-Aşağıdaki resimlerde belirtilen senaryoya yönelik LD (Ladder Diagram) programı gösterilmektedir.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Uyarı</span>PUT/GET İzni
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Bu aşamada aşağıdaki PUT/GET izni verilmelidir.<br>
-“<strong>TIA Portal &gt; Device Configuration &gt; General &gt; Connection mechanisms &gt; Permit access with PUT/GET communication from remote partner</strong>” kutucuğu işaretlenerek izin verilebilmektedir.<br>
-Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardware (rebuild all)</strong> seçeneği ile rebuild işlemi gerçekleştirilip proje PLCSIM’e <strong>(Download to device)</strong> seçeneği ile yüklenilmelidir.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Dikkat</span>Uyarı
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Factory I/O template dosyası TIA Portal ile açıldığında varsayılan program bloğu dili FB olarak gelmektedir. <strong>Main [OB1] &gt; Switch Programming Language &gt; LAD</strong> işlem adımlarını uygulayarak ladder diyagramı ile program yazabilmektedir.</p>
-</div>
-</div>
+<section id="proje-tanıtımı" class="level1">
+<h1>Proje Tanıtımı</h1>
+<p>[Buraya projenin bitmiş halini, çalışan mekanizmayı veya yazılım arayüzünü gösteren ana görsel/video/GIF eklenecektir.]</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="TIA-2.png" class="img-fluid figure-img"></p>
-<figcaption>Ladder - 1</figcaption>
+<p><img src="images/hero-demo.gif" class="img-fluid figure-img"></p>
+<figcaption>Ana Görsel / Demo</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="TIA-3.png" class="img-fluid figure-img"></p>
-<figcaption>Ladder - 2</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="TIA-4.png" class="img-fluid figure-img"></p>
-<figcaption>Ladder - 3</figcaption>
-</figure>
-</div>
-</section>
-<section id="plcsim---tia-portal-haberleşmesi" class="level4">
-<h4 class="anchored" data-anchor-id="plcsim---tia-portal-haberleşmesi">3. PLCSIM - TIA Portal Haberleşmesi</h4>
-<p>Hazırlanan senaryoya uygun kod hazırlandıktan sonra derleme işlemi gerçekleştirilmiştir. Bu işlem adımı için “<strong>Edit &gt; Compile</strong>” veya “<strong>Ctrl + B</strong>” kısayolu kullanılabilmektedir. Devamında üst menüde bulunan “<strong>Start Simülation</strong>” butonu ile PLCSIM’ başlatılmıştır.</p>
-<p>Açılan ekranda “<strong>Start Search</strong>” yaparak bağlı olunan cihazlar listelenmektedir. Bu işlemi yaparken “<strong>PG/PC Interface : PLCSIM</strong>” seçeneğinin belirtildiği gibi olması gerekmektedir. Arama sonucunda PLCSIM PLC seçilerek program “<strong>Load</strong>” denilerek yüklenmiştir.</p>
-<p><img src="TIA-5.png" class="img-fluid"></p>
-<p>Devamında açılır listeden “<strong>Start Module</strong>” seçeneği seçilerek “<strong>Finish</strong>” butonuna basılarak işlem tamamlanmıştır.</p>
-<p><img src="TIA-6.png" class="img-fluid"></p>
-<p>Böylelikle TIA Portal ile PLCSIM haberleşmesi gerçekleştirilmiştir.</p>
-<blockquote class="blockquote">
-<p>PLCSIM &gt; SimView menüsünden manuel olarak eklediğiniz girişleri değiştirerek çıkışın nasıl etkilendiğini gözlemleyebilirsiniz.</p>
-</blockquote>
-</section>
-<section id="nettoplcsim-ayarları" class="level4">
-<h4 class="anchored" data-anchor-id="nettoplcsim-ayarları">4. NetToPLCSim Ayarları</h4>
-<p>Gerçekleştireceğimiz senaryoda görüntü işleme ile ilgili işlemler için “<strong>Python</strong>” kullanılacaktır. Python-TIA Portal haberleşmesini sağlamak için “<strong>NetToPLCSim</strong>” programı kullanılmıştır.</p>
-<p>Program indirme bağlantısı: <a href="https://sourceforge.net/projects/nettoplcsim/">NetToPLCSim</a></p>
-<p>Programı indirdikten sonra “<strong>Add</strong>” ile ekleme yapılır.</p>
-<p><img src="NetToPLCsim-1.png" class="img-fluid"></p>
-<p>Gelen ekranda;<br>
-<img src="NetToPLCsim-2.png" class="img-fluid"><br>
-<strong>1 Numara:</strong> Eklenecek bağlantıya istenilen isim verilebilmektedir.<br>
-<strong>2 Numara:</strong> Network IP Adress’in en sağında bulunan “…” sembolüne tıklayarak kulllandığınız bilgisayara ait IP adresinin eklenmesi gerekmektedir.<br>
-<strong>3 Numara:</strong> PLCSim IP Adress’in en sağında bulunan “…” sembolüne tıklayarak PLCSIM’in IP adresinin eklenmesi gerekmektedir.<br>
-<strong>4 Numara:</strong> Burada belirtilen “<strong>2</strong>” sayısı “<strong>1</strong>” ile değiştirilmelidir. Siemens S7-1200 PLC için Rack / Slot numarası: 0 / 1 şeklinde olmalıdır.</p>
-<blockquote class="blockquote">
-<p>Bağlantılar doğru gerçekleştirildiğinde “…” sembolüne tıklandığında IP adresleri ekranda listelenmektedir.</p>
-</blockquote>
-<p>Belirtilen ayarlar yapıldıktan sonra ekran aşağıdaki gibi gözükmektedir. “<strong>Start Server</strong>” diyerek bağlantı başlatılmıştır.</p>
-<p><img src="NetToPLCsim-3.png" class="img-fluid"></p>
-<p>Status alanının “<strong>RUNNING</strong>” olduğu görülerek bir sonraki aşamaya geçilmiştir.</p>
-</section>
-<section id="factory-io-sahnesi-oluşturma" class="level4">
-<h4 class="anchored" data-anchor-id="factory-io-sahnesi-oluşturma">5. Factory I/O Sahnesi Oluşturma</h4>
-<p>Sürecin devamında Factory I/O ile hazırlanan senaryoya uygun sahne oluşturulmuştur. Hazırlanan senaryoya uygun bileşenler (emitter, belt conveyor, curved conveyor, pusher, electric switchboard, emergency stop, stop button, start button) sahneye uygun konumda yerleştirilmiştir.<br>
-<img src="factoryio.jpg" class="img-fluid"></p>
-<blockquote class="blockquote">
-<p>Bileşenlerin dikey eksende (yukarı/aşağı) konumlandırılması için ‘<strong>V</strong>’ kısayol tuşu kullanılmaktadır.</p>
-</blockquote>
-</section>
-<section id="factory-io-konfigürasyon" class="level4">
-<h4 class="anchored" data-anchor-id="factory-io-konfigürasyon">6. Factory I/O Konfigürasyon</h4>
-<p>Factory I/O uygulamasında üst menüden “<strong>File&gt;Drivers”</strong> menüsüne giderek sol üstte”<strong>DRIVER</strong>”ın hizasında yanında bulunan açılır listeden “<strong>Siemens S7-PLCSIM</strong>” seçilmiştir. Bu aşamada TIA Portal-PLCSIM üzerinden Factory I/O ile haberleşmesi tamamlanmıştır.</p>
-<p><img src="factoryio-2.png" class="img-fluid"></p>
-<p>PLC kodunda tanımlanan değişkenler, “<strong>File &gt; Drivers</strong>” menüsü üzerinden ilgili fiziksel giriş ve çıkış adresleri ile eşleştirilmiştir.</p>
-<p><img src="factoryio-3.png" class="img-fluid"></p>
-<p>Bu işlem gerçekleştirildikten sonra sağ üstte bulunan “<strong>Connect</strong>” tuşuna basılarak TIA Portal’da hazırlanan kod PLCSIM aracılığıyla Factory I/O ile haberleştirilmiştir.</p>
-<blockquote class="blockquote">
-<p>PLCSIM aracılığı ile bağlanılan PLC “<strong>Run</strong>” modunda olmalıdır</p>
-</blockquote>
-<p>Factory I/O ortamında konveyörde hareket eden mavi ve yeşil hammaddeleri algılayarak işlem yapabilmek için Python programlama dili kullanılmıştır.</p>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Kullanılan Kütüphaneler">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">İpucu</span>Kullanılan Kütüphaneler
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>time,cv2,numpy,mss,snap7</p>
-</div>
-</div>
-<p>Bu adımla birlikte Factory I/O ve TIA Portal (PLCSIM) arasındaki simülasyon bağlantısı tamamlanmıştır. Artık senaryodaki görüntü işleme mantığını uygulamak üzere Python kodlama aşamasına geçilmiştir.</p>
-</section>
-<section id="python-programlama-adımları" class="level4">
-<h4 class="anchored" data-anchor-id="python-programlama-adımları">6. Python Programlama Adımları</h4>
+<section id="genel-bakış" class="level3">
+<h3 class="anchored" data-anchor-id="genel-bakış">Genel Bakış</h3>
+<p>[Bu bölümde projenin neden yapıldığı (Problem) ve neyi başardığı (Çözüm) anlatılmalıdır. Senior bir mühendis burayı okuduğunda projenin kapsamını 30 saniyede anlamalıdır.]</p>
 <hr>
-<section id="kullanılan-kütüphanelerin-import-edilmesi" class="level5">
-<h5 class="anchored" data-anchor-id="kullanılan-kütüphanelerin-import-edilmesi">6.1 Kullanılan Kütüphanelerin “Import” edilmesi</h5>
-<p>İlk olarak hazırlanan senaryonun çalıştırılabilmesi için gereken kodları barındıran kütüphaneler “<strong>Import</strong>” edilmiştir.<br>
-<strong>time kütüphanesi</strong> : Programda bulunan döngü zamanlamasını yönetmek için kullanılmıştır.<br>
-<strong>cv2 kütüphanesi</strong> : Görüntüyü HSV’ye çevirme, renk aralığına göre maske üretme, maskede piksel sayma vb. işlemlerini gerçekleştirmek için kullanılmışır.<br>
-<strong>numpy kütüphanesi</strong> : “<strong>mss</strong>” ile yakalanan ekran görüntüsünü diziye (<strong>np.array</strong>) çevirme, HSV eşik değerlerini dizi olarak tanımlama ve görüntü üzerinde dilimleme yapmak için kullanılmıştır<br>
-<strong>mss kütüphanesi</strong> : Factory I/O ortamında kamera bulunmadığı için ekranda belirlenen bölgelerin (ROI) yakalanmasını sağlamak için kullanılmıştır.<br>
-<strong>snap7 kütüphanesi</strong> : Siemens S7-1200 PLC ile Python üzerinden bağlanıp veri alışverişi yapmak için kullanılmıştır.<br>
-<strong>snap7.util</strong> : PLC byte’ı içindeki ilgili biti set etmek için kullanılmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Import Etme
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="sistem-konfigürasyonu" class="level5">
-<h5 class="anchored" data-anchor-id="sistem-konfigürasyonu">6.2 Sistem Konfigürasyonu</h5>
-<p>Programda kullanılacak kütüphaneler eklendikten sonra bu aşamada program içerisinde kullanacağımız değişkenlerin tanımlaması yapılmıştır. Konfigürasyon tamamlandıktan sonra “<strong>plc.connect()</strong>” komutuyla bağlantı sağlanmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Konfigürasyon ve Başlatma
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="algılama-ve-karar-üretme" class="level5">
-<h5 class="anchored" data-anchor-id="algılama-ve-karar-üretme">6.3 Algılama ve Karar Üretme</h5>
-<p>Bu aşamada ekrandan alınan ROI görüntülerinde HSV tabanlı renk analizi yapılarak mavi ve yeşil nesnelerin varlığına karar veren görüntü işleme aşaması yönetilmiştir.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Algılama ve Sınıflandırma Aşaması
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="pyton"><code>with mss.mss() as sct:
-    while True:
-        t0 = time.perf_counter()
-
-        img_b = np.array(sct.grab(roı_blue))[:, :, :3]
-        img_g = np.array(sct.grab(roı_green))[:, :, :3]
-
-        hsv_b = cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)
-        hsv_g = cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)
-
-        blue_mask  = cv2.inRange(hsv_b, blue_low, blue_hıgh)
-        green_mask = cv2.inRange(hsv_g, green_low, green_hıgh)
-
-        blue_px  = cv2.countNonZero(blue_mask)
-        green_px = cv2.countNonZero(green_mask)
-
-        blue  = blue_px  &gt; px_threshold
-        green = green_px &gt; px_threshold</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="plc-bit-güncelleme" class="level5">
-<h5 class="anchored" data-anchor-id="plc-bit-güncelleme">6.4 PLC Bit Güncelleme</h5>
-<p>Bu kod bloğunda ilk önce hedef bitin bulunduğu “<strong>Byte</strong>” PLC’den okunmuş, ilgili bit manipüle edildikten sonra tekrar yazılarak aynı adresteki diğer bitlerin korunması sağlanmıştır. Snap7 kütüphanesi ve S7 protokolü verileri Byte (8-bit) tabanlı işler. Doğrudan yazma işleminde hedef byte içerisindeki diğer 7 bit sıfırlanabilmektedir.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>PLC Bit Güncelleme
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="periyodik-durum-log" class="level5">
-<h5 class="anchored" data-anchor-id="periyodik-durum-log">6.5 Periyodik Durum Log</h5>
-<p>Bu kod bloğu ile ana döngüden bağımsız olarak, saniyede 2 kez durum verileri (piksel sayıları ve lojik sonuçlar) konsola yazdırılmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Periyodik Durum Log
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"BLUE px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> thr=</span><span class="sc">{</span>PIXEL_THR<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | GREEN px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="debug-amaçlı-görüntü-gösterimi" class="level5">
-<h5 class="anchored" data-anchor-id="debug-amaçlı-görüntü-gösterimi">6.6 Debug Amaçlı Görüntü Gösterimi</h5>
-<p>Bu aşamada ham görüntüler ile birlikte elde edilen maskeler ekrana yansıtılmıştır. Aynı zamanda klavyeden “q” harfine basınca programın manuel olarak sonlandırılabilmesi sağlanmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Debug Amaçlı Görüntü Gösterimi
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI BLUE"</span>, img_b)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"BLUE MASK"</span>, blue_mask)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI GREEN"</span>, img_g)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"GREEN MASK"</span>, green_mask)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="döngü-zamanlama-kontrolü" class="level5">
-<h5 class="anchored" data-anchor-id="döngü-zamanlama-kontrolü">6.7 Döngü Zamanlama Kontrolü</h5>
-<p>Bu kısımda düzenli veri akışı sağlamak adına, her işlem sonunda hesaplanan süre kadar bekleme uygulanmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Döngü Zamanlama Kontrolü
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</section>
-<section id="uygulama-sonlandırma-aşaması" class="level5">
-<h5 class="anchored" data-anchor-id="uygulama-sonlandırma-aşaması">6.8 Uygulama Sonlandırma Aşaması</h5>
-<p>Programın en sonunda uygulama kapatılırken tüm açık pencereler ve PLC bağlantısı güvenli bir şekilde kapatılarak kaynaklar serbest bırakılmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Uygulama Sonlandırma Aşaması
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
 </section>
 </section>
-<section id="python-programı" class="level4">
-<h4 class="anchored" data-anchor-id="python-programı">7. Python Programı</h4>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Python Kodunun Tamamını Görüntülemek için Tıklayınız.
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> mss.mss() <span class="im">as</span> scr:</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        img_b <span class="op">=</span> np.array(scr.grab(roı_blue))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        img_g <span class="op">=</span> np.array(scr.grab(roı_green))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        hsv_b <span class="op">=</span> cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        hsv_g <span class="op">=</span> cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        blue_mask  <span class="op">=</span> cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        green_mask <span class="op">=</span> cv2.inRange(hsv_g, green_low, green_hıgh)</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        blue_px  <span class="op">=</span> cv2.countNonZero(blue_mask)</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        green_px <span class="op">=</span> cv2.countNonZero(green_mask)</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        blue  <span class="op">=</span> blue_px  <span class="op">&gt;</span> px_threshold</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        green <span class="op">=</span> green_px <span class="op">&gt;</span> px_threshold</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"MAVİ px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> eşik=</span><span class="sc">{</span>px_threshold<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | YEŞİL px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi ROI"</span>, img_b)</span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi Maskleme"</span>, blue_mask)</span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil ROI"</span>, img_g)</span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil Maskeleme"</span>, green_mask)</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
+<section id="teknik-spesifikasyonlar" class="level1">
+<h1>Teknik Spesifikasyonlar</h1>
+<p>Projenin teknik derinliğini ve kullanılan araçları hızlıca özetlemek için bu tabloyu doldurunuz.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kategori</th>
+<th style="text-align: left;">Detaylar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Disiplinler</strong></td>
+<td style="text-align: left;">[Örn: Robotik, Gömülü Sistemler, Kontrol Teorisi]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Yazılım Yığınları</strong></td>
+<td style="text-align: left;">[Örn: Python, C++, ROS2, TwinCAT]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Donanım / Platform</strong></td>
+<td style="text-align: left;">[Örn: UR5 Robot Kolu, STM32, Jetson Nano]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Haberleşme &amp; Protokoller</strong></td>
+<td style="text-align: left;">[Örn: EtherCAT, CAN-Bus, MQTT]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Metodoloji</strong></td>
+<td style="text-align: left;">[Örn: PID Kontrol, Kinematik Analiz, CNN]</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="sistem-tasarımı-ve-mimari" class="level1">
+<h1>Sistem Tasarımı ve Mimari</h1>
+<p>Bu bölüm projenin “nasıl” kurgulandığını teknik bir dille açıklar.</p>
+<section id="sistem-mimarisi-blok-diyagramı" class="level3">
+<h3 class="anchored" data-anchor-id="sistem-mimarisi-blok-diyagramı">1. Sistem Mimarisi (Blok Diyagramı)</h3>
+<p>[Görüntü işleme ise veri akış hattı; robotik ise kontrol döngüsü; PLC ise I/O haritası burada şematize edilmelidir.]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/system-architecture.png" class="img-fluid figure-img"></p>
+<figcaption>Sistem Diyagramı</figcaption>
+</figure>
 </div>
 </section>
-<section id="sonuçlar" class="level4">
-<h4 class="anchored" data-anchor-id="sonuçlar">8. Sonuçlar</h4>
-<p>Gerçekleştirilen projeye dair yapılan çalışmanın video kayıtları aşağıdaki gibidir.</p>
-<p>Factory I/O ortamında yazılan PLC programının konveyör, start, stop, acil stop butonlarının çalışması aşağıda gösterildiği gibi kontrol edilmiştir. </p><div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="konveyör.mp4"></video></div><p></p>
-<p>Gerçekleştirilen projenin simülasyonuna ait video kaydı aşağıdaki gibidir.</p>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="sanal-ayiklama-istasyonu.mp4"></video></div>
+<section id="algoritmik-yaklaşım-ve-mantık" class="level3">
+<h3 class="anchored" data-anchor-id="algoritmik-yaklaşım-ve-mantık">2. Algoritmik Yaklaşım ve Mantık</h3>
+<p>[Projenin kalbi olan mantığı burada anlatın. Eğer robotikse kinematik denklemler; ML ise model mimarisi; otomasyon ise State Machine yapısı.]</p>
+<ul>
+<li><strong>Veri/Sinyal Girişi:</strong> [Saha verilerinin veya sensör girişlerinin nasıl alındığı.]</li>
+<li><strong>İşleme Katmanı:</strong> [Verinin nasıl anlamlandırıldığı ve karar mekanizması.]</li>
+<li><strong>Çıktı / Eylem:</strong> [Aktüatörlerin veya sonuç ekranlarının nasıl tetiklendiği.]</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="uygulama-ve-kritik-kod-analizi" class="level1">
+<h1>Uygulama ve Kritik Kod Analizi</h1>
+<p>Projenin başarısını belirleyen kritik teknik çözümlerden kesitler.</p>
+<section id="kritik-algoritma-fonksiyon" class="level3">
+<h3 class="anchored" data-anchor-id="kritik-algoritma-fonksiyon">Kritik Algoritma / Fonksiyon</h3>
+<p>[Burada tüm kodu değil, sadece senin mühendislik farkını ortaya koyan, optimize edilmiş veya karmaşık bir sorunu çözen kısmı paylaşmalısın.]</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode cpp code-with-copy"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Örnek: Robotik için PID kontrol veya Gömülü sistemler için interrupt yönetimi</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> calculateControlSignal<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Mühendislik farkı yaratan hesaplama adımları</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="mühendislik-zorlukları-ve-çözüm-süreçleri" class="level1">
+<h1>Mühendislik Zorlukları ve Çözüm Süreçleri</h1>
+<p>[Bu bölüm senin problem çözme yeteneğini (Troubleshooting) kanıtladığın yerdir.]</p>
+<ul>
+<li><strong>Teknik Engel:</strong> [Karşılaşılan en büyük darboğaz neydi? Örn: Donanım kısıtı, yüksek gecikme süresi, veri gürültüsü.]</li>
+<li><strong>Analitik Yaklaşım:</strong> [Bu engeli aşmak için hangi testler yapıldı, hangi veriler incelendi?]</li>
+<li><strong>Nihai Çözüm:</strong> [Uygulanan çözüm ve elde edilen iyileştirme miktarı (Örn: %20 daha az CPU kullanımı).]</li>
+</ul>
+<hr>
+</section>
+<section id="performans-analizi-ve-sonuçlar" class="level1">
+<h1>Performans Analizi ve Sonuçlar</h1>
+<p>Projenin başarısı nesnel verilerle sunulmalıdır.</p>
+<ul>
+<li><strong>Doğruluk/Hata Oranı:</strong> [Örn: +/- 0.5mm hassasiyet veya %95 doğruluk.]</li>
+<li><strong>Verimlilik:</strong> [Örn: Çevrim süresi analizi veya güç tüketimi değerleri.]</li>
+<li><strong>Gelecek Çalışmalar:</strong> [Sistem daha fazla nasıl geliştirilebilir veya hangi eksikler var?]</li>
+</ul>
+<hr>
+</section>
+<section id="proje-kaynakları" class="level1">
+<h1>Proje Kaynakları</h1>
+<ul>
+<li><a href="https://github.com/ibrahimcapar/proje">GitHub Linki / Repozitör</a></li>
+<li><a href="files/report.pdf">Teknik Rapor / Makale (PDF)</a></li>
+<li><a href="https://link.com">Kullanılan Veri Seti / Kütüphaneler</a></li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1144,8 +784,6 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
   });
   </script>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 

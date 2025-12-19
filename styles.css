@@ -206,3 +206,31 @@ blockquote {
     h2 { font-size: 1.5rem !important; }
     h3 { font-size: 1.25rem !important; }
 }
+
+/* deneme*/
+/* SEO verisi arka planda kalır, görsel olarak her yerden kalkar */
+.quarto-title-meta, 
+.listing-date {
+    display: none !important;
+}
+
+
+/* v13*/
+.centered-captions figcaption {
+  text-align: center !important;
+}
+
+/*v14*/
+/* Görsel açıklamalarını (caption) ortalar */
+figcaption, .figure-caption {
+  text-align: center !important;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Eğer layout-ncol kullanıyorsanız, her bir figür konteynerini de ortalar */
+.quarto-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

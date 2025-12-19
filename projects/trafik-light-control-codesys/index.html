@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="İbrahim Çapar">
-<meta name="description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
+<meta name="description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
 
-<title>Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR</title>
+<title>CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -43,8 +43,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,13 +86,13 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../lightbox-style.css">
-<meta property="og:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
-<meta property="og:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
-<meta property="og:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
+<meta property="og:title" content="CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR">
+<meta property="og:description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
+<meta property="og:image" content="https://ibrahimcapar.com/projects/trafik-light-control-codesys/images/codesys-traffic-lights.jpg">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
-<meta name="twitter:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
-<meta name="twitter:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
-<meta name="twitter:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
+<meta name="twitter:title" content="CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR">
+<meta name="twitter:description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
+<meta name="twitter:image" content="https://ibrahimcapar.com/projects/trafik-light-control-codesys/images/codesys-traffic-lights.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -156,11 +157,26 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <h2 id="toc-title">Bu sayfada</h2>
    
   <ul>
-  <li><a href="#giriş" id="toc-giriş" class="nav-link active" data-scroll-target="#giriş">Giriş</a></li>
-  <li><a href="#neler-yaptım" id="toc-neler-yaptım" class="nav-link" data-scroll-target="#neler-yaptım">Neler Yaptım?</a></li>
-  <li><a href="#ekran-görüntüsü" id="toc-ekran-görüntüsü" class="nav-link" data-scroll-target="#ekran-görüntüsü">Ekran Görüntüsü</a></li>
-  <li><a href="#simülasyon-adımları" id="toc-simülasyon-adımları" class="nav-link" data-scroll-target="#simülasyon-adımları">Simülasyon Adımları</a></li>
-  <li><a href="#çıkarımlarım-key-takeaways" id="toc-çıkarımlarım-key-takeaways" class="nav-link" data-scroll-target="#çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</a></li>
+  <li><a href="#özet" id="toc-özet" class="nav-link active" data-scroll-target="#özet">Özet</a></li>
+  <li><a href="#genel-bakış" id="toc-genel-bakış" class="nav-link" data-scroll-target="#genel-bakış">1. Genel Bakış</a></li>
+  <li><a href="#teknik-altyapı-ve-kullanılan-teknolojiler" id="toc-teknik-altyapı-ve-kullanılan-teknolojiler" class="nav-link" data-scroll-target="#teknik-altyapı-ve-kullanılan-teknolojiler">2. Teknik Altyapı ve Kullanılan Teknolojiler</a></li>
+  <li><a href="#sistem-mimarisi-ve-tasarım" id="toc-sistem-mimarisi-ve-tasarım" class="nav-link" data-scroll-target="#sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</a></li>
+  <li><a href="#algoritma-ve-kontrol-mantığı" id="toc-algoritma-ve-kontrol-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-kontrol-mantığı">4. Algoritma ve Kontrol Mantığı</a>
+  <ul class="collapse">
+  <li><a href="#gündüz-modu" id="toc-gündüz-modu" class="nav-link" data-scroll-target="#gündüz-modu">4. 1. Gündüz Modu</a></li>
+  <li><a href="#gece-modu" id="toc-gece-modu" class="nav-link" data-scroll-target="#gece-modu">4. 2. Gece Modu</a></li>
+  <li><a href="#sistem-durdurma" id="toc-sistem-durdurma" class="nav-link" data-scroll-target="#sistem-durdurma">4. 3. Sistem Durdurma</a></li>
+  <li><a href="#kritik-mühendislik-kararı" id="toc-kritik-mühendislik-kararı" class="nav-link" data-scroll-target="#kritik-mühendislik-kararı">4. 4. Kritik Mühendislik Kararı</a></li>
+  <li><a href="#kod-yapısı" id="toc-kod-yapısı" class="nav-link" data-scroll-target="#kod-yapısı">4. 5. Kod Yapısı</a></li>
+  </ul></li>
+  <li><a href="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" id="toc-karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</a>
+  <ul class="collapse">
+  <li><a href="#sorun-1-görsel-bileşenlerin-hizalanması" id="toc-sorun-1-görsel-bileşenlerin-hizalanması" class="nav-link" data-scroll-target="#sorun-1-görsel-bileşenlerin-hizalanması">Sorun 1: Görsel Bileşenlerin Hizalanması</a></li>
+  <li><a href="#sorun-2-durum-ekranı" id="toc-sorun-2-durum-ekranı" class="nav-link" data-scroll-target="#sorun-2-durum-ekranı">Sorun 2: Durum Ekranı</a></li>
+  </ul></li>
+  <li><a href="#analiz-ve-sonuçlar" id="toc-analiz-ve-sonuçlar" class="nav-link" data-scroll-target="#analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</a></li>
+  <li><a href="#referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" id="toc-referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" class="nav-link" data-scroll-target="#referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar">7. Referanslar ve Dokümantasyon (Dokümantasyon ve Kaynaklar)</a></li>
+  <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">Sonuç</a></li>
   </ul>
 </nav>
     </div>
@@ -169,13 +185,19 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Visual Components #1: Layout Konfigürasyonu</h1>
-<p class="subtitle lead">Visual Components</p>
+<h1 class="title">CODESYS Tabanlı Trafik Işığı Kontrol Sistemi</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Endüstriyel Otomasyon</div>
+    <div class="quarto-category">PLC</div>
+    <div class="quarto-category">CODESYS</div>
+    <div class="quarto-category">Visu</div>
+    <div class="quarto-category">ST</div>
+  </div>
   </div>
 
 <div>
   <div class="description">
-    Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.
+    Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.
   </div>
 </div>
 
@@ -192,7 +214,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">11 Aralık 2025</p>
+      <p class="date">19 Aralık 2025</p>
     </div>
   </div>
   
@@ -210,43 +232,351 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </header>
 
 
-<section id="giriş" class="level2">
-<h2 class="anchored" data-anchor-id="giriş">Giriş</h2>
-<p>Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için <strong>Visual Components</strong> programını öğrenmeye başladım. Bu yazıda, <a href="https://academy.visualcomponents.com/lessons/introduction-to-layout-configuration/?course=134">Visual Component Academy</a> de bulunan Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum.</p>
+<section id="özet" class="level2">
+<h2 class="anchored" data-anchor-id="özet">Özet</h2>
+<p>Bu çalışmada CODESYS platformu üzerinden yapısal metin (Structured Text - ST) ile bir kavşakta bulunan trafik ışıkları simüle edilmiştir. Programlama yapısında “Sonlu Durum Makinesi (Finite State Machine - FSM) yaklaşımı uygulanmıştır.</p>
 </section>
-<section id="neler-yaptım" class="level2">
-<h2 class="anchored" data-anchor-id="neler-yaptım">Neler Yaptım?</h2>
-<p>Bu çalışmada temel olarak şu adımları uyguladım:</p>
-<ol type="1">
-<li><strong>e-Catalog Kullanımı:</strong> Kütüphaneden konveyör, besleyici (Feeder), eklemli robot (Articulated Robot), torna tezgahı (Lathe), fens (Fence), masa (Table) ve rafların (Warehouse Shelf) sahneye eklenmesi.</li>
-<li><strong>PnP (Plug and Play):</strong> Bileşenlerin birbirine otomatik olarak bağlanması ve hizalanması.</li>
-<li><strong>Layout Düzenleme:</strong> Eklenen bileşenlerin “Clone” ile çoğaltılması, “Move” ile yerleşimlerin ayarlanması, bileşen ayarları (Component Properties) kullanarak bileşenlerin açılarının ayarlanması.</li>
-<li><strong>Process Flow Editor:</strong> Oluşturulan senaryoda prosesin hangi işlem sırası ile gerçekleştirileceğinin ayarlanması.</li>
-<li><strong>Interact:</strong> Sahneye eklenen robotun eksen hareketlerinin mause ile hareket ettirilerek çalışma uzayının (Work Envelope) incelenmesi.</li>
-<li><strong>Statements:</strong> Oluşturulan senaryo kapsamında konveyör hattından gelen Piston Head ile raftan alınan Piston Rod bileşenlerinin, Process Node kullanılarak A masasında montajının yapılması, ardından B masasında son işlemlerin tamamlanarak ürünün sistemden çıkışının sağlanması.</li>
-<li><strong>Simülasyon Testi:</strong> Oluşturulan senaryonun gözlemlenmesi ve hataların giderilmesi.</li>
-</ol>
+<section id="genel-bakış" class="level2">
+<h2 class="anchored" data-anchor-id="genel-bakış">1. Genel Bakış</h2>
+<p>Bu proje bir kavşakta bulunan trafik ışıklarının birbiriyle bağlantı çalışmasının simülasyonudur. CODESYS üzerinde ST programlama ile birlikte “CODESYS Target Visualization” objesiyle görsel olarak takip edilebilecek şekilde hazırlanmıştır.</p>
+<p><strong>Temel Kazanımlar:</strong><br>
+<strong>ST Programlama:</strong> Programlama dili olarak ST seçilmiştir. Böylelikle yapısal programlama alıştırması yapılmıştır.<br>
+<strong>FSM Yaklaşımı:</strong> Durumlar <code>CASE</code> tabanlı bir FSM yapısı ile yönetilmiş, geçişler zamanlayıcı koşullarına göre tanımlanmıştır. (tkr)<br>
+<strong>Visualization:</strong> Oluşturulan değişkenler görsel objelerle senaryoya uygun ilişkilendirilmiştir. Projenin işleyişinin takip edilebilmesi için simülasyon sahnesi oluşturulmuştur. İnsan Makine Arayüzü (Human Machine Interface - HMI) mantığına yakın bir şekilde kullanıcı etkileşimli kontrol sağlanmıştır.</p>
 </section>
-<section id="ekran-görüntüsü" class="level2">
-<h2 class="anchored" data-anchor-id="ekran-görüntüsü">Ekran Görüntüsü</h2>
-<p>Aşağıda kendi oluşturduğum simülasyonun görüntüsü yer almaktadır:</p>
-<p><img src="VC-cover.jpg" class="img-fluid"></p>
+<section id="teknik-altyapı-ve-kullanılan-teknolojiler" class="level2">
+<h2 class="anchored" data-anchor-id="teknik-altyapı-ve-kullanılan-teknolojiler">2. Teknik Altyapı ve Kullanılan Teknolojiler</h2>
+<p>Projenin geliştirilmesinde kullanılan araçlar aşağıdaki gibidir.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 47%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Kategori</th>
+<th style="text-align: left;">Bileşen / Teknoloji</th>
+<th style="text-align: left;">Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Simülasyon Ortamı</strong></td>
+<td style="text-align: left;">CODESYS V3.5 SP21 Patch 4</td>
+<td style="text-align: left;">Oluşturulan değişkenlerin ilişkilendirilen görseller ile birlikte simülasyonu</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>PLC</strong></td>
+<td style="text-align: left;">CODESYS Control Win V3 x64</td>
+<td style="text-align: left;">Mantıksal kontrol ve değişkenlerin yönetimi</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Görselleştirme Ekranı</strong></td>
+<td style="text-align: left;">CODESYS TargetVisu</td>
+<td style="text-align: left;">Çalışma senaryosunun görsel takibi</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="simülasyon-adımları" class="level2">
-<h2 class="anchored" data-anchor-id="simülasyon-adımları">Simülasyon Adımları</h2>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_1.mp4"></video></div>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_2.mp4"></video></div>
+<section id="sistem-mimarisi-ve-tasarım" class="level2">
+<h2 class="anchored" data-anchor-id="sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</h2>
+<p>Sistem CODESYS ortamında hazırlanan PLC programı ile bu projeye eklenen “Visualization” objesiyle etkileşim kurmaktadır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.</p>
 </section>
-<section id="çıkarımlarım-key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</h2>
+<section id="algoritma-ve-kontrol-mantığı" class="level2">
+<h2 class="anchored" data-anchor-id="algoritma-ve-kontrol-mantığı">4. Algoritma ve Kontrol Mantığı</h2>
+<section id="gündüz-modu" class="level3">
+<h3 class="anchored" data-anchor-id="gündüz-modu">4. 1. Gündüz Modu</h3>
+<p>Simülasyon başlatıldığında sistem kapalı durumdadır ve ekranda “Sistem Kapalı” bilgisi görünmektedir. “Sistem Durdur / Başlat” butonuna basılmasıyla sistem aktif hale gelir ve gündüz trafik kontrol döngüsü çalışmaya başlamaktadır. Gündüz çalışma modunda sistem, <strong>Kuzey-Güney</strong> ve <strong>Doğu-Batı</strong> yönlerini aşağıdaki sırayla kontrol etmektedir:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Yön 1</th>
+<th>Işık Rengi</th>
+<th>Yön 2</th>
+<th>Işık Rengi</th>
+<th>Süre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Kuzey - Güney</td>
+<td><code>YEŞİL</code></td>
+<td>Doğu - Batı</td>
+<td><code>KIRMIZI</code></td>
+<td>5 saniye</td>
+</tr>
+<tr class="even">
+<td>Kuzey - Güney</td>
+<td><code>SARI</code></td>
+<td>Doğu - Batı</td>
+<td><code>KIRMIZI</code></td>
+<td>2 saniye</td>
+</tr>
+<tr class="odd">
+<td>Kuzey - Güney</td>
+<td><code>KIRMIZI</code></td>
+<td>Doğu - Batı</td>
+<td><code>YEŞİL</code></td>
+<td>5 saniye</td>
+</tr>
+</tbody>
+</table>
+<p>Tablo 4. 1. 1</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Yön 1</th>
+<th>Işık Rengi</th>
+<th>Yön 2</th>
+<th>Işık Rengi</th>
+<th>Süre</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Doğu - Batı</td>
+<td><code>YEŞİL</code></td>
+<td>Kuzey - Güney</td>
+<td><code>KIRMIZI</code></td>
+<td>5 saniye</td>
+</tr>
+<tr class="even">
+<td>Doğu - Batı</td>
+<td><code>SARI</code></td>
+<td>Kuzey - Güney</td>
+<td><code>KIRMIZI</code></td>
+<td>2 saniye</td>
+</tr>
+<tr class="odd">
+<td>Doğu - Batı</td>
+<td><code>KIRMIZI</code></td>
+<td>Kuzey - Güney</td>
+<td><code>YEŞİL</code></td>
+<td>5 saniye</td>
+</tr>
+</tbody>
+</table>
+<p>Tablo 4. 1. 2</p>
+<p>Bu döngü, sistem durdurulasıya kadar sürekli olarak tekrar etmektedir. Geçen süre bilgisi bilgilendirme ekranı üzerinden gösterilmiştir.</p>
+</section>
+<section id="gece-modu" class="level3">
+<h3 class="anchored" data-anchor-id="gece-modu">4. 2. Gece Modu</h3>
+<p>Sistem çalışırken <strong>Gece Modu</strong> etkinleştirildiğinde gündüze ait trafik döngüsü durdurulur ve tüm yönlerdeki ışıklar saniyede 2 kez yanıp söner. Gece modu devre dışı bırakıldığında sistem gündüz çalışma moduna dönmektedir.</p>
+</section>
+<section id="sistem-durdurma" class="level3">
+<h3 class="anchored" data-anchor-id="sistem-durdurma">4. 3. Sistem Durdurma</h3>
+<p>“Sistem Durdur / Başlat” butonuna tekrar basıldığında sistem kapanır ve başlangıç durumuna geçmektedir.</p>
+</section>
+<section id="kritik-mühendislik-kararı" class="level3">
+<h3 class="anchored" data-anchor-id="kritik-mühendislik-kararı">4. 4. Kritik Mühendislik Kararı</h3>
+<p>Burada neden X protokolünü veya Y donanımını seçtiğini teknik gerekçeleriyle belirtmelisin. Bu, mühendislik vizyonunu yansıtır.</p>
+</section>
+<section id="kod-yapısı" class="level3">
+<h3 class="anchored" data-anchor-id="kod-yapısı">4. 5. Kod Yapısı</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Değişkenler
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="st"><code>PROGRAM PLC_PRG
+VAR
+    xStart      : BOOL := FALSE;  
+    xNightMode  : BOOL := FALSE;
+    
+    xStep       : INT := 0;
+    tDuration   : TIME;            
+    
+    xKuzeyGuneyYesil    : BOOL;
+    xKuzeyGuneySari     : BOOL; 
+    xKuzeyGuneyKirmizi  : BOOL; 
+    xDoguBatiYesil      : BOOL;
+    xDoguBatiSari       : BOOL;
+    xDoguBatiKirmizi    : BOOL;
+
+    fbStepTimer         : TON;
+    fbBlinkTimer        : TON;                
+END_VAR</code></pre>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Programming
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="st"><code>fbBlinkTimer(IN := NOT fbBlinkTimer.Q, PT := T#1S);
+fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
+
+IF xStart THEN
+    IF xNightMode THEN
+        xStep :=99;
+        xKuzeyGuneyYesil := FALSE; xKuzeyGuneyKirmizi := FALSE;
+        xDoguBatiYesil := FALSE; xDoguBatiKirmizi := FALSE;
+        IF fbBlinkTimer.ET &lt; T#500MS THEN
+            xKuzeyGuneySari := TRUE;
+            xDoguBatiSari := TRUE;
+        ELSE
+            xKuzeyGuneySari := FALSE;
+            xDoguBatiSari := FALSE; 
+        END_IF
+    ELSE
+        IF xStep = 99 THEN
+            xStep :=0 ;
+        END_IF
+        CASE xStep OF
+            0: 
+                xStep := 10;
+            10: 
+                xKuzeyGuneyYesil := TRUE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
+                xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := TRUE;
+                
+                tDuration := T#5S; 
+                
+                IF fbStepTimer.Q THEN
+                    xStep := 20; 
+                END_IF;
+    
+            20:
+                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := TRUE ; xKuzeyGuneyKirmizi := FALSE;
+                xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := TRUE;
+                
+                tDuration := T#2S; 
+                
+                IF fbStepTimer.Q THEN
+                    xStep := 30; 
+                END_IF;         
+                 
+            30: (* K-G Kırmızı, D-B Yeşil *)
+                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE ; xKuzeyGuneyKirmizi := TRUE;
+                xDoguBatiYesil := TRUE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := FALSE;
+                
+                tDuration := T#5S; 
+                
+                IF fbStepTimer.Q THEN
+                    xStep := 40; 
+                END_IF;            
+    
+            40: (* K-G Kırmızı, D-B Sarı *)
+                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE ; xKuzeyGuneyKirmizi := TRUE;
+                xDoguBatiYesil := FALSE; xDoguBatiSari := TRUE; xDoguBatiKirmizi := FALSE;
+                
+                tDuration := T#2S; 
+                
+                IF fbStepTimer.Q THEN
+                    xStep := 10; 
+                END_IF;
+        END_CASE
+    END_IF;
+ELSE
+    xStep := 0;
+    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
+    xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := FALSE;
+END_IF;</code></pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="level2">
+<h2 class="anchored" data-anchor-id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</h2>
+<section id="sorun-1-görsel-bileşenlerin-hizalanması" class="level3">
+<h3 class="anchored" data-anchor-id="sorun-1-görsel-bileşenlerin-hizalanması">Sorun 1: Görsel Bileşenlerin Hizalanması</h3>
+<p><strong>Durum:</strong> Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.<br>
+<strong>Çözüm:</strong> Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.</p>
+<div class="centered-captions quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images\codesys-1.png" class="lightbox" data-gallery="ana-grup" title="Görsel 1"><img src="images\codesys-1.png" class="img-fluid figure-img" alt="Görsel 1"></a></p>
+<figcaption>Görsel 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images\codesys-2.png" class="lightbox" data-gallery="ana-grup" title="Görsel 2"><img src="images\codesys-2.png" class="img-fluid figure-img" alt="Görsel 2"></a></p>
+<figcaption>Görsel 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sorun-2-durum-ekranı" class="level3">
+<h3 class="anchored" data-anchor-id="sorun-2-durum-ekranı">Sorun 2: Durum Ekranı</h3>
+<p><strong>Durum:</strong> Simülasyon ekranında tasarlanan güzergahlar için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.<br>
+<strong>Çözüm:</strong> Trafik ışıklarının renklerine ait kod blokları “Text List” ile ilişkilendirildi. Daha sonra ekranda “Text Field” içerisine “Dynamic Texts” özelliği kullanılarak simülasyon içerisinde durumlar ekranda gösterildi. İki farklı güzergah olduğu için her iki güzergah için bu çözüm uygulandı.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/codesys-statev1.png" class="lightbox" data-gallery="state" title="States V1"><img src="images/codesys-statev1.png" class="img-fluid figure-img" alt="States V1"></a></p>
+<figcaption>States V1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/codesys-statev2.png" class="lightbox" data-gallery="state" title="States V1"><img src="images/codesys-statev2.png" class="img-fluid figure-img" alt="States V1"></a></p>
+<figcaption>States V1</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/codesys-statev1-dynamics-text.png" class="lightbox" data-gallery="state" title="Dynamics Text V1"><img src="images/codesys-statev1-dynamics-text.png" class="img-fluid figure-img" alt="Dynamics Text V1"></a></p>
+<figcaption>Dynamics Text V1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/codesys-statev2-dynamics-text.png" class="lightbox" data-gallery="state" title="Dynamics Text V2"><img src="images/codesys-statev2-dynamics-text.png" class="img-fluid figure-img" alt="Dynamics Text V2"></a></p>
+<figcaption>Dynamics Text V2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analiz-ve-sonuçlar" class="level2">
+<h2 class="anchored" data-anchor-id="analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</h2>
+</section>
+<section id="referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar">7. Referanslar ve Dokümantasyon (Dokümantasyon ve Kaynaklar)</h2>
 <ul>
-<li>Visual Components’in manuel pozisyonlama yerine PnP (Plug and Play) özelliği tasarım sürecini kolaylaştırıyor. Ayrıca “Snap” özelliği ile bileşenleri birbiriyle kolay bir şekilde birleştirilmesini sağlıyor.</li>
-<li>Visual Components’in içerisinde bulunan e-Catalog ile birçok önemli markalara ait ürünlerin aynı ortamda bulunması gerçek durumları simüle etmeyi kolaylaştırıyor.</li>
-<li>Process Flow Editor ile, layoutta bulunan bileşenlerin prosesi hangi sıra ve ilişki ile gerçekleştireceği kolay bir şekilde yönetiliyor. Bununla birlikte “Statement” kullanarak daha gelişmiş sonuçlar elde edilebiliyor.</li>
-<li>Dijital İkiz yaklaşımına insan bileşenini de üretim sürecine dahil ederek prosesi daha gelişmiş bir şekilde simüle edilmesini sağlıyor.</li>
+<li>&nbsp; <a href="https://github.com/ibrahimcapar/codesys-traffic-fsm">GitHub Codesys Proje Arşivi</a></li>
+<li>&nbsp; <a href="files/traffic_light.project">Codesys Proje Dosyası (.project)</a></li>
+<li>&nbsp; <a href="files/plc_standards.pdf">PLC Programlama Standartları Raporu</a></li>
 </ul>
-<hr>
-<p><em>Kaynak: Bu çalışma <a href="https://academy.visualcomponents.com/">Visual Components Academy</a> dersleri baz alınarak yapılmıştır.</em></p>
+</section>
+<section id="sonuç" class="level1">
+<h1>Sonuç</h1>
+<p>Bu proje ile görüntü işleme algoritmalarının endüstriyel otomasyon sistemlerine entegrasyonu başarılı bir şekilde simüle edilmiştir. Gelecek geliştirmelerde, <strong>OPC UA</strong> protokolü kullanılarak verilerin standartlaştırılması ve sistemin gerçek bir fiziksel konveyör üzerinde test edilmesi planlanmaktadır.</p>
 
 
 </section>
@@ -658,8 +988,38 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   });
   </script>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"bottom","loop":true,"openEffect":"fade","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

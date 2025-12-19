@@ -1,0 +1,30 @@
+/* ---- Alternatif Stil: Yüzen Başlıklar ---- */
+
+/* Arka plan şeridini tamamen kaldır */
+.gslide-description {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 15px 0 !important; /* Sadece dikey boşluk bırak */
+  position: relative !important;
+  bottom: auto !important; /* Alt kenara sabitlemeyi kaldır */
+}
+
+/* Yazıları ortala ve gölge ekle */
+.gslide-title,
+.gslide-desc {
+  text-align: center !important;
+  color: #f0f0f0 !important;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8); /* Metnin okunabilirliğini artırmak için gölge */
+}
+
+/* Başlık */
+.gslide-title {
+  font-size: 1.4rem !important;
+  margin-bottom: 8px !important;
+}
+
+/* Açıklama */
+.gslide-desc {
+  font-size: 1rem !important;
+}

@@ -7,9 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="İbrahim Çapar">
-<meta name="description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
 
-<title>Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR</title>
+<title>Blog Yazılarım – İbrahim ÇAPAR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,26 +24,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
-<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Ara"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRL55MJHF7"></script>
 
 <script type="text/javascript">
@@ -82,15 +110,44 @@ gtag('js', new Date());
 gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../../lightbox-style.css">
-<meta property="og:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
-<meta property="og:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../lightbox-style.css">
+<meta property="og:title" content="Blog Yazılarım – İbrahim ÇAPAR">
+<meta property="og:description" content="Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine çalışmalar">
 <meta property="og:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
-<meta name="twitter:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
-<meta name="twitter:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
+<meta name="twitter:title" content="Blog Yazılarım – İbrahim ÇAPAR">
+<meta name="twitter:description" content="Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine çalışmalar">
 <meta name="twitter:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -102,7 +159,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">İbrahim ÇAPAR</span>
     </a>
   </div>
@@ -113,19 +170,19 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../posts/index.html"> 
+    <a class="nav-link active" href="../posts/index.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects/index.html"> 
+    <a class="nav-link" href="../projects/index.html"> 
 <span class="menu-text">Projelerim</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../notes/technical/index.html"> 
+    <a class="nav-link" href="../notes/technical/index.html"> 
 <span class="menu-text">Teknik Hafıza</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../notes/learning/index.html"> 
+    <a class="nav-link" href="../notes/learning/index.html"> 
 <span class="menu-text">Öğrenme Günlüğü</span></a>
   </li>  
 </ul>
@@ -151,33 +208,18 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Bu sayfada</h2>
-   
-  <ul>
-  <li><a href="#giriş" id="toc-giriş" class="nav-link active" data-scroll-target="#giriş">Giriş</a></li>
-  <li><a href="#neler-yaptım" id="toc-neler-yaptım" class="nav-link" data-scroll-target="#neler-yaptım">Neler Yaptım?</a></li>
-  <li><a href="#ekran-görüntüsü" id="toc-ekran-görüntüsü" class="nav-link" data-scroll-target="#ekran-görüntüsü">Ekran Görüntüsü</a></li>
-  <li><a href="#simülasyon-adımları" id="toc-simülasyon-adımları" class="nav-link" data-scroll-target="#simülasyon-adımları">Simülasyon Adımları</a></li>
-  <li><a href="#çıkarımlarım-key-takeaways" id="toc-çıkarımlarım-key-takeaways" class="nav-link" data-scroll-target="#çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Visual Components #1: Layout Konfigürasyonu</h1>
-<p class="subtitle lead">Visual Components</p>
-  </div>
-
-<div>
-  <div class="description">
-    Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.
-  </div>
+<h1 class="title">Blog Yazılarım</h1>
+<p class="subtitle lead">Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine çalışmalar</p>
 </div>
+
 
 
 <div class="quarto-title-meta">
@@ -189,19 +231,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
           </div>
   </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">11 Aralık 2025</p>
-    </div>
-  </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">19 Aralık 2025</p>
-    </div>
-  </div>
     
   </div>
   
@@ -210,48 +240,87 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </header>
 
 
-<section id="giriş" class="level2">
-<h2 class="anchored" data-anchor-id="giriş">Giriş</h2>
-<p>Endüstriyel otomasyon, Robotik ve Dijital İkiz (Digital Twin) alanında yetkinliklerimi geliştirmek için <strong>Visual Components</strong> programını öğrenmeye başladım. Bu yazıda, <a href="https://academy.visualcomponents.com/lessons/introduction-to-layout-configuration/?course=134">Visual Component Academy</a> de bulunan Layout Configuration dersini takip ederek oluşturduğum ilk düzenlemeyi paylaşıyorum.</p>
-</section>
-<section id="neler-yaptım" class="level2">
-<h2 class="anchored" data-anchor-id="neler-yaptım">Neler Yaptım?</h2>
-<p>Bu çalışmada temel olarak şu adımları uyguladım:</p>
-<ol type="1">
-<li><strong>e-Catalog Kullanımı:</strong> Kütüphaneden konveyör, besleyici (Feeder), eklemli robot (Articulated Robot), torna tezgahı (Lathe), fens (Fence), masa (Table) ve rafların (Warehouse Shelf) sahneye eklenmesi.</li>
-<li><strong>PnP (Plug and Play):</strong> Bileşenlerin birbirine otomatik olarak bağlanması ve hizalanması.</li>
-<li><strong>Layout Düzenleme:</strong> Eklenen bileşenlerin “Clone” ile çoğaltılması, “Move” ile yerleşimlerin ayarlanması, bileşen ayarları (Component Properties) kullanarak bileşenlerin açılarının ayarlanması.</li>
-<li><strong>Process Flow Editor:</strong> Oluşturulan senaryoda prosesin hangi işlem sırası ile gerçekleştirileceğinin ayarlanması.</li>
-<li><strong>Interact:</strong> Sahneye eklenen robotun eksen hareketlerinin mause ile hareket ettirilerek çalışma uzayının (Work Envelope) incelenmesi.</li>
-<li><strong>Statements:</strong> Oluşturulan senaryo kapsamında konveyör hattından gelen Piston Head ile raftan alınan Piston Rod bileşenlerinin, Process Node kullanılarak A masasında montajının yapılması, ardından B masasında son işlemlerin tamamlanarak ürünün sistemden çıkışının sağlanması.</li>
-<li><strong>Simülasyon Testi:</strong> Oluşturulan senaryonun gözlemlenmesi ve hataların giderilmesi.</li>
-</ol>
-</section>
-<section id="ekran-görüntüsü" class="level2">
-<h2 class="anchored" data-anchor-id="ekran-görüntüsü">Ekran Görüntüsü</h2>
-<p>Aşağıda kendi oluşturduğum simülasyonun görüntüsü yer almaktadır:</p>
-<p><img src="VC-cover.jpg" class="img-fluid"></p>
-</section>
-<section id="simülasyon-adımları" class="level2">
-<h2 class="anchored" data-anchor-id="simülasyon-adımları">Simülasyon Adımları</h2>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_1.mp4"></video></div>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_2.mp4"></video></div>
-</section>
-<section id="çıkarımlarım-key-takeaways" class="level2">
-<h2 class="anchored" data-anchor-id="çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</h2>
-<ul>
-<li>Visual Components’in manuel pozisyonlama yerine PnP (Plug and Play) özelliği tasarım sürecini kolaylaştırıyor. Ayrıca “Snap” özelliği ile bileşenleri birbiriyle kolay bir şekilde birleştirilmesini sağlıyor.</li>
-<li>Visual Components’in içerisinde bulunan e-Catalog ile birçok önemli markalara ait ürünlerin aynı ortamda bulunması gerçek durumları simüle etmeyi kolaylaştırıyor.</li>
-<li>Process Flow Editor ile, layoutta bulunan bileşenlerin prosesi hangi sıra ve ilişki ile gerçekleştireceği kolay bir şekilde yönetiliyor. Bununla birlikte “Statement” kullanarak daha gelişmiş sonuçlar elde edilebiliyor.</li>
-<li>Dijital İkiz yaklaşımına insan bileşenini de üretim sürecine dahil ederek prosesi daha gelişmiş bir şekilde simüle edilmesini sağlıyor.</li>
-</ul>
-<hr>
-<p><em>Kaynak: Bu çalışma <a href="https://academy.visualcomponents.com/">Visual Components Academy</a> dersleri baz alınarak yapılmıştır.</em></p>
 
 
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Sıralama Öğesi" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Sıralama Öğesi</option>
+      <option value="index" data-direction="asc">Varsayılan</option>
+      <option value="listing-title" data-direction="asc">
+        Başlık
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Tarih - En eski
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Tarih - En yeni
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filtre">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="ZmFjdG9yeWlvJTJDc2llbWVucyUyQ3QlQzQlQjFhJTIwcG9ydGFsJTJDcGxjJTJDZyVDMyVCNnIlQzMlQkNudCVDMyVCQyUyMGklQzUlOUZsZW1lJTJDc2ltJUMzJUJDbGFzeW9uJTJDcHl0aG9uJTJDb3BlbmN2" data-listing-date-sort="1765584000000" data-listing-file-modified-sort="1766173599593" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2085">
+<div class="thumbnail"><a href="../posts/sanal-ayiklama/index.html" class="no-external">
+
+<img loading="lazy" src="../posts/sanal-ayiklama/images/factoryio.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../posts/sanal-ayiklama/index.html" class="no-external">TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../posts/sanal-ayiklama/index.html" class="no-external">Python Programlama ile Sanal Ayıklama Uygulaması</a>
+</div>
+<div class="delink listing-description"><a href="../posts/sanal-ayiklama/index.html" class="no-external">
+<p>Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../posts/sanal-ayiklama/index.html" class="no-external">
+<div class="listing-date">
+13 Aralık 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="dmlzdWFsJTIwY29tcG9uZW50cyUyQ3NpbXVsYXRpb24lMkNkaWdpdGFsJTIwdHdpbiUyQ2xlYXJuaW5nLWxvZyUyQ3JvYm90aWNz" data-listing-date-sort="1765411200000" data-listing-file-modified-sort="1766173599612" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="292">
+<div class="thumbnail"><a href="../posts/visual-components-layout/index.html" class="no-external">
+
+<img loading="lazy" src="../posts/visual-components-layout/VC-cover.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../posts/visual-components-layout/index.html" class="no-external">Visual Components #1: Layout Konfigürasyonu</a>
+</h3>
+<div class="listing-subtitle">
+<a href="../posts/visual-components-layout/index.html" class="no-external">Visual Components</a>
+</div>
+<div class="delink listing-description"><a href="../posts/visual-components-layout/index.html" class="no-external">
+<p>Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../posts/visual-components-layout/index.html" class="no-external">
+<div class="listing-date">
+11 Aralık 2025
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">Eşleşen öğe yok</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -658,8 +727,6 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   });
   </script>
 </div> <!-- /content -->
-<script>videojs(video_shortcode_videojs_video1);</script>
-<script>videojs(video_shortcode_videojs_video2);</script>
 
 
 

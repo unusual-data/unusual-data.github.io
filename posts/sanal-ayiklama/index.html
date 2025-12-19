@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr" xml:lang="tr"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="İbrahim Çapar">
+<meta name="description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
+
+<title>TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sonuç yok",
+    "search-matching-documents-text": "eşleşen belgeler",
+    "search-copy-link-title": "Aramak için bağlantıyı kopyalayın",
+    "search-hide-matches-text": "Ek eşleşmeleri gizle",
+    "search-more-match-text": "bu belgede bir tane daha eşleşme",
+    "search-more-matches-text": "bu belgede daha fazla eşleşme",
+    "search-clear-button-title": "Temizle",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "İptal et",
+    "search-submit-button-title": "Gönder",
+    "search-label": "Ara"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-SRL55MJHF7"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../lightbox-style.css">
+<meta property="og:title" content="TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
+<meta property="og:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
+<meta property="og:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factoryio.jpg">
+<meta property="og:site_name" content="İbrahim ÇAPAR">
+<meta name="twitter:title" content="TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
+<meta name="twitter:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
+<meta name="twitter:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factoryio.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">İbrahim ÇAPAR</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Ara"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Gezinmeyi değiştir" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects/index.html"> 
+<span class="menu-text">Projelerim</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/technical/index.html"> 
+<span class="menu-text">Teknik Hafıza</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/learning/index.html"> 
+<span class="menu-text">Öğrenme Günlüğü</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://linkedin.com/in/ibrahimcapar1" target="_blank"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:ibrahimcaparr1@gmail.com"> <i class="bi bi-envelope-fill" role="img" aria-label="Email">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">Bu sayfada</h2>
+   
+  <ul>
+  <li><a href="#proje-özeti" id="toc-proje-özeti" class="nav-link active" data-scroll-target="#proje-özeti">Proje Özeti</a></li>
+  <li><a href="#senaryo" id="toc-senaryo" class="nav-link" data-scroll-target="#senaryo">Senaryo</a></li>
+  <li><a href="#işlem-adımları" id="toc-işlem-adımları" class="nav-link" data-scroll-target="#işlem-adımları">İşlem Adımları</a>
+  <ul>
+  <li><a href="#factory-io-tia-portal-template-indirme" id="toc-factory-io-tia-portal-template-indirme" class="nav-link" data-scroll-target="#factory-io-tia-portal-template-indirme">1. Factory I/O TIA Portal Template İndirme</a></li>
+  <li><a href="#factory-io-template-ile-tia-portal-programı-oluşturma" id="toc-factory-io-template-ile-tia-portal-programı-oluşturma" class="nav-link" data-scroll-target="#factory-io-template-ile-tia-portal-programı-oluşturma">2. Factory I/O Template ile TIA Portal Programı Oluşturma</a></li>
+  <li><a href="#plcsim---tia-portal-haberleşmesi" id="toc-plcsim---tia-portal-haberleşmesi" class="nav-link" data-scroll-target="#plcsim---tia-portal-haberleşmesi">3. PLCSIM - TIA Portal Haberleşmesi</a></li>
+  <li><a href="#nettoplcsim-ayarları" id="toc-nettoplcsim-ayarları" class="nav-link" data-scroll-target="#nettoplcsim-ayarları">4. NetToPLCSim Ayarları</a></li>
+  <li><a href="#factory-io-sahnesi-oluşturma" id="toc-factory-io-sahnesi-oluşturma" class="nav-link" data-scroll-target="#factory-io-sahnesi-oluşturma">5. Factory I/O Sahnesi Oluşturma</a></li>
+  <li><a href="#factory-io-konfigürasyon" id="toc-factory-io-konfigürasyon" class="nav-link" data-scroll-target="#factory-io-konfigürasyon">6. Factory I/O Konfigürasyon</a></li>
+  <li><a href="#python-programlama-adımları" id="toc-python-programlama-adımları" class="nav-link" data-scroll-target="#python-programlama-adımları">6. Python Programlama Adımları</a>
+  <ul>
+  <li><a href="#kullanılan-kütüphanelerin-import-edilmesi" id="toc-kullanılan-kütüphanelerin-import-edilmesi" class="nav-link" data-scroll-target="#kullanılan-kütüphanelerin-import-edilmesi">6.1 Kullanılan Kütüphanelerin “Import” edilmesi</a></li>
+  <li><a href="#sistem-konfigürasyonu" id="toc-sistem-konfigürasyonu" class="nav-link" data-scroll-target="#sistem-konfigürasyonu">6.2 Sistem Konfigürasyonu</a></li>
+  <li><a href="#algılama-ve-karar-üretme" id="toc-algılama-ve-karar-üretme" class="nav-link" data-scroll-target="#algılama-ve-karar-üretme">6.3 Algılama ve Karar Üretme</a></li>
+  <li><a href="#plc-bit-güncelleme" id="toc-plc-bit-güncelleme" class="nav-link" data-scroll-target="#plc-bit-güncelleme">6.4 PLC Bit Güncelleme</a></li>
+  <li><a href="#periyodik-durum-log" id="toc-periyodik-durum-log" class="nav-link" data-scroll-target="#periyodik-durum-log">6.5 Periyodik Durum Log</a></li>
+  <li><a href="#debug-amaçlı-görüntü-gösterimi" id="toc-debug-amaçlı-görüntü-gösterimi" class="nav-link" data-scroll-target="#debug-amaçlı-görüntü-gösterimi">6.6 Debug Amaçlı Görüntü Gösterimi</a></li>
+  <li><a href="#döngü-zamanlama-kontrolü" id="toc-döngü-zamanlama-kontrolü" class="nav-link" data-scroll-target="#döngü-zamanlama-kontrolü">6.7 Döngü Zamanlama Kontrolü</a></li>
+  <li><a href="#uygulama-sonlandırma-aşaması" id="toc-uygulama-sonlandırma-aşaması" class="nav-link" data-scroll-target="#uygulama-sonlandırma-aşaması">6.8 Uygulama Sonlandırma Aşaması</a></li>
+  </ul></li>
+  <li><a href="#python-programı" id="toc-python-programı" class="nav-link" data-scroll-target="#python-programı">7. Python Programı</a></li>
+  <li><a href="#sonuçlar" id="toc-sonuçlar" class="nav-link" data-scroll-target="#sonuçlar">8. Sonuçlar</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması</h1>
+<p class="subtitle lead">Python Programlama ile Sanal Ayıklama Uygulaması</p>
+  </div>
+
+<div>
+  <div class="description">
+    Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Yazar</div>
+    <div class="quarto-title-meta-contents">
+             <p>İbrahim Çapar </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">13 Aralık 2025</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">19 Aralık 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Kullanılan Yazılımlar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">İpucu</span>Kullanılan Yazılımlar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TIA Portal V20, PLCSIM V20, Factory I/O, Spyder IDE, NetToPLCsim</p>
+</div>
+</div>
+<section id="proje-özeti" class="level3">
+<h3 class="anchored" data-anchor-id="proje-özeti">Proje Özeti</h3>
+<p>Bu projede, TIA Portal ve Factory I/O ortamları kullanılarak bir <strong>Sanal Ayıklama Uygulaması</strong> geliştirilmiştir. Görüntü işleme senaryosu, Python programlama dili ve OpenCV kütüphanesi kullanılarak gerçekleştirilmiştir. Simülasyon ortamları arasındaki veri alışverişi, NetToPLCSim aracılığıyla TIA Portal (PLCSIM) ve Factory I/O arasında sağlanmıştır. Geliştirilen sistemde, kamera görüntüsünden elde edilen renk bilgileri işlenerek ayıklama mekanizmalarının kontrolü sağlanmış ve sistemin senaryo doğrultusunda çalışması sağlanmıştır.</p>
+</section>
+<section id="senaryo" class="level3">
+<h3 class="anchored" data-anchor-id="senaryo">Senaryo</h3>
+<p>Factory I/O ortamında sahneye eklenen konveyör üzerinde yayıcı (Emitter) aracılığı ile mavi hammadde ve yeşil hammadde (Blue Raw Material, Green Raw Material) üretilecektir. Simülasyon çalışmaya başladığında “<strong>Start</strong>” butonuna basılınca konveyör hareket etmeye başlayacak, 1. kontrol noktasında kamera mavi hammadeyi görünce “<strong>Pusher-1</strong>” mavi hammaddeyi ileri itecek ve başlangıç konumuna dönecektir. 2. kontrol noktasında kamera yeşil hammaddeyi görünce “<strong>Pusher-2</strong>” yeşil hammaddeyi ileri itecek ve başlangıç konumuna dönecektir. Simülasyonun herhangi bir anında “<strong>Acil Stop</strong>” veya “<strong>Stop</strong>” butonuna basılınca konveyör hareketini durduracaktır. Tekrardan “<strong>Start</strong>” butonuna basılması durumunda sistem kaldığı yerden çalışmasını sürdürecektir.</p>
+</section>
+<section id="işlem-adımları" class="level2">
+<h2 class="anchored" data-anchor-id="işlem-adımları">İşlem Adımları</h2>
+<section id="factory-io-tia-portal-template-indirme" class="level4">
+<h4 class="anchored" data-anchor-id="factory-io-tia-portal-template-indirme">1. Factory I/O TIA Portal Template İndirme</h4>
+<p>Bu projede gerçekleştirilen senaryoda TIA Portal V20 ile PLCSIM üzerinden Factory I/O haberleşmektedir. Bu işlemin gerçekleşebilmesi için Factory I/O template dosyası gerekmektedir. Bunun için <a href="https://docs.factoryio.com/tutorials/siemens/setting-up-s7-plcsim-v20/#tia-portal-template-projects">Factory I/O Template</a> adresinden ilgili dosya edinilmiştir.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled" title="Uyarı">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dikkat</span>Uyarı
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gerçekleştirilen senaryoda TIA Portal V20 ile PLCSIM V20 kullanıldığı için<br>
+“<strong>FactoryIO_Template_S7-1200_V20.zip</strong>” dosyası indirilmiştir. Farklı bir sürüm kullanılması durumunda<br>
+kullanılan sürüme uygun template dosyasını edinilmelidir.</p>
+</div>
+</div>
+</section>
+<section id="factory-io-template-ile-tia-portal-programı-oluşturma" class="level4">
+<h4 class="anchored" data-anchor-id="factory-io-template-ile-tia-portal-programı-oluşturma">2. Factory I/O Template ile TIA Portal Programı Oluşturma</h4>
+<p>İndirilen bu template dosyası TIA Portal ile birlikte açılarak kullanılmıştır.</p>
+<p><img src="images/TIA-1.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Template dosyası ayrıca TIA Portal arayüzü üzerinden “Open Project” menüsünden de açılabilmektedir.</p>
+</blockquote>
+<p>Template dosyası TIA Portal arayüzünde açıldıktan sonra uygulanmak istenen senaryoya yönelik program hazırlanmıştır.<br>
+Aşağıdaki resimlerde belirtilen senaryoya yönelik LD (Ladder Diagram) programı gösterilmektedir.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Uyarı</span>PUT/GET İzni
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bu aşamada aşağıdaki PUT/GET izni verilmelidir.<br>
+“<strong>TIA Portal &gt; Device Configuration &gt; General &gt; Connection mechanisms &gt; Permit access with PUT/GET communication from remote partner</strong>” kutucuğu işaretlenerek izin verilebilmektedir.<br>
+Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardware (rebuild all)</strong> seçeneği ile rebuild işlemi gerçekleştirilip proje PLCSIM’e <strong>(Download to device)</strong> seçeneği ile yüklenilmelidir.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Dikkat</span>Uyarı
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Factory I/O template dosyası TIA Portal ile açıldığında varsayılan program bloğu dili FB olarak gelmektedir. <strong>Main [OB1] &gt; Switch Programming Language &gt; LAD</strong> işlem adımlarını uygulayarak ladder diyagramı ile program yazabilmektedir.</p>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TIA-2.png" class="img-fluid figure-img"></p>
+<figcaption>Ladder - 1</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TIA-3.png" class="img-fluid figure-img"></p>
+<figcaption>Ladder - 2</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/TIA-4.png" class="img-fluid figure-img"></p>
+<figcaption>Ladder - 3</figcaption>
+</figure>
+</div>
+</section>
+<section id="plcsim---tia-portal-haberleşmesi" class="level4">
+<h4 class="anchored" data-anchor-id="plcsim---tia-portal-haberleşmesi">3. PLCSIM - TIA Portal Haberleşmesi</h4>
+<p>Hazırlanan senaryoya uygun kod hazırlandıktan sonra derleme işlemi gerçekleştirilmiştir. Bu işlem adımı için “<strong>Edit &gt; Compile</strong>” veya “<strong>Ctrl + B</strong>” kısayolu kullanılabilmektedir. Devamında üst menüde bulunan “<strong>Start Simülation</strong>” butonu ile PLCSIM’ başlatılmıştır.</p>
+<p>Açılan ekranda “<strong>Start Search</strong>” yaparak bağlı olunan cihazlar listelenmektedir. Bu işlemi yaparken “<strong>PG/PC Interface : PLCSIM</strong>” seçeneğinin belirtildiği gibi olması gerekmektedir. Arama sonucunda PLCSIM PLC seçilerek program “<strong>Load</strong>” denilerek yüklenmiştir.</p>
+<p><img src="images/TIA-5.png" class="img-fluid"></p>
+<p>Devamında açılır listeden “<strong>Start Module</strong>” seçeneği seçilerek “<strong>Finish</strong>” butonuna basılarak işlem tamamlanmıştır.</p>
+<p><img src="images/TIA-6.png" class="img-fluid"></p>
+<p>Böylelikle TIA Portal ile PLCSIM haberleşmesi gerçekleştirilmiştir.</p>
+<blockquote class="blockquote">
+<p>PLCSIM &gt; SimView menüsünden manuel olarak eklediğiniz girişleri değiştirerek çıkışın nasıl etkilendiğini gözlemleyebilirsiniz.</p>
+</blockquote>
+</section>
+<section id="nettoplcsim-ayarları" class="level4">
+<h4 class="anchored" data-anchor-id="nettoplcsim-ayarları">4. NetToPLCSim Ayarları</h4>
+<p>Gerçekleştireceğimiz senaryoda görüntü işleme ile ilgili işlemler için “<strong>Python</strong>” kullanılacaktır. Python-TIA Portal haberleşmesini sağlamak için “<strong>NetToPLCSim</strong>” programı kullanılmıştır.</p>
+<p>Program indirme bağlantısı: <a href="https://sourceforge.net/projects/nettoplcsim/">NetToPLCSim</a></p>
+<p>Programı indirdikten sonra “<strong>Add</strong>” ile ekleme yapılır.</p>
+<p><img src="images/NetToPLCsim-1.png" class="img-fluid"></p>
+<p>Gelen ekranda;<br>
+<img src="images/NetToPLCsim-2.png" class="img-fluid"><br>
+<strong>1 Numara:</strong> Eklenecek bağlantıya istenilen isim verilebilmektedir.<br>
+<strong>2 Numara:</strong> Network IP Adress’in en sağında bulunan “…” sembolüne tıklayarak kulllandığınız bilgisayara ait IP adresinin eklenmesi gerekmektedir.<br>
+<strong>3 Numara:</strong> PLCSim IP Adress’in en sağında bulunan “…” sembolüne tıklayarak PLCSIM’in IP adresinin eklenmesi gerekmektedir.<br>
+<strong>4 Numara:</strong> Burada belirtilen “<strong>2</strong>” sayısı “<strong>1</strong>” ile değiştirilmelidir. Siemens S7-1200 PLC için Rack / Slot numarası: 0 / 1 şeklinde olmalıdır.</p>
+<blockquote class="blockquote">
+<p>Bağlantılar doğru gerçekleştirildiğinde “…” sembolüne tıklandığında IP adresleri ekranda listelenmektedir.</p>
+</blockquote>
+<p>Belirtilen ayarlar yapıldıktan sonra ekran aşağıdaki gibi gözükmektedir. “<strong>Start Server</strong>” diyerek bağlantı başlatılmıştır.</p>
+<p><img src="images/NetToPLCsim-3.png" class="img-fluid"></p>
+<p>Status alanının “<strong>RUNNING</strong>” olduğu görülerek bir sonraki aşamaya geçilmiştir.</p>
+</section>
+<section id="factory-io-sahnesi-oluşturma" class="level4">
+<h4 class="anchored" data-anchor-id="factory-io-sahnesi-oluşturma">5. Factory I/O Sahnesi Oluşturma</h4>
+<p>Sürecin devamında Factory I/O ile hazırlanan senaryoya uygun sahne oluşturulmuştur. Hazırlanan senaryoya uygun bileşenler (emitter, belt conveyor, curved conveyor, pusher, electric switchboard, emergency stop, stop button, start button) sahneye uygun konumda yerleştirilmiştir.<br>
+<img src="images/factoryio.jpg" class="img-fluid"></p>
+<blockquote class="blockquote">
+<p>Bileşenlerin dikey eksende (yukarı/aşağı) konumlandırılması için ‘<strong>V</strong>’ kısayol tuşu kullanılmaktadır.</p>
+</blockquote>
+</section>
+<section id="factory-io-konfigürasyon" class="level4">
+<h4 class="anchored" data-anchor-id="factory-io-konfigürasyon">6. Factory I/O Konfigürasyon</h4>
+<p>Factory I/O uygulamasında üst menüden “<strong>File&gt;Drivers”</strong> menüsüne giderek sol üstte”<strong>DRIVER</strong>”ın hizasında yanında bulunan açılır listeden “<strong>Siemens S7-PLCSIM</strong>” seçilmiştir. Bu aşamada TIA Portal-PLCSIM üzerinden Factory I/O ile haberleşmesi tamamlanmıştır.</p>
+<p><img src="images/factoryio-2.png" class="img-fluid"></p>
+<p>PLC kodunda tanımlanan değişkenler, “<strong>File &gt; Drivers</strong>” menüsü üzerinden ilgili fiziksel giriş ve çıkış adresleri ile eşleştirilmiştir.</p>
+<p><img src="images/factoryio-3.png" class="img-fluid"></p>
+<p>Bu işlem gerçekleştirildikten sonra sağ üstte bulunan “<strong>Connect</strong>” tuşuna basılarak TIA Portal’da hazırlanan kod PLCSIM aracılığıyla Factory I/O ile haberleştirilmiştir.</p>
+<blockquote class="blockquote">
+<p>PLCSIM aracılığı ile bağlanılan PLC “<strong>Run</strong>” modunda olmalıdır</p>
+</blockquote>
+<p>Factory I/O ortamında konveyörde hareket eden mavi ve yeşil hammaddeleri algılayarak işlem yapabilmek için Python programlama dili kullanılmıştır.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled" title="Kullanılan Kütüphaneler">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">İpucu</span>Kullanılan Kütüphaneler
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>time,cv2,numpy,mss,snap7</p>
+</div>
+</div>
+<p>Bu adımla birlikte Factory I/O ve TIA Portal (PLCSIM) arasındaki simülasyon bağlantısı tamamlanmıştır. Artık senaryodaki görüntü işleme mantığını uygulamak üzere Python kodlama aşamasına geçilmiştir.</p>
+</section>
+<section id="python-programlama-adımları" class="level4">
+<h4 class="anchored" data-anchor-id="python-programlama-adımları">6. Python Programlama Adımları</h4>
+<hr>
+<section id="kullanılan-kütüphanelerin-import-edilmesi" class="level5">
+<h5 class="anchored" data-anchor-id="kullanılan-kütüphanelerin-import-edilmesi">6.1 Kullanılan Kütüphanelerin “Import” edilmesi</h5>
+<p>İlk olarak hazırlanan senaryonun çalıştırılabilmesi için gereken kodları barındıran kütüphaneler “<strong>Import</strong>” edilmiştir.<br>
+<strong>time kütüphanesi</strong> : Programda bulunan döngü zamanlamasını yönetmek için kullanılmıştır.<br>
+<strong>cv2 kütüphanesi</strong> : Görüntüyü HSV’ye çevirme, renk aralığına göre maske üretme, maskede piksel sayma vb. işlemlerini gerçekleştirmek için kullanılmışır.<br>
+<strong>numpy kütüphanesi</strong> : “<strong>mss</strong>” ile yakalanan ekran görüntüsünü diziye (<strong>np.array</strong>) çevirme, HSV eşik değerlerini dizi olarak tanımlama ve görüntü üzerinde dilimleme yapmak için kullanılmıştır<br>
+<strong>mss kütüphanesi</strong> : Factory I/O ortamında kamera bulunmadığı için ekranda belirlenen bölgelerin (ROI) yakalanmasını sağlamak için kullanılmıştır.<br>
+<strong>snap7 kütüphanesi</strong> : Siemens S7-1200 PLC ile Python üzerinden bağlanıp veri alışverişi yapmak için kullanılmıştır.<br>
+<strong>snap7.util</strong> : PLC byte’ı içindeki ilgili biti set etmek için kullanılmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Import Etme
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sistem-konfigürasyonu" class="level5">
+<h5 class="anchored" data-anchor-id="sistem-konfigürasyonu">6.2 Sistem Konfigürasyonu</h5>
+<p>Programda kullanılacak kütüphaneler eklendikten sonra bu aşamada program içerisinde kullanacağımız değişkenlerin tanımlaması yapılmıştır. Konfigürasyon tamamlandıktan sonra “<strong>plc.connect()</strong>” komutuyla bağlantı sağlanmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Konfigürasyon ve Başlatma
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="algılama-ve-karar-üretme" class="level5">
+<h5 class="anchored" data-anchor-id="algılama-ve-karar-üretme">6.3 Algılama ve Karar Üretme</h5>
+<p>Bu aşamada ekrandan alınan ROI görüntülerinde HSV tabanlı renk analizi yapılarak mavi ve yeşil nesnelerin varlığına karar veren görüntü işleme aşaması yönetilmiştir.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Algılama ve Sınıflandırma Aşaması
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre class="pyton"><code>with mss.mss() as sct:
+    while True:
+        t0 = time.perf_counter()
+
+        img_b = np.array(sct.grab(roı_blue))[:, :, :3]
+        img_g = np.array(sct.grab(roı_green))[:, :, :3]
+
+        hsv_b = cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)
+        hsv_g = cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)
+
+        blue_mask  = cv2.inRange(hsv_b, blue_low, blue_hıgh)
+        green_mask = cv2.inRange(hsv_g, green_low, green_hıgh)
+
+        blue_px  = cv2.countNonZero(blue_mask)
+        green_px = cv2.countNonZero(green_mask)
+
+        blue  = blue_px  &gt; px_threshold
+        green = green_px &gt; px_threshold</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="plc-bit-güncelleme" class="level5">
+<h5 class="anchored" data-anchor-id="plc-bit-güncelleme">6.4 PLC Bit Güncelleme</h5>
+<p>Bu kod bloğunda ilk önce hedef bitin bulunduğu “<strong>Byte</strong>” PLC’den okunmuş, ilgili bit manipüle edildikten sonra tekrar yazılarak aynı adresteki diğer bitlerin korunması sağlanmıştır. Snap7 kütüphanesi ve S7 protokolü verileri Byte (8-bit) tabanlı işler. Doğrudan yazma işleminde hedef byte içerisindeki diğer 7 bit sıfırlanabilmektedir.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>PLC Bit Güncelleme
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="periyodik-durum-log" class="level5">
+<h5 class="anchored" data-anchor-id="periyodik-durum-log">6.5 Periyodik Durum Log</h5>
+<p>Bu kod bloğu ile ana döngüden bağımsız olarak, saniyede 2 kez durum verileri (piksel sayıları ve lojik sonuçlar) konsola yazdırılmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Periyodik Durum Log
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"BLUE px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> thr=</span><span class="sc">{</span>PIXEL_THR<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | GREEN px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="debug-amaçlı-görüntü-gösterimi" class="level5">
+<h5 class="anchored" data-anchor-id="debug-amaçlı-görüntü-gösterimi">6.6 Debug Amaçlı Görüntü Gösterimi</h5>
+<p>Bu aşamada ham görüntüler ile birlikte elde edilen maskeler ekrana yansıtılmıştır. Aynı zamanda klavyeden “q” harfine basınca programın manuel olarak sonlandırılabilmesi sağlanmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Debug Amaçlı Görüntü Gösterimi
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI BLUE"</span>, img_b)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"BLUE MASK"</span>, blue_mask)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI GREEN"</span>, img_g)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"GREEN MASK"</span>, green_mask)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="döngü-zamanlama-kontrolü" class="level5">
+<h5 class="anchored" data-anchor-id="döngü-zamanlama-kontrolü">6.7 Döngü Zamanlama Kontrolü</h5>
+<p>Bu kısımda düzenli veri akışı sağlamak adına, her işlem sonunda hesaplanan süre kadar bekleme uygulanmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Döngü Zamanlama Kontrolü
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="uygulama-sonlandırma-aşaması" class="level5">
+<h5 class="anchored" data-anchor-id="uygulama-sonlandırma-aşaması">6.8 Uygulama Sonlandırma Aşaması</h5>
+<p>Programın en sonunda uygulama kapatılırken tüm açık pencereler ve PLC bağlantısı güvenli bir şekilde kapatılarak kaynaklar serbest bırakılmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Uygulama Sonlandırma Aşaması
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="python-programı" class="level4">
+<h4 class="anchored" data-anchor-id="python-programı">7. Python Programı</h4>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Not</span>Python Kodunun Tamamını Görüntülemek için Tıklayınız.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> mss.mss() <span class="im">as</span> scr:</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        img_b <span class="op">=</span> np.array(scr.grab(roı_blue))[:, :, :<span class="dv">3</span>]</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        img_g <span class="op">=</span> np.array(scr.grab(roı_green))[:, :, :<span class="dv">3</span>]</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        hsv_b <span class="op">=</span> cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        hsv_g <span class="op">=</span> cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        blue_mask  <span class="op">=</span> cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        green_mask <span class="op">=</span> cv2.inRange(hsv_g, green_low, green_hıgh)</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        blue_px  <span class="op">=</span> cv2.countNonZero(blue_mask)</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        green_px <span class="op">=</span> cv2.countNonZero(green_mask)</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        blue  <span class="op">=</span> blue_px  <span class="op">&gt;</span> px_threshold</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        green <span class="op">=</span> green_px <span class="op">&gt;</span> px_threshold</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"MAVİ px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> eşik=</span><span class="sc">{</span>px_threshold<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | YEŞİL px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi ROI"</span>, img_b)</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi Maskleme"</span>, blue_mask)</span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil ROI"</span>, img_g)</span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil Maskeleme"</span>, green_mask)</span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sonuçlar" class="level4">
+<h4 class="anchored" data-anchor-id="sonuçlar">8. Sonuçlar</h4>
+<p>Gerçekleştirilen projeye dair yapılan çalışmanın video kayıtları aşağıdaki gibidir.</p>
+<p>Factory I/O ortamında yazılan PLC programının konveyör, start, stop, acil stop butonlarının çalışması aşağıda gösterildiği gibi kontrol edilmiştir.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/konveyör.mp4"></video></div>
+<p>Gerçekleştirilen projenin simülasyonuna ait video kaydı aşağıdaki gibidir.</p>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/sanal-ayiklama-istasyonu.mp4"></video></div>
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Alıntı</h2><div><div class="quarto-appendix-secondary-label">BibTeX</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{çapar2025,
+  author = {Çapar, İbrahim},
+  title = {TIA Portal ve Factory I/O ile Python: Sanal Ayıklama
+    Uygulaması},
+  date = {2025-12-13},
+  url = {https://ibrahimcapar.com/posts/sanal-ayiklama/},
+  langid = {tr}
+}
+</code><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">Lütfen bu çalışmayı şu şekilde alıntılayın:</div><div id="ref-çapar2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Çapar, İbrahim. 2025. <span>“TIA Portal ve Factory I/O ile Python: Sanal
+Ayıklama Uygulaması.”</span> December 13, 2025. <a href="https://ibrahimcapar.com/posts/sanal-ayiklama/">https://ibrahimcapar.com/posts/sanal-ayiklama/</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopyalandı");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopyalandı");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/ibrahimcapar\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
+<script>videojs(video_shortcode_videojs_video2);</script>
+
+
+
+
+</body></html>
