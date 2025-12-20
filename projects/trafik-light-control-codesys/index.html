@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="İbrahim Çapar">
-<meta name="description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
+<meta name="description" content="ST Dili ve FSM yapısı kullanılarak geliştirilen trafik kontrol sistemi">
 
 <title>CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR</title>
 <style>
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-485fce1ee71643022cc22948869b5755.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
@@ -84,17 +84,20 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../lightbox-style.css">
 <meta property="og:title" content="CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR">
-<meta property="og:description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
+<meta property="og:description" content="ST Dili ve FSM yapısı kullanılarak geliştirilen trafik kontrol sistemi">
 <meta property="og:image" content="https://ibrahimcapar.com/projects/trafik-light-control-codesys/images/codesys-traffic-lights.jpg">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
+<meta property="og:image:alt" content="CODESYS simülasyon ortamında trafik ışığı kontrol ekranı">
 <meta name="twitter:title" content="CODESYS Tabanlı Trafik Işığı Kontrol Sistemi – İbrahim ÇAPAR">
-<meta name="twitter:description" content="Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.">
+<meta name="twitter:description" content="ST Dili ve FSM yapısı kullanılarak geliştirilen trafik kontrol sistemi">
 <meta name="twitter:image" content="https://ibrahimcapar.com/projects/trafik-light-control-codesys/images/codesys-traffic-lights.jpg">
+<meta name="twitter:image:alt" content="CODESYS simülasyon ortamında trafik ışığı kontrol ekranı">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -156,7 +159,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Bu sayfada</h2>
+    <h2 id="toc-title">İçerik</h2>
    
   <ul>
   <li><a href="#proje-künyesi" id="toc-proje-künyesi" class="nav-link active" data-scroll-target="#proje-künyesi">1. Proje Künyesi</a></li>
@@ -181,9 +184,8 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   <li><a href="#görsel-bileşenlerin-hizalanması" id="toc-görsel-bileşenlerin-hizalanması" class="nav-link" data-scroll-target="#görsel-bileşenlerin-hizalanması">5.1. Görsel Bileşenlerin Hizalanması</a></li>
   <li><a href="#durum-verilerinin-anlık-gösterimi" id="toc-durum-verilerinin-anlık-gösterimi" class="nav-link" data-scroll-target="#durum-verilerinin-anlık-gösterimi">5.2. Durum Verilerinin Anlık Gösterimi</a></li>
   </ul></li>
-  <li><a href="#sonuç-ve-gelecek-geliştirmeler" id="toc-sonuç-ve-gelecek-geliştirmeler" class="nav-link" data-scroll-target="#sonuç-ve-gelecek-geliştirmeler">6. Sonuç ve Gelecek Geliştirmeler</a></li>
+  <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">6. Sonuç</a></li>
   <li><a href="#referanslar-ve-kaynakça" id="toc-referanslar-ve-kaynakça" class="nav-link" data-scroll-target="#referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</a></li>
-  <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">Sonuç</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +206,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <div>
   <div class="description">
-    Kavşak senaryoları için ST dili ve FSM mimarisi kullanılarak geliştirilen, Codesys Visu entegreli kontrol sistemi.
+    ST Dili ve FSM yapısı kullanılarak geliştirilen trafik kontrol sistemi
   </div>
 </div>
 
@@ -221,7 +223,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">19 Aralık 2025</p>
+      <p class="date">20 Aralık 2025</p>
     </div>
   </div>
   
@@ -239,13 +241,9 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </header>
 
 
-<section id="proje-künyesi" class="level2">
+<section id="proje-künyesi" class="level2 proje-kunye">
 <h2 class="anchored" data-anchor-id="proje-künyesi">1. Proje Künyesi</h2>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 72%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Kategori</th>
@@ -259,11 +257,11 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>Mimari &amp; Metodoloji</td>
-<td>FSM (Sonlu Durum Makinesi)</td>
+<td>Sonlu Durum Makinesi (FSM)</td>
 </tr>
 <tr class="odd">
 <td>Teknolojiler</td>
-<td>CODESYS V3.5, Structured Text (ST),TargetVisu</td>
+<td>CODESYS V3.5, Structured Text (ST), TargetVisu</td>
 </tr>
 <tr class="even">
 <td>Uygulama Odağı</td>
@@ -271,10 +269,11 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </tr>
 <tr class="odd">
 <td>Kaynak</td>
-<td>[Kodları İncele (#kod-bolumu)] - [Dosyayı İndir]</td>
+<td><a href="https://github.com/unusual-data/codesys-traffic-lights">GitHub’da İncele</a> &amp; <a href="https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip">Projeyi İndir (.zip)</a></td>
 </tr>
 </tbody>
 </table>
+</section>
 <div id="fig-simulasyon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simulasyon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -285,7 +284,6 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </figcaption>
 </figure>
 </div>
-</section>
 <section id="genel-bakış-ve-problem-tanımı" class="level2">
 <h2 class="anchored" data-anchor-id="genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</h2>
 <section id="proje-amacı" class="level3">
@@ -294,9 +292,9 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </section>
 <section id="problem" class="level3">
 <h3 class="anchored" data-anchor-id="problem">Problem</h3>
-<p>Karmaşık kontrol senaryolarında, geleneksel “Ladder Logic” veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:</p>
+<p>Karmaşık kontrol senaryolarında, geleneksel “Ladder” diyagramı veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:</p>
 <ol type="1">
-<li><strong>Yönetilebilirlik:</strong> Sisteme ait durumlar (örn: başlangıç, gündüz, gece , acil vb.) arttıkça kodun okunabilirliği azalmaktadır.</li>
+<li><strong>Yönetilebilirlik:</strong> Sisteme ait durumlar (örn: başlangıç, gündüz, gece, acil vb.) arttıkça kodun okunabilirliği azalmaktadır.</li>
 <li><strong>Senkronizasyon:</strong> Zamanlayıcıların asenkron çalışması sonucu işlevlerin çakışma riski (örn: aynı anda iki yeşil ışık yanması) bulunmaktadır.</li>
 <li><strong>Esneklik:</strong> Yeni bir kural eklendiğinde tüm kodun baştan yazılması gerekebilmektedir.</li>
 </ol>
@@ -313,20 +311,20 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </section>
 <section id="sistem-mimarisi-ve-tasarım" class="level2">
 <h2 class="anchored" data-anchor-id="sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</h2>
-<p>Projenin teknik altyapısı, sistemin kararlılığını ve genişletilebilirliğini garanti altına alacak şekilde kurgulanmıştır. Sistem CODESYS ortamında hazırlanan PLC programı ile bu projeye eklenen “Visualization” objesiyle etkileşim kurmaktadır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.</p>
+<p>Bu projede PLC programı CODESYS ortamında ST dili kullanılarak yazılmıştır. Projede tanımlanan trafik ışığı değişkenlerinin “Visualization” objesinde bulunan tasarım ekranı bileşenleriyle etkileşim kurmaları sağlanmıştır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.</p>
 <section id="algoritma-ve-işleyiş-mantığı" class="level3">
 <h3 class="anchored" data-anchor-id="algoritma-ve-işleyiş-mantığı">3.1. Algoritma ve İşleyiş Mantığı</h3>
-<p>Sistem kontrolü, durum ve geçişlere dayalı <strong>Sonlu Durum Makinesi (FSM)</strong> yapısı ile gerçekleştirilmiştir. Algoritma, karmaşık <code>IF-ELSE</code> blokları yerine, birbirinden izole edilmiş durumlar (states) üzerinden ilerlemektedir:</p>
+<p>Sistem kontrolü, durum ve geçişlere dayalı <strong>FSM</strong> yapısı ile gerçekleştirilmiştir. Algoritma, karmaşık <code>IF-ELSE</code> blokları yerine, birbirinden izole edilmiş durumlar (states) üzerinden ilerlemektedir:</p>
 <ul>
 <li><strong>Başlangıç:</strong> Sistemin enerjilendiği, sistem kapanırken değişkenlerin sıfırlandığı ve güvenlik kontrollerinin yapıldığı ana döngü.</li>
 <li><strong>Gündüz Modu :</strong> Trafik ışıklarının önceden tanımlı sürelerde (Kırmızı, Sarı, Yeşil) sıralı olarak değiştiği döngü.</li>
-<li><strong>Gece Modu :</strong> Belirli bir tetikleyici ile (manuel buton veya saat) devreye giren, tüm sarı ışıkların saniyede iki kez yanım söndüğü döngü.</li>
+<li><strong>Gece Modu :</strong> Belirli bir tetikleyici ile (manuel buton veya saat) devreye giren, tüm sarı ışıkların saniyede iki kez yanıp söndüğü döngü.</li>
 </ul>
 </section>
 <section id="teknik-yaklaşım" class="level3">
 <h3 class="anchored" data-anchor-id="teknik-yaklaşım">3.2. Teknik Yaklaşım</h3>
 <ul>
-<li><p>Sistemin programlanmasında dil seçimi olarak ST programlama tercih edilmiştir. Ladder diyagramı görsel olarak takip edilebilen bir yapıda olsa da durum yönetiminde yetersiz kalabilmektedir. Bu projede, kodun okunabilirliğini arttırmak hata ve durum yönetimini daha kolaylaştırmıştır.</p></li>
+<li><p>Sistemin programlanmasında dil seçimi olarak ST programlama tercih edilmiştir. Ladder diyagramı görsel olarak takip edilebilen bir yapıda olsa da durum yönetiminde yetersiz kalabilmektedir. Bu projede, kodun okunabilirliğini arttırmak hata ve durum yönetimini daha da kolaylaştırmıştır.</p></li>
 <li><p>Sıralı akış yerine durum tabanlı yaklaşım seçilmesinin temel nedeni <strong>genişletilebilirliktir</strong>. İleride sisteme “Yaya Butonu” veya “Acil Durum Modu” gibi eklemeler yapılması gerektiğinde, mevcut kod yapısını bozmadan sadece yeni bir <code>STATE</code> bloğu entegre edilmesi yeterli olacaktır.</p></li>
 </ul>
 </section>
@@ -336,93 +334,93 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <p>Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlara uygunluk gözetilerek geliştirilmiştir. Aşağıda, projenin temelini oluşturan veri yapıları ve işleyen kod mantığı teknik detaylarıyla sunulmuştur.</p>
 <section id="değişken-ve-tanımlar" class="level3">
 <h3 class="anchored" data-anchor-id="değişken-ve-tanımlar">4. 1. Değişken ve Tanımlar</h3>
-<p>Sistemde kullanılan değişkenler ve veri tipleri, <strong>IEC 61131-3</strong> standartlarına uygun olarak tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Veri Tanımlamalarını İncele">
+<p>Sistemde kullanılan değişkenler ve veri tipleri, <strong>IEC 61131-3</strong> standardı ile uyumlu ve <strong>PLCopen Task Force: Coding Guidelines</strong> tarafından tavsiye edilen <strong>Type-prefixed Hungarian Notation</strong> yaklaşımıyla tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.</p>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Veri Tanımlamalarını İncele
+<span class="screen-reader-only">Not</span>Tanımlanan Değişkenler
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="st"><code>PROGRAM PLC_PRG
+<div class="code-copy-outer-scaffold"><div class="callout-body-container callout-body">
+<pre class="st sourceCode code-with-copy" title="Tanımlanan Değişkenler"><code>PROGRAM PLC_PRG
 VAR
-    (* --- Sistem Durum Yönetimi --- *)
-    xStart      : BOOL := FALSE;  // Sistemin aktiflik durumu
-    xNightMode  : BOOL := FALSE;  // Operasyonel mod seçimi
+    xStart      : BOOL := FALSE;  
+    xNightMode  : BOOL := FALSE;
     
-    (* --- FSM Durum İndeksleri --- *)
-    xStep       : INT := 0;       // Mevcut durum adımı
-    tDuration   : TIME;           // Dinamik zamanlayıcı değeri
+    iStep       : INT := 0;
+    tDuration   : TIME;            
     
-    (* --- Çıkış Birimleri --- *)
     xKuzeyGuneyYesil    : BOOL;
+    xKuzeyGuneySari     : BOOL; 
     xKuzeyGuneyKirmizi  : BOOL; 
-    // ... (Diğer tanımlar kısaltılmıştır)
+    xDoguBatiYesil      : BOOL;
+    xDoguBatiSari       : BOOL;
+    xDoguBatiKirmizi    : BOOL;
 
-    (* --- Fonksiyon Blokları --- *)
-    fbStepTimer         : TON;    // Ana döngü zamanlayıcısı
-    fbBlinkTimer        : TON;    // Sinyal üreteci      
+    fbStepTimer         : TON;
+    fbBlinkTimer        : TON;                
 END_VAR</code></pre>
-</div>
+</div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
 <section id="algoritma-ve-kod-mantığı" class="level3">
 <h3 class="anchored" data-anchor-id="algoritma-ve-kod-mantığı">4. 2. Algoritma ve Kod Mantığı</h3>
 <p>Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Kod Mantığını İncele">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Kod Mantığını İncele
+<span class="screen-reader-only">Not</span>Kod Bloğu
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre class="st"><code>(* Zamanlayıcıların Döngüsel Güncellemesi *)
+<div class="code-copy-outer-scaffold"><div class="callout-body-container callout-body">
+<pre class="st sourceCode code-with-copy" title="Kod Bloğu"><code>(* Zamanlayının Döngüsel Güncellemesi *)
 fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
 
-(* Ana Kontrol Döngüsü *)
+(* Ana Döngü *)
 IF xStart THEN
     (* Mod Yönetimi: Öncelik Gece Modundadır *)
     IF xNightMode THEN
         // Gece modu algoritması (Kodun bu kısmı özetlenmiştir...)
     ELSE
         (* Gündüz Modu - Durum Makinesi Akışı *)
-        CASE xStep OF
+        CASE iStep OF
             10: (* DURUM: K-G Yeşil, D-B Kırmızı *)
                 xKuzeyGuneyYesil := TRUE; 
                 xDoguBatiKirmizi := TRUE;
                 tDuration := T#5S; 
                 
                 // Durum Geçiş Koşulu
-                IF fbStepTimer.Q THEN xStep := 20; END_IF;
+                IF fbStepTimer.Q THEN iStep := 20; END_IF;
     
             20: (* DURUM: K-G Sarı, D-B Kırmızı *)
                 xKuzeyGuneyYesil := FALSE; 
                 xKuzeyGuneySari := TRUE;
                 tDuration := T#2S; 
                 
-                IF fbStepTimer.Q THEN xStep := 30; END_IF;         
+                IF fbStepTimer.Q THEN iStep := 30; END_IF;         
                  
-            // ... (Akış diğer durumlar ile devam eder) ...
+            // ... (* Akış diğer durumlar ile devam eder *) ...
         END_CASE
     END_IF;
 ELSE
     (* Reset / Güvenli Durum *)
-    xStep := 0;
-    xKuzeyGuneyYesil := FALSE; 
-    // Sistem kapatıldığında tüm çıkışlar güvenli konuma çekilir.
+    iStep := 0;
+    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
+    xDoguBatiYesil   := FALSE; xDoguBatiSari   := FALSE; xDoguBatiKirmizi   := FALSE;
+    // Sistem kapatıldığında tüm çıkışlar güvenli konuma alınır..
 END_IF;</code></pre>
-</div>
+</div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -433,7 +431,7 @@ END_IF;</code></pre>
 <section id="görsel-bileşenlerin-hizalanması" class="level3">
 <h3 class="anchored" data-anchor-id="görsel-bileşenlerin-hizalanması">5.1. Görsel Bileşenlerin Hizalanması</h3>
 <p><strong>Problem:</strong> Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.</p>
-<p><strong>Çözüm:</strong> Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.</p>
+<p><strong>Çözüm:</strong> Bileşenler sınırlı bir alan içerisine “<code>rounded-rectangle</code>” bileşeninin üzerine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve yer aldığı bölgeye göre yatay ve dikey hizalaması gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.</p>
 <div class="centered-captions quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -457,9 +455,9 @@ END_IF;</code></pre>
 </section>
 <section id="durum-verilerinin-anlık-gösterimi" class="level3">
 <h3 class="anchored" data-anchor-id="durum-verilerinin-anlık-gösterimi">5.2. Durum Verilerinin Anlık Gösterimi</h3>
-<p><strong>Problem:</strong> Simülasyon ekranında o anki trafik durumunu (Örn: “Kuzey-Güney Yeşil”) göstermek için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.<br>
+<p><strong>Problem:</strong> Simülasyon ekranında o anki trafik ışığı durumu güzergaha göre (Örn: “Kuzey-Güney Yeşil”) ekranda gösterilmesi gerekiyordu.<br>
 </p>
-<p><strong>Çözüm:</strong> <code>STRING</code> manipülasyonu yerine, CODESYS <strong>Text List</strong> özelliği kullanıldı. Durum değişkeni (<code>xStep</code>) doğrudan bir ID olarak listeye bağlandı ve sadece ilgili durumun metni dinamik olarak çağrıldı. Bu yöntemle bellek kullanımı optimize edildi.</p>
+<p><strong>Çözüm:</strong> Problemin çözümü için <strong>Text List</strong> özelliği kullanıldı. Durum değişkeni (<code>iStep</code>) doğrudan bir ID olarak listeye bağlandı ve sadece ilgili durumun metni dinamik olarak çağrıldı.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -500,24 +498,25 @@ END_IF;</code></pre>
 </div>
 </section>
 </section>
-<section id="sonuç-ve-gelecek-geliştirmeler" class="level2">
-<h2 class="anchored" data-anchor-id="sonuç-ve-gelecek-geliştirmeler">6. Sonuç ve Gelecek Geliştirmeler</h2>
-<p>Bu proje kapsamında, endüstriyel otomasyon süreçlerinde kritik öneme sahip olan trafik kontrol algoritması, <strong>IEC 61131-3</strong> standartlarına uygun olarak başarıyla modellenmiştir.</p>
-<p><strong>Proje Çıktıları:</strong> * <strong>Deterministik Kontrol:</strong> FSM mimarisi sayesinde, durumlar arası geçişlerdeki belirsizlikler ve çakışma riskleri ortadan kaldırılmıştır. * <strong>Modülerlik:</strong> Kod yapısı, <code>CASE</code> blokları ile izole edilerek bakımı kolay ve genişletilebilir bir formata getirilmiştir. * <strong>Sanal Devreye Alma:</strong> CODESYS TargetVisu kullanılarak, fiziksel donanıma ihtiyaç duyulmadan mantıksal doğrulama (Logic Verification) sağlanmıştır.</p>
-<p><strong>Gelecek İçin Yol Haritası:</strong> Projenin bir sonraki fazında, sistemi daha otonom ve veriye dayalı hale getirmek adına şu geliştirmeler planlanmaktadır: 1. <strong>OPC UA Entegrasyonu:</strong> Trafik yoğunluk verilerinin harici bir SCADA veya Python servisine aktarılması. 2. <strong>Adaptif Zamanlama:</strong> Araç yoğunluğuna göre yeşil ışık sürelerini dinamik olarak değiştiren bir sensör katmanının eklenmesi. 3. <strong>Donanım Testi:</strong> Simülasyon ortamında doğrulanan kodun, fiziksel bir PLC (Örn: Raspberry Pi Runtime) üzerinde koşturulması.</p>
+<section id="sonuç" class="level2">
+<h2 class="anchored" data-anchor-id="sonuç">6. Sonuç</h2>
+<p>Bu proje kapsamında, endüstriyel otomasyon süreçlerinde önemli bir yere sahip olan FSM yapısı trafik kontrol projesi üzerinden <strong>IEC 61131-3</strong> standartlarına uygun olarak başarıyla modellenmiştir. Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.</p>
+<p><strong>Proje Çıktıları:</strong></p>
+<ul>
+<li><p><strong>Deterministik Kontrol:</strong> FSM mimarisi sayesinde, durumlar arası geçişlerdeki belirsizlikler ve çakışma riskleri ortadan kaldırılmıştır.</p></li>
+<li><p><strong>Modülerlik:</strong> Kod yapısı, <code>CASE</code> blokları ile izole edilerek bakımı kolay ve genişletilebilir bir formata getirilmiştir.</p></li>
+<li><p><strong>Sanal Devreye Alma:</strong> CODESYS TargetVisu kullanılarak, fiziksel donanıma ihtiyaç duyulmadan mantıksal doğrulama sağlanmıştır.</p></li>
+</ul>
 </section>
 <section id="referanslar-ve-kaynakça" class="level2">
 <h2 class="anchored" data-anchor-id="referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</h2>
 <p>Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:</p>
 <ul>
-<li><strong>GitHub Deposu:</strong> <a href="https://github.com/ibrahimcapar/codesys-traffic-fsm">x/codesys-traffic-fsm</a></li>
-<li><strong>Standart:</strong> IEC 61131-3 Programming Industrial Automation Systems</li>
-<li><strong>Dokümantasyon:</strong> CODESYS Online Help (V3.5 SP21)</li>
+<li><strong>Standart:</strong> IEC 61131-3, PLCopen Coding Guidelines</li>
+<li><strong>Dokümantasyon:</strong> <a href="https://help.codesys.com/">CODESYS Online Help</a></li>
+<li><strong>GitHub Deposu:</strong> <a href="https://github.com/unusual-data/codesys-traffic-lights">ibrahimcapar/unusual-data/codesys-traffic-lights</a></li>
+<li><strong>Doğrudan İndir</strong> <a href="https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip">İndir (.zip)</a></li>
 </ul>
-</section>
-<section id="sonuç" class="level1">
-<h1>Sonuç</h1>
-<p>Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.</p>
 
 
 </section>
@@ -966,4 +965,5 @@ END_IF;</code></pre>
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

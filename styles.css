@@ -192,7 +192,7 @@ blockquote {
   }
 }
 
-/* v11*/
+
 @media (max-width: 768px) {
     html {
         font-size: 16px !important;
@@ -207,19 +207,17 @@ blockquote {
     h3 { font-size: 1.25rem !important; }
 }
 
-/* v12*/
+
 .quarto-title-meta, 
 .listing-date {
     display: none !important;
 }
 
-
-/* v13*/
 .centered-captions figcaption {
   text-align: center !important;
 }
 
-/*v14*/
+
 
 figcaption, .figure-caption {
   text-align: center !important;
@@ -232,4 +230,60 @@ figcaption, .figure-caption {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+.proje-kunye table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 8px;     
+    border: none !important;
+    margin-bottom: 3rem;
+}
+
+
+.proje-kunye thead {
+    display: none;
+}
+
+
+.proje-kunye tbody tr {
+    background-color: rgba(128, 128, 128, 0.05); 
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+
+.proje-kunye tbody tr:hover {
+    transform: translateX(5px);
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+
+.proje-kunye td {
+    padding: 12px 16px;
+    border: none !important; 
+    vertical-align: middle;
+}
+
+.proje-kunye td:first-child {
+    font-weight: 700;
+    width: 30%;
+    color: #0d6efd;
+    
+    border-right: 2px solid rgba(255, 255, 255, 0.2) !important; 
+    
+    padding-right: 15px; 
+    
+    border-radius: 8px 0 0 8px; 
+}
+
+.proje-kunye td:last-child {
+    padding-left: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+
+.proje-kunye td:last-child {
+    border-radius: 0 8px 8px 0; 
+    color: inherit;
 }
