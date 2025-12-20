@@ -80,6 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -122,11 +125,11 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../../lightbox-style.css">
 <meta property="og:title" content="TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
 <meta property="og:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
-<meta property="og:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factoryio.jpg">
+<meta property="og:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factory-io.jpg">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
 <meta name="twitter:title" content="TIA Portal ve Factory I/O ile Python: Sanal Ayıklama Uygulaması – İbrahim ÇAPAR">
 <meta name="twitter:description" content="Python programlama kullanarak Factory I/O ve TIA Portal haberleşmesiyle Factory I/O ortamında konveyörde bulunan hammaddeleri renklerine göre ayırma uygulaması.">
-<meta name="twitter:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factoryio.jpg">
+<meta name="twitter:image" content="https://ibrahimcapar.com/posts/sanal-ayiklama/images/factory-io.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -157,7 +160,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/technical/index.html"> 
-<span class="menu-text">Teknik Hafıza</span></a>
+<span class="menu-text">Teknik Referanslar</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/learning/index.html"> 
@@ -253,7 +256,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">19 Aralık 2025</p>
+      <p class="date-modified">20 Aralık 2025</p>
     </div>
   </div>
     
@@ -309,7 +312,7 @@ kullanılan sürüme uygun template dosyasını edinilmelidir.</p>
 <section id="factory-io-template-ile-tia-portal-programı-oluşturma" class="level4">
 <h4 class="anchored" data-anchor-id="factory-io-template-ile-tia-portal-programı-oluşturma">2. Factory I/O Template ile TIA Portal Programı Oluşturma</h4>
 <p>İndirilen bu template dosyası TIA Portal ile birlikte açılarak kullanılmıştır.</p>
-<p><img src="images/TIA-1.jpg" class="img-fluid"></p>
+<p><a href="images/tia-1.jpg" class="lightbox" data-gallery="tia"><img src="images/tia-1.jpg" class="img-fluid"></a></p>
 <blockquote class="blockquote">
 <p>Template dosyası ayrıca TIA Portal arayüzü üzerinden “Open Project” menüsünden de açılabilmektedir.</p>
 </blockquote>
@@ -345,19 +348,19 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/TIA-2.png" class="img-fluid figure-img"></p>
+<p><a href="images/tia-2.png" class="lightbox" data-gallery="tia" title="Ladder - 1"><img src="images/tia-2.png" class="img-fluid figure-img" alt="Ladder - 1"></a></p>
 <figcaption>Ladder - 1</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/TIA-3.png" class="img-fluid figure-img"></p>
+<p><a href="images/tia-3.png" class="lightbox" data-gallery="tia" title="Ladder - 2"><img src="images/tia-3.png" class="img-fluid figure-img" alt="Ladder - 2"></a></p>
 <figcaption>Ladder - 2</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/TIA-4.png" class="img-fluid figure-img"></p>
+<p><a href="images/tia-4.png" class="lightbox" data-gallery="tia" title="Ladder - 3"><img src="images/tia-4.png" class="img-fluid figure-img" alt="Ladder - 3"></a></p>
 <figcaption>Ladder - 3</figcaption>
 </figure>
 </div>
@@ -366,9 +369,9 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 <h4 class="anchored" data-anchor-id="plcsim---tia-portal-haberleşmesi">3. PLCSIM - TIA Portal Haberleşmesi</h4>
 <p>Hazırlanan senaryoya uygun kod hazırlandıktan sonra derleme işlemi gerçekleştirilmiştir. Bu işlem adımı için “<strong>Edit &gt; Compile</strong>” veya “<strong>Ctrl + B</strong>” kısayolu kullanılabilmektedir. Devamında üst menüde bulunan “<strong>Start Simülation</strong>” butonu ile PLCSIM’ başlatılmıştır.</p>
 <p>Açılan ekranda “<strong>Start Search</strong>” yaparak bağlı olunan cihazlar listelenmektedir. Bu işlemi yaparken “<strong>PG/PC Interface : PLCSIM</strong>” seçeneğinin belirtildiği gibi olması gerekmektedir. Arama sonucunda PLCSIM PLC seçilerek program “<strong>Load</strong>” denilerek yüklenmiştir.</p>
-<p><img src="images/TIA-5.png" class="img-fluid"></p>
+<p><a href="images/tia-5.png" class="lightbox" data-gallery="tia"><img src="images/tia-5.png" class="img-fluid"></a></p>
 <p>Devamında açılır listeden “<strong>Start Module</strong>” seçeneği seçilerek “<strong>Finish</strong>” butonuna basılarak işlem tamamlanmıştır.</p>
-<p><img src="images/TIA-6.png" class="img-fluid"></p>
+<p><a href="images/tia-6.png" class="lightbox" data-gallery="tia"><img src="images/tia-6.png" class="img-fluid"></a></p>
 <p>Böylelikle TIA Portal ile PLCSIM haberleşmesi gerçekleştirilmiştir.</p>
 <blockquote class="blockquote">
 <p>PLCSIM &gt; SimView menüsünden manuel olarak eklediğiniz girişleri değiştirerek çıkışın nasıl etkilendiğini gözlemleyebilirsiniz.</p>
@@ -379,9 +382,9 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 <p>Gerçekleştireceğimiz senaryoda görüntü işleme ile ilgili işlemler için “<strong>Python</strong>” kullanılacaktır. Python-TIA Portal haberleşmesini sağlamak için “<strong>NetToPLCSim</strong>” programı kullanılmıştır.</p>
 <p>Program indirme bağlantısı: <a href="https://sourceforge.net/projects/nettoplcsim/">NetToPLCSim</a></p>
 <p>Programı indirdikten sonra “<strong>Add</strong>” ile ekleme yapılır.</p>
-<p><img src="images/NetToPLCsim-1.png" class="img-fluid"></p>
+<p><a href="images/net-to-plc-sim-1.png" class="lightbox" data-gallery="netto"><img src="images/net-to-plc-sim-1.png" class="img-fluid"></a></p>
 <p>Gelen ekranda;<br>
-<img src="images/NetToPLCsim-2.png" class="img-fluid"><br>
+<a href="images/net-to-plc-sim-2.png" class="lightbox" data-gallery="netto"><img src="images/net-to-plc-sim-2.png" class="img-fluid"></a><br>
 <strong>1 Numara:</strong> Eklenecek bağlantıya istenilen isim verilebilmektedir.<br>
 <strong>2 Numara:</strong> Network IP Adress’in en sağında bulunan “…” sembolüne tıklayarak kulllandığınız bilgisayara ait IP adresinin eklenmesi gerekmektedir.<br>
 <strong>3 Numara:</strong> PLCSim IP Adress’in en sağında bulunan “…” sembolüne tıklayarak PLCSIM’in IP adresinin eklenmesi gerekmektedir.<br>
@@ -390,13 +393,13 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 <p>Bağlantılar doğru gerçekleştirildiğinde “…” sembolüne tıklandığında IP adresleri ekranda listelenmektedir.</p>
 </blockquote>
 <p>Belirtilen ayarlar yapıldıktan sonra ekran aşağıdaki gibi gözükmektedir. “<strong>Start Server</strong>” diyerek bağlantı başlatılmıştır.</p>
-<p><img src="images/NetToPLCsim-3.png" class="img-fluid"></p>
+<p><a href="images/net-to-plc-sim-3.png" class="lightbox" data-gallery="netto"><img src="images/net-to-plc-sim-3.png" class="img-fluid"></a></p>
 <p>Status alanının “<strong>RUNNING</strong>” olduğu görülerek bir sonraki aşamaya geçilmiştir.</p>
 </section>
 <section id="factory-io-sahnesi-oluşturma" class="level4">
 <h4 class="anchored" data-anchor-id="factory-io-sahnesi-oluşturma">5. Factory I/O Sahnesi Oluşturma</h4>
 <p>Sürecin devamında Factory I/O ile hazırlanan senaryoya uygun sahne oluşturulmuştur. Hazırlanan senaryoya uygun bileşenler (emitter, belt conveyor, curved conveyor, pusher, electric switchboard, emergency stop, stop button, start button) sahneye uygun konumda yerleştirilmiştir.<br>
-<img src="images/factoryio.jpg" class="img-fluid"></p>
+<a href="images/factory-io.jpg" class="lightbox" data-gallery="factory-io"><img src="images/factory-io.jpg" class="img-fluid"></a></p>
 <blockquote class="blockquote">
 <p>Bileşenlerin dikey eksende (yukarı/aşağı) konumlandırılması için ‘<strong>V</strong>’ kısayol tuşu kullanılmaktadır.</p>
 </blockquote>
@@ -404,9 +407,9 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 <section id="factory-io-konfigürasyon" class="level4">
 <h4 class="anchored" data-anchor-id="factory-io-konfigürasyon">6. Factory I/O Konfigürasyon</h4>
 <p>Factory I/O uygulamasında üst menüden “<strong>File&gt;Drivers”</strong> menüsüne giderek sol üstte”<strong>DRIVER</strong>”ın hizasında yanında bulunan açılır listeden “<strong>Siemens S7-PLCSIM</strong>” seçilmiştir. Bu aşamada TIA Portal-PLCSIM üzerinden Factory I/O ile haberleşmesi tamamlanmıştır.</p>
-<p><img src="images/factoryio-2.png" class="img-fluid"></p>
+<p><a href="images/factory-io-2.png" class="lightbox" data-gallery="factory-io"><img src="images/factory-io-2.png" class="img-fluid"></a></p>
 <p>PLC kodunda tanımlanan değişkenler, “<strong>File &gt; Drivers</strong>” menüsü üzerinden ilgili fiziksel giriş ve çıkış adresleri ile eşleştirilmiştir.</p>
-<p><img src="images/factoryio-3.png" class="img-fluid"></p>
+<p><a href="images/factory-io-3.png" class="lightbox" data-gallery="factory-io"><img src="images/factory-io-3.png" class="img-fluid"></a></p>
 <p>Bu işlem gerçekleştirildikten sonra sağ üstte bulunan “<strong>Connect</strong>” tuşuna basılarak TIA Portal’da hazırlanan kod PLCSIM aracılığıyla Factory I/O ile haberleştirilmiştir.</p>
 <blockquote class="blockquote">
 <p>PLCSIM aracılığı ile bağlanılan PLC “<strong>Run</strong>” modunda olmalıdır</p>
@@ -1180,6 +1183,38 @@ Ayıklama Uygulaması.”</span> December 13, 2025. <a href="https://ibrahimcapa
 </div> <!-- /content -->
 <script>videojs(video_shortcode_videojs_video1);</script>
 <script>videojs(video_shortcode_videojs_video2);</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"bottom","loop":true,"openEffect":"fade","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

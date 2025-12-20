@@ -207,8 +207,7 @@ blockquote {
     h3 { font-size: 1.25rem !important; }
 }
 
-/* deneme*/
-/* SEO verisi arka planda kalır, görsel olarak her yerden kalkar */
+/* v12*/
 .quarto-title-meta, 
 .listing-date {
     display: none !important;
@@ -221,14 +220,14 @@ blockquote {
 }
 
 /*v14*/
-/* Görsel açıklamalarını (caption) ortalar */
+
 figcaption, .figure-caption {
   text-align: center !important;
   width: 100%;
   margin-top: 0.5rem;
 }
 
-/* Eğer layout-ncol kullanıyorsanız, her bir figür konteynerini de ortalar */
+
 .quarto-figure {
   display: flex;
   flex-direction: column;

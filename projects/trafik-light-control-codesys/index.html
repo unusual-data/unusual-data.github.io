@@ -43,6 +43,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -123,7 +125,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/technical/index.html"> 
-<span class="menu-text">Teknik Hafıza</span></a>
+<span class="menu-text">Teknik Referanslar</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/learning/index.html"> 
@@ -157,25 +159,30 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <h2 id="toc-title">Bu sayfada</h2>
    
   <ul>
-  <li><a href="#özet" id="toc-özet" class="nav-link active" data-scroll-target="#özet">Özet</a></li>
-  <li><a href="#genel-bakış" id="toc-genel-bakış" class="nav-link" data-scroll-target="#genel-bakış">1. Genel Bakış</a></li>
-  <li><a href="#teknik-altyapı-ve-kullanılan-teknolojiler" id="toc-teknik-altyapı-ve-kullanılan-teknolojiler" class="nav-link" data-scroll-target="#teknik-altyapı-ve-kullanılan-teknolojiler">2. Teknik Altyapı ve Kullanılan Teknolojiler</a></li>
-  <li><a href="#sistem-mimarisi-ve-tasarım" id="toc-sistem-mimarisi-ve-tasarım" class="nav-link" data-scroll-target="#sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</a></li>
-  <li><a href="#algoritma-ve-kontrol-mantığı" id="toc-algoritma-ve-kontrol-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-kontrol-mantığı">4. Algoritma ve Kontrol Mantığı</a>
+  <li><a href="#proje-künyesi" id="toc-proje-künyesi" class="nav-link active" data-scroll-target="#proje-künyesi">1. Proje Künyesi</a></li>
+  <li><a href="#genel-bakış-ve-problem-tanımı" id="toc-genel-bakış-ve-problem-tanımı" class="nav-link" data-scroll-target="#genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</a>
   <ul class="collapse">
-  <li><a href="#gündüz-modu" id="toc-gündüz-modu" class="nav-link" data-scroll-target="#gündüz-modu">4. 1. Gündüz Modu</a></li>
-  <li><a href="#gece-modu" id="toc-gece-modu" class="nav-link" data-scroll-target="#gece-modu">4. 2. Gece Modu</a></li>
-  <li><a href="#sistem-durdurma" id="toc-sistem-durdurma" class="nav-link" data-scroll-target="#sistem-durdurma">4. 3. Sistem Durdurma</a></li>
-  <li><a href="#kritik-mühendislik-kararı" id="toc-kritik-mühendislik-kararı" class="nav-link" data-scroll-target="#kritik-mühendislik-kararı">4. 4. Kritik Mühendislik Kararı</a></li>
-  <li><a href="#kod-yapısı" id="toc-kod-yapısı" class="nav-link" data-scroll-target="#kod-yapısı">4. 5. Kod Yapısı</a></li>
+  <li><a href="#proje-amacı" id="toc-proje-amacı" class="nav-link" data-scroll-target="#proje-amacı">Proje Amacı</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
+  <li><a href="#çözüm-ve-yaklaşım" id="toc-çözüm-ve-yaklaşım" class="nav-link" data-scroll-target="#çözüm-ve-yaklaşım">Çözüm ve Yaklaşım</a></li>
+  </ul></li>
+  <li><a href="#sistem-mimarisi-ve-tasarım" id="toc-sistem-mimarisi-ve-tasarım" class="nav-link" data-scroll-target="#sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</a>
+  <ul class="collapse">
+  <li><a href="#algoritma-ve-işleyiş-mantığı" id="toc-algoritma-ve-işleyiş-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-işleyiş-mantığı">3.1. Algoritma ve İşleyiş Mantığı</a></li>
+  <li><a href="#teknik-yaklaşım" id="toc-teknik-yaklaşım" class="nav-link" data-scroll-target="#teknik-yaklaşım">3.2. Teknik Yaklaşım</a></li>
+  </ul></li>
+  <li><a href="#uygulama-ve-kod-detayları" id="toc-uygulama-ve-kod-detayları" class="nav-link" data-scroll-target="#uygulama-ve-kod-detayları">4. Uygulama ve Kod Detayları</a>
+  <ul class="collapse">
+  <li><a href="#değişken-ve-tanımlar" id="toc-değişken-ve-tanımlar" class="nav-link" data-scroll-target="#değişken-ve-tanımlar">4. 1. Değişken ve Tanımlar</a></li>
+  <li><a href="#algoritma-ve-kod-mantığı" id="toc-algoritma-ve-kod-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-kod-mantığı">4. 2. Algoritma ve Kod Mantığı</a></li>
   </ul></li>
   <li><a href="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" id="toc-karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</a>
   <ul class="collapse">
-  <li><a href="#sorun-1-görsel-bileşenlerin-hizalanması" id="toc-sorun-1-görsel-bileşenlerin-hizalanması" class="nav-link" data-scroll-target="#sorun-1-görsel-bileşenlerin-hizalanması">Sorun 1: Görsel Bileşenlerin Hizalanması</a></li>
+  <li><a href="#görsel-bileşenlerin-hizalanması" id="toc-görsel-bileşenlerin-hizalanması" class="nav-link" data-scroll-target="#görsel-bileşenlerin-hizalanması">5.1. Görsel Bileşenlerin Hizalanması</a></li>
   <li><a href="#sorun-2-durum-ekranı" id="toc-sorun-2-durum-ekranı" class="nav-link" data-scroll-target="#sorun-2-durum-ekranı">Sorun 2: Durum Ekranı</a></li>
   </ul></li>
   <li><a href="#analiz-ve-sonuçlar" id="toc-analiz-ve-sonuçlar" class="nav-link" data-scroll-target="#analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</a></li>
-  <li><a href="#referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" id="toc-referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" class="nav-link" data-scroll-target="#referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar">7. Referanslar ve Dokümantasyon (Dokümantasyon ve Kaynaklar)</a></li>
+  <li><a href="#dokümantasyon-ve-kaynaklar" id="toc-dokümantasyon-ve-kaynaklar" class="nav-link" data-scroll-target="#dokümantasyon-ve-kaynaklar">7. Dokümantasyon ve Kaynaklar</a></li>
   <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">Sonuç</a></li>
   </ul>
 </nav>
@@ -221,7 +228,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">19 Aralık 2025</p>
+      <p class="date-modified">20 Aralık 2025</p>
     </div>
   </div>
     
@@ -232,155 +239,111 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </header>
 
 
-<section id="özet" class="level2">
-<h2 class="anchored" data-anchor-id="özet">Özet</h2>
-<p>Bu çalışmada CODESYS platformu üzerinden yapısal metin (Structured Text - ST) ile bir kavşakta bulunan trafik ışıkları simüle edilmiştir. Programlama yapısında “Sonlu Durum Makinesi (Finite State Machine - FSM) yaklaşımı uygulanmıştır.</p>
-</section>
-<section id="genel-bakış" class="level2">
-<h2 class="anchored" data-anchor-id="genel-bakış">1. Genel Bakış</h2>
-<p>Bu proje bir kavşakta bulunan trafik ışıklarının birbiriyle bağlantı çalışmasının simülasyonudur. CODESYS üzerinde ST programlama ile birlikte “CODESYS Target Visualization” objesiyle görsel olarak takip edilebilecek şekilde hazırlanmıştır.</p>
-<p><strong>Temel Kazanımlar:</strong><br>
-<strong>ST Programlama:</strong> Programlama dili olarak ST seçilmiştir. Böylelikle yapısal programlama alıştırması yapılmıştır.<br>
-<strong>FSM Yaklaşımı:</strong> Durumlar <code>CASE</code> tabanlı bir FSM yapısı ile yönetilmiş, geçişler zamanlayıcı koşullarına göre tanımlanmıştır. (tkr)<br>
-<strong>Visualization:</strong> Oluşturulan değişkenler görsel objelerle senaryoya uygun ilişkilendirilmiştir. Projenin işleyişinin takip edilebilmesi için simülasyon sahnesi oluşturulmuştur. İnsan Makine Arayüzü (Human Machine Interface - HMI) mantığına yakın bir şekilde kullanıcı etkileşimli kontrol sağlanmıştır.</p>
-</section>
-<section id="teknik-altyapı-ve-kullanılan-teknolojiler" class="level2">
-<h2 class="anchored" data-anchor-id="teknik-altyapı-ve-kullanılan-teknolojiler">2. Teknik Altyapı ve Kullanılan Teknolojiler</h2>
-<p>Projenin geliştirilmesinde kullanılan araçlar aşağıdaki gibidir.</p>
+<section id="proje-künyesi" class="level2">
+<h2 class="anchored" data-anchor-id="proje-künyesi">1. Proje Künyesi</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 26%">
-<col style="width: 26%">
-<col style="width: 47%">
+<col style="width: 27%">
+<col style="width: 72%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Kategori</th>
-<th style="text-align: left;">Bileşen / Teknoloji</th>
-<th style="text-align: left;">Açıklama</th>
+<th>Kategori</th>
+<th>Detay</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Simülasyon Ortamı</strong></td>
-<td style="text-align: left;">CODESYS V3.5 SP21 Patch 4</td>
-<td style="text-align: left;">Oluşturulan değişkenlerin ilişkilendirilen görseller ile birlikte simülasyonu</td>
+<td>Disiplin / Alan</td>
+<td>Endüstriyel Otomasyon</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>PLC</strong></td>
-<td style="text-align: left;">CODESYS Control Win V3 x64</td>
-<td style="text-align: left;">Mantıksal kontrol ve değişkenlerin yönetimi</td>
+<td>Mimari &amp; Metodoloji</td>
+<td>FSM (Sonlu Durum Makinesi)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><strong>Görselleştirme Ekranı</strong></td>
-<td style="text-align: left;">CODESYS TargetVisu</td>
-<td style="text-align: left;">Çalışma senaryosunun görsel takibi</td>
+<td>Teknolojiler</td>
+<td>CODESYS V3.5, Structured Text (ST),TargetVisu</td>
+</tr>
+<tr class="even">
+<td>Uygulama Odağı</td>
+<td>Akıllı Kavşak Yönetimi</td>
+</tr>
+<tr class="odd">
+<td>Kaynak</td>
+<td>[Kodları İncele (#kod-bolumu)] - [Dosyayı İndir]</td>
 </tr>
 </tbody>
 </table>
+<div id="fig-simulasyon" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simulasyon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Sistem Simülasyonu"><source src="videos/traffic_lights.mp4"></video></div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simulasyon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Şekil&nbsp;1: Sistemin tam döngü (full-cycle) çalışma simülasyonu.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="genel-bakış-ve-problem-tanımı" class="level2">
+<h2 class="anchored" data-anchor-id="genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</h2>
+<section id="proje-amacı" class="level3">
+<h3 class="anchored" data-anchor-id="proje-amacı">Proje Amacı</h3>
+<p>Bu projenin amacı yapılandırılmış metin (Structured Text - ST) kullanarak sonlu durum makinesi (Finite State Machine - FSM) yaklaşımıyla bir kavşaktaki trafik ışığı sisteminin simülasyonunun gerçekleştirilmesidir.</p>
+</section>
+<section id="problem" class="level3">
+<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<p>Karmaşık kontrol senaryolarında, geleneksel “Ladder Logic” veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:</p>
+<ol type="1">
+<li><strong>Yönetilebilirlik:</strong> Sisteme ait durumlar (örn: başlangıç, gündüz, gece , acil vb.) arttıkça kodun okunabilirliği azalmaktadır.</li>
+<li><strong>Senkronizasyon:</strong> Zamanlayıcıların asenkron çalışması sonucu işlevlerin çakışma riski (örn: aynı anda iki yeşil ışık yanması) bulunmaktadır.</li>
+<li><strong>Esneklik:</strong> Yeni bir kural eklendiğinde tüm kodun baştan yazılması gerekebilmektedir.</li>
+</ol>
+</section>
+<section id="çözüm-ve-yaklaşım" class="level3">
+<h3 class="anchored" data-anchor-id="çözüm-ve-yaklaşım">Çözüm ve Yaklaşım</h3>
+<p>Belirtilen problemleri aşmak adına bu sistem ST programlama ile <strong>FSM</strong> mimarisi kullanılılarak yapılmıştır.</p>
+<ul>
+<li><p>Her trafik durumu (Kırmızı, Sarı, Yeşil) izole bir <code>CASE</code> adımı olarak tanımlanmıştır.</p></li>
+<li><p>Geçişler, katı mantıksal koşullara (Transition Conditions) bağlanarak hata riski minimize edilmiştir.</p></li>
+<li><p>Görselleştirme katmanı (Visualization/TargetVisu), kontrolcüden bağımsız çalışacak şekilde optimize edilmiştir.</p></li>
+</ul>
+</section>
 </section>
 <section id="sistem-mimarisi-ve-tasarım" class="level2">
 <h2 class="anchored" data-anchor-id="sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</h2>
-<p>Sistem CODESYS ortamında hazırlanan PLC programı ile bu projeye eklenen “Visualization” objesiyle etkileşim kurmaktadır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.</p>
+<p>Projenin teknik altyapısı, sistemin kararlılığını ve genişletilebilirliğini garanti altına alacak şekilde kurgulanmıştır. Sistem CODESYS ortamında hazırlanan PLC programı ile bu projeye eklenen “Visualization” objesiyle etkileşim kurmaktadır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.</p>
+<section id="algoritma-ve-işleyiş-mantığı" class="level3">
+<h3 class="anchored" data-anchor-id="algoritma-ve-işleyiş-mantığı">3.1. Algoritma ve İşleyiş Mantığı</h3>
+<p>Sistem kontrolü, durum ve geçişlere dayalı <strong>Sonlu Durum Makinesi (FSM)</strong> yapısı ile gerçekleştirilmiştir. Algoritma, karmaşık <code>IF-ELSE</code> blokları yerine, birbirinden izole edilmiş durumlar (states) üzerinden ilerlemektedir:</p>
+<ul>
+<li><strong>Başlangıç:</strong> Sistemin enerjilendiği, sistem kapanırken değişkenlerin sıfırlandığı ve güvenlik kontrollerinin yapıldığı ana döngü.</li>
+<li><strong>Gündüz Modu :</strong> Trafik ışıklarının önceden tanımlı sürelerde (Kırmızı, Sarı, Yeşil) sıralı olarak değiştiği döngü.</li>
+<li><strong>Gece Modu :</strong> Belirli bir tetikleyici ile (manuel buton veya saat) devreye giren, tüm sarı ışıkların saniyede iki kez yanım söndüğü döngü.</li>
+</ul>
 </section>
-<section id="algoritma-ve-kontrol-mantığı" class="level2">
-<h2 class="anchored" data-anchor-id="algoritma-ve-kontrol-mantığı">4. Algoritma ve Kontrol Mantığı</h2>
-<section id="gündüz-modu" class="level3">
-<h3 class="anchored" data-anchor-id="gündüz-modu">4. 1. Gündüz Modu</h3>
-<p>Simülasyon başlatıldığında sistem kapalı durumdadır ve ekranda “Sistem Kapalı” bilgisi görünmektedir. “Sistem Durdur / Başlat” butonuna basılmasıyla sistem aktif hale gelir ve gündüz trafik kontrol döngüsü çalışmaya başlamaktadır. Gündüz çalışma modunda sistem, <strong>Kuzey-Güney</strong> ve <strong>Doğu-Batı</strong> yönlerini aşağıdaki sırayla kontrol etmektedir:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Yön 1</th>
-<th>Işık Rengi</th>
-<th>Yön 2</th>
-<th>Işık Rengi</th>
-<th>Süre</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Kuzey - Güney</td>
-<td><code>YEŞİL</code></td>
-<td>Doğu - Batı</td>
-<td><code>KIRMIZI</code></td>
-<td>5 saniye</td>
-</tr>
-<tr class="even">
-<td>Kuzey - Güney</td>
-<td><code>SARI</code></td>
-<td>Doğu - Batı</td>
-<td><code>KIRMIZI</code></td>
-<td>2 saniye</td>
-</tr>
-<tr class="odd">
-<td>Kuzey - Güney</td>
-<td><code>KIRMIZI</code></td>
-<td>Doğu - Batı</td>
-<td><code>YEŞİL</code></td>
-<td>5 saniye</td>
-</tr>
-</tbody>
-</table>
-<p>Tablo 4. 1. 1</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Yön 1</th>
-<th>Işık Rengi</th>
-<th>Yön 2</th>
-<th>Işık Rengi</th>
-<th>Süre</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Doğu - Batı</td>
-<td><code>YEŞİL</code></td>
-<td>Kuzey - Güney</td>
-<td><code>KIRMIZI</code></td>
-<td>5 saniye</td>
-</tr>
-<tr class="even">
-<td>Doğu - Batı</td>
-<td><code>SARI</code></td>
-<td>Kuzey - Güney</td>
-<td><code>KIRMIZI</code></td>
-<td>2 saniye</td>
-</tr>
-<tr class="odd">
-<td>Doğu - Batı</td>
-<td><code>KIRMIZI</code></td>
-<td>Kuzey - Güney</td>
-<td><code>YEŞİL</code></td>
-<td>5 saniye</td>
-</tr>
-</tbody>
-</table>
-<p>Tablo 4. 1. 2</p>
-<p>Bu döngü, sistem durdurulasıya kadar sürekli olarak tekrar etmektedir. Geçen süre bilgisi bilgilendirme ekranı üzerinden gösterilmiştir.</p>
+<section id="teknik-yaklaşım" class="level3">
+<h3 class="anchored" data-anchor-id="teknik-yaklaşım">3.2. Teknik Yaklaşım</h3>
+<ul>
+<li><p>Sistemin programlanmasında dil seçimi olarak ST programlama tercih edilmiştir. Ladder diyagramı görsel olarak takip edilebilen bir yapıda olsa da durum yönetiminde yetersiz kalabilmektedir. Bu projede, kodun okunabilirliğini arttırmak hata ve durum yönetimini daha kolaylaştırmıştır.</p></li>
+<li><p>Sıralı akış yerine durum tabanlı yaklaşım seçilmesinin temel nedeni <strong>genişletilebilirliktir</strong>. İleride sisteme “Yaya Butonu” veya “Acil Durum Modu” gibi eklemeler yapılması gerektiğinde, mevcut kod yapısını bozmadan sadece yeni bir <code>STATE</code> bloğu entegre edilmesi yeterli olacaktır.</p></li>
+</ul>
 </section>
-<section id="gece-modu" class="level3">
-<h3 class="anchored" data-anchor-id="gece-modu">4. 2. Gece Modu</h3>
-<p>Sistem çalışırken <strong>Gece Modu</strong> etkinleştirildiğinde gündüze ait trafik döngüsü durdurulur ve tüm yönlerdeki ışıklar saniyede 2 kez yanıp söner. Gece modu devre dışı bırakıldığında sistem gündüz çalışma moduna dönmektedir.</p>
 </section>
-<section id="sistem-durdurma" class="level3">
-<h3 class="anchored" data-anchor-id="sistem-durdurma">4. 3. Sistem Durdurma</h3>
-<p>“Sistem Durdur / Başlat” butonuna tekrar basıldığında sistem kapanır ve başlangıç durumuna geçmektedir.</p>
-</section>
-<section id="kritik-mühendislik-kararı" class="level3">
-<h3 class="anchored" data-anchor-id="kritik-mühendislik-kararı">4. 4. Kritik Mühendislik Kararı</h3>
-<p>Burada neden X protokolünü veya Y donanımını seçtiğini teknik gerekçeleriyle belirtmelisin. Bu, mühendislik vizyonunu yansıtır.</p>
-</section>
-<section id="kod-yapısı" class="level3">
-<h3 class="anchored" data-anchor-id="kod-yapısı">4. 5. Kod Yapısı</h3>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+<section id="uygulama-ve-kod-detayları" class="level2">
+<h2 class="anchored" data-anchor-id="uygulama-ve-kod-detayları">4. Uygulama ve Kod Detayları</h2>
+<p>Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlara uygunluk gözetilerek geliştirilmiştir. Aşağıda, projenin temelini oluşturan veri yapıları ve işleyen kod mantığı teknik detaylarıyla sunulmuştur.</p>
+<section id="değişken-ve-tanımlar" class="level3">
+<h3 class="anchored" data-anchor-id="değişken-ve-tanımlar">4. 1. Değişken ve Tanımlar</h3>
+<p>Sistemde kullanılan değişkenler ve veri tipleri, <strong>IEC 61131-3</strong> standartlarına uygun olarak tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Veri Tanımlamalarını İncele">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Değişkenler
+<span class="screen-reader-only">Not</span>Veri Tanımlamalarını İncele
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -388,104 +351,76 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <div class="callout-body-container callout-body">
 <pre class="st"><code>PROGRAM PLC_PRG
 VAR
-    xStart      : BOOL := FALSE;  
-    xNightMode  : BOOL := FALSE;
+    (* --- Sistem Durum Yönetimi --- *)
+    xStart      : BOOL := FALSE;  // Sistemin aktiflik durumu
+    xNightMode  : BOOL := FALSE;  // Operasyonel mod seçimi
     
-    xStep       : INT := 0;
-    tDuration   : TIME;            
+    (* --- FSM Durum İndeksleri --- *)
+    xStep       : INT := 0;       // Mevcut durum adımı
+    tDuration   : TIME;           // Dinamik zamanlayıcı değeri
     
+    (* --- Çıkış Birimleri --- *)
     xKuzeyGuneyYesil    : BOOL;
-    xKuzeyGuneySari     : BOOL; 
     xKuzeyGuneyKirmizi  : BOOL; 
-    xDoguBatiYesil      : BOOL;
-    xDoguBatiSari       : BOOL;
-    xDoguBatiKirmizi    : BOOL;
+    // ... (Diğer tanımlar kısaltılmıştır)
 
-    fbStepTimer         : TON;
-    fbBlinkTimer        : TON;                
+    (* --- Fonksiyon Blokları --- *)
+    fbStepTimer         : TON;    // Ana döngü zamanlayıcısı
+    fbBlinkTimer        : TON;    // Sinyal üreteci      
 END_VAR</code></pre>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled">
+</section>
+<section id="algoritma-ve-kod-mantığı" class="level3">
+<h3 class="anchored" data-anchor-id="algoritma-ve-kod-mantığı">4. 2. Algoritma ve Kod Mantığı</h3>
+<p>Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Kod Mantığını İncele">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Programming
+<span class="screen-reader-only">Not</span>Kod Mantığını İncele
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre class="st"><code>fbBlinkTimer(IN := NOT fbBlinkTimer.Q, PT := T#1S);
+<pre class="st"><code>(* Zamanlayıcıların Döngüsel Güncellemesi *)
 fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
 
+(* Ana Kontrol Döngüsü *)
 IF xStart THEN
+    (* Mod Yönetimi: Öncelik Gece Modundadır *)
     IF xNightMode THEN
-        xStep :=99;
-        xKuzeyGuneyYesil := FALSE; xKuzeyGuneyKirmizi := FALSE;
-        xDoguBatiYesil := FALSE; xDoguBatiKirmizi := FALSE;
-        IF fbBlinkTimer.ET &lt; T#500MS THEN
-            xKuzeyGuneySari := TRUE;
-            xDoguBatiSari := TRUE;
-        ELSE
-            xKuzeyGuneySari := FALSE;
-            xDoguBatiSari := FALSE; 
-        END_IF
+        // Gece modu algoritması (Kodun bu kısmı özetlenmiştir...)
     ELSE
-        IF xStep = 99 THEN
-            xStep :=0 ;
-        END_IF
+        (* Gündüz Modu - Durum Makinesi Akışı *)
         CASE xStep OF
-            0: 
-                xStep := 10;
-            10: 
-                xKuzeyGuneyYesil := TRUE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
-                xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := TRUE;
-                
+            10: (* DURUM: K-G Yeşil, D-B Kırmızı *)
+                xKuzeyGuneyYesil := TRUE; 
+                xDoguBatiKirmizi := TRUE;
                 tDuration := T#5S; 
                 
-                IF fbStepTimer.Q THEN
-                    xStep := 20; 
-                END_IF;
+                // Durum Geçiş Koşulu
+                IF fbStepTimer.Q THEN xStep := 20; END_IF;
     
-            20:
-                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := TRUE ; xKuzeyGuneyKirmizi := FALSE;
-                xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := TRUE;
-                
+            20: (* DURUM: K-G Sarı, D-B Kırmızı *)
+                xKuzeyGuneyYesil := FALSE; 
+                xKuzeyGuneySari := TRUE;
                 tDuration := T#2S; 
                 
-                IF fbStepTimer.Q THEN
-                    xStep := 30; 
-                END_IF;         
+                IF fbStepTimer.Q THEN xStep := 30; END_IF;         
                  
-            30: (* K-G Kırmızı, D-B Yeşil *)
-                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE ; xKuzeyGuneyKirmizi := TRUE;
-                xDoguBatiYesil := TRUE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := FALSE;
-                
-                tDuration := T#5S; 
-                
-                IF fbStepTimer.Q THEN
-                    xStep := 40; 
-                END_IF;            
-    
-            40: (* K-G Kırmızı, D-B Sarı *)
-                xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE ; xKuzeyGuneyKirmizi := TRUE;
-                xDoguBatiYesil := FALSE; xDoguBatiSari := TRUE; xDoguBatiKirmizi := FALSE;
-                
-                tDuration := T#2S; 
-                
-                IF fbStepTimer.Q THEN
-                    xStep := 10; 
-                END_IF;
+            // ... (Akış diğer durumlar ile devam eder) ...
         END_CASE
     END_IF;
 ELSE
+    (* Reset / Güvenli Durum *)
     xStep := 0;
-    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
-    xDoguBatiYesil := FALSE; xDoguBatiSari := FALSE; xDoguBatiKirmizi := FALSE;
+    xKuzeyGuneyYesil := FALSE; 
+    // Sistem kapatıldığında tüm çıkışlar güvenli konuma çekilir.
 END_IF;</code></pre>
 </div>
 </div>
@@ -494,10 +429,11 @@ END_IF;</code></pre>
 </section>
 <section id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="level2">
 <h2 class="anchored" data-anchor-id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</h2>
-<section id="sorun-1-görsel-bileşenlerin-hizalanması" class="level3">
-<h3 class="anchored" data-anchor-id="sorun-1-görsel-bileşenlerin-hizalanması">Sorun 1: Görsel Bileşenlerin Hizalanması</h3>
-<p><strong>Durum:</strong> Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.<br>
-<strong>Çözüm:</strong> Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.</p>
+<p>Proje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtları aşmak için uygulanan mühendislik çözümleri aşağıda detaylandırılmıştır.</p>
+<section id="görsel-bileşenlerin-hizalanması" class="level3">
+<h3 class="anchored" data-anchor-id="görsel-bileşenlerin-hizalanması">5.1. Görsel Bileşenlerin Hizalanması</h3>
+<p><strong>Problem:</strong> Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.</p>
+<p><strong>Çözüm:</strong> Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.</p>
 <div class="centered-captions quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -566,17 +502,15 @@ END_IF;</code></pre>
 <section id="analiz-ve-sonuçlar" class="level2">
 <h2 class="anchored" data-anchor-id="analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</h2>
 </section>
-<section id="referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar" class="level2">
-<h2 class="anchored" data-anchor-id="referanslar-ve-dokümantasyon-dokümantasyon-ve-kaynaklar">7. Referanslar ve Dokümantasyon (Dokümantasyon ve Kaynaklar)</h2>
+<section id="dokümantasyon-ve-kaynaklar" class="level2">
+<h2 class="anchored" data-anchor-id="dokümantasyon-ve-kaynaklar">7. Dokümantasyon ve Kaynaklar</h2>
 <ul>
 <li>&nbsp; <a href="https://github.com/ibrahimcapar/codesys-traffic-fsm">GitHub Codesys Proje Arşivi</a></li>
-<li>&nbsp; <a href="files/traffic_light.project">Codesys Proje Dosyası (.project)</a></li>
-<li>&nbsp; <a href="files/plc_standards.pdf">PLC Programlama Standartları Raporu</a></li>
 </ul>
 </section>
 <section id="sonuç" class="level1">
 <h1>Sonuç</h1>
-<p>Bu proje ile görüntü işleme algoritmalarının endüstriyel otomasyon sistemlerine entegrasyonu başarılı bir şekilde simüle edilmiştir. Gelecek geliştirmelerde, <strong>OPC UA</strong> protokolü kullanılarak verilerin standartlaştırılması ve sistemin gerçek bir fiziksel konveyör üzerinde test edilmesi planlanmaktadır.</p>
+<p>Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.</p>
 
 
 </section>
@@ -988,6 +922,7 @@ END_IF;</code></pre>
   });
   </script>
 </div> <!-- /content -->
+<script>videojs(video_shortcode_videojs_video1);</script>
 <script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"bottom","loop":true,"openEffect":"fade","selector":".lightbox"});
 (function() {
   let previousOnload = window.onload;

@@ -45,6 +45,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-a39eee177a8c87582d4ccc42e2201d1d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script src="../../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -87,11 +90,11 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../../lightbox-style.css">
 <meta property="og:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
 <meta property="og:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
-<meta property="og:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
+<meta property="og:image" content="https://ibrahimcapar.com/posts/visual-components-layout/images/vc-cover.jpg">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
 <meta name="twitter:title" content="Visual Components #1: Layout Konfigürasyonu – İbrahim ÇAPAR">
 <meta name="twitter:description" content="Visual Components Academy platformunda bulunan “Introduction to Layout Configuration” dersinin uygulaması.">
-<meta name="twitter:image" content="https://ibrahimcapar.com/posts/visual-components-layout/VC-cover.jpg">
+<meta name="twitter:image" content="https://ibrahimcapar.com/posts/visual-components-layout/images/vc-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -122,7 +125,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/technical/index.html"> 
-<span class="menu-text">Teknik Hafıza</span></a>
+<span class="menu-text">Teknik Referanslar</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../notes/learning/index.html"> 
@@ -199,7 +202,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">19 Aralık 2025</p>
+      <p class="date-modified">20 Aralık 2025</p>
     </div>
   </div>
     
@@ -230,12 +233,12 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <section id="ekran-görüntüsü" class="level2">
 <h2 class="anchored" data-anchor-id="ekran-görüntüsü">Ekran Görüntüsü</h2>
 <p>Aşağıda kendi oluşturduğum simülasyonun görüntüsü yer almaktadır:</p>
-<p><img src="VC-cover.jpg" class="img-fluid"></p>
+<p><a href="images/vc-cover.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/vc-cover.jpg" class="img-fluid"></a></p>
 </section>
 <section id="simülasyon-adımları" class="level2">
 <h2 class="anchored" data-anchor-id="simülasyon-adımları">Simülasyon Adımları</h2>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_1.mp4"></video></div>
-<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="stage_2.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/stage-1.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="videos/stage-2.mp4"></video></div>
 </section>
 <section id="çıkarımlarım-key-takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="çıkarımlarım-key-takeaways">Çıkarımlarım (Key Takeaways)</h2>
@@ -660,6 +663,38 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </div> <!-- /content -->
 <script>videojs(video_shortcode_videojs_video1);</script>
 <script>videojs(video_shortcode_videojs_video2);</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"fade","descPosition":"bottom","loop":true,"openEffect":"fade","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
