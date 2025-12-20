@@ -150,9 +150,9 @@ Proje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtl
 **Çözüm:** Bileşenler sınırlı bir alan içerisine "`rounded-rectangle`" bileşeninin üzerine çizildi. Böylece "Visualization" ekranında bileşenlerin birbirine ve yer aldığı bölgeye göre yatay ve dikey hizalaması gerçekleştirildi. Daha sonra eklenen "rounded-rectangle" bileşeni görünmez yapıldı.
 
 ::: {.centered-captions layout-ncol="2"}
-![Görsel 1](images\codesys-1.png){.lightbox group="ana-grup"}
+![Görsel 1](images/codesys-1.png){.lightbox group="ana-grup"}
 
-![Görsel 2](images\codesys-2.png){.lightbox group="ana-grup"}
+![Görsel 2](images/codesys-2.png){.lightbox group="ana-grup"}
 :::
 
 ### 5.2. Durum Verilerinin Anlık Gösterimi
