@@ -1,0 +1,14 @@
+---
+title: "Blog Yazılarım"
+subtitle: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine çalışmalar"
+date-modified: ""
+listing:
+  contents: "."
+  sort: "date desc" 
+  type: default     
+  #categories: true
+  sort-ui: true     
+  filter-ui: true
+  fields: [image, date, title, subtitle,description]
+  page-size: 10
+---

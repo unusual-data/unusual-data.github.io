@@ -1,0 +1,14 @@
+---
+title: "Öğrenme Günlüğü"
+subtitle: "Gelişim Süreci ve Günlük Teknik Notları"
+date-modified: ""
+listing:
+  contents: "*.qmd"
+  type: default 
+  sort: "date desc"
+  categories: true
+  sort-ui: false
+  filter-ui: false
+---
+
+Sürekli gelişim kapsamında öğrenilen yeni teknolojiler ve karşılaşılan günlük problemlerin kısa notları.

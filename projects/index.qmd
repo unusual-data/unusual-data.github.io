@@ -1,0 +1,17 @@
+---
+title: "Mühendislik Projeleri"
+subtitle: "Endüstriyel Otomasyon, Görüntü İşleme ve Kontrol Sistemleri Arşivi"
+date-modified: ""
+author: ""
+listing:
+  contents: "*/index.qmd"
+  type: grid 
+  sort: "date desc"
+  categories: true 
+  sort-ui: [title, date] 
+  filter-ui: true 
+  page-size: 12 
+  fields: [image, date, title, subtitle, categories, reading-time]
+  grid-columns: 3
+  image-height: "200px"
+---

@@ -1,0 +1,22 @@
+---
+title: "İbrahim Çapar"
+subtitle: "Elektrik-Elektronik Mühendisi"
+
+about:
+  template: trestles
+  image: /media/pictures/pp/pic.png
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/ibrahimcapar1/
+      target: _blank
+    - icon: envelope
+      text: Email
+      href: mailto:ibrahimcaparr1@gmail.com
+toc : false
+---
+
+## Hakkımda
+
+Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.
+ 

@@ -1,0 +1,10 @@
+author: "İbrahim Çapar"
+format:
+  html:
+    toc: true
+    toc-title: "İçerik"
+    toc-depth: 3
+    code-copy: true
+    anchor-sections: true
+    smooth-scroll: true
+    number-sections: false

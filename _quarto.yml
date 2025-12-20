@@ -1,0 +1,67 @@
+---
+project:
+  type: website
+
+lang: tr
+
+website:
+  title: "İbrahim ÇAPAR"
+  description: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine kişisel portfolyo ve blog."
+  site-url: "https://ibrahimcapar.com"
+  google-analytics: "G-SRL55MJHF7"
+
+  open-graph: true
+  twitter-card: true
+  
+  navbar:
+    background: "#020617"
+    left:
+      - href: posts/index.qmd
+        text: Blog
+      - href: projects/index.qmd
+        text: Projelerim
+      - href: notes/technical/index.qmd
+        text: Teknik Referanslar
+      - href: notes/learning/index.qmd
+        text: Öğrenme Günlüğü
+    
+    right:
+      - icon: linkedin
+        href: https://linkedin.com/in/ibrahimcapar1
+        target: _blank
+        aria-label: "LinkedIn"
+      - icon: envelope-fill
+        href: "mailto:ibrahimcaparr1@gmail.com"
+        aria-label: "Email"
+
+format:
+  html:
+    code-copy: true
+    lightbox:
+      effect: fade
+      desc-position: bottom
+      loop: true
+    code-overflow: wrap
+    link-external-newwindow: true
+    theme: darkly
+    css: 
+      - styles.css
+      - lightbox-style.css
+    toc: true 
+    highlight-style: dracula
+    minify:
+      css: true
+      js: true
+    date-format: "DD MMMM YYYY"
+    date-modified: last-modified
+execute:
+  freeze: auto
+   
+
+mainfont: "Inter"   
+fontsize: 1.1em      
+linestretch: 1.6
+
+filters:
+  - code.lua
+...

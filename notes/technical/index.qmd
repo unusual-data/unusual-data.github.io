@@ -1,0 +1,19 @@
+---
+title: "Teknik Referanslar"
+subtitle: "Mühendislik Kavramları ve Uygulama Notları"
+date-modified: ""
+listing:
+  contents: "*.qmd"
+  type: table 
+  sort: "title"
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  fields: [title, date, categories] 
+  field-display-names:
+    title: "Konu Başlığı"
+    date: "Son Güncelleme"
+    categories: "Kategoriler"
+---
+
+Bu bölümde, mühendislik disiplinlerine dair kalıcı teknik bilgiler ve referans dökümanları yer almaktadır.
