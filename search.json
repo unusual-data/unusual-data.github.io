@@ -39,7 +39,7 @@
     "href": "projects/index.html",
     "title": "Mühendislik Projeleri",
     "section": "",
-    "text": "Sıralama Öğesi\n      Varsayılan\n      \n        Başlık\n      \n      \n        Tarih - En eski\n      \n      \n        Tarih - En yeni\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n[Proje Başlığı: Teknik ve Tanımlayıcı]\n\n2 dakika\n\n\nAlan 1\n\nAlan 2\n\nTeknoloji\n\n\n\n\nInvalid Date\n\n\n\n\n\n\n\n\n\n\n\n\n\nCODESYS Tabanlı Trafik Işığı Kontrol Sistemi\n\n8 dakika\n\n\nEndüstriyel Otomasyon\n\nPLC\n\nCODESYS\n\nVisu\n\nST\n\n\n\n\n19 Aralık 2025\n\n\n\n\n\n\nEşleşen öğe yok"
+    "text": "Sıralama Öğesi\n      Varsayılan\n      \n        Başlık\n      \n      \n        Tarih - En eski\n      \n      \n        Tarih - En yeni\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n[Proje Başlığı: Teknik ve Tanımlayıcı]\n\n2 dakika\n\n\nAlan 1\n\nAlan 2\n\nTeknoloji\n\n\n\n\nInvalid Date\n\n\n\n\n\n\n\n\n\n\n\n\n\nCODESYS Tabanlı Trafik Işığı Kontrol Sistemi\n\n9 dakika\n\n\nEndüstriyel Otomasyon\n\nPLC\n\nCODESYS\n\nVisu\n\nST\n\n\n\n\n19 Aralık 2025\n\n\n\n\n\n\nEşleşen öğe yok"
   },
   {
     "objectID": "projects/trafik-light-control-codesys/index.html",
@@ -81,21 +81,21 @@
     "href": "projects/trafik-light-control-codesys/index.html#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri",
     "title": "CODESYS Tabanlı Trafik Işığı Kontrol Sistemi",
     "section": "5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri",
-    "text": "5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri\nProje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtları aşmak için uygulanan mühendislik çözümleri aşağıda detaylandırılmıştır.\n\n5.1. Görsel Bileşenlerin Hizalanması\nProblem: Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.\nÇözüm: Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.\n\n\n\n\n\n\nGörsel 1\n\n\n\n\n\n\n\nGörsel 2\n\n\n\n\n\n\n\nSorun 2: Durum Ekranı\nDurum: Simülasyon ekranında tasarlanan güzergahlar için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.\nÇözüm: Trafik ışıklarının renklerine ait kod blokları “Text List” ile ilişkilendirildi. Daha sonra ekranda “Text Field” içerisine “Dynamic Texts” özelliği kullanılarak simülasyon içerisinde durumlar ekranda gösterildi. İki farklı güzergah olduğu için her iki güzergah için bu çözüm uygulandı.\n\n\n\n\n\n\nStates V1\n\n\n\n\n\n\n\nStates V1\n\n\n\n\n\n\n\n\n\nDynamics Text V1\n\n\n\n\n\n\n\nDynamics Text V2"
+    "text": "5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri\nProje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtları aşmak için uygulanan mühendislik çözümleri aşağıda detaylandırılmıştır.\n\n5.1. Görsel Bileşenlerin Hizalanması\nProblem: Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.\nÇözüm: Bileşenler sınırlı bir alan içerisine rounded-rectangle içerisine çizildi. Böylece “Visualization” ekranında bileşenlerin birbirine ve içerisinde bulunduğu sınır bölgeye göre yatay ve dikey hizalamalar gerçekleştirildi. Daha sonra eklenen “rounded-rectangle” bileşeni görünmez yapıldı.\n\n\n\n\n\n\nGörsel 1\n\n\n\n\n\n\n\nGörsel 2\n\n\n\n\n\n\n\n5.2. Durum Verilerinin Anlık Gösterimi\nProblem: Simülasyon ekranında o anki trafik durumunu (Örn: “Kuzey-Güney Yeşil”) göstermek için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.\n\nÇözüm: STRING manipülasyonu yerine, CODESYS Text List özelliği kullanıldı. Durum değişkeni (xStep) doğrudan bir ID olarak listeye bağlandı ve sadece ilgili durumun metni dinamik olarak çağrıldı. Bu yöntemle bellek kullanımı optimize edildi.\n\n\n\n\n\n\nStates V1\n\n\n\n\n\n\n\nStates V1\n\n\n\n\n\n\n\n\n\nDynamics Text V1\n\n\n\n\n\n\n\nDynamics Text V2"
   },
   {
-    "objectID": "projects/trafik-light-control-codesys/index.html#analiz-ve-sonuçlar",
-    "href": "projects/trafik-light-control-codesys/index.html#analiz-ve-sonuçlar",
+    "objectID": "projects/trafik-light-control-codesys/index.html#sonuç-ve-gelecek-geliştirmeler",
+    "href": "projects/trafik-light-control-codesys/index.html#sonuç-ve-gelecek-geliştirmeler",
     "title": "CODESYS Tabanlı Trafik Işığı Kontrol Sistemi",
-    "section": "6. Analiz ve Sonuçlar",
-    "text": "6. Analiz ve Sonuçlar"
+    "section": "6. Sonuç ve Gelecek Geliştirmeler",
+    "text": "6. Sonuç ve Gelecek Geliştirmeler\nBu proje kapsamında, endüstriyel otomasyon süreçlerinde kritik öneme sahip olan trafik kontrol algoritması, IEC 61131-3 standartlarına uygun olarak başarıyla modellenmiştir.\nProje Çıktıları: * Deterministik Kontrol: FSM mimarisi sayesinde, durumlar arası geçişlerdeki belirsizlikler ve çakışma riskleri ortadan kaldırılmıştır. * Modülerlik: Kod yapısı, CASE blokları ile izole edilerek bakımı kolay ve genişletilebilir bir formata getirilmiştir. * Sanal Devreye Alma: CODESYS TargetVisu kullanılarak, fiziksel donanıma ihtiyaç duyulmadan mantıksal doğrulama (Logic Verification) sağlanmıştır.\nGelecek İçin Yol Haritası: Projenin bir sonraki fazında, sistemi daha otonom ve veriye dayalı hale getirmek adına şu geliştirmeler planlanmaktadır: 1. OPC UA Entegrasyonu: Trafik yoğunluk verilerinin harici bir SCADA veya Python servisine aktarılması. 2. Adaptif Zamanlama: Araç yoğunluğuna göre yeşil ışık sürelerini dinamik olarak değiştiren bir sensör katmanının eklenmesi. 3. Donanım Testi: Simülasyon ortamında doğrulanan kodun, fiziksel bir PLC (Örn: Raspberry Pi Runtime) üzerinde koşturulması."
   },
   {
-    "objectID": "projects/trafik-light-control-codesys/index.html#dokümantasyon-ve-kaynaklar",
-    "href": "projects/trafik-light-control-codesys/index.html#dokümantasyon-ve-kaynaklar",
+    "objectID": "projects/trafik-light-control-codesys/index.html#referanslar-ve-kaynakça",
+    "href": "projects/trafik-light-control-codesys/index.html#referanslar-ve-kaynakça",
     "title": "CODESYS Tabanlı Trafik Işığı Kontrol Sistemi",
-    "section": "7. Dokümantasyon ve Kaynaklar",
-    "text": "7. Dokümantasyon ve Kaynaklar\n\n  GitHub Codesys Proje Arşivi"
+    "section": "7. Referanslar ve Kaynakça",
+    "text": "7. Referanslar ve Kaynakça\nProje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:\n\nGitHub Deposu: x/codesys-traffic-fsm\nStandart: IEC 61131-3 Programming Industrial Automation Systems\nDokümantasyon: CODESYS Online Help (V3.5 SP21)"
   },
   {
     "objectID": "index.html",

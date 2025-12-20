@@ -179,10 +179,10 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   <li><a href="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" id="toc-karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</a>
   <ul class="collapse">
   <li><a href="#görsel-bileşenlerin-hizalanması" id="toc-görsel-bileşenlerin-hizalanması" class="nav-link" data-scroll-target="#görsel-bileşenlerin-hizalanması">5.1. Görsel Bileşenlerin Hizalanması</a></li>
-  <li><a href="#sorun-2-durum-ekranı" id="toc-sorun-2-durum-ekranı" class="nav-link" data-scroll-target="#sorun-2-durum-ekranı">Sorun 2: Durum Ekranı</a></li>
+  <li><a href="#durum-verilerinin-anlık-gösterimi" id="toc-durum-verilerinin-anlık-gösterimi" class="nav-link" data-scroll-target="#durum-verilerinin-anlık-gösterimi">5.2. Durum Verilerinin Anlık Gösterimi</a></li>
   </ul></li>
-  <li><a href="#analiz-ve-sonuçlar" id="toc-analiz-ve-sonuçlar" class="nav-link" data-scroll-target="#analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</a></li>
-  <li><a href="#dokümantasyon-ve-kaynaklar" id="toc-dokümantasyon-ve-kaynaklar" class="nav-link" data-scroll-target="#dokümantasyon-ve-kaynaklar">7. Dokümantasyon ve Kaynaklar</a></li>
+  <li><a href="#sonuç-ve-gelecek-geliştirmeler" id="toc-sonuç-ve-gelecek-geliştirmeler" class="nav-link" data-scroll-target="#sonuç-ve-gelecek-geliştirmeler">6. Sonuç ve Gelecek Geliştirmeler</a></li>
+  <li><a href="#referanslar-ve-kaynakça" id="toc-referanslar-ve-kaynakça" class="nav-link" data-scroll-target="#referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</a></li>
   <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">Sonuç</a></li>
   </ul>
 </nav>
@@ -455,10 +455,11 @@ END_IF;</code></pre>
 </div>
 </div>
 </section>
-<section id="sorun-2-durum-ekranı" class="level3">
-<h3 class="anchored" data-anchor-id="sorun-2-durum-ekranı">Sorun 2: Durum Ekranı</h3>
-<p><strong>Durum:</strong> Simülasyon ekranında tasarlanan güzergahlar için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.<br>
-<strong>Çözüm:</strong> Trafik ışıklarının renklerine ait kod blokları “Text List” ile ilişkilendirildi. Daha sonra ekranda “Text Field” içerisine “Dynamic Texts” özelliği kullanılarak simülasyon içerisinde durumlar ekranda gösterildi. İki farklı güzergah olduğu için her iki güzergah için bu çözüm uygulandı.</p>
+<section id="durum-verilerinin-anlık-gösterimi" class="level3">
+<h3 class="anchored" data-anchor-id="durum-verilerinin-anlık-gösterimi">5.2. Durum Verilerinin Anlık Gösterimi</h3>
+<p><strong>Problem:</strong> Simülasyon ekranında o anki trafik durumunu (Örn: “Kuzey-Güney Yeşil”) göstermek için güzergaha göre trafik ışığının ne renk olduğu ekranda gösterilmesi gerekiyordu.<br>
+</p>
+<p><strong>Çözüm:</strong> <code>STRING</code> manipülasyonu yerine, CODESYS <strong>Text List</strong> özelliği kullanıldı. Durum değişkeni (<code>xStep</code>) doğrudan bir ID olarak listeye bağlandı ve sadece ilgili durumun metni dinamik olarak çağrıldı. Bu yöntemle bellek kullanımı optimize edildi.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -499,13 +500,19 @@ END_IF;</code></pre>
 </div>
 </section>
 </section>
-<section id="analiz-ve-sonuçlar" class="level2">
-<h2 class="anchored" data-anchor-id="analiz-ve-sonuçlar">6. Analiz ve Sonuçlar</h2>
+<section id="sonuç-ve-gelecek-geliştirmeler" class="level2">
+<h2 class="anchored" data-anchor-id="sonuç-ve-gelecek-geliştirmeler">6. Sonuç ve Gelecek Geliştirmeler</h2>
+<p>Bu proje kapsamında, endüstriyel otomasyon süreçlerinde kritik öneme sahip olan trafik kontrol algoritması, <strong>IEC 61131-3</strong> standartlarına uygun olarak başarıyla modellenmiştir.</p>
+<p><strong>Proje Çıktıları:</strong> * <strong>Deterministik Kontrol:</strong> FSM mimarisi sayesinde, durumlar arası geçişlerdeki belirsizlikler ve çakışma riskleri ortadan kaldırılmıştır. * <strong>Modülerlik:</strong> Kod yapısı, <code>CASE</code> blokları ile izole edilerek bakımı kolay ve genişletilebilir bir formata getirilmiştir. * <strong>Sanal Devreye Alma:</strong> CODESYS TargetVisu kullanılarak, fiziksel donanıma ihtiyaç duyulmadan mantıksal doğrulama (Logic Verification) sağlanmıştır.</p>
+<p><strong>Gelecek İçin Yol Haritası:</strong> Projenin bir sonraki fazında, sistemi daha otonom ve veriye dayalı hale getirmek adına şu geliştirmeler planlanmaktadır: 1. <strong>OPC UA Entegrasyonu:</strong> Trafik yoğunluk verilerinin harici bir SCADA veya Python servisine aktarılması. 2. <strong>Adaptif Zamanlama:</strong> Araç yoğunluğuna göre yeşil ışık sürelerini dinamik olarak değiştiren bir sensör katmanının eklenmesi. 3. <strong>Donanım Testi:</strong> Simülasyon ortamında doğrulanan kodun, fiziksel bir PLC (Örn: Raspberry Pi Runtime) üzerinde koşturulması.</p>
 </section>
-<section id="dokümantasyon-ve-kaynaklar" class="level2">
-<h2 class="anchored" data-anchor-id="dokümantasyon-ve-kaynaklar">7. Dokümantasyon ve Kaynaklar</h2>
+<section id="referanslar-ve-kaynakça" class="level2">
+<h2 class="anchored" data-anchor-id="referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</h2>
+<p>Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:</p>
 <ul>
-<li>&nbsp; <a href="https://github.com/ibrahimcapar/codesys-traffic-fsm">GitHub Codesys Proje Arşivi</a></li>
+<li><strong>GitHub Deposu:</strong> <a href="https://github.com/ibrahimcapar/codesys-traffic-fsm">x/codesys-traffic-fsm</a></li>
+<li><strong>Standart:</strong> IEC 61131-3 Programming Industrial Automation Systems</li>
+<li><strong>Dokümantasyon:</strong> CODESYS Online Help (V3.5 SP21)</li>
 </ul>
 </section>
 <section id="sonuç" class="level1">
