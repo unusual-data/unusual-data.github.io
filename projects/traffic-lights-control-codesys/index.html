@@ -22,6 +22,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -230,7 +265,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">20 Aralık 2025</p>
+      <p class="date-modified">21 Aralık 2025</p>
     </div>
   </div>
     
@@ -346,26 +381,26 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="code-copy-outer-scaffold"><div class="callout-body-container callout-body">
-<pre class="st sourceCode code-with-copy" title="Tanımlanan Değişkenler"><code>PROGRAM PLC_PRG
-VAR
-    xStart      : BOOL := FALSE;  
-    xNightMode  : BOOL := FALSE;
-    
-    iStep       : INT := 0;
-    tDuration   : TIME;            
-    
-    xKuzeyGuneyYesil    : BOOL;
-    xKuzeyGuneySari     : BOOL; 
-    xKuzeyGuneyKirmizi  : BOOL; 
-    xDoguBatiYesil      : BOOL;
-    xDoguBatiSari       : BOOL;
-    xDoguBatiKirmizi    : BOOL;
-
-    fbStepTimer         : TON;
-    fbBlinkTimer        : TON;                
-END_VAR</code></pre>
-</div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" title="Tanımlanan Değişkenler"><pre class="sourceCode numberSource st number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>PROGRAM PLC_PRG</span>
+<span id="cb1-2"><a href="#cb1-2"></a>VAR</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    xStart      : BOOL := FALSE;  </span>
+<span id="cb1-4"><a href="#cb1-4"></a>    xNightMode  : BOOL := FALSE;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    </span>
+<span id="cb1-6"><a href="#cb1-6"></a>    iStep       : INT := 0;</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    tDuration   : TIME;            </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    </span>
+<span id="cb1-9"><a href="#cb1-9"></a>    xKuzeyGuneyYesil    : BOOL;</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    xKuzeyGuneySari     : BOOL; </span>
+<span id="cb1-11"><a href="#cb1-11"></a>    xKuzeyGuneyKirmizi  : BOOL; </span>
+<span id="cb1-12"><a href="#cb1-12"></a>    xDoguBatiYesil      : BOOL;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    xDoguBatiSari       : BOOL;</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    xDoguBatiKirmizi    : BOOL;</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    fbStepTimer         : TON;</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    fbBlinkTimer        : TON;                </span>
+<span id="cb1-18"><a href="#cb1-18"></a>END_VAR</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </section>
@@ -383,44 +418,44 @@ END_VAR</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="code-copy-outer-scaffold"><div class="callout-body-container callout-body">
-<pre class="st sourceCode code-with-copy" title="Kod Bloğu"><code>(* Zamanlayının Döngüsel Güncellemesi *)
-fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
-
-(* Ana Döngü *)
-IF xStart THEN
-    (* Mod Yönetimi: Öncelik Gece Modundadır *)
-    IF xNightMode THEN
-        // Gece modu algoritması (Kodun bu kısmı özetlenmiştir...)
-    ELSE
-        (* Gündüz Modu - Durum Makinesi Akışı *)
-        CASE iStep OF
-            10: (* DURUM: K-G Yeşil, D-B Kırmızı *)
-                xKuzeyGuneyYesil := TRUE; 
-                xDoguBatiKirmizi := TRUE;
-                tDuration := T#5S; 
-                
-                // Durum Geçiş Koşulu
-                IF fbStepTimer.Q THEN iStep := 20; END_IF;
-    
-            20: (* DURUM: K-G Sarı, D-B Kırmızı *)
-                xKuzeyGuneyYesil := FALSE; 
-                xKuzeyGuneySari := TRUE;
-                tDuration := T#2S; 
-                
-                IF fbStepTimer.Q THEN iStep := 30; END_IF;         
-                 
-            // ... (* Akış diğer durumlar ile devam eder *) ...
-        END_CASE
-    END_IF;
-ELSE
-    (* Reset / Güvenli Durum *)
-    iStep := 0;
-    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
-    xDoguBatiYesil   := FALSE; xDoguBatiSari   := FALSE; xDoguBatiKirmizi   := FALSE;
-    // Sistem kapatıldığında tüm çıkışlar güvenli konuma alınır..
-END_IF;</code></pre>
-</div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" title="Kod Bloğu"><pre class="sourceCode numberSource st number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>(* Zamanlayının Döngüsel Güncellemesi *)</span>
+<span id="cb2-2"><a href="#cb2-2"></a>fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>(* Ana Döngü *)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>IF xStart THEN</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    (* Mod Yönetimi: Öncelik Gece Modundadır *)</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    IF xNightMode THEN</span>
+<span id="cb2-8"><a href="#cb2-8"></a>        // Gece modu algoritması (Kodun bu kısmı özetlenmiştir...)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    ELSE</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        (* Gündüz Modu - Durum Makinesi Akışı *)</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        CASE iStep OF</span>
+<span id="cb2-12"><a href="#cb2-12"></a>            10: (* DURUM: K-G Yeşil, D-B Kırmızı *)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                xKuzeyGuneyYesil := TRUE; </span>
+<span id="cb2-14"><a href="#cb2-14"></a>                xDoguBatiKirmizi := TRUE;</span>
+<span id="cb2-15"><a href="#cb2-15"></a>                tDuration := T#5S; </span>
+<span id="cb2-16"><a href="#cb2-16"></a>                </span>
+<span id="cb2-17"><a href="#cb2-17"></a>                // Durum Geçiş Koşulu</span>
+<span id="cb2-18"><a href="#cb2-18"></a>                IF fbStepTimer.Q THEN iStep := 20; END_IF;</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    </span>
+<span id="cb2-20"><a href="#cb2-20"></a>            20: (* DURUM: K-G Sarı, D-B Kırmızı *)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>                xKuzeyGuneyYesil := FALSE; </span>
+<span id="cb2-22"><a href="#cb2-22"></a>                xKuzeyGuneySari := TRUE;</span>
+<span id="cb2-23"><a href="#cb2-23"></a>                tDuration := T#2S; </span>
+<span id="cb2-24"><a href="#cb2-24"></a>                </span>
+<span id="cb2-25"><a href="#cb2-25"></a>                IF fbStepTimer.Q THEN iStep := 30; END_IF;         </span>
+<span id="cb2-26"><a href="#cb2-26"></a>                 </span>
+<span id="cb2-27"><a href="#cb2-27"></a>            // ... (* Akış diğer durumlar ile devam eder *) ...</span>
+<span id="cb2-28"><a href="#cb2-28"></a>        END_CASE</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    END_IF;</span>
+<span id="cb2-30"><a href="#cb2-30"></a>ELSE</span>
+<span id="cb2-31"><a href="#cb2-31"></a>    (* Reset / Güvenli Durum *)</span>
+<span id="cb2-32"><a href="#cb2-32"></a>    iStep := 0;</span>
+<span id="cb2-33"><a href="#cb2-33"></a>    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;</span>
+<span id="cb2-34"><a href="#cb2-34"></a>    xDoguBatiYesil   := FALSE; xDoguBatiSari   := FALSE; xDoguBatiKirmizi   := FALSE;</span>
+<span id="cb2-35"><a href="#cb2-35"></a>    // Sistem kapatıldığında tüm çıkışlar güvenli konuma alınır..</span>
+<span id="cb2-36"><a href="#cb2-36"></a>END_IF;</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </section>

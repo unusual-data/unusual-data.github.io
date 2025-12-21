@@ -256,7 +256,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">20 Aralık 2025</p>
+      <p class="date-modified">21 Aralık 2025</p>
     </div>
   </div>
     
@@ -466,12 +466,12 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> time</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> cv2</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="im">import</span> mss</span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="im">import</span> snap7</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -506,26 +506,26 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
+<span id="cb2-6"><a href="#cb2-6"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
+<span id="cb2-9"><a href="#cb2-9"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
+<span id="cb2-12"><a href="#cb2-12"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
+<span id="cb2-17"><a href="#cb2-17"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a>plc <span class="op">=</span> snap7.client.Client()</span>
+<span id="cb2-20"><a href="#cb2-20"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -559,26 +559,26 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="code-copy-outer-scaffold"><div class="callout-body-container callout-body">
-<pre class="pyton sourceCode code-with-copy"><code>with mss.mss() as sct:
-    while True:
-        t0 = time.perf_counter()
-
-        img_b = np.array(sct.grab(roı_blue))[:, :, :3]
-        img_g = np.array(sct.grab(roı_green))[:, :, :3]
-
-        hsv_b = cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)
-        hsv_g = cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)
-
-        blue_mask  = cv2.inRange(hsv_b, blue_low, blue_hıgh)
-        green_mask = cv2.inRange(hsv_g, green_low, green_hıgh)
-
-        blue_px  = cv2.countNonZero(blue_mask)
-        green_px = cv2.countNonZero(green_mask)
-
-        blue  = blue_px  &gt; px_threshold
-        green = green_px &gt; px_threshold</code></pre>
-</div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource pyton number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>with mss.mss() as sct:</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    while True:</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        t0 = time.perf_counter()</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>        img_b = np.array(sct.grab(roı_blue))[:, :, :3]</span>
+<span id="cb3-6"><a href="#cb3-6"></a>        img_g = np.array(sct.grab(roı_green))[:, :, :3]</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>        hsv_b = cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>        hsv_g = cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a>        blue_mask  = cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>        green_mask = cv2.inRange(hsv_g, green_low, green_hıgh)</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a>        blue_px  = cv2.countNonZero(blue_mask)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        green_px = cv2.countNonZero(green_mask)</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a>        blue  = blue_px  &gt; px_threshold</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        green = green_px &gt; px_threshold</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </div>
 </div>
 </div>
@@ -612,13 +612,13 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
+<span id="cb4-2"><a href="#cb4-2"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>        </span>
+<span id="cb4-5"><a href="#cb4-5"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
+<span id="cb4-6"><a href="#cb4-6"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
+<span id="cb4-7"><a href="#cb4-7"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -653,10 +653,10 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"BLUE px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> thr=</span><span class="sc">{</span>PIXEL_THR<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | GREEN px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>        now <span class="op">=</span> time.time()</span>
+<span id="cb5-2"><a href="#cb5-2"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb5-3"><a href="#cb5-3"></a>            <span class="bu">print</span>(<span class="ss">f"BLUE px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> thr=</span><span class="sc">{</span>PIXEL_THR<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | GREEN px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>            last_log <span class="op">=</span> now</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -691,13 +691,13 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI BLUE"</span>, img_b)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"BLUE MASK"</span>, blue_mask)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"ROI GREEN"</span>, img_g)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"GREEN MASK"</span>, green_mask)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>        <span class="cf">if</span> show_debug:</span>
+<span id="cb6-2"><a href="#cb6-2"></a>            cv2.imshow(<span class="st">"ROI BLUE"</span>, img_b)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>            cv2.imshow(<span class="st">"BLUE MASK"</span>, blue_mask)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>            cv2.imshow(<span class="st">"ROI GREEN"</span>, img_g)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>            cv2.imshow(<span class="st">"GREEN MASK"</span>, green_mask)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
+<span id="cb6-7"><a href="#cb6-7"></a>                <span class="cf">break</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -732,8 +732,8 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
+<span id="cb7-2"><a href="#cb7-2"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -768,8 +768,8 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>cv2.destroyAllWindows()</span>
+<span id="cb8-2"><a href="#cb8-2"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -804,81 +804,81 @@ Bu ayar yapıldıktan sonra PLC’ye sağ tıklayarak <strong>Compile &gt; Hardw
 </div>
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mss</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> snap7</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plc <span class="op">=</span> snap7.client.Client()</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> mss.mss() <span class="im">as</span> scr:</span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        img_b <span class="op">=</span> np.array(scr.grab(roı_blue))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>        img_g <span class="op">=</span> np.array(scr.grab(roı_green))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>        hsv_b <span class="op">=</span> cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>        hsv_g <span class="op">=</span> cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>        blue_mask  <span class="op">=</span> cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>        green_mask <span class="op">=</span> cv2.inRange(hsv_g, green_low, green_hıgh)</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>        blue_px  <span class="op">=</span> cv2.countNonZero(blue_mask)</span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>        green_px <span class="op">=</span> cv2.countNonZero(green_mask)</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>        blue  <span class="op">=</span> blue_px  <span class="op">&gt;</span> px_threshold</span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>        green <span class="op">=</span> green_px <span class="op">&gt;</span> px_threshold</span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>        now <span class="op">=</span> time.time()</span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"MAVİ px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> eşik=</span><span class="sc">{</span>px_threshold<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | YEŞİL px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>            last_log <span class="op">=</span> now</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> show_debug:</span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi ROI"</span>, img_b)</span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Mavi Maskleme"</span>, blue_mask)</span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil ROI"</span>, img_g)</span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>            cv2.imshow(<span class="st">"Yeşil Maskeleme"</span>, green_mask)</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a>cv2.destroyAllWindows()</span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> time</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> cv2</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="im">import</span> mss</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="im">import</span> snap7</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="im">from</span> snap7 <span class="im">import</span> util</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>PLC_IP <span class="op">=</span> <span class="st">"XXX.XXX.XXX.XXX"</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>RACK <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="ex">SLOT</span> <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
+<span id="cb9-13"><a href="#cb9-13"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
+<span id="cb9-16"><a href="#cb9-16"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
+<span id="cb9-17"><a href="#cb9-17"></a></span>
+<span id="cb9-18"><a href="#cb9-18"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
+<span id="cb9-19"><a href="#cb9-19"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a>last_log <span class="op">=</span> <span class="dv">0</span>  </span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a>show_debug <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a></span>
+<span id="cb9-27"><a href="#cb9-27"></a>plc <span class="op">=</span> snap7.client.Client()</span>
+<span id="cb9-28"><a href="#cb9-28"></a>plc.<span class="ex">connect</span>(PLC_IP, RACK, <span class="ex">SLOT</span>)</span>
+<span id="cb9-29"><a href="#cb9-29"></a></span>
+<span id="cb9-30"><a href="#cb9-30"></a></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="cf">with</span> mss.mss() <span class="im">as</span> scr:</span>
+<span id="cb9-32"><a href="#cb9-32"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb9-33"><a href="#cb9-33"></a>        t0 <span class="op">=</span> time.perf_counter()</span>
+<span id="cb9-34"><a href="#cb9-34"></a></span>
+<span id="cb9-35"><a href="#cb9-35"></a>        img_b <span class="op">=</span> np.array(scr.grab(roı_blue))[:, :, :<span class="dv">3</span>]</span>
+<span id="cb9-36"><a href="#cb9-36"></a>        img_g <span class="op">=</span> np.array(scr.grab(roı_green))[:, :, :<span class="dv">3</span>]</span>
+<span id="cb9-37"><a href="#cb9-37"></a></span>
+<span id="cb9-38"><a href="#cb9-38"></a>        hsv_b <span class="op">=</span> cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
+<span id="cb9-39"><a href="#cb9-39"></a>        hsv_g <span class="op">=</span> cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
+<span id="cb9-40"><a href="#cb9-40"></a></span>
+<span id="cb9-41"><a href="#cb9-41"></a>        blue_mask  <span class="op">=</span> cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
+<span id="cb9-42"><a href="#cb9-42"></a>        green_mask <span class="op">=</span> cv2.inRange(hsv_g, green_low, green_hıgh)</span>
+<span id="cb9-43"><a href="#cb9-43"></a></span>
+<span id="cb9-44"><a href="#cb9-44"></a>        blue_px  <span class="op">=</span> cv2.countNonZero(blue_mask)</span>
+<span id="cb9-45"><a href="#cb9-45"></a>        green_px <span class="op">=</span> cv2.countNonZero(green_mask)</span>
+<span id="cb9-46"><a href="#cb9-46"></a></span>
+<span id="cb9-47"><a href="#cb9-47"></a>        blue  <span class="op">=</span> blue_px  <span class="op">&gt;</span> px_threshold</span>
+<span id="cb9-48"><a href="#cb9-48"></a>        green <span class="op">=</span> green_px <span class="op">&gt;</span> px_threshold</span>
+<span id="cb9-49"><a href="#cb9-49"></a>        </span>
+<span id="cb9-50"><a href="#cb9-50"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
+<span id="cb9-51"><a href="#cb9-51"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
+<span id="cb9-52"><a href="#cb9-52"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
+<span id="cb9-53"><a href="#cb9-53"></a>        </span>
+<span id="cb9-54"><a href="#cb9-54"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
+<span id="cb9-55"><a href="#cb9-55"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
+<span id="cb9-56"><a href="#cb9-56"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span>
+<span id="cb9-57"><a href="#cb9-57"></a></span>
+<span id="cb9-58"><a href="#cb9-58"></a>        now <span class="op">=</span> time.time()</span>
+<span id="cb9-59"><a href="#cb9-59"></a>        <span class="cf">if</span> now <span class="op">-</span> last_log <span class="op">&gt;</span> <span class="fl">0.5</span>:</span>
+<span id="cb9-60"><a href="#cb9-60"></a>            <span class="bu">print</span>(<span class="ss">f"MAVİ px=</span><span class="sc">{</span>blue_px<span class="sc">:5d}</span><span class="ss"> eşik=</span><span class="sc">{</span>px_threshold<span class="sc">}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(blue)<span class="sc">}</span><span class="ss"> | YEŞİL px=</span><span class="sc">{</span>green_px<span class="sc">:5d}</span><span class="ss"> -&gt; </span><span class="sc">{</span><span class="bu">int</span>(green)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-61"><a href="#cb9-61"></a>            last_log <span class="op">=</span> now</span>
+<span id="cb9-62"><a href="#cb9-62"></a></span>
+<span id="cb9-63"><a href="#cb9-63"></a>        <span class="cf">if</span> show_debug:</span>
+<span id="cb9-64"><a href="#cb9-64"></a>            cv2.imshow(<span class="st">"Mavi ROI"</span>, img_b)</span>
+<span id="cb9-65"><a href="#cb9-65"></a>            cv2.imshow(<span class="st">"Mavi Maskleme"</span>, blue_mask)</span>
+<span id="cb9-66"><a href="#cb9-66"></a>            cv2.imshow(<span class="st">"Yeşil ROI"</span>, img_g)</span>
+<span id="cb9-67"><a href="#cb9-67"></a>            cv2.imshow(<span class="st">"Yeşil Maskeleme"</span>, green_mask)</span>
+<span id="cb9-68"><a href="#cb9-68"></a>            <span class="cf">if</span> cv2.waitKey(<span class="dv">1</span>) <span class="op">&amp;</span> <span class="bn">0xFF</span> <span class="op">==</span> <span class="bu">ord</span>(<span class="st">'q'</span>):</span>
+<span id="cb9-69"><a href="#cb9-69"></a>                <span class="cf">break</span></span>
+<span id="cb9-70"><a href="#cb9-70"></a></span>
+<span id="cb9-71"><a href="#cb9-71"></a>        dt <span class="op">=</span> time.perf_counter() <span class="op">-</span> t0</span>
+<span id="cb9-72"><a href="#cb9-72"></a>        <span class="cf">if</span> dt <span class="op">&lt;</span> gecen_sure: time.sleep(gecen_sure <span class="op">-</span> dt)</span>
+<span id="cb9-73"><a href="#cb9-73"></a></span>
+<span id="cb9-74"><a href="#cb9-74"></a>cv2.destroyAllWindows()</span>
+<span id="cb9-75"><a href="#cb9-75"></a>plc.disconnect()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
