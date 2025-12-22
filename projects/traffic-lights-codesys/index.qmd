@@ -1,0 +1,194 @@
+---
+title: "CODESYS Tabanlı Trafik Işığı Kontrol Sistemi"
+description: "ST Dili ve FSM yapısı kullanılarak geliştirilen trafik kontrol sistemi"
+date: 2025-12-20
+categories: [Endüstriyel Otomasyon, PLC, CODESYS, Visu, ST]
+image: images/codesys-traffic-lights.jpg
+image-alt: "CODESYS simülasyon ortamında trafik ışığı kontrol ekranı"
+---
+
+::: proje-kunye
+## 1. Proje Künyesi
+
+| Kategori            | Detay                                                |
+|---------------------|---------------------------------------------------|
+| Disiplin / Alan     | Endüstriyel Otomasyon                                |
+| Mimari & Metodoloji | Sonlu Durum Makinesi (FSM)                           |
+| Teknolojiler        | CODESYS V3.5, Structured Text (ST), TargetVisu       |
+| Uygulama Odağı      | Akıllı Kavşak Yönetimi                               |
+| Kaynak              | [GitHub'da İncele](https://github.com/unusual-data/codesys-traffic-lights) & [Projeyi İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip) |
+:::
+
+::: {#fig-simulasyon}
+{{< video videos/traffic_lights.mp4 title="Sistem Simülasyonu" >}}
+
+Sistemin tam döngü (full-cycle) çalışma simülasyonu.
+:::
+
+## 2. Genel Bakış ve Problem Tanımı
+
+### Proje Amacı
+
+Bu projenin amacı yapılandırılmış metin (Structured Text - ST) kullanarak sonlu durum makinesi (Finite State Machine - FSM) yaklaşımıyla bir kavşaktaki trafik ışığı sisteminin simülasyonunun gerçekleştirilmesidir.
+
+### Problem
+
+Karmaşık kontrol senaryolarında, geleneksel "Ladder" diyagramı veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:
+
+1.  **Yönetilebilirlik:** Sisteme ait durumlar (örn: başlangıç, gündüz, gece, acil vb.) arttıkça kodun okunabilirliği azalmaktadır.
+2.  **Senkronizasyon:** Zamanlayıcıların asenkron çalışması sonucu işlevlerin çakışma riski (örn: aynı anda iki yeşil ışık yanması) bulunmaktadır.
+3.  **Esneklik:** Yeni bir kural eklendiğinde tüm kodun baştan yazılması gerekebilmektedir.
+
+### Çözüm ve Yaklaşım
+
+Belirtilen problemleri aşmak adına bu sistem ST programlama ile **FSM** mimarisi kullanılılarak yapılmıştır.
+
+-   Her trafik durumu (Kırmızı, Sarı, Yeşil) izole bir `CASE` adımı olarak tanımlanmıştır.
+
+-   Geçişler, katı mantıksal koşullara (Transition Conditions) bağlanarak hata riski minimize edilmiştir.
+
+-   Görselleştirme katmanı (Visualization/TargetVisu), kontrolcüden bağımsız çalışacak şekilde optimize edilmiştir.
+
+## 3. Sistem Mimarisi ve Tasarım
+
+Bu projede PLC programı CODESYS ortamında ST dili kullanılarak yazılmıştır. Projede tanımlanan trafik ışığı değişkenlerinin "Visualization" objesinde bulunan tasarım ekranı bileşenleriyle etkileşim kurmaları sağlanmıştır. Sistemin görsel olarak izlenebilmesi için yol ve ışık objeleri, başlatma-durdurma ve gece modu butonları oluşturulmuştur. Trafik ışıkları bulunduğu yön ve renk bilgisiyle tanımlanmıştır.
+
+### 3.1. Algoritma ve İşleyiş Mantığı
+
+Sistem kontrolü, durum ve geçişlere dayalı **FSM** yapısı ile gerçekleştirilmiştir. Algoritma, karmaşık `IF-ELSE` blokları yerine, birbirinden izole edilmiş durumlar (states) üzerinden ilerlemektedir:
+
+-   **Başlangıç:** Sistemin enerjilendiği, sistem kapanırken değişkenlerin sıfırlandığı ve güvenlik kontrollerinin yapıldığı ana döngü.
+-   **Gündüz Modu :** Trafik ışıklarının önceden tanımlı sürelerde (Kırmızı, Sarı, Yeşil) sıralı olarak değiştiği döngü.
+-   **Gece Modu :** Belirli bir tetikleyici ile (manuel buton veya saat) devreye giren, tüm sarı ışıkların saniyede iki kez yanıp söndüğü döngü.
+
+### 3.2. Teknik Yaklaşım
+
+-   Sistemin programlanmasında dil seçimi olarak ST programlama tercih edilmiştir. Ladder diyagramı görsel olarak takip edilebilen bir yapıda olsa da durum yönetiminde yetersiz kalabilmektedir. Bu projede, kodun okunabilirliğini arttırmak hata ve durum yönetimini daha da kolaylaştırmıştır.
+
+-   Sıralı akış yerine durum tabanlı yaklaşım seçilmesinin temel nedeni **genişletilebilirliktir**. İleride sisteme "Yaya Butonu" veya "Acil Durum Modu" gibi eklemeler yapılması gerektiğinde, mevcut kod yapısını bozmadan sadece yeni bir `STATE` bloğu entegre edilmesi yeterli olacaktır.
+
+## 4. Uygulama ve Kod Detayları
+
+Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlara uygunluk gözetilerek geliştirilmiştir. Aşağıda, projenin temelini oluşturan veri yapıları ve işleyen kod mantığı teknik detaylarıyla sunulmuştur.
+
+### 4. 1. Değişken ve Tanımlar
+
+Sistemde kullanılan değişkenler ve veri tipleri, **IEC 61131-3** standardı ile uyumlu ve **PLCopen Task Force: Coding Guidelines** tarafından tavsiye edilen **Type-prefixed Hungarian Notation** yaklaşımıyla tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.
+
+```st {title="Tanımlanan Değişkenler"}
+PROGRAM PLC_PRG
+VAR
+    xStart      : BOOL := FALSE;  
+    xNightMode  : BOOL := FALSE;
+    
+    iStep       : INT := 0;
+    tDuration   : TIME;            
+    
+    xKuzeyGuneyYesil    : BOOL;
+    xKuzeyGuneySari     : BOOL; 
+    xKuzeyGuneyKirmizi  : BOOL; 
+    xDoguBatiYesil      : BOOL;
+    xDoguBatiSari       : BOOL;
+    xDoguBatiKirmizi    : BOOL;
+
+    fbStepTimer         : TON;
+    fbBlinkTimer        : TON;                
+END_VAR
+```
+
+### 4. 2. Algoritma ve Kod Mantığı
+
+Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.
+
+```st {title="Kod Bloğu"}
+(* Zamanlayının Döngüsel Güncellemesi *)
+fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
+
+(* Ana Döngü *)
+IF xStart THEN
+    (* Mod Yönetimi: Öncelik Gece Modundadır *)
+    IF xNightMode THEN
+        // Gece modu algoritması (Kodun bu kısmı özetlenmiştir...)
+    ELSE
+        (* Gündüz Modu - Durum Makinesi Akışı *)
+        CASE iStep OF
+            10: (* DURUM: K-G Yeşil, D-B Kırmızı *)
+                xKuzeyGuneyYesil := TRUE; 
+                xDoguBatiKirmizi := TRUE;
+                tDuration := T#5S; 
+                
+                // Durum Geçiş Koşulu
+                IF fbStepTimer.Q THEN iStep := 20; END_IF;
+    
+            20: (* DURUM: K-G Sarı, D-B Kırmızı *)
+                xKuzeyGuneyYesil := FALSE; 
+                xKuzeyGuneySari := TRUE;
+                tDuration := T#2S; 
+                
+                IF fbStepTimer.Q THEN iStep := 30; END_IF;         
+                 
+            // ... (* Akış diğer durumlar ile devam eder *) ...
+        END_CASE
+    END_IF;
+ELSE
+    (* Reset / Güvenli Durum *)
+    iStep := 0;
+    xKuzeyGuneyYesil := FALSE; xKuzeyGuneySari := FALSE; xKuzeyGuneyKirmizi := FALSE;
+    xDoguBatiYesil   := FALSE; xDoguBatiSari   := FALSE; xDoguBatiKirmizi   := FALSE;
+    // Sistem kapatıldığında tüm çıkışlar güvenli konuma alınır..
+END_IF;
+```
+
+## 5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri
+
+Proje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtları aşmak için uygulanan mühendislik çözümleri aşağıda detaylandırılmıştır.
+
+### 5.1. Görsel Bileşenlerin Hizalanması
+
+**Problem:** Eklenen bileşenlerin görsel şemaya uygun bir şekilde birbirleriyle simetrik ve estetik bir görünümde olması gerekiyordu.
+
+**Çözüm:** Bileşenler sınırlı bir alan içerisine "`rounded-rectangle`" bileşeninin üzerine çizildi. Böylece "Visualization" ekranında bileşenlerin birbirine ve yer aldığı bölgeye göre yatay ve dikey hizalaması gerçekleştirildi. Daha sonra eklenen "rounded-rectangle" bileşeni görünmez yapıldı.
+
+::: {.centered-captions layout-ncol="2"}
+![Görsel 1](images/codesys-1.png){.lightbox group="ana-grup"}
+
+![Görsel 2](images/codesys-2.png){.lightbox group="ana-grup"}
+:::
+
+### 5.2. Durum Verilerinin Anlık Gösterimi
+
+**Problem:** Simülasyon ekranında o anki trafik ışığı durumu güzergaha göre (Örn: "Kuzey-Güney Yeşil") ekranda gösterilmesi gerekiyordu.\
+
+**Çözüm:** Problemin çözümü için **Text List** özelliği kullanıldı. Durum değişkeni (`iStep`) doğrudan bir ID olarak listeye bağlandı ve sadece ilgili durumun metni dinamik olarak çağrıldı.
+
+::: {layout-ncol="2"}
+![States V1](images/codesys-statev1.png){.lightbox group="state"}
+
+![States V1](images/codesys-statev2.png){.lightbox group="state"}
+
+![Dynamics Text V1](images/codesys-statev1-dynamics-text.png){.lightbox group="state"}
+
+![Dynamics Text V2](images/codesys-statev2-dynamics-text.png){.lightbox group="state"}
+:::
+
+## 6. Sonuç
+
+Bu proje kapsamında, endüstriyel otomasyon süreçlerinde önemli bir yere sahip olan FSM yapısı trafik kontrol projesi üzerinden **IEC 61131-3** standartlarına uygun olarak başarıyla modellenmiştir.
+Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.
+
+**Proje Çıktıları:**
+
+-   **Deterministik Kontrol:** FSM mimarisi sayesinde, durumlar arası geçişlerdeki belirsizlikler ve çakışma riskleri ortadan kaldırılmıştır.
+
+-   **Modülerlik:** Kod yapısı, `CASE` blokları ile izole edilerek bakımı kolay ve genişletilebilir bir formata getirilmiştir.
+
+-   **Sanal Devreye Alma:** CODESYS TargetVisu kullanılarak, fiziksel donanıma ihtiyaç duyulmadan mantıksal doğrulama sağlanmıştır.
+
+## 7. Referanslar ve Kaynakça
+
+Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:
+
+-   **Standart:** IEC 61131-3, PLCopen Coding Guidelines
+-   **Dokümantasyon:** [CODESYS Online Help](https://help.codesys.com/)
+-   **GitHub Deposu:** [unusual-data/codesys-traffic-lights](https://github.com/unusual-data/codesys-traffic-lights)
+- **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip)
