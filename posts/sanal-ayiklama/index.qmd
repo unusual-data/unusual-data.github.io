@@ -5,7 +5,7 @@ description: Python programlama kullanarak Factory I/O ve TIA Portal haberleşme
 date: "2025-12-13"
 categories: [factoryio, siemens, tıa portal, plc, görüntü işleme, simülasyon, python, opencv]
 title-block-categories: false
-image: "images/factory-io.jpg"
+image: "/projects/virtual-sorting/images/factory-io.jpg"
 toc : true
 toc-depth: 5
 toc-expand: true
@@ -395,4 +395,4 @@ Factory I/O ortamında yazılan PLC programının konveyör, start, stop, acil s
 
 Gerçekleştirilen projenin simülasyonuna ait video kaydı aşağıdaki gibidir.
 
-{{< video videos/sanal-ayiklama-istasyonu.mp4 >}}
+{{< video /projects/virtual-sorting/videos/virtual-sorting.mp4 >}}
