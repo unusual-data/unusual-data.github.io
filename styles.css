@@ -7,8 +7,6 @@
   --bg-darker: #020617;
   --border-color: #1e293b;
 }
-
-
 body {
   font-family: 'Inter', 'Segoe UI', sans-serif; 
   color: var(--text-light);
@@ -16,46 +14,35 @@ body {
   line-height: 1.75;
   hyphens: auto;
 }
-
-
 p {
   margin-bottom: 1.5rem;
   font-weight: 400; 
   text-align: left; 
 }
-
-
 @media (min-width: 768px) {
   p {
     text-align: justify;
   }
 }
-
-
 h1, h2, h3, h4, h5, h6 {
   color: #f1f5f9;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
-
 h1 {
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
 }
-
 a {
   color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
 }
-
 a:hover {
   color: var(--accent-color);
 }
-
-
 code {
   background-color: #1e293b;
   color: var(--primary-color);
@@ -65,42 +52,34 @@ code {
   font-size: 0.9em; 
   border: 1px solid rgba(56, 189, 248, 0.1);
 }
-
 pre {
   background-color: #1e293b !important;
   border: 1px solid var(--border-color);
   border-left: 3px solid var(--primary-color);
   border-radius: 8px;
+  overflow-x: auto !important;
 }
-
-
 .navbar {
   background-color: var(--bg-darker) !important;
   border-bottom: 1px solid var(--border-color);
   backdrop-filter: blur(10px);
 }
-
 .navbar-title {
   color: var(--primary-color);
   font-weight: 700;
   letter-spacing: 1px;
 }
-
 .nav-link {
   color: #94a3b8 !important;
 }
-
 .nav-link:hover {
   color: var(--primary-color) !important;
 }
-
 footer {
   background-color: var(--bg-darker);
   border-top: 1px solid var(--border-color);
   color: #64748b;
 }
-
-
 .quarto-about-trestles .about-entity .about-image {
   width: 100% !important;        
   max-width: 16rem !important;   
@@ -110,45 +89,34 @@ footer {
   margin: 0 auto 1.5rem auto !important;
   display: block;
 }
-
-
 div.quarto-listing .listing-title a {
   color: var(--primary-color) !important;
   font-weight: 600;
 }
-
 div.quarto-listing .listing-title a:hover {
   color: var(--accent-color) !important;
 }
-
 div.quarto-listing .listing-description,
 div.quarto-listing .listing-date,
 .quarto-title-block .description {
   color: var(--text-light) !important;
   opacity: 0.9;
 }
-
-
 .quarto-listing .list-input,
 .quarto-listing select {
   background-color: #1e293b !important;
   color: var(--text-light) !important;
   border: 1px solid var(--border-color) !important;
 }
-
-
 div.quarto-listing-category .category {
   background-color: #1e293b;
   color: var(--primary-color);
   border: 1px solid var(--border-color);
 }
-
 div.quarto-listing-category .category:hover {
   background-color: var(--primary-color);
   color: var(--bg-dark);
 }
-
-
 blockquote {
   border-left: 4px solid var(--accent-color);
   background-color: rgba(251, 191, 36, 0.05);
@@ -157,30 +125,23 @@ blockquote {
   font-style: italic;
   border-radius: 0 8px 8px 0;
 }
-
-
 .card {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border-color: var(--primary-color);
 }
-
 .card-title, .card-title a {
   color: var(--primary-color) !important;
 }
-
 .card-text {
   color: var(--text-light) !important;
 }
-
-
 @media (max-width: 576px) {
   .navbar-brand, .navbar-title {
     font-size: 1rem !important;
@@ -191,8 +152,6 @@ blockquote {
     text-align: center; 
   }
 }
-
-
 @media (max-width: 768px) {
     html {
         font-size: 16px !important;
@@ -206,8 +165,6 @@ blockquote {
     h2 { font-size: 1.5rem !important; }
     h3 { font-size: 1.25rem !important; }
 }
-
-
 .quarto-title-meta, 
 .listing-date {
     display: none !important;
@@ -216,23 +173,16 @@ blockquote {
 .centered-captions figcaption {
   text-align: center !important;
 }
-
-
-
 figcaption, .figure-caption {
   text-align: center !important;
   width: 100%;
   margin-top: 0.5rem;
 }
-
-
 .quarto-figure {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-
 .proje-kunye table {
     width: 100%;
     border-collapse: separate; 
@@ -240,40 +190,28 @@ figcaption, .figure-caption {
     border: none !important;
     margin-bottom: 3rem;
 }
-
-
 .proje-kunye thead {
     display: none;
 }
-
-
 .proje-kunye tbody tr {
     background-color: rgba(128, 128, 128, 0.05); 
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
-
 .proje-kunye tbody tr:hover {
     transform: translateX(5px);
     background-color: rgba(128, 128, 128, 0.1);
 }
-
-
 .proje-kunye td {
     padding: 12px 16px;
     border: none !important; 
     vertical-align: middle;
 }
-
 .proje-kunye td:first-child {
     font-weight: 700;
     width: 30%;
     color: #0d6efd;
-    
-    border-right: 2px solid rgba(255, 255, 255, 0.2) !important; 
-    
+    border-right: 2px solid rgba(255, 255, 255, 0.2) !important;    
     padding-right: 15px; 
-    
     border-radius: 8px 0 0 8px; 
 }
 
@@ -281,7 +219,6 @@ figcaption, .figure-caption {
     padding-left: 15px;
     border-radius: 0 8px 8px 0;
 }
-
 
 .proje-kunye td:last-child {
     border-radius: 0 8px 8px 0; 
@@ -369,3 +306,83 @@ div.quarto-listing-category .category {
     box-sizing: border-box !important;
 }
 /**********************************************/
+
+/* IDE view */
+html body pre {
+    padding: 0 !important;
+    line-height: 0 !important;
+    background-color: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 8px !important;
+}
+
+html body pre code {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+    background-color: transparent !important;
+    font-size: 13.5px !important;
+    font-family: 'Fira Code', monospace !important;
+    color: #e2e8f0 !important;
+    counter-reset: line !important;
+}
+
+html body pre code>span {
+    display: block !important;
+    line-height: 16px !important;
+    height: 16px !important;
+    padding-left: 50px !important;
+    position: relative !important;
+    left: 0 !important;
+}
+
+html body pre code>span::before {
+    content: counter(line) !important;
+    counter-increment: line !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 40px !important;
+    height: 16px !important;
+    background-color: #0f172a !important; 
+    color: #64748b !important;
+    border-right: 1px solid #334155 !important;
+    text-align: right !important;
+    padding-right: 8px !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    font-weight: 400 !important;
+    user-select: none !important;
+    opacity: 1 !important;
+    z-index: 10 !important;
+}
+
+.callout .sourceCode {
+    margin: 0 !important;
+}
+
+html body pre code>span>a::before,
+pre code>span>a::before {
+    content: none !important;
+    display: none !important;
+}
+
+html body pre code>span>a {
+    border: none !important;
+    background: transparent !important;
+    color: transparent !important;
+}
+pre code>span>a {
+    pointer-events: none !important;
+    cursor: default !important;
+    text-decoration: none !important;
+    background: #1e293b !important;
+    color: inherit !important;
+}
+
+pre.sourceCode {
+    overflow-x: auto !important;
+    margin: 0 !important;
+    border-left: 3px solid var(--primary-color) !important;
+    padding-left: 0 !important;
+}
