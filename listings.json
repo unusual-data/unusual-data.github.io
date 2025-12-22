@@ -13,6 +13,7 @@
   {
     "listing": "/projects/index.html",
     "items": [
+      "/projects/traffic-lights-codesys/index.html",
       "/projects/traffic-lights-control-codesys/index.html"
     ]
   },
