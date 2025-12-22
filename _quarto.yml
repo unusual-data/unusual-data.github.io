@@ -6,6 +6,7 @@ lang: tr
 
 website:
   title: "İbrahim ÇAPAR"
+  favicon: media/pictures/favicon/favicon.png
   description: "Endüstriyel Otomasyon, Robotik ve Görüntü İşleme üzerine kişisel portfolyo ve blog."
   site-url: "https://ibrahimcapar.com"
   google-analytics: "G-SRL55MJHF7"
