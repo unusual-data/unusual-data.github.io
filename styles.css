@@ -317,7 +317,8 @@ html body pre {
 }
 
 html body pre code {
-    padding: 0 !important;
+    white-space: pre !important;
+    padding: 32px 0 !important;
     margin: 0 !important;
     line-height: 0 !important;
     background-color: transparent !important;
