@@ -10,13 +10,13 @@ image-alt: "CODESYS simülasyon ortamında trafik ışığı kontrol ekranı"
 ::: proje-kunye
 ## 1. Proje Künyesi
 
-| Kategori            | Detay                                                |
-|---------------------|---------------------------------------------------|
-| Disiplin / Alan     | Endüstriyel Otomasyon                                |
-| Mimari & Metodoloji | Sonlu Durum Makinesi (FSM)                           |
-| Teknolojiler        | CODESYS V3.5, Structured Text (ST), TargetVisu       |
-| Uygulama Odağı      | Akıllı Kavşak Yönetimi                               |
-| Kaynak              | [GitHub'da İncele](https://github.com/unusual-data/codesys-traffic-lights) & [Projeyi İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip) |
+| Kategori | Detay |
+|----------------------|--------------------------------------------------|
+| Alan | Endüstriyel Otomasyon |
+| Mimari & Metodoloji | Sonlu Durum Makinesi (FSM) |
+| Teknolojiler | CODESYS V3.5, Structured Text (ST), TargetVisu |
+| Uygulama Odağı | Akıllı Kavşak Yönetimi |
+| Kaynak | [GitHub'da İncele](https://github.com/unusual-data/codesys-traffic-lights) & [Projeyi İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip) |
 :::
 
 ::: {#fig-simulasyon}
@@ -75,7 +75,7 @@ Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlar
 
 Sistemde kullanılan değişkenler ve veri tipleri, **IEC 61131-3** standardı ile uyumlu ve **PLCopen Task Force: Coding Guidelines** tarafından tavsiye edilen **Type-prefixed Hungarian Notation** yaklaşımıyla tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.
 
-```st {title="Tanımlanan Değişkenler"}
+``` {.st title="Tanımlanan Değişkenler"}
 PROGRAM PLC_PRG
 VAR
     xStart      : BOOL := FALSE;  
@@ -100,7 +100,7 @@ END_VAR
 
 Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.
 
-```st {title="Kod Bloğu"}
+``` {.st title="Kod Bloğu"}
 (* Zamanlayının Döngüsel Güncellemesi *)
 fbStepTimer(IN := (xStart AND NOT xNightMode AND NOT fbStepTimer.Q), PT:= tDuration);
 
@@ -173,8 +173,7 @@ Proje geliştirme aşamasında karşılaşılan teknik kısıtlar ve bu kısıtl
 
 ## 6. Sonuç
 
-Bu proje kapsamında, endüstriyel otomasyon süreçlerinde önemli bir yere sahip olan FSM yapısı trafik kontrol projesi üzerinden **IEC 61131-3** standartlarına uygun olarak başarıyla modellenmiştir.
-Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.
+Bu proje kapsamında, endüstriyel otomasyon süreçlerinde önemli bir yere sahip olan FSM yapısı trafik kontrol projesi üzerinden **IEC 61131-3** standartlarına uygun olarak başarıyla modellenmiştir. Bu proje ile ST programlama kullanarak FSM mantığı pekiştirilmeye çalışılmıştır. Aynı zamanda gerçekleştirilen kod blokları görsel bir sahneye dönüştürülmüş değişkenler ve görsel bileşenler arasında senaryoya uygun ilişkilendirilmeler yapılmıştır.
 
 **Proje Çıktıları:**
 
@@ -191,4 +190,4 @@ Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:
 -   **Standart:** IEC 61131-3, PLCopen Coding Guidelines
 -   **Dokümantasyon:** [CODESYS Online Help](https://help.codesys.com/)
 -   **GitHub Deposu:** [unusual-data/codesys-traffic-lights](https://github.com/unusual-data/codesys-traffic-lights)
-- **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip)
+-   **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/codesys-traffic-lights/archive/refs/heads/main.zip)
