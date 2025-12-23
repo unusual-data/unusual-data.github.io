@@ -1,0 +1,174 @@
+---
+title: "Sanal Ayıklama Sistemi"
+description: "Python programlama ile Factory IO ortamında nesnelerin renklerine göre PLCSIM-TIA Portal kullanarak sınıflandırma uygulaması"
+date: 2025-12-23
+categories: [Endüstriyel Otomasyon, Görüntü İşleme, TIA Portal, PLCSIM, PLC, FactoryIO, Python, ST]
+pagetitle: "Sanal Ayıklama"
+image: images/factory-io.jpg
+image-alt: "factory-io simülasyon sahnesi"
+---
+
+::: proje-kunye
+## 1. Proje Künyesi
+
+| Kategori | Detay |
+|-------------------------|-----------------------------------------------|
+| Alan | Endüstriyel Otomasyon |
+| Mimari & Metodoloji | Sanal Donanım Döngüsü (SIL), Görüntü İşleme, Snap7 Haberleşme |
+| Teknolojiler | TIA Portal V20, PLCSIM V20, Factory I/O, Python |
+| Uygulama Odağı | Nesne Sınıflandırma |
+| Kaynak | [GitHub'da İncele](https://github.com/unusual-data/virtual-sorting) & [Projeyi İndir (.zip)](https://github.com/unusual-data/virtual-sorting/archive/refs/heads/main.zip)|
+:::
+
+::: {#fig-simulasyon}
+{{< video videos/virtual-sorting.mp4 title="Sistem Simülasyonu" >}}
+
+Sistemin Factory IO ortamında tam çalışma döngüsü örneği
+:::
+
+## 2. Genel Bakış ve Problem Tanımı
+
+### 2.1. Proje Amacı
+
+Bu projenin amacı, Python ve Snap7 kütüphanesi kullanarak Factory IO ortamında sanal ayıklama sistemini PLC kontrolüyle gerçekleştirmektir.
+
+### 2.2. Problem
+
+Sanal PLC kullanarak Factory IO ortamında kurulan konveyör hattında nesnelerin renklerine göre sınıflandırma simülasyonu yapılırken şu sorunlarla karşılaşılmıştır:
+
+1.  **Sanal PLC:** Fiziksel bir PLC kullanmadan görüntü işlemeden gelen sonuca göre PLC kodunun Factory IO ortamıyla etkileşim kurması gerekmektedir.
+2.  **Görüntü İşleme:** Factory IO ortamında nesnelerin renklerine göre ayrılabilmesi için -vision sensör kullanmadan- görüntü işleme yapılması gerekmektedir.
+3.  **Haberleşme:** Görüntü işleme sonucuna göre işlem yapılabilmesi için görüntü işleme kodu ile PLC'nin haberleşmesi gerekmektedir.
+
+### 2.3. Çözüm ve Yaklaşım
+
+Belirtilen problemleri çözmek için python programlama ile PLCSIM programı kullanılmıştır.
+
+-   Factory IO ortamıyla PLC'nin simüle edilebilmesi için PLCSIM V20 kullanılmıştır. Factory IO direkt olarak PLCSIM ile haberleşebilmektedir.
+-   Nesnelerin renklerine göre ayrılabilmesi için vision sensör kullanmadan ayrım yapılabilmesi için görüntü olması gerekmektedir. Simülasyon ekranında görüntü anlık olarak python ile işlenip elde edilen sonuca göre PLC'ye çıkış yazılmıştır.
+- Görüntü işleme sonucunda elde edilen bilgi Snap7 kütüphanesi kullanılarak PLC ile haberleşmesi sağlanmıştır. 
+
+
+## 3. Sistem Mimarisi ve Tasarım
+
+Bu projede PLC programı TIA Portal V20 kullanılarak Ladder (LD) diyagramı olarak hazırlanmıştır. Hazırlanan bu PLC programının Factory IO ile haberleşebilmesi için PLCSIM V20 kullanılmıştır. Factory IO ortamında `konveyör`, `pusher` ve diğer bileşenler senaryoya uygun yerleştirilmiştir. Factory IO ortamında görüntü işleme `OpenCV` kütüphanesi ile gerçekleştirilmiştir. Factory IO'da görüntü elde etmek için bir kamera bulunmadığından simülasyon ekranı tamamen bir görüntü olarak değerlendirilmiştir. Bu işlem `mss` kütüphanesi ile yapılmıştır. Oluşturulan python kodunun PLC ile haberleşmesini sağlamak için `snap7` kütüphanesi kullanılmıştır. Program yapısında bulunan matris işlemleri için `numpy`, zaman işlemleri için `time` kütüphanesi kullanılmıştır.
+
+
+### 3.1. Algoritma ve İşleyiş Mantığı
+
+Sistem çalışmasını Factory IO ekranında gerçekleştirmektedir. Factory IO ortamında kurulan konveyör sistemi, **Start** butonuna basınca çalışmaya başlamaktadır. Herhangi bir anda **Stop** ve **Acil Stop** butonuna basılmasıyla sistem tamamen durmaktadır. Tekrar **Start** butonu basılması durumunda çalışmasına kaldığı yerden devam etmektedir.
+Kurulan sistemin başlangıç kısmında `Mavi ve Yeşil` ham madde konveyöre **rastgele** olarak koyulmaktadır. Birinci kontrol noktasında **Mavi Hammadde** görülmesi durumunda `Pusher-1` aktif olarak **Mavi Hammadde**'yi ileri doğru ittirmektedir. İkinci kontrol noktasında **Yeşil Hammadde** görülmesi durumunda `Pusher-2` aktif olarak **Yeşil Hammadde** ileri doğru itilmektedir. Hammaddeler sınıflandırınca sistem çalışmasını tamamlamaktadır.
+
+### 3.2. Teknik Yaklaşım
+
+-   Oluşturulan sistemin görüntü işleme ve PLC ile haberleşmesini sağlamak için Python programlama tercih edilmiştir. Böylelikle `Snap7` kütüphanesi ile Siemens PLC arasında haberleşme kurulurken, aynı zamanda `OpenCV` ile de görüntü işleme gerçekleştirilmiştir. Factory IO ortamında kamera görüntüsü alınamadığı için, simülasyon ekranı kullanılmıştır. Oluşturulan sahnede, her iki noktaya gören bir bakış açısıyla görüntü sabitlenmiştir. Kontrolün yapılacağı noktalar ilgi alanı (Region of Interest - ROI) olarak koordinatları belirlenmiştir. Bu koordinatların programa girilmesiyle renk kontrolleri sadece bu noktada yapılmıştır.
+
+-   Sistemde renkleri ayırt etmek için Hue,Saturation,Value (**HSV**) uzayı kullanılmıştır. Ayrım yapılacak renkler bu uzayda alt ve üst limitler şeklinde `numpy array` olarak tanımlanmıştır. Ekrandan alınan görüntüler BGR formatından HSV formatına dönüştürülmüştür. Belirlenen HSV aralığına giren pikseller beyaz, girmeyenler siyah yapılarak bir maske (binary image) elde edilmiştir. Daha sonra oluşturulan bu maske üzerindeki beyaz pikseller yani aralığa giren değerler sayılarak eşik değeri ile karşılaştırılmıştır. Eşik değeri aşılması durumunda da karşılaştırma sonucu ilgili değişken `boolean` veri tipinde `true` olmaktadır. Bu veri de `Snap7` kütüphanesi aracılığıyla PLC'nin belirlen bitine yazılmıştır.
+
+## 4. Uygulama ve Kod Detayları
+
+Sistemin çalışmasını sağlayan Python kodu sade, yalın ve modüler bir şekilde yazılmıştır. Snap7 kütüphanesi ile PLCSIM arasındaki iletişimi `NetToPLCSim` uygulaması sağlamaktadır. PLCSIM sanal ortamda çalıştığı için bu program aracılığıyla IP adresi ve port üzerinden bağlantı kurabilmektedir.
+
+
+### 4.1. Değişken ve Tanımlar
+
+Programın sağlıklı işleyebilmesi için ön tanımlı değerlerin tanımlanması gerekmektedir. İlk olarak ayrım yapacağımız rengin HSV uzayındaki alt ve üst değerleri tanımlanmıştır. Daha sonrasında simülasyon ekranında renk kontrolünün yapılacağı bölgelerin (ROI) koordinatı belirlenerek tanımlanmıştır. Oluşturulan maske görüntüsünde (beyaz ve siyah piksellerden oluşan) hangi değerin üstünde olursa sonucu `true` olacağını belirlemek için bir eşik değeri (treshold) tanımlanmıştır. Simülasyon sürekli bir hareket olduğu için `gecen_süre` değişkeni ile de döngü çevrim süresi (Cycle Time) belirlenmiştir. Her 0.10 saniyede (100 ms) yani saniyede 10 döngü çalışması sağlanmıştır.
+
+```{.python title="Ön Tanımlı Değerler"}
+blue_low   = np.array([75,  30, 20])
+blue_hıgh  = np.array([140, 255, 255])
+
+green_low  = np.array([40,  80, 50])
+green_hıgh = np.array([80,  255, 255])
+
+roı_blue = {'top': 432, 'left': 692, 'width': 48, 'height': 44}
+roı_green = {'top': 565, 'left': 1253, 'width': 50, 'height': 68}
+
+px_threshold = 1200
+gecen_sure = 0.10
+```
+
+### 4.2. Algoritma ve Kod Mantığı
+
+Projenin ana yapısını `OpenCV` kütüphanesine ait görüntü işleme komutları ile bu komutların PLC'ye yazılmasını sağlayan `Snap7` komutları oluşturmaktadır. PLC programlamada yazılan ladder diyagramında `M50.0` ve `M51.0` biti kullanılmıştır.
+
+```{.python title="Görüntü İşleme"}
+        img_b = np.array(scr.grab(roı_blue))[:, :, :3]
+        img_g = np.array(scr.grab(roı_green))[:, :, :3]
+
+        hsv_b = cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)
+        hsv_g = cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)
+
+        blue_mask  = cv2.inRange(hsv_b, blue_low, blue_hıgh)
+        green_mask = cv2.inRange(hsv_g, green_low, green_hıgh)
+
+        blue_px  = cv2.countNonZero(blue_mask)
+        green_px = cv2.countNonZero(green_mask)
+```
+```{.python title="Karar Mekanizması"}
+        blue  = blue_px  > px_threshold
+        green = green_px > px_threshold
+```
+
+```{.python title="PLC'ye veri yazma"}
+        byte_blue = bytearray(plc.mb_read(50, 1))
+        util.set_bool(byte_blue, 0, 0, blue)
+        plc.mb_write(50, 1, byte_blue)
+        
+        byte_green = bytearray(plc.mb_read(51, 1))
+        util.set_bool(byte_green, 0, 0, green)
+        plc.mb_write(51, 1, byte_green)
+```
+
+## 5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri
+
+### 5.1. Ekrandan Görüntü Alma
+
+**Problem:** Konveyörde bulunan ürünlerin renklere göre sınıflandırılması için görüntü elde edilmesi gerekmektedir.
+
+**Çözüm:** `mss` kütüphanesi kullanılarak simülasyon ekranı canlı görüntü olarak kullanılmış bu ekran üzerinden görüntüye yapılan işlemler sonucunda değer elde edilmiştir.
+
+### 5.2. ROI Belirleme
+
+**Problem:** Elde edilen görüntüye ilgili görüntü işlemi yapılarak sonuç üretilmesi gerekmektedir. Ancak `mss` kütüphanesi ile bütün ekran görüntü olarak kullanılmaktadır.
+
+**Çözüm:** İlgi alanı (ROI) kavramı kullanılarak, görüntünün alınması istenilen bölge önceden tanımlanmıştır. Bunun için Factory IO ortamında bütün sahneyi gören sabit bir noktada kamera açısı oluşturulmuştur. ROI koordinatı yine aynı kütüphane kullanılarak görüntünün alınacağı bölgenin ekranda nereye karşılık geldiği bulunmuştur.
+
+```{.python title="ROI Belirleme"}
+import cv2
+import mss
+import numpy as np
+
+with mss.mss() as sct:
+    screenshot = np.array(sct.grab(sct.monitors[1]))
+    img = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2BGR)
+
+roi = cv2.selectROI("ROI Sec (Enter = Onay, Esc = Iptal)", img, False)
+cv2.destroyAllWindows()
+
+x, y, w, h = roi
+print(f'screen_area = {{"top": {y}, "left": {x}, "width": {w}, "height": {h}}}')
+```
+
+## 6. Sonuç 
+
+Bu projede hiçbir fiziksel donanım gereksinimi duymadan bir görüntü işleme algoritması çalıştırılmıştır. Sistemin çalışması Python programlamaya dayanmaktadır. `OpenCV` ve `Snap7` kütüphaneleri ile tamamen simülasyon ortamında gerekli haberleşme ve veri yazma komutları kullanılarak gerçek senaryoya uygun renk tespitine göre sınıflandırma çalışması yapılmıştır.
+
+**Proje Çıktıları:**
+
+-   **Sanal Devreye Alma:** Projede gerçek donanım kullanılmadan PLCSIM, Factory IO ve NetToPLCSim uygulamaları aracılığıyla ilgili haberleşme ayarları yapılarak nesneleri renklerine göre sınıflandırma simülasyon çalışması yapılmıştır.
+
+-   **Modülerlik:** Hazırlanan kod modüler bir yapıda yönetilebilir bir şekilde hazırlanmıştır. Renk tespiti HSV uzayında ön tanımlı değer olarak belirlenmiş, veri yazma noktasında `util.set_bool` komutu ile sadece PLC'nin ilgili bitine veri yazılmıştır. Görüntü sadece ekranda belirlenen koordinatta (ROI) işlenmiştir. Böylelikle renk değişimi, farklı bir noktada görüntü işleme ve PLC'nin istenilen başka bitlerine de veri yazma işlemleri kolaylıkla yapılabilmektedir.
+
+
+
+## 7. Referanslar ve Kaynakça
+
+Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:
+
+-   **Dokümantasyon:** [OpenCV](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html) | 
+                       [Snap7](https://python-snap7.readthedocs.io/en/latest/) |
+                       [mss](https://python-snap7.readthedocs.io/en/latest/) |
+                       [time](https://docs.python.org/3/library/time.html)
+-   **GitHub Deposu:** [unusual-data](https://github.com/unusual-data/virtual-sorting)
+-   **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/virtual-sorting/archive/refs/heads/main.zip)
