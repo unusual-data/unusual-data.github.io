@@ -417,6 +417,7 @@ html body .quarto-grid-item .card-title {
   
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: color 0.2s ease;
