@@ -225,7 +225,6 @@ figcaption, .figure-caption {
     color: inherit;
 }
 
-/* categories.css */
 div.quarto-listing-category {
     background-color: transparent !important;
     border: none !important;
@@ -274,7 +273,6 @@ div.quarto-listing-category .category.active {
     font-weight: bold;
 }
 
-/*categories-scroll */
 div#quarto-sidebar,
 nav#quarto-sidebar,
 .sidebar-menu-container,
@@ -305,7 +303,6 @@ div.quarto-listing-category .category {
     width: calc(100% - 10px) !important; 
     box-sizing: border-box !important;
 }
-/**********************************************/
 
 /* IDE view */
 html body pre {
@@ -478,7 +475,6 @@ html body .quarto-grid-item .listing-categories .listing-category:nth-of-type(n+
   display: none;
 }
 
-/*improvment*/
 div.quarto-grid-item.card {
   background: rgba(30, 41, 59, 0.7) !important;
   backdrop-filter: blur(12px) !important; 
@@ -543,9 +539,9 @@ div.quarto-listing-category .category {
 
 div.quarto-listing-category .category:hover {
   background: linear-gradient(90deg, rgba(56, 189, 248, 0.1), transparent) !important;
-  border-left-color: #38bdf8 !important;
+  border-left-color: #38bdf8 !important; 
   color: #fff !important;
-  padding-left: 20px !important; 
+  padding-left: 20px !important;
   transform: none !important;
 }
 div.quarto-listing-category .category.active {
@@ -553,4 +549,142 @@ div.quarto-listing-category .category.active {
   border-left-color: #38bdf8 !important;
   color: #38bdf8 !important;
   font-weight: 700 !important;
+}
+
+@media (max-width: 576px) {
+  .listing-actions-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+}
+div.quarto-grid-item.card:hover .card-title {
+  color: #38bdf8 !important; 
+  transition: color 0.3s ease;
+}
+/* Sorting and listing view */
+:root {
+
+  --toolbar-bg: rgba(30, 41, 59, 0.9);         
+  --toolbar-border: rgba(56, 189, 248, 0.4);   
+  --toolbar-focus: rgba(56, 189, 248, 0.7);    
+  --toolbar-text: #e2e8f0;                     
+  --toolbar-icon: #38bdf8;                     
+  
+  --input-height: 48px;
+  --radius-lg: 10px;
+  
+  --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%2338bdf8' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  --icon-sort: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2' stroke-linecap='round'%3E%3Cline x1='3' y1='6' x2='21' y2='6'/%3E%3Cline x1='3' y1='12' x2='21' y2='12'/%3E%3Cline x1='3' y1='18' x2='12' y2='18'/%3E%3C/svg%3E");
+}
+
+div.quarto-listing-toolbar {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-bottom: 2rem !important;
+  align-items: center !important;
+}
+
+div.quarto-listing-sort select,
+.quarto-listing .input-group {
+  height: var(--input-height) !important;
+  min-height: var(--input-height) !important;
+  width: auto !important;
+  
+  background-color: var(--toolbar-bg) !important;
+  border: 1px solid var(--toolbar-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(4px); 
+
+  color: var(--toolbar-text) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  
+  transition: all 0.3s ease !important;
+}
+
+div.quarto-listing-sort select:hover,
+div.quarto-listing-sort select:focus,
+.quarto-listing .input-group:hover,
+.quarto-listing .input-group:focus-within {
+  background-color: rgba(30, 41, 59, 1) !important;
+  border-color: var(--toolbar-focus) !important;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2) !important;
+}
+
+div.quarto-listing-sort,
+div.quarto-listing-sort .input-group {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin-right: 10px !important;
+  display: inline-block !important; 
+}
+
+div.quarto-listing-sort .input-group-text {
+  display: none !important;
+}
+
+div.quarto-listing-sort select {
+  cursor: pointer !important;
+  display: inline-block !important;
+  outline: none !important; 
+  
+  padding: 0.5rem 2.5rem 0.5rem 1rem !important;
+  
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  background-image: var(--icon-chevron) !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.9rem center !important;
+  background-size: 14px !important;
+}
+
+div.quarto-listing-sort select option {
+  background-color: #1e293b !important;
+  color: var(--toolbar-text) !important;
+  padding: 12px 16px !important;
+}
+
+.quarto-listing .input-group {
+  display: flex !important;
+  align-items: center !important;
+  overflow: hidden !important;
+}
+
+.quarto-listing .input-group > *:not(select) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+div.quarto-listing-search .input-group-text {
+  color: var(--toolbar-icon) !important;
+  padding: 0 0.75rem 0 1.25rem !important;
+  display: flex;
+  align-items: center;
+  height: 100% !important;
+}
+
+div.quarto-listing .list-input {
+  color: var(--toolbar-text) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  padding: 0 1.5rem 0 0.5rem !important;
+  height: 100% !important;
+  flex-grow: 1 !important;
+  min-width: 200px !important;
+}
+.quarto-listing input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px rgba(30, 41, 59, 0.0) inset !important;
+  -webkit-text-fill-color: var(--toolbar-text) !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
