@@ -201,9 +201,9 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   <li><a href="#proje-künyesi" id="toc-proje-künyesi" class="nav-link active" data-scroll-target="#proje-künyesi">1. Proje Künyesi</a></li>
   <li><a href="#genel-bakış-ve-problem-tanımı" id="toc-genel-bakış-ve-problem-tanımı" class="nav-link" data-scroll-target="#genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</a>
   <ul class="collapse">
-  <li><a href="#proje-amacı" id="toc-proje-amacı" class="nav-link" data-scroll-target="#proje-amacı">Proje Amacı</a></li>
-  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#çözüm-ve-yaklaşım" id="toc-çözüm-ve-yaklaşım" class="nav-link" data-scroll-target="#çözüm-ve-yaklaşım">Çözüm ve Yaklaşım</a></li>
+  <li><a href="#proje-amacı" id="toc-proje-amacı" class="nav-link" data-scroll-target="#proje-amacı">2.1. Proje Amacı</a></li>
+  <li><a href="#problem" id="toc-problem" class="nav-link" data-scroll-target="#problem">2.2. Problem</a></li>
+  <li><a href="#çözüm-ve-yaklaşım" id="toc-çözüm-ve-yaklaşım" class="nav-link" data-scroll-target="#çözüm-ve-yaklaşım">2.3. Çözüm ve Yaklaşım</a></li>
   </ul></li>
   <li><a href="#sistem-mimarisi-ve-tasarım" id="toc-sistem-mimarisi-ve-tasarım" class="nav-link" data-scroll-target="#sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</a>
   <ul class="collapse">
@@ -212,8 +212,8 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#uygulama-ve-kod-detayları" id="toc-uygulama-ve-kod-detayları" class="nav-link" data-scroll-target="#uygulama-ve-kod-detayları">4. Uygulama ve Kod Detayları</a>
   <ul class="collapse">
-  <li><a href="#değişken-ve-tanımlar" id="toc-değişken-ve-tanımlar" class="nav-link" data-scroll-target="#değişken-ve-tanımlar">4. 1. Değişken ve Tanımlar</a></li>
-  <li><a href="#algoritma-ve-kod-mantığı" id="toc-algoritma-ve-kod-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-kod-mantığı">4. 2. Algoritma ve Kod Mantığı</a></li>
+  <li><a href="#değişken-ve-tanımlar" id="toc-değişken-ve-tanımlar" class="nav-link" data-scroll-target="#değişken-ve-tanımlar">4.1. Değişken ve Tanımlar</a></li>
+  <li><a href="#algoritma-ve-kod-mantığı" id="toc-algoritma-ve-kod-mantığı" class="nav-link" data-scroll-target="#algoritma-ve-kod-mantığı">4.2. Algoritma ve Kod Mantığı</a></li>
   </ul></li>
   <li><a href="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" id="toc-karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</a>
   <ul class="collapse">
@@ -323,11 +323,11 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <section id="genel-bakış-ve-problem-tanımı" class="level2">
 <h2 class="anchored" data-anchor-id="genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</h2>
 <section id="proje-amacı" class="level3">
-<h3 class="anchored" data-anchor-id="proje-amacı">Proje Amacı</h3>
+<h3 class="anchored" data-anchor-id="proje-amacı">2.1. Proje Amacı</h3>
 <p>Bu projenin amacı yapılandırılmış metin (Structured Text - ST) kullanarak sonlu durum makinesi (Finite State Machine - FSM) yaklaşımıyla bir kavşaktaki trafik ışığı sisteminin simülasyonunun gerçekleştirilmesidir.</p>
 </section>
 <section id="problem" class="level3">
-<h3 class="anchored" data-anchor-id="problem">Problem</h3>
+<h3 class="anchored" data-anchor-id="problem">2.2. Problem</h3>
 <p>Karmaşık kontrol senaryolarında, geleneksel “Ladder” diyagramı veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:</p>
 <ol type="1">
 <li><strong>Yönetilebilirlik:</strong> Sisteme ait durumlar (örn: başlangıç, gündüz, gece, acil vb.) arttıkça kodun okunabilirliği azalmaktadır.</li>
@@ -336,7 +336,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </ol>
 </section>
 <section id="çözüm-ve-yaklaşım" class="level3">
-<h3 class="anchored" data-anchor-id="çözüm-ve-yaklaşım">Çözüm ve Yaklaşım</h3>
+<h3 class="anchored" data-anchor-id="çözüm-ve-yaklaşım">2.3. Çözüm ve Yaklaşım</h3>
 <p>Belirtilen problemleri aşmak adına bu sistem ST programlama ile <strong>FSM</strong> mimarisi kullanılılarak yapılmıştır.</p>
 <ul>
 <li><p>Her trafik durumu (Kırmızı, Sarı, Yeşil) izole bir <code>CASE</code> adımı olarak tanımlanmıştır.</p></li>
@@ -369,7 +369,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="uygulama-ve-kod-detayları">4. Uygulama ve Kod Detayları</h2>
 <p>Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlara uygunluk gözetilerek geliştirilmiştir. Aşağıda, projenin temelini oluşturan veri yapıları ve işleyen kod mantığı teknik detaylarıyla sunulmuştur.</p>
 <section id="değişken-ve-tanımlar" class="level3">
-<h3 class="anchored" data-anchor-id="değişken-ve-tanımlar">4. 1. Değişken ve Tanımlar</h3>
+<h3 class="anchored" data-anchor-id="değişken-ve-tanımlar">4.1. Değişken ve Tanımlar</h3>
 <p>Sistemde kullanılan değişkenler ve veri tipleri, <strong>IEC 61131-3</strong> standardı ile uyumlu ve <strong>PLCopen Task Force: Coding Guidelines</strong> tarafından tavsiye edilen <strong>Type-prefixed Hungarian Notation</strong> yaklaşımıyla tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -406,7 +406,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </div>
 </section>
 <section id="algoritma-ve-kod-mantığı" class="level3">
-<h3 class="anchored" data-anchor-id="algoritma-ve-kod-mantığı">4. 2. Algoritma ve Kod Mantığı</h3>
+<h3 class="anchored" data-anchor-id="algoritma-ve-kod-mantığı">4.2. Algoritma ve Kod Mantığı</h3>
 <p>Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
