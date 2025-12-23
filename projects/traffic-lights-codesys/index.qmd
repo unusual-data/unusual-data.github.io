@@ -27,11 +27,11 @@ Sistemin tam döngü (full-cycle) çalışma simülasyonu.
 
 ## 2. Genel Bakış ve Problem Tanımı
 
-### Proje Amacı
+### 2.1. Proje Amacı
 
 Bu projenin amacı yapılandırılmış metin (Structured Text - ST) kullanarak sonlu durum makinesi (Finite State Machine - FSM) yaklaşımıyla bir kavşaktaki trafik ışığı sisteminin simülasyonunun gerçekleştirilmesidir.
 
-### Problem
+### 2.2. Problem
 
 Karmaşık kontrol senaryolarında, geleneksel "Ladder" diyagramı veya basit zamanlayıcı (Timer) zincirleri kullanmak, sistem büyüdükçe şu sorunlara yol açmaktadır:
 
@@ -39,7 +39,7 @@ Karmaşık kontrol senaryolarında, geleneksel "Ladder" diyagramı veya basit za
 2.  **Senkronizasyon:** Zamanlayıcıların asenkron çalışması sonucu işlevlerin çakışma riski (örn: aynı anda iki yeşil ışık yanması) bulunmaktadır.
 3.  **Esneklik:** Yeni bir kural eklendiğinde tüm kodun baştan yazılması gerekebilmektedir.
 
-### Çözüm ve Yaklaşım
+### 2.3. Çözüm ve Yaklaşım
 
 Belirtilen problemleri aşmak adına bu sistem ST programlama ile **FSM** mimarisi kullanılılarak yapılmıştır.
 
@@ -71,7 +71,7 @@ Sistem kontrolü, durum ve geçişlere dayalı **FSM** yapısı ile gerçekleşt
 
 Sistemin yazılım altyapısı; sürdürülebilirlik, modülerlik ve standartlara uygunluk gözetilerek geliştirilmiştir. Aşağıda, projenin temelini oluşturan veri yapıları ve işleyen kod mantığı teknik detaylarıyla sunulmuştur.
 
-### 4. 1. Değişken ve Tanımlar
+### 4.1. Değişken ve Tanımlar
 
 Sistemde kullanılan değişkenler ve veri tipleri, **IEC 61131-3** standardı ile uyumlu ve **PLCopen Task Force: Coding Guidelines** tarafından tavsiye edilen **Type-prefixed Hungarian Notation** yaklaşımıyla tanımlanmış ve kullanım amaçlarına göre sınıflandırılmıştır.
 
@@ -96,7 +96,7 @@ VAR
 END_VAR
 ```
 
-### 4. 2. Algoritma ve Kod Mantığı
+### 4.2. Algoritma ve Kod Mantığı
 
 Projenin karar mekanizması, Sonlu Durum Makinesi (FSM) mimarisi üzerine kurgulanmıştır. Bu yapı, her senaryonun birbirinden izole şekilde işletilmesini ve kodun kontrollü akışını sağlar.
 
