@@ -7,9 +7,7 @@ categories: [factoryio, siemens, tıa portal, plc, görüntü işleme, simülasy
 title-block-categories: false
 image: "/projects/virtual-sorting/images/factory-io.jpg"
 toc : true
-toc-depth: 5
-toc-expand: true
-citation: true
+toc-depth: 9
 ---
 
 ::: {.callout-tip appearance="simple" icon="false" title="Kullanılan Yazılımlar"}
@@ -58,7 +56,7 @@ Bu ayar yapıldıktan sonra PLC'ye sağ tıklayarak **Compile \> Hardware (rebui
 ::: {.callout-caution icon="false"}
 ## Uyarı
 
-Factory I/O template dosyası TIA Portal ile açıldığında varsayılan program bloğu dili FB olarak gelmektedir. **Main \[OB1\] \> Switch Programming Language \> LAD** işlem adımlarını uygulayarak ladder diyagramı ile program yazabilmektedir.
+Factory I/O template dosyası TIA Portal ile açıldığında varsayılan program bloğu dili FB olarak gelmektedir. **Main \[OB1\] \> Switch Programming Language \> LAD** işlem adımlarını uygulayarak ladder diyagramı ile program yazılabilmektedir.
 :::
 
 ![Ladder - 1](images/tia-2.png){.lightbox group="tia"}
@@ -111,7 +109,7 @@ Status alanının "**RUNNING**" olduğu görülerek bir sonraki aşamaya geçilm
 #### 5. Factory I/O Sahnesi Oluşturma
 
 Sürecin devamında Factory I/O ile hazırlanan senaryoya uygun sahne oluşturulmuştur. Hazırlanan senaryoya uygun bileşenler (emitter, belt conveyor, curved conveyor, pusher, electric switchboard, emergency stop, stop button, start button) sahneye uygun konumda yerleştirilmiştir.\
-![](images/factory-io.jpg){.lightbox group="factory-io"}
+![](/projects/virtual-sorting/images/factory-io.jpg){.lightbox group="factory-io"}
 
 > Bileşenlerin dikey eksende (yukarı/aşağı) konumlandırılması için '**V**' kısayol tuşu kullanılmaktadır.
 
@@ -137,11 +135,11 @@ time,cv2,numpy,mss,snap7
 
 Bu adımla birlikte Factory I/O ve TIA Portal (PLCSIM) arasındaki simülasyon bağlantısı tamamlanmıştır. Artık senaryodaki görüntü işleme mantığını uygulamak üzere Python kodlama aşamasına geçilmiştir.
 
-#### 6. Python Programlama Adımları
+#### 7. Python Programlama Adımları
 
 ------------------------------------------------------------------------
 
-##### 6.1 Kullanılan Kütüphanelerin "Import" edilmesi
+##### 7.1. Kullanılan Kütüphanelerin "Import" edilmesi
 
 İlk olarak hazırlanan senaryonun çalıştırılabilmesi için gereken kodları barındıran kütüphaneler "**Import**" edilmiştir.\
 **time kütüphanesi** : Programda bulunan döngü zamanlamasını yönetmek için kullanılmıştır.\
@@ -151,10 +149,8 @@ Bu adımla birlikte Factory I/O ve TIA Portal (PLCSIM) arasındaki simülasyon b
 **snap7 kütüphanesi** : Siemens S7-1200 PLC ile Python üzerinden bağlanıp veri alışverişi yapmak için kullanılmıştır.\
 **snap7.util** : PLC byte'ı içindeki ilgili biti set etmek için kullanılmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Import Etme
 
-``` python
+```{.python title="Import Etme"}
 import time
 import cv2
 import numpy as np
@@ -162,16 +158,14 @@ import mss
 import snap7
 from snap7 import util
 ```
-:::
 
-##### 6.2 Sistem Konfigürasyonu
+##### 7.2. Sistem Konfigürasyonu
 
 Programda kullanılacak kütüphaneler eklendikten sonra bu aşamada program içerisinde kullanacağımız değişkenlerin tanımlaması yapılmıştır. Konfigürasyon tamamlandıktan sonra "**plc.connect()**" komutuyla bağlantı sağlanmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Konfigürasyon ve Başlatma
 
-``` python
+```{.python title="Konfigürasyon ve Başlatma"}
+
 PLC_IP = "XXX.XXX.XXX.XXX"
 RACK = 0
 SLOT = 1
@@ -193,16 +187,13 @@ show_debug = True
 plc = snap7.client.Client()
 plc.connect(PLC_IP, RACK, SLOT)
 ```
-:::
 
-##### 6.3 Algılama ve Karar Üretme
+##### 7.3. Algılama ve Karar Üretme
 
 Bu aşamada ekrandan alınan ROI görüntülerinde HSV tabanlı renk analizi yapılarak mavi ve yeşil nesnelerin varlığına karar veren görüntü işleme aşaması yönetilmiştir.
 
-::: {.callout-note collapse="true" icon="false"}
-## Algılama ve Sınıflandırma Aşaması
 
-``` pyton
+```{.python title="Algılama ve Sınıflandırma Aşaması"}
 with mss.mss() as sct:
     while True:
         t0 = time.perf_counter()
@@ -222,16 +213,13 @@ with mss.mss() as sct:
         blue  = blue_px  > px_threshold
         green = green_px > px_threshold
 ```
-:::
 
-##### 6.4 PLC Bit Güncelleme
+##### 7.4. PLC Bit Güncelleme
 
 Bu kod bloğunda ilk önce hedef bitin bulunduğu "**Byte**" PLC'den okunmuş, ilgili bit manipüle edildikten sonra tekrar yazılarak aynı adresteki diğer bitlerin korunması sağlanmıştır. Snap7 kütüphanesi ve S7 protokolü verileri Byte (8-bit) tabanlı işler. Doğrudan yazma işleminde hedef byte içerisindeki diğer 7 bit sıfırlanabilmektedir.
 
-::: {.callout-note collapse="true" icon="false"}
-## PLC Bit Güncelleme
 
-``` python
+```{.python title="PLC Bit Güncelleme"}
         byte_blue = bytearray(plc.mb_read(50, 1))
         util.set_bool(byte_blue, 0, 0, blue)
         plc.mb_write(50, 1, byte_blue)
@@ -240,31 +228,25 @@ Bu kod bloğunda ilk önce hedef bitin bulunduğu "**Byte**" PLC'den okunmuş, i
         util.set_bool(byte_green, 0, 0, green)
         plc.mb_write(51, 1, byte_green)
 ```
-:::
 
-##### 6.5 Periyodik Durum Log
+##### 7.5. Periyodik Durum Log
 
 Bu kod bloğu ile ana döngüden bağımsız olarak, saniyede 2 kez durum verileri (piksel sayıları ve lojik sonuçlar) konsola yazdırılmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Periyodik Durum Log
 
-``` python
+```{.python title="Periyodik Durum Log"}
         now = time.time()
         if now - last_log > 0.5:
             print(f"BLUE px={blue_px:5d} thr={PIXEL_THR} -> {int(blue)} | GREEN px={green_px:5d} -> {int(green)}")
             last_log = now
 ```
-:::
 
-##### 6.6 Debug Amaçlı Görüntü Gösterimi
+##### 7.6. Debug Amaçlı Görüntü Gösterimi
 
 Bu aşamada ham görüntüler ile birlikte elde edilen maskeler ekrana yansıtılmıştır. Aynı zamanda klavyeden "q" harfine basınca programın manuel olarak sonlandırılabilmesi sağlanmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Debug Amaçlı Görüntü Gösterimi
 
-``` python
+```{.python title="Debug Amaçlı Görüntü Gösterimi"}
         if show_debug:
             cv2.imshow("ROI BLUE", img_b)
             cv2.imshow("BLUE MASK", blue_mask)
@@ -273,40 +255,29 @@ Bu aşamada ham görüntüler ile birlikte elde edilen maskeler ekrana yansıtı
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 ```
-:::
 
-##### 6.7 Döngü Zamanlama Kontrolü
+##### 7.7. Döngü Zamanlama Kontrolü
 
 Bu kısımda düzenli veri akışı sağlamak adına, her işlem sonunda hesaplanan süre kadar bekleme uygulanmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Döngü Zamanlama Kontrolü
-
-``` python
+```{.python title="Döngü Zamanlama Kontrolü"}
         dt = time.perf_counter() - t0
         if dt < gecen_sure: time.sleep(gecen_sure - dt)
 ```
-:::
 
-##### 6.8 Uygulama Sonlandırma Aşaması
+##### 7.8. Uygulama Sonlandırma Aşaması
 
 Programın en sonunda uygulama kapatılırken tüm açık pencereler ve PLC bağlantısı güvenli bir şekilde kapatılarak kaynaklar serbest bırakılmıştır.
 
-::: {.callout-note collapse="true" icon="false"}
-## Uygulama Sonlandırma Aşaması
 
-``` python
+```{.python title="Uygulama Sonlandırma Aşaması"}
 cv2.destroyAllWindows()
 plc.disconnect()
 ```
-:::
 
-#### 7. Python Programı
+#### 8. Python Programı
 
-::: {.callout-note collapse="true" icon="false"}
-## Python Kodunun Tamamını Görüntülemek için Tıklayınız.
-
-``` python
+```{.python title="Python Kodunun Tamamını Görüntülemek için Tıklayınız"}
 import time
 import cv2
 import numpy as np
@@ -383,9 +354,8 @@ with mss.mss() as scr:
 cv2.destroyAllWindows()
 plc.disconnect()
 ```
-:::
 
-#### 8. Sonuçlar
+#### 9. Sonuçlar
 
 Gerçekleştirilen projeye dair yapılan çalışmanın video kayıtları aşağıdaki gibidir.
 
