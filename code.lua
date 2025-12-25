@@ -14,14 +14,14 @@ function CodeBlock(el)
       table.insert(el.classes, 'number-lines')
     end
     
-    return quarto.Callout({
+    return (quarto.Callout({
       type = "note",
       content = { el },
       title = title,
       collapse = true,
       icon = false,
       appearance = "simple" 
-    })
+    }))
   end
   return nil
 end
