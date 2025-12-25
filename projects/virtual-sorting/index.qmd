@@ -170,5 +170,5 @@ Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:
                        [Snap7](https://python-snap7.readthedocs.io/en/latest/) |
                        [mss](https://python-snap7.readthedocs.io/en/latest/) |
                        [time](https://docs.python.org/3/library/time.html)
--   **GitHub Deposu:** [unusual-data](https://github.com/unusual-data/virtual-sorting)
+-   **GitHub Deposu:** [unusual-data/virtual-sorting](https://github.com/unusual-data/virtual-sorting)
 -   **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/virtual-sorting/archive/refs/heads/main.zip)
