@@ -384,7 +384,7 @@ pre.sourceCode {
     border-left: 3px solid var(--primary-color) !important;
     padding-left: 0 !important;
 }
-
+/*************************/
 /*category listing view*/
 div.quarto-listing-grid {
   gap: 2rem;
@@ -563,6 +563,7 @@ div.quarto-grid-item.card:hover .card-title {
   color: #38bdf8 !important; 
   transition: color 0.3s ease;
 }
+/*************************/
 /* Sorting and listing view */
 :root {
 
@@ -689,3 +690,78 @@ div.quarto-listing .list-input {
   -webkit-text-fill-color: var(--toolbar-text) !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+/*************************/
+/*signature**/
+.eng-signature-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    width: 100%;
+    
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.7rem;      
+    text-transform: uppercase;
+    letter-spacing: 2px;    
+    
+    color: #6e7681;
+    
+    cursor: default;         
+    user-select: none;       
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    
+    transition: all 0.3s ease;
+}
+
+.eng-sig-author {
+    font-weight: 700;
+    color: #d1d5db;          
+    transition: color 0.3s ease;
+}
+
+.eng-signature-container:hover .eng-sig-author {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.eng-sig-divider {
+    color: #22d3ee;         
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1em;
+    opacity: 1;
+    position: relative;
+    top: -1px; 
+    
+    text-shadow: 0 0 5px rgba(34, 211, 238, 0.4);
+}
+
+.eng-sig-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #9ca3af;
+}
+
+@media (max-width: 600px) {
+    .eng-signature-container {
+        flex-direction: column;
+        gap: 8px;
+        letter-spacing: 1px;
+    }
+    .eng-sig-divider {
+        display: none;      
+    }
+    .eng-sig-date {
+        font-size: 0.7rem;
+        opacity: 0.6;
+    }
+}
+/*************************/

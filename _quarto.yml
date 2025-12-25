@@ -65,4 +65,5 @@ linestretch: 1.6
 
 filters:
   - code.lua
+  - signature.lua
 ...
