@@ -765,3 +765,66 @@ div.quarto-listing .list-input {
     }
 }
 /*************************/
+/*listing layout : full*/
+html body .quarto-listing-table,
+html body .quarto-listing-table *,
+html body .quarto-listing-table :where(table, thead, tbody, tr, th, td) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  
+  --bs-table-bg: transparent !important;
+  --bs-table-accent-bg: transparent !important;
+  --bs-table-striped-bg: transparent !important;
+  --bs-table-hover-bg: transparent !important;
+  --bs-table-color: inherit !important;
+  --bs-table-striped-color: inherit !important;
+}
+html body .quarto-listing-table thead th,
+html body .quarto-listing-table thead th a,
+html body .quarto-listing-table thead th[data-sort] {
+  background: transparent !important;
+  background-image: none !important;
+}
+
+html body .quarto-listing-table thead th::before,
+html body .quarto-listing-table thead th::after,
+html body .quarto-listing-table thead th a::before,
+html body .quarto-listing-table thead th a::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .quarto-listing-table thead th,
+html body .quarto-listing-table thead th a {
+  color: var(--primary-color, #38bdf8) !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+html body .quarto-listing-table tbody tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  transition: background-color 0.2s ease;
+}
+/*************************/
+
+/*listing date visibility*/
+
+html body .quarto-listing-table .listing-date {
+    color: #cbd5e1 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+html body .quarto-listing-table td:has(.listing-date) {
+    visibility: visible !important;
+    background: transparent !important;
+}
+
+html body .quarto-listing-table tr:hover .listing-date {
+    color: #ffffff !important;
+}
+/*************************/
