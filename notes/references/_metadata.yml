@@ -1,8 +1,8 @@
 number-sections: true      
 toc-depth: 3               
 code-line-numbers: true
-page-layout: full
-
+page-layout: article   
+tbl-cap-location: bottom
 crossref:
   fig-title: "Şekil"
   tbl-title: "Tablo"
