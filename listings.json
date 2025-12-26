@@ -4,17 +4,21 @@
     "items": []
   },
   {
-    "listing": "/posts/index.html",
-    "items": [
-      "/posts/sanal-ayiklama/index.html",
-      "/posts/visual-components-layout/index.html"
-    ]
+    "listing": "/notes/references/index.html",
+    "items": []
   },
   {
     "listing": "/projects/index.html",
     "items": [
       "/projects/virtual-sorting/index.html",
       "/projects/traffic-lights-codesys/index.html"
+    ]
+  },
+  {
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/sanal-ayiklama/index.html",
+      "/posts/visual-components-layout/index.html"
     ]
   },
   {

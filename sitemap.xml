@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ibrahimcapar.com/notes/learning/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.943Z</lastmod>
+    <lastmod>2025-12-26T20:59:11.210Z</lastmod>
   </url>
   <url>
-    <loc>https://ibrahimcapar.com/posts/sanal-ayiklama/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.947Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/posts/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.943Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/projects/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.957Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/projects/virtual-sorting/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.993Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/projects/traffic-lights-codesys/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.959Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ibrahimcapar.com/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.940Z</lastmod>
+    <loc>https://ibrahimcapar.com/notes/references/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.210Z</lastmod>
   </url>
   <url>
     <loc>https://ibrahimcapar.com/posts/visual-components-layout/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.952Z</lastmod>
+    <lastmod>2025-12-26T20:59:11.219Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.207Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/projects/traffic-lights-codesys/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/projects/virtual-sorting/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.260Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/projects/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.225Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/posts/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.210Z</lastmod>
+  </url>
+  <url>
+    <loc>https://ibrahimcapar.com/posts/sanal-ayiklama/index.html</loc>
+    <lastmod>2025-12-26T20:59:11.214Z</lastmod>
   </url>
   <url>
     <loc>https://ibrahimcapar.com/notes/technical/index.html</loc>
-    <lastmod>2025-12-26T20:57:38.943Z</lastmod>
+    <lastmod>2025-12-26T20:59:11.210Z</lastmod>
   </url>
 </urlset>
