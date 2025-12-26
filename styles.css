@@ -828,3 +828,57 @@ html body .quarto-listing-table tr:hover .listing-date {
     color: #ffffff !important;
 }
 /*************************/
+
+/* Teknik Veri Tablosu */
+.tech-table table {
+    border: none !important;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+}
+
+.tech-table th {
+    background-color: transparent !important;
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+}
+
+.tech-table td {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: none !important;
+    padding: 12px 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.tech-table tr:nth-child(even) td {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.tech-table table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+.tech-table th {
+    color: var(--primary-color) !important;
+    border-bottom: 2px solid var(--primary-color) !important;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.tech-table td {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.tech-table tr:hover td {
+    background-color: rgba(56, 189, 248, 0.05);
+}
+/*************************/
