@@ -1,0 +1,27 @@
+---
+title: "Teknik Referanslar"
+subtitle: "Endüstriyel otomasyon ve yazılım üzerine teknik notlar, kod parçacıkları ve prosedürler."
+table-hover: true
+table-striped: false
+page-layout: full
+listing:
+  contents:
+    - "**/*.qmd"
+    - "!index.qmd"
+    - "!**/index.qmd"
+    - "!drafts/**"
+  type: table             
+  sort: "date desc" 
+  date-format: "DD.MM.YYYY" 
+  filter-ui: true         
+  sort-ui: true
+  page-size: 50
+  fields: [title, version, categories, date]
+  field-display-names:
+    title: "Konu / Not"
+    version: "Ver./FW"
+    categories: "Etiketler"
+    date: "Son Güncelleme"
+---
+
+Bu bölümde, mühendislik disiplinlerine dair kalıcı teknik bilgiler ve referans dökümanları yer almaktadır.
