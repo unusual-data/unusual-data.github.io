@@ -1,0 +1,11 @@
+---
+title: "Digital Twin"
+subtitle: "Digital Twin Uygulamalarına Yönelik Notlar"
+listing:
+  contents: 
+    - "*.qmd"      
+    - "!index.qmd" 
+  type: table
+---
+
+Bu bölümde [Kategori Adı] ile ilgili teknik notlar yer almaktadır.
