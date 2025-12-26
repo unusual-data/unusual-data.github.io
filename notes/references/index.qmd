@@ -19,7 +19,7 @@ listing:
   fields: [title, version, categories, date]
   field-display-names:
     title: "Konu / Not"
-    version: "Ver./FW"
+    version: "Sistem / Rev"
     categories: "Etiketler"
     date: "Son Güncelleme"
 ---
