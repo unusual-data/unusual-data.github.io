@@ -2,3 +2,9 @@
 **/*.quarto_ipynb
 /_site
 /.luarc.json
+.venv/
+env/
+venv/
+__pycache__/
+_inbox/
+scripts/
