@@ -1,8 +1,16 @@
-author: ""
-format:
-  html:
-    toc: true
-    toc-depth: 2
-    code-fold: false
-    citation: false 
-    number-sections: true
+author: "İbrahim Çapar"
+lang: tr
+date-format: "DD.MM.YYYY" 
+lightbox: true            
+fig-cap-location: bottom   
+code-copy: true            
+code-overflow: scroll    
+highlight-style: github
+toc: true                  
+toc-title: "Sayfa İçeriği"
+anchor-sections: true     
+number-sections: true      
+execute:
+  freeze: auto             
+
+
