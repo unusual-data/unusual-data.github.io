@@ -21,7 +21,7 @@ website:
         text: Blog
       - href: projects/index.qmd
         text: Projelerim
-      - href: notes/technical/index.qmd
+      - href: notes/references/index.qmd
         text: Teknik Referanslar
       - href: notes/learning/index.qmd
         text: Öğrenme Günlüğü
