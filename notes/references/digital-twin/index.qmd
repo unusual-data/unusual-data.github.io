@@ -6,6 +6,13 @@ listing:
     - "*.qmd"      
     - "!index.qmd" 
   type: table
+  fields: [title, version, categories, date]
+  field-display-names:
+    title: "Konu / Doküman"
+    version: "Sistem / Rev"
+    categories: "Etiketler"
+    date: "Son Güncelleme"
+  sort: "date desc"
 ---
 
-Bu bölümde [Kategori Adı] ile ilgili teknik notlar yer almaktadır.
+Bu bölümde Digital Twin ile ilgili teknik notlar yer almaktadır.
