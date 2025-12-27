@@ -1,13 +1,14 @@
 [
   {
-    "listing": "/notes/learning/index.html",
-    "items": []
+    "listing": "/notes/references/digital-twin/index.html",
+    "items": [
+      "/notes/references/digital-twin/vc-tips.html"
+    ]
   },
   {
-    "listing": "/posts/index.html",
+    "listing": "/notes/references/index.html",
     "items": [
-      "/posts/sanal-ayiklama/index.html",
-      "/posts/visual-components-layout/index.html"
+      "/notes/references/digital-twin/vc-tips.html"
     ]
   },
   {
@@ -18,15 +19,16 @@
     ]
   },
   {
-    "listing": "/notes/references/index.html",
+    "listing": "/posts/index.html",
     "items": [
-      "/notes/references/digital-twin/vc-tips.html"
+      "/posts/sanal-ayiklama/index.html",
+      "/posts/visual-components-layout/index.html"
     ]
   },
   {
-    "listing": "/notes/references/digital-twin/index.html",
+    "listing": "/notes/learning/index.html",
     "items": [
-      "/notes/references/digital-twin/vc-tips.html"
+      "/notes/learning/2025/2025-12-git-case-sensitivity/index.html"
     ]
   }
 ]
