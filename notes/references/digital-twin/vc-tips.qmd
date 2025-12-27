@@ -1,0 +1,115 @@
+---
+title: "Visual Components İpuçları"
+date: "2025-12-27"
+categories: [Visual Components]
+version: "VC 4.10 / Rev.01"
+description: "3D Layout içerisinde hızlı gezinme, bileşen özellikleri ve görünüm ayarları ile ilgili ipuçları."
+---
+
+# Genel Bakış
+
+Bu teknik referans, `Visual Components` simülasyon ortamında iş akışını hızlandıran klavye kısayollarını, menü ve görünüm ipuçlarını içerir.
+
+## Navigasyon Kısayolları
+
+3D uzayda hızlı hareket etmek için standart kontroller:
+
+::: {#tbl-vc .tech-table}
+| İşlem | Kısayol / Aksiyon | Açıklama |
+|:-----------------------|:-----------------------|:-----------------------|
+| **Hepsini Gör** | <kbd>Ctrl</kbd> + <kbd>F</kbd> | Tüm robotları ve parçaları ekrana sığdırır. |
+| **Zoom** | <kbd>Shift</kbd> + `Sağ Tık` | Doğrusal (Linear) yakınlaşma ve uzaklaşma sağlar. |
+| **Odaklanma** | `Sağ Tık` \> `Center in 3D View` | Seçili nesneyi merkeze alır ve kamerayı ona odaklar. |
+:::
+
+## Nesne ve Robot Kontrolü
+
+::: callout-tip
+## İpucu: Erişim Uzayı (Workspace)
+
+Robotun erişebileceği maksimum alanı görmek için; Robot seçiliyken sağ panelden **Workspace \> Envelope** seçeneğini aktif edin.
+:::
+
+![Robot'un Çalışma Zarfı](/notes/references/digital-twin/media/vc-robot-envelope.webp){#fig-vc-robot-envelope}
+
+-   **Snap (Yakama):** Parçaları birbirine tam hizalamak için <kbd>Shift</kbd> tuşuna basılı tutarak sürükleyin.
+
+## Menü Düzeni
+
+::: callout-warning
+## Görünüm Hatası
+
+Eğer 3D ekran donarsa veya nesneler kaybolursa, **View** sekmesinden **Reset Layout** butonuna basarak görünümü sıfırlayabilirsiniz.
+:::
+
+## Cell Graph
+
+Ekranda sol alt menüde bulunan `Cell Graph` görünümü açılarak sahnenizdeki bileşenleri listeleyebilirsiniz. Bu listelenen bileşenlerden herhangi birine çift tıkladığınızda o bileşen seçilmiş olacaktır.
+
+![Cell Graph](/notes/references/digital-twin/media/vc-cell-graph.webp){#fig-vc-cell-graph}
+
+## Robot Floor Track
+
+`Robot Floor Track` seçili iken sağ menüde `Component Properties` menüsünden `StrokeX` value değeri varsayılan olarak 5000 gelmektedir. Eğer 5000\`den 7500 yapılırsa **X** ekseninde boyu uzamaktadır.
+
+::: {#fig-robot-track layout-ncol="2"}
+![Cell Graph](/notes/references/digital-twin/media/vc-robot-floor-track.webp){#fig-vc-robot-floor-track}
+
+![StrokeX Düzenlemesi](/notes/references/digital-twin/media/vc-robot-floor-track-strokex.webp){#fig-vc-robot-floor-track-strokex}
+:::
+
+**Robot Floor Track \> Component Properties \> MountOrientation** değeri ile robotun, `Robot Floor Track` ile yaptığı açı belirlenir. Örneğin -90 yapılarak `Articulated Robot` , `Robot Floor Track` ile paralel konumlandırılmıştır.
+
+::: {#fig-mount-orientation layout="[35, 65]" layout-valign="center"}
+![MountOrientation](/notes/references/digital-twin/media/vc-mount-orientation.webp){#fig-vc-mount-orientation}
+
+![Robot](/notes/references/digital-twin/media/vc-robot-mount-orientation.webp){#fig-vc-robot-mount-orientation}
+:::
+
+## Konveyör
+
+Konveyör seçili iken `Component Properties` menüsünden `ConveyorLength` , `ConveyorWidth` ,  `ConveyorHeight` , `ConveyorSpeed` ayarları ile konveyöre ait uzunluk, genişlik, yükseklik ve hız değerlerini değiştirebilirsiniz.
+
+![Konveyör Özellikleri](/notes/references/digital-twin/media/vc-conveyor-properties.webp){#fig-vc-conveyor-properties}
+
+
+## Fence
+
+Eklediğiniz herhangi bir `Fence` tıklayarak `StandHeight` ile fencin yerden ne kadar yükseklikte durması gerektiğini belirleyebilirsiniz.
+
+![Fence Yüksekliği](/notes/references/digital-twin/media/vc-fence-stand-height.webp){#fig-vc-fence-stand-height}
+
+
+## Material
+
+Bir bileşene sağ tıklayıp `Component Properties` menüsü üzerinden malzemenin materyalini ve diğer özelliklerini değiştirebilirsiniz.
+Örneğin `Masa` bileşenine sağ tıklayarak `Material` , `Depth` , `Height` , `Length` , `Rotation` seçenekleri ile masanın özellikleri değiştirilebilmektedir.
+
+![Masa Özellikleri](/notes/references/digital-twin/media/vc-material-properties.webp){#fig-vc-material-properties}
+
+
+
+## Warehouse Shelf
+
+`Warehouse Shelf` bileşeni için `tiers` bu rafın kaç sıraya sahip olacağını, `bays` ise kaç sütuna sahip olacağını belirtmektedir.
+
+
+![Warehouse Shelf Tiers & Bays](/notes/references/digital-twin/media/vc-warehouse-shelf.webp){#fig-vc-warehouse-shelf}
+
+
+
+`Warehouse Shelf` bileşeni için  `Options` menüsünden `Shelf` ile raflar aktif edilmektedir. `TopShelf` özelliği ile en üste de raf konulabilmektedir.
+
+
+![Shelf & TopShelf](/notes/references/digital-twin/media/vc-shelf-topshelf.webp){#fig-vc-shelf-topshelf}
+
+
+`Feeder Process` tarafından raflara otomatik olarak ürün eklenmektedir. Bu ürün raflardan alınırken, rafın arkasına geçmeden alınabilmesi için bu ayar yapılmaktadır.
+
+`Warehouse Shelf > Component Properties > FlowOutResourceLocation> Ty>` Ty 1000'den > -1000 
+`Warehouse Shelf > Component Properties > FlowOutResourceLocation> Rz>` Rz -90'dan  > 90
+
+
+![FlowOutResourceLocation](/notes/references/digital-twin/media/vc-warehosue-shelf-properties.webp){#fig-vc-warehosue-shelf-properties}
+
+
