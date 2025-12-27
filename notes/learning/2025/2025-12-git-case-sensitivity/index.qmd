@@ -1,0 +1,90 @@
+---
+title: "Git Deployment: Case Sensitivity 404 Hatası"
+author: "2025-12-27"
+date: 2025-12-27
+categories: [git, troubleshooting,case-sensitivity]
+description: Windows (Case-Insensitive) ve Linux (Case-Sensitive) dosya sistemi farkından kaynaklanan görsel yükleme hatasının isimlendirme standardı ile çözümü.
+---
+
+## Problem Tanımı (Problem Description)
+
+**Bağlam (Context):** Quarto projesinin yerel ortamda (Localhost/Windows) sorunsuz çalışmasına rağmen, GitHub Pages (Linux) ortamına deploy edildikten sonra görsel bütünlüğünün kontrol edilmesi.
+
+**Tespit Edilen Hata (Observed Error):** Yerel önizlemede (Preview) görüntülenen .png uzantılı görsellerin, canlı sunucuda (Production) yüklenmemesi ve kırık ikon (broken image) olarak görünmesi.
+
+> **Log Çıktısı:** GET https://ibrahimcapar.com/posts/sanal-ayiklama/images/TIA-2.png 404 (Not Found)
+
+**Sistem Ortamı (Environment):**
+
+-   **Yazılım:** Quarto CLI / Git for Windows
+
+-   **Versiyon:** v1.8.25 (Quarto) / v2.51.2 (Git)
+
+-   **OS/Donanım:**
+
+    -   Local: Windows 11 (Case-Insensitive)
+
+    -   Host: Ubuntu Latest (GitHub Actions - Case-Sensitive)
+
+## Kök Neden Analizi (Root Cause)
+
+-   **Tespit (Detection):** Deployment sonrası güncellenen ilgili kısmın kontrol edilmesi sonucunda bazı görsellerin kırık ikon olarak göründüğü tespit edilmiştir.
+
+-   **Teknik Sebep (Technical Cause):** Windows işletim sistemi dosya yollarında büyük/küçük harf duyarsızken (Case Insensitive), Linux sunucuların (GitHub Actions) duyarlı (Case Sensitive) olması. Kodda TIA-2.png çağrılırken dosyanın tia-2.png olması.
+
+## Çözüm Uygulaması (Resolution)
+
+Sistemi kararlı hale getirmek için uygulanan adımlar:
+
+1.  **Kontrol** İlk önce Git'in klasördeki dosyaları görüp görmediği ve takip edip etmediği kontrol edilmiştir.
+
+``` bash
+    git status
+    git ls-files sanal-ayiklama/images/
+```
+
+`git status` komutu kaydedilecek bir şey olmadığını ve çalışma ağacının temiz olduğu bilgisini döndürmüştür. Listeleme komutu yaptıktan sonra ilgili resim isimleri büyük harflerle görünmektedir. Örn: TIA-2.png, TIA-3.png şeklinde.
+
+2.  **Standartlaştırma (Renaming)** Hatalı görsel isimleri web standartlarına (lowercase) uygun hale getirilmiştir. Bu işlemde dosya isimlerine önce tmp ön eki eklenmiştir. Sonrasında ise tmp eki kaldırılarak standart isim formatında yeniden kaydedilmiştir.
+
+``` bash
+    cd posts/sanal-ayiklama/images/
+    git mv TIA-1.jpg tmp-1.jpg
+    git mv tmp-1.jpg tia-1.jpg
+
+    git mv TIA-2.png tmp-2.png
+    git mv tmp-2.png tia-2.png
+
+    git mv TIA-3.png tmp-3.png
+    git mv tmp-3.png tia-3.png
+
+    git mv TIA-4.png tmp-4.png
+    git mv tmp-4.png tia-4.png
+
+    git mv TIA-5.png tmp-5.png
+    git mv tmp-5.png tia-5.png
+
+    git mv TIA-6.png tmp-6.png
+    git mv tmp-6.png tia-6.png
+```
+
+İsim düzeltme işlemleri tamamlandıktan sonra ana dizine dönülmüş, değişiklikler commit edilerek uzak sunucuya gönderilmiştir.
+
+``` bash
+   cd ../../..
+   git commit -m "Capitalized image names have been corrected."
+   git push origin main
+```
+
+::: callout-tip
+`git mv` komutu dosyanın adını diskte değiştir ve bu değişikliği otomatik olarak "Stage" eder
+:::
+
+3.  **Doğrulama (Verification):** GitHub Actions pipeline tamamlandıktan sonra tarayıcı önbelleği temizlendi (Ctrl+F5) ve görselin yüklendiği doğrulandı.
+
+## Sonuç ve Değerlendirme (Conclusion)
+
+::: {.callout-note appearance="minimal"}
+## Çıkarım
+Dosya isimlendirmelerinde platform bağımsızlığını garanti etmek için projeye eklenen bütün resimler daima 'kebab-case' (küçük harf ve tire) standardını kullanmalıdır.
+:::
