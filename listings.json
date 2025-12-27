@@ -4,8 +4,11 @@
     "items": []
   },
   {
-    "listing": "/notes/references/index.html",
-    "items": []
+    "listing": "/posts/index.html",
+    "items": [
+      "/posts/sanal-ayiklama/index.html",
+      "/posts/visual-components-layout/index.html"
+    ]
   },
   {
     "listing": "/projects/index.html",
@@ -15,14 +18,15 @@
     ]
   },
   {
-    "listing": "/posts/index.html",
+    "listing": "/notes/references/index.html",
     "items": [
-      "/posts/sanal-ayiklama/index.html",
-      "/posts/visual-components-layout/index.html"
+      "/notes/references/digital-twin/vc-tips.html"
     ]
   },
   {
     "listing": "/notes/references/digital-twin/index.html",
-    "items": []
+    "items": [
+      "/notes/references/digital-twin/vc-tips.html"
+    ]
   }
 ]

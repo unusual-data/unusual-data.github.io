@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-version','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-version','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -252,6 +252,22 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-table" id="listing-listing">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Sıralama Öğesi" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Sıralama Öğesi</option>
+      <option value="index" data-direction="asc">Varsayılan</option>
+      <option value="listing-date-sort" data-direction="asc">
+        Son Güncelleme - En eski
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Son Güncelleme - En yeni
+      </option>
+      <option value="listing-title-sort" data-direction="asc">
+        Konu / Not
+      </option>
+    </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filtre">
@@ -259,14 +275,44 @@ window.Quarto = {
 </div>
 <table class="quarto-listing-table table">
 <thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Konu / Not</th>
-<th data-quarto-table-cell-role="th">Sistem / Rev</th>
-<th data-quarto-table-cell-role="th">Etiketler</th>
-<th data-quarto-table-cell-role="th">Son Güncelleme</th>
+<tr>
+
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Konu / Not</a>
+</th>
+
+<th>
+Sistem / Rev
+</th>
+
+<th>
+Etiketler
+</th>
+
+<th>
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Son Güncelleme</a>
+</th>
+
 </tr>
 </thead>
 <tbody class="list">
+
+<tr data-index="0" data-categories="VmlzdWFsJTIwQ29tcG9uZW50cw==" data-listing-date-sort="1766793600000" data-listing-file-modified-sort="1766799766910" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="393" data-listing-title-sort="Visual Components İpuçları" data-listing-filename-sort="vc-tips.qmd">
+<td>
+<a href="../../notes/references/digital-twin/vc-tips.html" class="title listing-title">Visual Components İpuçları</a>
+</td>
+<td>
+<span class="listing-version">VC 4.10 / Rev.01</span>
+</td>
+<td>
+<span class="listing-categories">Visual Components</span>
+</td>
+<td>
+<span class="listing-date">27.12.2025</span>
+</td>
+
+</tr>
+
 </tbody>
 </table>
 <div class="listing-no-matching d-none">Eşleşen öğe yok</div>
