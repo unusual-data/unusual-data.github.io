@@ -3,13 +3,8 @@ function Pandoc(doc)
   
   if meta.date and meta.author then
     local date = pandoc.utils.stringify(meta.date)
-    local author = ""
     
-    if type(meta.author) == 'List' then
-      author = pandoc.utils.stringify(meta.author[1])
-    else
-      author = pandoc.utils.stringify(meta.author)
-    end
+    local author = "İbrahim Çapar"
 
     local html_block = string.format([[
       <div class="eng-signature-container">
