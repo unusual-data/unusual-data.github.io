@@ -82,9 +82,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-date','listing-categories','listing-description','listing-author',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-categories"],
+      searchColumns: [],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -204,14 +204,14 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
-    <h5 class="quarto-listing-category-title">Kategoriler</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Hepsi <span class="quarto-category-count">(0)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -221,7 +221,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     <div>
     <div class="quarto-title-meta-heading">Yazar</div>
@@ -231,6 +231,12 @@ window.Quarto = {
   </div>
     
   
+    <div>
+    <div class="quarto-title-meta-heading">Değiştirilme Tarihi</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">27.12.2025</p>
+    </div>
+  </div>
     
   </div>
   
@@ -239,13 +245,19 @@ window.Quarto = {
 </header>
 
 
-<p>Sürekli gelişim kapsamında öğrenilen yeni teknolojiler ve karşılaşılan günlük problemlerin kısa notları.</p>
+<p>Sürekli gelişim kapsamında öğrenilen yeni teknolojiler ve karşılaşılan günlük problemlerin teknik çözüm kayıtları.</p>
 
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filtre">
+    </div>
+</div>
+<div class="list grid quarto-listing-cols-3">
 
 </div>
 <div class="listing-no-matching d-none">Eşleşen öğe yok</div>
