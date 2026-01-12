@@ -13,5 +13,5 @@ listing:
   page-size: 12 
   fields: [image, date, title, subtitle, categories, reading-time]
   grid-columns: 3
-  image-height: "200px"
+  #image-height: "200px"
 ---
