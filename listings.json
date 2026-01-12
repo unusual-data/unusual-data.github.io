@@ -14,6 +14,7 @@
   {
     "listing": "/projects/index.html",
     "items": [
+      "/projects/sequential-motor-control/index.html",
       "/projects/virtual-sorting/index.html",
       "/projects/traffic-lights-codesys/index.html"
     ]

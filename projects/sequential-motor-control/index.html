@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="İbrahim Çapar">
-<meta name="description" content="Python programlama ile Factory IO ortamında nesnelerin renklerine göre PLCSIM-TIA Portal kullanarak sınıflandırma uygulaması">
+<meta name="description" content="ST programlama ile FSM yapısı kullanılarak geliştirilen sıralı motor kontrol sistemi">
 
-<title>Sanal Ayıklama – İbrahim ÇAPAR</title>
+<title>ST Programlama ile Sıralı Motor Kontrolü – İbrahim ÇAPAR</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -122,15 +122,15 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../../styles.css">
 <link rel="stylesheet" href="../../lightbox-style.css">
-<meta property="og:title" content="Sanal Ayıklama">
-<meta property="og:description" content="Python programlama ile Factory IO ortamında nesnelerin renklerine göre PLCSIM-TIA Portal kullanarak sınıflandırma uygulaması">
-<meta property="og:image" content="https://ibrahimcapar.com/projects/virtual-sorting/images/factory-io.jpg">
+<meta property="og:title" content="ST Programlama ile Sıralı Motor Kontrolü – İbrahim ÇAPAR">
+<meta property="og:description" content="ST programlama ile FSM yapısı kullanılarak geliştirilen sıralı motor kontrol sistemi">
+<meta property="og:image" content="https://ibrahimcapar.com/projects/sequential-motor-control/images/codesys-sequential-control.webp">
 <meta property="og:site_name" content="İbrahim ÇAPAR">
-<meta property="og:image:alt" content="factory-io simülasyon sahnesi">
-<meta name="twitter:title" content="Sanal Ayıklama">
-<meta name="twitter:description" content="Python programlama ile Factory IO ortamında nesnelerin renklerine göre PLCSIM-TIA Portal kullanarak sınıflandırma uygulaması">
-<meta name="twitter:image" content="https://ibrahimcapar.com/projects/virtual-sorting/images/factory-io.jpg">
-<meta name="twitter:image:alt" content="factory-io simülasyon sahnesi">
+<meta property="og:image:alt" content="CODESYS simülasyon ortamında sıralı motor kontrol sistemi ekranı">
+<meta name="twitter:title" content="ST Programlama ile Sıralı Motor Kontrolü – İbrahim ÇAPAR">
+<meta name="twitter:description" content="ST programlama ile FSM yapısı kullanılarak geliştirilen sıralı motor kontrol sistemi">
+<meta name="twitter:image" content="https://ibrahimcapar.com/projects/sequential-motor-control/images/codesys-sequential-control.webp">
+<meta name="twitter:image:alt" content="CODESYS simülasyon ortamında sıralı motor kontrol sistemi ekranı">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -214,8 +214,8 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" id="toc-karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="nav-link" data-scroll-target="#karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</a>
   <ul class="collapse">
-  <li><a href="#ekrandan-görüntü-alma" id="toc-ekrandan-görüntü-alma" class="nav-link" data-scroll-target="#ekrandan-görüntü-alma">5.1. Ekrandan Görüntü Alma</a></li>
-  <li><a href="#roi-belirleme" id="toc-roi-belirleme" class="nav-link" data-scroll-target="#roi-belirleme">5.2. ROI Belirleme</a></li>
+  <li><a href="#zaman-yönetimi" id="toc-zaman-yönetimi" class="nav-link" data-scroll-target="#zaman-yönetimi">5.1. Zaman Yönetimi</a></li>
+  <li><a href="#beklenilmeyen-kesinti-ve-hata-durumları" id="toc-beklenilmeyen-kesinti-ve-hata-durumları" class="nav-link" data-scroll-target="#beklenilmeyen-kesinti-ve-hata-durumları">5.2. Beklenilmeyen Kesinti ve Hata Durumları</a></li>
   </ul></li>
   <li><a href="#sonuç" id="toc-sonuç" class="nav-link" data-scroll-target="#sonuç">6. Sonuç</a></li>
   <li><a href="#referanslar-ve-kaynakça" id="toc-referanslar-ve-kaynakça" class="nav-link" data-scroll-target="#referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</a></li>
@@ -227,22 +227,19 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sanal Ayıklama Sistemi</h1>
+<h1 class="title">ST Programlama ile Sıralı Motor Kontrolü</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Endüstriyel Otomasyon</div>
-    <div class="quarto-category">Görüntü İşleme</div>
-    <div class="quarto-category">TIA Portal</div>
-    <div class="quarto-category">PLCSIM</div>
     <div class="quarto-category">PLC</div>
-    <div class="quarto-category">FactoryIO</div>
-    <div class="quarto-category">Python</div>
+    <div class="quarto-category">CODESYS</div>
+    <div class="quarto-category">Visu</div>
     <div class="quarto-category">ST</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Python programlama ile Factory IO ortamında nesnelerin renklerine göre PLCSIM-TIA Portal kullanarak sınıflandırma uygulaması
+    ST programlama ile FSM yapısı kullanılarak geliştirilen sıralı motor kontrol sistemi
   </div>
 </div>
 
@@ -259,7 +256,7 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Yayınlanma Tarihi</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 Aralık 2025</p>
+      <p class="date">12 Ocak 2026</p>
     </div>
   </div>
   
@@ -293,19 +290,19 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </tr>
 <tr class="even">
 <td>Mimari &amp; Metodoloji</td>
-<td>Sanal Donanım Döngüsü (SIL), Görüntü İşleme, Snap7 Haberleşme</td>
+<td>Sonlu Durum Makinesi (FSM)</td>
 </tr>
 <tr class="odd">
 <td>Teknolojiler</td>
-<td>TIA Portal V20, PLCSIM V20, Factory I/O, Python</td>
+<td>CODESYS V3.5, Structured Text (ST), TargetVisu</td>
 </tr>
 <tr class="even">
 <td>Uygulama Odağı</td>
-<td>Nesne Sınıflandırma</td>
+<td>Sıralı Motor Kontrolü</td>
 </tr>
 <tr class="odd">
 <td>Kaynak</td>
-<td><a href="https://github.com/unusual-data/virtual-sorting">GitHub’da İncele</a> &amp; <a href="https://github.com/unusual-data/virtual-sorting/archive/refs/heads/main.zip">Projeyi İndir (.zip)</a></td>
+<td><a href="https://github.com/unusual-data/sequential-motor-control">GitHub’da İncele</a> &amp; <a href="https://github.com/unusual-data/sequential-motor-control/archive/refs/heads/main.zip">Projeyi İndir (.zip)</a></td>
 </tr>
 </tbody>
 </table>
@@ -313,10 +310,10 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <div id="fig-simulasyon" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-simulasyon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Sistem Simülasyonu"><source src="videos/virtual-sorting.mp4"></video></div>
+<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title="Sistem Simülasyonu"><source src="videos/sequential-control.mp4"></video></div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simulasyon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Şekil&nbsp;1: Sistemin Factory IO ortamında tam çalışma döngüsü örneği
+Şekil&nbsp;1: Sistemin tam döngü (full-cycle) çalışma simülasyonu.
 </figcaption>
 </figure>
 </div>
@@ -324,140 +321,136 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="genel-bakış-ve-problem-tanımı">2. Genel Bakış ve Problem Tanımı</h2>
 <section id="proje-amacı" class="level3">
 <h3 class="anchored" data-anchor-id="proje-amacı">2.1. Proje Amacı</h3>
-<p>Bu projenin amacı, Python ve Snap7 kütüphanesi kullanarak Factory IO ortamında sanal ayıklama sistemini PLC kontrolüyle gerçekleştirmektir.</p>
+<p>Bu projenin amacı ST (Structured Text) programlama dili ile sonlu durum makinesi (Finite State Machine - FSM) yapısını kullanarak bir üretim hattındaki sıralı işlemlerin kontrolünün simülasyonunun gerçekleştirilmesidir.</p>
 </section>
 <section id="problem" class="level3">
 <h3 class="anchored" data-anchor-id="problem">2.2. Problem</h3>
-<p>Sanal PLC kullanarak Factory IO ortamında kurulan konveyör hattında nesnelerin renklerine göre sınıflandırma simülasyonu yapılırken şu sorunlarla karşılaşılmıştır:</p>
+<p>Bir proseste bulunan sıralı işlemlerin kontrolünde “Ladder” diyagramı veya her çıkışın bir sonrakini aktif ettiği geleneksel yaklaşım şu sorunlara yol açmaktadır:</p>
 <ol type="1">
-<li><strong>Sanal PLC:</strong> Fiziksel bir PLC kullanmadan görüntü işlemeden gelen sonuca göre PLC kodunun Factory IO ortamıyla etkileşim kurması gerekmektedir.</li>
-<li><strong>Görüntü İşleme:</strong> Factory IO ortamında nesnelerin renklerine göre ayrılabilmesi için -vision sensör kullanmadan- görüntü işleme yapılması gerekmektedir.</li>
-<li><strong>Haberleşme:</strong> Görüntü işleme sonucuna göre işlem yapılabilmesi için görüntü işleme kodu ile PLC’nin haberleşmesi gerekmektedir.</li>
+<li><strong>Yönetilebilirlik:</strong> Prosese ait işlemlerde yapılmak istenilen ekleme veya değişim işlemi kod karmaşasını arttırmaktadır.</li>
+<li><strong>Esneklik:</strong> Yeni bir kural eklendiğinde kodda çok fazla değişiklik gerekebilmektedir.</li>
 </ol>
 </section>
 <section id="çözüm-ve-yaklaşım" class="level3">
 <h3 class="anchored" data-anchor-id="çözüm-ve-yaklaşım">2.3. Çözüm ve Yaklaşım</h3>
-<p>Belirtilen problemleri çözmek için python programlama ile PLCSIM programı kullanılmıştır.</p>
+<p>Belirtilen problemleri çözmek için FSM yapısı kullanılmıştır.</p>
 <ul>
-<li>Factory IO ortamıyla PLC’nin simüle edilebilmesi için PLCSIM V20 kullanılmıştır. Factory IO direkt olarak PLCSIM ile haberleşebilmektedir.</li>
-<li>Nesnelerin renklerine göre ayrılabilmesi için vision sensör kullanmadan ayrım yapılabilmesi için görüntü olması gerekmektedir. Simülasyon ekranında görüntü anlık olarak python ile işlenip elde edilen sonuca göre PLC’ye çıkış yazılmıştır.</li>
-<li>Görüntü işleme sonucunda elde edilen bilgi Snap7 kütüphanesi kullanılarak PLC ile haberleşmesi sağlanmıştır.</li>
+<li><p>Her bir motorun sıralı çalışması ve durması için her bir aşama <code>CASE</code> yapısında bir durum olarak tanımlanmıştır.</p></li>
+<li><p>Herhangi bir motorun arızaya geçmesi durumunda bütün proses güvenli bir şekilde durdurulmaktadır. Hata resetleme işlemi yapıldıktan sonra sistem kaldığı yerden çalışacak şekilde programlanmıştır.</p></li>
 </ul>
 </section>
 </section>
 <section id="sistem-mimarisi-ve-tasarım" class="level2">
 <h2 class="anchored" data-anchor-id="sistem-mimarisi-ve-tasarım">3. Sistem Mimarisi ve Tasarım</h2>
-<p>Bu projede PLC programı TIA Portal V20 kullanılarak Ladder (LD) diyagramı olarak hazırlanmıştır. Hazırlanan bu PLC programının Factory IO ile haberleşebilmesi için PLCSIM V20 kullanılmıştır. Factory IO ortamında <code>konveyör</code>, <code>pusher</code> ve diğer bileşenler senaryoya uygun yerleştirilmiştir. Factory IO ortamında görüntü işleme <code>OpenCV</code> kütüphanesi ile gerçekleştirilmiştir. Factory IO’da görüntü elde etmek için bir kamera bulunmadığından simülasyon ekranı tamamen bir görüntü olarak değerlendirilmiştir. Bu işlem <code>mss</code> kütüphanesi ile yapılmıştır. Oluşturulan python kodunun PLC ile haberleşmesini sağlamak için <code>snap7</code> kütüphanesi kullanılmıştır. Program yapısında bulunan matris işlemleri için <code>numpy</code>, zaman işlemleri için <code>time</code> kütüphanesi kullanılmıştır.</p>
+<p>Bu projede PLC programlama için CODESYS ortamı tercih edilmiştir. Proje ST programlama dili kullanılarak kodlanmıştır. Sıralı motor kontrolü görselleştirilerek “Visualization” objesinde, hazırlanan senaryoya uygun tasarım yapılmıştır. Simülasyonun sağlıklı bir şekilde gerçekleşmesi için ekranda <code>başlat</code>, <code>durdur</code>, <code>reset</code> butonları oluşturulmuştur. Motorlarda oluşabilecek hatayı simüle etmek için ekranda <strong>Arıza Simülasyon Paneli</strong> tasarlanmıştır. Bu panelde <code>DIP-SWITCH</code> objeleri her bir motora ait hata sinyalini temsil etmektedir. Bu objelerin altında bulunan lamba ise, sistem arızaya geçtiğinde yanması gereken arıza ikaz uyarı ışığını temsil etmektedir.</p>
 <section id="algoritma-ve-işleyiş-mantığı" class="level3">
 <h3 class="anchored" data-anchor-id="algoritma-ve-işleyiş-mantığı">3.1. Algoritma ve İşleyiş Mantığı</h3>
-<p>Sistem çalışmasını Factory IO ekranında gerçekleştirmektedir. Factory IO ortamında kurulan konveyör sistemi, <strong>Start</strong> butonuna basınca çalışmaya başlamaktadır. Herhangi bir anda <strong>Stop</strong> ve <strong>Acil Stop</strong> butonuna basılmasıyla sistem tamamen durmaktadır. Tekrar <strong>Start</strong> butonu basılması durumunda çalışmasına kaldığı yerden devam etmektedir. Kurulan sistemin başlangıç kısmında <code>Mavi ve Yeşil</code> ham madde konveyöre <strong>rastgele</strong> olarak koyulmaktadır. Birinci kontrol noktasında <strong>Mavi Hammadde</strong> görülmesi durumunda <code>Pusher-1</code> aktif olarak <strong>Mavi Hammadde</strong>’yi ileri doğru ittirmektedir. İkinci kontrol noktasında <strong>Yeşil Hammadde</strong> görülmesi durumunda <code>Pusher-2</code> aktif olarak <strong>Yeşil Hammadde</strong> ileri doğru itilmektedir. Hammaddeler sınıflandırınca sistem çalışmasını tamamlamaktadır.</p>
+<p>Sistem işleyişi <strong>Durum Makinesi</strong> içerisinde yönetilmiştir. Start butonuna basıldığında ilk motor çalışmaya başlamaktadır. Birinci motor çalıştıktan sonra, ikinci motor çalışmaktadır. İkinci motor çalıştıktan sonra da üçüncü motor çalışmaya başlamaktadır. Motorlar 5 saniye aralıklarla çalışmaya başlamaktadır. Stop butonuna basıldığında ise önce üçüncü motor, sonra ikinci motor, en sonda birinci motor durmaktadır. Motorlar 3 saniye aralıklarla durma işlemini gerçekleştirmektedir.</p>
+<p>Motorlardan herhangi birisi arızalanırsa sistem durum makinesi içerisindeki arıza durumuna geçmektedir. Sistem resetlenmeden tekrar çalışmaya başlamamaktadır.</p>
 </section>
 <section id="teknik-yaklaşım" class="level3">
 <h3 class="anchored" data-anchor-id="teknik-yaklaşım">3.2. Teknik Yaklaşım</h3>
 <ul>
-<li><p>Oluşturulan sistemin görüntü işleme ve PLC ile haberleşmesini sağlamak için Python programlama tercih edilmiştir. Böylelikle <code>Snap7</code> kütüphanesi ile Siemens PLC arasında haberleşme kurulurken, aynı zamanda <code>OpenCV</code> ile de görüntü işleme gerçekleştirilmiştir. Factory IO ortamında kamera görüntüsü alınamadığı için, simülasyon ekranı kullanılmıştır. Oluşturulan sahnede, her iki noktaya gören bir bakış açısıyla görüntü sabitlenmiştir. Kontrolün yapılacağı noktalar ilgi alanı (Region of Interest - ROI) olarak koordinatları belirlenmiştir. Bu koordinatların programa girilmesiyle renk kontrolleri sadece bu noktada yapılmıştır.</p></li>
-<li><p>Sistemde renkleri ayırt etmek için Hue,Saturation,Value (<strong>HSV</strong>) uzayı kullanılmıştır. Ayrım yapılacak renkler bu uzayda alt ve üst limitler şeklinde <code>numpy array</code> olarak tanımlanmıştır. Ekrandan alınan görüntüler BGR formatından HSV formatına dönüştürülmüştür. Belirlenen HSV aralığına giren pikseller beyaz, girmeyenler siyah yapılarak bir maske (binary image) elde edilmiştir. Daha sonra oluşturulan bu maske üzerindeki beyaz pikseller yani aralığa giren değerler sayılarak eşik değeri ile karşılaştırılmıştır. Eşik değeri aşılması durumunda da karşılaştırma sonucu ilgili değişken <code>boolean</code> veri tipinde <code>true</code> olmaktadır. Bu veri de <code>Snap7</code> kütüphanesi aracılığıyla PLC’nin belirlen bitine yazılmıştır.</p></li>
+<li><p>Sıralı motor kontrol sistemi CODESYS ortamında ST programlama dili ile programlanmıştır. Kullanılan algoritma yapısı <strong>Sonlu Durum Makinesi</strong>’dir.</p></li>
+<li><p>Sonlu durum makinesi ile prosesin başlatılması ve durdurulması güvenli ve stabil bir yapıda yönetilmiştir. İleride yapılacak eklemelerde ana yapı korunarak genişletme yapabilmek mümkün olacaktır.</p></li>
 </ul>
 </section>
 </section>
 <section id="uygulama-ve-kod-detayları" class="level2">
 <h2 class="anchored" data-anchor-id="uygulama-ve-kod-detayları">4. Uygulama ve Kod Detayları</h2>
-<p>Sistemin çalışmasını sağlayan Python kodu sade, yalın ve modüler bir şekilde yazılmıştır. Snap7 kütüphanesi ile PLCSIM arasındaki iletişimi <code>NetToPLCSim</code> uygulaması sağlamaktadır. PLCSIM sanal ortamda çalıştığı için bu program aracılığıyla IP adresi ve port üzerinden bağlantı kurabilmektedir.</p>
+<p>Projede uygulanan algoritma uluslararası standart ve yaklaşımlar gözetilerek kodlanmıştır. Durum makinesi yaklaşımıyla prosese ait bütün aşamalar modüler bir şekilde yönetilebilmektedir. Değişkenler <strong>PLCopen Task Force: Coding Guidelines</strong> standardında belirtilen <strong>Type-prefixed Hungarian Notation</strong> yönergesine göre atanmıştır.</p>
 <section id="değişken-ve-tanımlar" class="level3">
 <h3 class="anchored" data-anchor-id="değişken-ve-tanımlar">4.1. Değişken ve Tanımlar</h3>
-<p>Programın sağlıklı işleyebilmesi için ön tanımlı değerlerin tanımlanması gerekmektedir. İlk olarak ayrım yapacağımız rengin HSV uzayındaki alt ve üst değerleri tanımlanmıştır. Daha sonrasında simülasyon ekranında renk kontrolünün yapılacağı bölgelerin (ROI) koordinatı belirlenerek tanımlanmıştır. Oluşturulan maske görüntüsünde (beyaz ve siyah piksellerden oluşan) hangi değerin üstünde olursa sonucu <code>true</code> olacağını belirlemek için bir eşik değeri (treshold) tanımlanmıştır. Simülasyon sürekli bir hareket olduğu için <code>gecen_süre</code> değişkeni ile de döngü çevrim süresi (Cycle Time) belirlenmiştir. Her 0.10 saniyede (100 ms) yani saniyede 10 döngü çalışması sağlanmıştır.</p>
+<p>Proje simülasyon ortamında geliştirildiği için değişkenler için <code>INPUT</code> ve <code>OUTPUT</code> kapsamı ön ek ile belirtilmemiştir.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Ön Tanımlı Değerler
+<span class="screen-reader-only">Not</span>Değişkenler
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" title="Ön Tanımlı Değerler"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>blue_low   <span class="op">=</span> np.array([<span class="dv">75</span>,  <span class="dv">30</span>, <span class="dv">20</span>])</span>
-<span id="cb1-2"><a href="#cb1-2"></a>blue_hıgh  <span class="op">=</span> np.array([<span class="dv">140</span>, <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb1-3"><a href="#cb1-3"></a></span>
-<span id="cb1-4"><a href="#cb1-4"></a>green_low  <span class="op">=</span> np.array([<span class="dv">40</span>,  <span class="dv">80</span>, <span class="dv">50</span>])</span>
-<span id="cb1-5"><a href="#cb1-5"></a>green_hıgh <span class="op">=</span> np.array([<span class="dv">80</span>,  <span class="dv">255</span>, <span class="dv">255</span>])</span>
-<span id="cb1-6"><a href="#cb1-6"></a></span>
-<span id="cb1-7"><a href="#cb1-7"></a>roı_blue <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">432</span>, <span class="st">'left'</span>: <span class="dv">692</span>, <span class="st">'width'</span>: <span class="dv">48</span>, <span class="st">'height'</span>: <span class="dv">44</span>}</span>
-<span id="cb1-8"><a href="#cb1-8"></a>roı_green <span class="op">=</span> {<span class="st">'top'</span>: <span class="dv">565</span>, <span class="st">'left'</span>: <span class="dv">1253</span>, <span class="st">'width'</span>: <span class="dv">50</span>, <span class="st">'height'</span>: <span class="dv">68</span>}</span>
-<span id="cb1-9"><a href="#cb1-9"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a>px_threshold <span class="op">=</span> <span class="dv">1200</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a>gecen_sure <span class="op">=</span> <span class="fl">0.10</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" title="Değişkenler"><pre class="sourceCode numberSource st number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>PROGRAM PLC_PRG</span>
+<span id="cb1-2"><a href="#cb1-2"></a>VAR_INPUT</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    xStart           : BOOL;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>    xStop            : BOOL;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>    xReset           : BOOL;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    </span>
+<span id="cb1-7"><a href="#cb1-7"></a>    xFault_M1        : BOOL; </span>
+<span id="cb1-8"><a href="#cb1-8"></a>    xFault_M2        : BOOL;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    xFault_M3        : BOOL;</span>
+<span id="cb1-10"><a href="#cb1-10"></a>END_VAR</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a>VAR_OUTPUT</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    xM1Coil          : BOOL;</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    xM2Coil          : BOOL;</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    xM3Coil          : BOOL;</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    xLampFault       : BOOL;</span>
+<span id="cb1-17"><a href="#cb1-17"></a>END_VAR</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a>VAR</span>
+<span id="cb1-20"><a href="#cb1-20"></a>    iState          : INT := 0;   </span>
+<span id="cb1-21"><a href="#cb1-21"></a>    fbTimeDuration  : TON;       </span>
+<span id="cb1-22"><a href="#cb1-22"></a>    xTimerStart     : BOOL;       </span>
+<span id="cb1-23"><a href="#cb1-23"></a>    tPeriod         : TIME;     </span>
+<span id="cb1-24"><a href="#cb1-24"></a>    </span>
+<span id="cb1-25"><a href="#cb1-25"></a>    tStartWaiting   : TIME := T#5S;</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    tStopWaiting    : TIME := T#3S;</span>
+<span id="cb1-27"><a href="#cb1-27"></a>    tRemainingTime  : TIME;</span>
+<span id="cb1-28"><a href="#cb1-28"></a>    </span>
+<span id="cb1-29"><a href="#cb1-29"></a>    fbTrigStart     : R_TRIG;</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    fbTrigStop      : R_TRIG;</span>
+<span id="cb1-31"><a href="#cb1-31"></a>    fbTrigReset     : R_TRIG;</span>
+<span id="cb1-32"><a href="#cb1-32"></a>END_VAR</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </section>
 <section id="algoritma-ve-kod-mantığı" class="level3">
 <h3 class="anchored" data-anchor-id="algoritma-ve-kod-mantığı">4.2. Algoritma ve Kod Mantığı</h3>
-<p>Projenin ana yapısını <code>OpenCV</code> kütüphanesine ait görüntü işleme komutları ile bu komutların PLC’ye yazılmasını sağlayan <code>Snap7</code> komutları oluşturmaktadır. PLC programlamada yazılan ladder diyagramında <code>M50.0</code> ve <code>M51.0</code> biti kullanılmıştır.</p>
+<p>Projede kullanılan <code>START</code>, <code>STOP</code>, <code>RESET</code> butonu her döngüde bir kere okunabilmesi için <code>R_TRIG</code> fonksiyon blokları tanımlanmış ve bunlar da kodun en başında ilgili butonlara ataması yapılmıştır. Herhangi bir arıza durumunda sistem arıza durumuna (<code>iState : 99</code>) geçmektedir. Motor ve lambaya ait çıkışların sadece ilgili durumlarda çalışması istendiği için lojik olarak 23 ile 26. satırlar arasında gösterilen kodlar eklenmiştir.</p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Görüntü İşleme
+<span class="screen-reader-only">Not</span>Kod Bloğu
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" title="Görüntü İşleme"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>        img_b <span class="op">=</span> np.array(scr.grab(roı_blue))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb2-2"><a href="#cb2-2"></a>        img_g <span class="op">=</span> np.array(scr.grab(roı_green))[:, :, :<span class="dv">3</span>]</span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a>        hsv_b <span class="op">=</span> cv2.cvtColor(img_b, cv2.COLOR_BGR2HSV)</span>
-<span id="cb2-5"><a href="#cb2-5"></a>        hsv_g <span class="op">=</span> cv2.cvtColor(img_g, cv2.COLOR_BGR2HSV)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" title="Kod Bloğu"><pre class="sourceCode numberSource st number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>fbTrigStart(CLK := xStart);</span>
+<span id="cb2-2"><a href="#cb2-2"></a>fbTrigStop(CLK := xStop);</span>
+<span id="cb2-3"><a href="#cb2-3"></a>fbTrigReset(CLK := xReset);</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>//(*&lt;-----------------------------------------------&gt;*)</span>
 <span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>        blue_mask  <span class="op">=</span> cv2.inRange(hsv_b, blue_low, blue_hıgh)</span>
-<span id="cb2-8"><a href="#cb2-8"></a>        green_mask <span class="op">=</span> cv2.inRange(hsv_g, green_low, green_hıgh)</span>
-<span id="cb2-9"><a href="#cb2-9"></a></span>
-<span id="cb2-10"><a href="#cb2-10"></a>        blue_px  <span class="op">=</span> cv2.countNonZero(blue_mask)</span>
-<span id="cb2-11"><a href="#cb2-11"></a>        green_px <span class="op">=</span> cv2.countNonZero(green_mask)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>Karar Mekanizması
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" title="Karar Mekanizması"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>        blue  <span class="op">=</span> blue_px  <span class="op">&gt;</span> px_threshold</span>
-<span id="cb3-2"><a href="#cb3-2"></a>        green <span class="op">=</span> green_px <span class="op">&gt;</span> px_threshold</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>PLC'ye veri yazma
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" title="PLC'ye veri yazma"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>        byte_blue <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">50</span>, <span class="dv">1</span>))</span>
-<span id="cb4-2"><a href="#cb4-2"></a>        util.set_bool(byte_blue, <span class="dv">0</span>, <span class="dv">0</span>, blue)</span>
-<span id="cb4-3"><a href="#cb4-3"></a>        plc.mb_write(<span class="dv">50</span>, <span class="dv">1</span>, byte_blue)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>        </span>
-<span id="cb4-5"><a href="#cb4-5"></a>        byte_green <span class="op">=</span> <span class="bu">bytearray</span>(plc.mb_read(<span class="dv">51</span>, <span class="dv">1</span>))</span>
-<span id="cb4-6"><a href="#cb4-6"></a>        util.set_bool(byte_green, <span class="dv">0</span>, <span class="dv">0</span>, green)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>        plc.mb_write(<span class="dv">51</span>, <span class="dv">1</span>, byte_green)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-7"><a href="#cb2-7"></a>IF xFault_M1 OR xFault_M2 OR xFault_M3 THEN</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    iState := 99;</span>
+<span id="cb2-9"><a href="#cb2-9"></a>END_IF</span>
+<span id="cb2-10"><a href="#cb2-10"></a></span>
+<span id="cb2-11"><a href="#cb2-11"></a>//(*&lt;-----------------------------------------------&gt;*)</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a>    10:</span>
+<span id="cb2-14"><a href="#cb2-14"></a>        tPeriod := T#5S;</span>
+<span id="cb2-15"><a href="#cb2-15"></a>        xTimerStart := TRUE;</span>
+<span id="cb2-16"><a href="#cb2-16"></a>        IF fbTimeDuration.Q THEN</span>
+<span id="cb2-17"><a href="#cb2-17"></a>            xTimerStart := FALSE;</span>
+<span id="cb2-18"><a href="#cb2-18"></a>            iState := 20;</span>
+<span id="cb2-19"><a href="#cb2-19"></a>        END_IF</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a>//(*&lt;-----------------------------------------------&gt;*)</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a>xM1Coil := (iState &gt;= 10) AND (iState &lt;= 50);</span>
+<span id="cb2-24"><a href="#cb2-24"></a>xM2Coil := (iState &gt;= 20) AND (iState &lt;= 40);</span>
+<span id="cb2-25"><a href="#cb2-25"></a>xM3Coil := (iState = 30);</span>
+<span id="cb2-26"><a href="#cb2-26"></a>xLampFault := (iState = 99);</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -465,68 +458,41 @@ gtag('config', 'G-SRL55MJHF7', { 'anonymize_ip': true});
 </section>
 <section id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri" class="level2">
 <h2 class="anchored" data-anchor-id="karşılaşılan-teknik-zorluklar-ve-çözüm-süreçleri">5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri</h2>
-<section id="ekrandan-görüntü-alma" class="level3">
-<h3 class="anchored" data-anchor-id="ekrandan-görüntü-alma">5.1. Ekrandan Görüntü Alma</h3>
-<p><strong>Problem:</strong> Konveyörde bulunan ürünlerin renklere göre sınıflandırılması için görüntü elde edilmesi gerekmektedir.</p>
-<p><strong>Çözüm:</strong> <code>mss</code> kütüphanesi kullanılarak simülasyon ekranı canlı görüntü olarak kullanılmış bu ekran üzerinden görüntüye yapılan işlemler sonucunda değer elde edilmiştir.</p>
+<section id="zaman-yönetimi" class="level3">
+<h3 class="anchored" data-anchor-id="zaman-yönetimi">5.1. Zaman Yönetimi</h3>
+<p><strong>Problem:</strong> Sıralı çalışma sırasında başlatma ve durdurma işlemi yaparken belirlenen sürenin geçmesi gerekmektedir. Bu süre dolmadan bir sonraki aşama başlamamalı veya durmamalıdır.</p>
+<p><strong>Çözüm:</strong> <code>xTimerStart</code> isminde boolean veri tipinde sanal bir değişken (bayrak) tanımlanmıştır. Bu değişken geçen süreyi hesaplamak için kullanılan <code>TON</code> veri tipindeki zamanlayıcının <strong>Input</strong> girişine atanmıştır. Her bir durum içerisinde önce bu değişkene <code>TRUE</code> değeri yazılmakta ve zaman çıkışı elde edildikten sonra tekrar değeri <code>FALSE</code> yapılmaktadır. Başlangıç ve arıza durumunda (0 ile 99) herhangi bir süre işlemi gerçekleşmemesi için değeri <code>FALSE</code> olarak sabit tutulmaktadır.</p>
 </section>
-<section id="roi-belirleme" class="level3">
-<h3 class="anchored" data-anchor-id="roi-belirleme">5.2. ROI Belirleme</h3>
-<p><strong>Problem:</strong> Elde edilen görüntüye ilgili görüntü işlemi yapılarak sonuç üretilmesi gerekmektedir. Ancak <code>mss</code> kütüphanesi ile bütün ekran görüntü olarak kullanılmaktadır.</p>
-<p><strong>Çözüm:</strong> İlgi alanı (ROI) kavramı kullanılarak, görüntünün alınması istenilen bölge önceden tanımlanmıştır. Bunun için Factory IO ortamında bütün sahneyi gören sabit bir noktada kamera açısı oluşturulmuştur. ROI koordinatı yine aynı kütüphane kullanılarak görüntünün alınacağı bölgenin ekranda nereye karşılık geldiği bulunmuştur.</p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Not</span>ROI Belirleme
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" title="ROI Belirleme"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="im">import</span> cv2</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="im">import</span> mss</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="cf">with</span> mss.mss() <span class="im">as</span> sct:</span>
-<span id="cb5-6"><a href="#cb5-6"></a>    screenshot <span class="op">=</span> np.array(sct.grab(sct.monitors[<span class="dv">1</span>]))</span>
-<span id="cb5-7"><a href="#cb5-7"></a>    img <span class="op">=</span> cv2.cvtColor(screenshot, cv2.COLOR_BGRA2BGR)</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a>roi <span class="op">=</span> cv2.selectROI(<span class="st">"ROI Sec (Enter = Onay, Esc = Iptal)"</span>, img, <span class="va">False</span>)</span>
-<span id="cb5-10"><a href="#cb5-10"></a>cv2.destroyAllWindows()</span>
-<span id="cb5-11"><a href="#cb5-11"></a></span>
-<span id="cb5-12"><a href="#cb5-12"></a>x, y, w, h <span class="op">=</span> roi</span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="bu">print</span>(<span class="ss">f'screen_area = </span><span class="ch">{{</span><span class="ss">"top": </span><span class="sc">{</span>y<span class="sc">}</span><span class="ss">, "left": </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">, "width": </span><span class="sc">{</span>w<span class="sc">}</span><span class="ss">, "height": </span><span class="sc">{</span>h<span class="sc">}</span><span class="ch">}}</span><span class="ss">'</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
+<section id="beklenilmeyen-kesinti-ve-hata-durumları" class="level3">
+<h3 class="anchored" data-anchor-id="beklenilmeyen-kesinti-ve-hata-durumları">5.2. Beklenilmeyen Kesinti ve Hata Durumları</h3>
+<p><strong>Problem:</strong> Programın çalışması sırasında bir enerji kesintisi veya herhangi bir hata ile program kesintiye uğrama ihtimali bulunmaktadır.</p>
+<p><strong>Çözüm:</strong> Sistemin sıralı bir şekilde çalışması gerekmektedir. Durumlar arası geçişi <code>iState</code> değişkeni ile durum makinesi sağlamaktadır. Ancak herhangi bir kesinti ve hata durumunda programın tekrar kaldığı yerden sorunsuz şekilde çalışması için <code>case</code> yapısının dışarısına lojik doğrulama eklenmiştir. Böylece motor çıkışları ve arıza ikaz lambası sadece bu durum aralıklarında çalışmaktadır. Herhangi bir hata ve kesintiden etkilenmemektedir.</p>
 </section>
 </section>
 <section id="sonuç" class="level2">
 <h2 class="anchored" data-anchor-id="sonuç">6. Sonuç</h2>
-<p>Bu projede hiçbir fiziksel donanım gereksinimi duymadan bir görüntü işleme algoritması çalıştırılmıştır. Sistemin çalışması Python programlamaya dayanmaktadır. <code>OpenCV</code> ve <code>Snap7</code> kütüphaneleri ile tamamen simülasyon ortamında gerekli haberleşme ve veri yazma komutları kullanılarak gerçek senaryoya uygun renk tespitine göre sınıflandırma çalışması yapılmıştır.</p>
+<p>Bu projede endüstriyel otomasyon sistemlerinde bulunan sıralı işlem yapısı durum makinesi yöntemiyle programlanmıştır. Bununla birlikte gerçekleştirilen senaryonun takibini ve canlandırmasını kolaylaştırmak için simülasyon ortamında senaryoya uygun tasarım yapılmıştır.</p>
 <p><strong>Proje Çıktıları:</strong></p>
 <ul>
-<li><p><strong>Sanal Devreye Alma:</strong> Projede gerçek donanım kullanılmadan PLCSIM, Factory IO ve NetToPLCSim uygulamaları aracılığıyla ilgili haberleşme ayarları yapılarak nesneleri renklerine göre sınıflandırma simülasyon çalışması yapılmıştır.</p></li>
-<li><p><strong>Modülerlik:</strong> Hazırlanan kod modüler bir yapıda yönetilebilir bir şekilde hazırlanmıştır. Renk tespiti HSV uzayında ön tanımlı değer olarak belirlenmiş, veri yazma noktasında <code>util.set_bool</code> komutu ile sadece PLC’nin ilgili bitine veri yazılmıştır. Görüntü sadece ekranda belirlenen koordinatta (ROI) işlenmiştir. Böylelikle renk değişimi, farklı bir noktada görüntü işleme ve PLC’nin istenilen başka bitlerine de veri yazma işlemleri kolaylıkla yapılabilmektedir.</p></li>
+<li><p><strong>Temiz Kod:</strong> Durum makinesi yöntemi sayesinde durumlar arası sıralı geçişler sistematik bir şekilde yönetilmiştir. Hata durumu, motor çıkışları ve zaman yönetimi bu yaklaşıma göre hazırlanmıştır.</p></li>
+<li><p><strong>Modülerlik:</strong> Kod yapısı durum makinesi içerisinde gelecekte yapılacak değişikliklere karşı kolayca yönetilebilecek şekilde programlanmıştır.</p></li>
+<li><p><strong>Simülasyon:</strong> CODESYS platformunda bulunan TargetVisu objesi kullanılarak <code>HMI</code> tasarımı mantığıyla simülasyon sahnesi hazırlanmıştır.</p></li>
 </ul>
 </section>
 <section id="referanslar-ve-kaynakça" class="level2">
 <h2 class="anchored" data-anchor-id="referanslar-ve-kaynakça">7. Referanslar ve Kaynakça</h2>
-<p>Proje sürecinde yararlanılan teknik dokümanlar ve araçlar aşağıdadır:</p>
 <ul>
-<li><strong>Dokümantasyon:</strong> <a href="https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html">OpenCV</a> | <a href="https://python-snap7.readthedocs.io/en/latest/">Snap7</a> | <a href="https://python-snap7.readthedocs.io/en/latest/">mss</a> | <a href="https://docs.python.org/3/library/time.html">time</a></li>
-<li><strong>GitHub Deposu:</strong> <a href="https://github.com/unusual-data/virtual-sorting">unusual-data/virtual-sorting</a></li>
-<li><strong>Doğrudan İndir</strong> <a href="https://github.com/unusual-data/virtual-sorting/archive/refs/heads/main.zip">İndir (.zip)</a></li>
+<li><strong>Standart:</strong> IEC 61131-3, PLCopen Coding Guidelines</li>
+<li><strong>Dokümantasyon:</strong> <a href="https://help.codesys.com/">CODESYS Online Help</a></li>
+<li><strong>GitHub Deposu:</strong> <a href="https://github.com/unusual-data/sequential-motor-control">unusual-data/sequential-motor-control</a></li>
+<li><strong>Doğrudan İndir</strong> <a href="https://github.com/unusual-data/sequential-motor-control/archive/refs/heads/main.zip">İndir (.zip)</a></li>
 </ul>
 
 
       <div class="eng-signature-container">
         <span class="eng-sig-author">İbrahim Çapar</span>
         <span class="eng-sig-divider">::</span>
-        <span class="eng-sig-date">23 Aralık 2025</span>
+        <span class="eng-sig-date">12 Ocak 2026</span>
       </div>
     
 </section>
