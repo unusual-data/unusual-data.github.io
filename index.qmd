@@ -13,10 +13,15 @@ about:
     - icon: envelope
       text: Email
       href: mailto:ibrahimcaparr1@gmail.com
+    - icon: github
+      text: Github
+      href: https://github.com/unusual-data/
+      target: _blank
 toc : false
 ---
 
 ## Hakkımda
 
-Burası benim kişisel portfolyo ve blog sitem. Endüstriyel Otomasyon, Robotik ve Görüntü İşleme alanlarındaki çalışmalarımı ve projelerimi paylaşıyorum.
- 
+**Elektrik-Elektronik Mühendisi**
+
+Endüstriyel otomasyon, robotik ve görüntü işleme sistemlerini; modern yazılım mimarileri ve sürdürülebilir kod standartlarıyla projelendiriyorum. Bu platform; uygulama odaklı çalışmalarımın, teknik araştırmalarımın ve mühendislik dökümantasyonlarımın teknik referans veritabanıdır.
