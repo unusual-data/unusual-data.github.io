@@ -1,0 +1,172 @@
+---
+title: "ST Programlama ile Sıralı Motor Kontrolü"
+description: "ST programlama ile FSM yapısı kullanılarak geliştirilen sıralı motor kontrol sistemi"
+date: 2026-01-12
+categories: [Endüstriyel Otomasyon,PLC,CODESYS,Visu,ST]
+image: "images/codesys-sequential-control.webp"
+image-alt: "CODESYS simülasyon ortamında sıralı motor kontrol sistemi ekranı"
+---
+
+::: proje-kunye
+## 1. Proje Künyesi
+
+| Kategori | Detay |
+|------------------------------------|------------------------------------|
+| Alan | Endüstriyel Otomasyon |
+| Mimari & Metodoloji | Sonlu Durum Makinesi (FSM) |
+| Teknolojiler | CODESYS V3.5, Structured Text (ST), TargetVisu |
+| Uygulama Odağı | Sıralı Motor Kontrolü |
+| Kaynak | [GitHub'da İncele](https://github.com/unusual-data/sequential-motor-control) & [Projeyi İndir (.zip)](https://github.com/unusual-data/sequential-motor-control/archive/refs/heads/main.zip) |
+:::
+
+::: {#fig-simulasyon}
+{{< video videos/sequential-control.mp4 title="Sistem Simülasyonu" >}}
+
+Sistemin tam döngü (full-cycle) çalışma simülasyonu.
+:::
+
+## 2. Genel Bakış ve Problem Tanımı
+
+### 2.1. Proje Amacı
+
+Bu projenin amacı ST (Structured Text) programlama dili ile sonlu durum makinesi (Finite State Machine - FSM) yapısını kullanarak bir üretim hattındaki sıralı işlemlerin kontrolünün simülasyonunun gerçekleştirilmesidir.
+
+### 2.2. Problem
+
+Bir proseste bulunan sıralı işlemlerin kontrolünde "Ladder" diyagramı veya her çıkışın bir sonrakini aktif ettiği geleneksel yaklaşım şu sorunlara yol açmaktadır:
+
+1.  **Yönetilebilirlik:** Prosese ait işlemlerde yapılmak istenilen ekleme veya değişim işlemi kod karmaşasını arttırmaktadır.
+2.  **Esneklik:** Yeni bir kural eklendiğinde kodda çok fazla değişiklik gerekebilmektedir.
+
+### 2.3. Çözüm ve Yaklaşım
+
+Belirtilen problemleri çözmek için FSM yapısı kullanılmıştır.
+
+-   Her bir motorun sıralı çalışması ve durması için her bir aşama `CASE` yapısında bir durum olarak tanımlanmıştır.
+
+-   Herhangi bir motorun arızaya geçmesi durumunda bütün proses güvenli bir şekilde durdurulmaktadır. Hata resetleme işlemi yapıldıktan sonra sistem kaldığı yerden çalışacak şekilde programlanmıştır.
+
+## 3. Sistem Mimarisi ve Tasarım
+
+Bu projede PLC programlama için CODESYS ortamı tercih edilmiştir. Proje ST programlama dili kullanılarak kodlanmıştır. Sıralı motor kontrolü görselleştirilerek "Visualization" objesinde, hazırlanan senaryoya uygun tasarım yapılmıştır. Simülasyonun sağlıklı bir şekilde gerçekleşmesi için ekranda `başlat`, `durdur`, `reset` butonları oluşturulmuştur. Motorlarda oluşabilecek hatayı simüle etmek için ekranda **Arıza Simülasyon Paneli** tasarlanmıştır. Bu panelde `DIP-SWITCH` objeleri her bir motora ait hata sinyalini temsil etmektedir. Bu objelerin altında bulunan lamba ise, sistem arızaya geçtiğinde yanması gereken arıza ikaz uyarı ışığını temsil etmektedir.
+
+### 3.1. Algoritma ve İşleyiş Mantığı
+
+Sistem işleyişi **Durum Makinesi** içerisinde yönetilmiştir. Start butonuna basıldığında ilk motor çalışmaya başlamaktadır. Birinci motor çalıştıktan sonra, ikinci motor çalışmaktadır. İkinci motor çalıştıktan sonra da üçüncü motor çalışmaya başlamaktadır. Motorlar 5 saniye aralıklarla çalışmaya başlamaktadır. Stop butonuna basıldığında ise önce üçüncü motor, sonra ikinci motor, en sonda birinci motor durmaktadır. Motorlar 3 saniye aralıklarla durma işlemini gerçekleştirmektedir.
+
+Motorlardan herhangi birisi arızalanırsa sistem durum makinesi içerisindeki arıza durumuna geçmektedir. Sistem resetlenmeden tekrar çalışmaya başlamamaktadır.
+
+### 3.2. Teknik Yaklaşım
+
+-   Sıralı motor kontrol sistemi CODESYS ortamında ST programlama dili ile programlanmıştır. Kullanılan algoritma yapısı **Sonlu Durum Makinesi**'dir.
+
+-   Sonlu durum makinesi ile prosesin başlatılması ve durdurulması güvenli ve stabil bir yapıda yönetilmiştir. İleride yapılacak eklemelerde ana yapı korunarak genişletme yapabilmek mümkün olacaktır.
+
+## 4. Uygulama ve Kod Detayları
+
+Projede uygulanan algoritma uluslararası standart ve yaklaşımlar gözetilerek kodlanmıştır. Durum makinesi yaklaşımıyla prosese ait bütün aşamalar modüler bir şekilde yönetilebilmektedir. Değişkenler **PLCopen Task Force: Coding Guidelines** standardında belirtilen **Type-prefixed Hungarian Notation** yönergesine göre atanmıştır.
+
+### 4.1. Değişken ve Tanımlar
+
+Proje simülasyon ortamında geliştirildiği için değişkenler için `INPUT` ve `OUTPUT` kapsamı ön ek ile belirtilmemiştir. 
+
+``` {.st title="Değişkenler"}
+PROGRAM PLC_PRG
+VAR_INPUT
+    xStart           : BOOL;
+    xStop            : BOOL;
+    xReset           : BOOL;
+	
+    xFault_M1        : BOOL; 
+    xFault_M2        : BOOL;
+    xFault_M3        : BOOL;
+END_VAR
+
+VAR_OUTPUT
+    xM1Coil          : BOOL;
+    xM2Coil          : BOOL;
+    xM3Coil          : BOOL;
+    xLampFault       : BOOL;
+END_VAR
+
+VAR
+    iState          : INT := 0;   
+    fbTimeDuration  : TON;       
+    xTimerStart     : BOOL;       
+    tPeriod        	: TIME;     
+    
+    tStartWaiting 	: TIME := T#5S;
+    tStopWaiting  	: TIME := T#3S;
+	tRemainingTime  : TIME;
+	
+	fbTrigStart     : R_TRIG;
+	fbTrigStop      : R_TRIG;
+	fbTrigReset     : R_TRIG;
+END_VAR
+```
+
+### 4.2. Algoritma ve Kod Mantığı
+
+Projede kullanılan `START`, `STOP`, `RESET` butonu her döngüde bir kere okunabilmesi için `R_TRIG` fonksiyon blokları tanımlanmış ve bunlar da kodun en başında ilgili butonlara ataması yapılmıştır. Herhangi bir arıza durumunda sistem arıza durumuna (`iState : 99`) geçmektedir. Motor ve lambaya ait çıkışların sadece ilgili durumlarda çalışması istendiği için lojik olarak 23 ile 26. satırlar arasında gösterilen kodlar eklenmiştir.
+
+``` {.st title="Kod Bloğu"}
+fbTrigStart(CLK := xStart);
+fbTrigStop(CLK := xStop);
+fbTrigReset(CLK := xReset);
+
+//(*<----------------------------------------------->*)
+
+IF xFault_M1 OR xFault_M2 OR xFault_M3 THEN
+    iState := 99;
+END_IF
+
+//(*<----------------------------------------------->*)
+
+    10:
+        tPeriod := T#5S;
+        xTimerStart := TRUE;
+        IF fbTimeDuration.Q THEN
+            xTimerStart := FALSE;
+            iState := 20;
+        END_IF
+
+//(*<----------------------------------------------->*)
+
+xM1Coil := (iState >= 10) AND (iState <= 50);
+xM2Coil := (iState >= 20) AND (iState <= 40);
+xM3Coil := (iState = 30);
+xLampFault := (iState = 99);
+```
+
+## 5. Karşılaşılan Teknik Zorluklar ve Çözüm Süreçleri
+
+### 5.1. Zaman Yönetimi
+
+**Problem:** Sıralı çalışma sırasında başlatma ve durdurma işlemi yaparken belirlenen sürenin geçmesi gerekmektedir. Bu süre dolmadan bir sonraki aşama başlamamalı veya durmamalıdır.
+
+**Çözüm:** `xTimerStart` isminde boolean veri tipinde sanal bir değişken (bayrak) tanımlanmıştır. Bu değişken geçen süreyi hesaplamak için kullanılan `TON` veri tipindeki zamanlayıcının **Input** girişine atanmıştır. Her bir durum içerisinde önce bu değişkene `TRUE` değeri yazılmakta ve zaman çıkışı elde edildikten sonra tekrar değeri `FALSE` yapılmaktadır. Başlangıç ve arıza durumunda (0 ile 99) herhangi bir süre işlemi gerçekleşmemesi için değeri `FALSE` olarak sabit tutulmaktadır.
+
+### 5.2. Beklenilmeyen Kesinti ve Hata Durumları
+
+**Problem:** Programın çalışması sırasında bir enerji kesintisi veya herhangi bir hata ile program kesintiye uğrama ihtimali bulunmaktadır.
+
+**Çözüm:** Sistemin sıralı bir şekilde çalışması gerekmektedir. Durumlar arası geçişi `iState` değişkeni ile durum makinesi sağlamaktadır. Ancak herhangi bir kesinti ve hata durumunda programın tekrar kaldığı yerden sorunsuz şekilde çalışması için `case` yapısının dışarısına lojik doğrulama eklenmiştir. Böylece motor çıkışları ve arıza ikaz lambası sadece bu durum aralıklarında çalışmaktadır. Herhangi bir hata ve kesintiden etkilenmemektedir.
+
+## 6. Sonuç
+
+Bu projede endüstriyel otomasyon sistemlerinde bulunan sıralı işlem yapısı durum makinesi yöntemiyle programlanmıştır. Bununla birlikte gerçekleştirilen senaryonun takibini ve canlandırmasını kolaylaştırmak için simülasyon ortamında senaryoya uygun tasarım yapılmıştır.
+
+**Proje Çıktıları:**
+
+-   **Temiz Kod:** Durum makinesi yöntemi sayesinde durumlar arası sıralı geçişler sistematik bir şekilde yönetilmiştir. Hata durumu, motor çıkışları ve zaman yönetimi bu yaklaşıma göre hazırlanmıştır.
+
+-   **Modülerlik:** Kod yapısı durum makinesi içerisinde gelecekte yapılacak değişikliklere karşı kolayca yönetilebilecek şekilde programlanmıştır.
+
+-   **Simülasyon:** CODESYS platformunda bulunan TargetVisu objesi kullanılarak `HMI` tasarımı mantığıyla simülasyon sahnesi hazırlanmıştır.
+
+## 7. Referanslar ve Kaynakça
+
+-   **Standart:** IEC 61131-3, PLCopen Coding Guidelines
+-   **Dokümantasyon:** [CODESYS Online Help](https://help.codesys.com/)
+-   **GitHub Deposu:** [unusual-data/sequential-motor-control](https://github.com/unusual-data/sequential-motor-control)
+-   **Doğrudan İndir** [İndir (.zip)](https://github.com/unusual-data/sequential-motor-control/archive/refs/heads/main.zip)
