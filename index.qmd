@@ -22,6 +22,4 @@ toc : false
 
 ## Hakkımda
 
-**Elektrik-Elektronik Mühendisi**
-
 Endüstriyel otomasyon, robotik ve görüntü işleme sistemlerini; modern yazılım mimarileri ve sürdürülebilir kod standartlarıyla projelendiriyorum. Bu platform; uygulama odaklı çalışmalarımın, teknik araştırmalarımın ve mühendislik dökümantasyonlarımın teknik referans veritabanıdır.
