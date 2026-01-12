@@ -34,6 +34,10 @@ website:
       - icon: envelope-fill
         href: "mailto:ibrahimcaparr1@gmail.com"
         aria-label: "Email"
+      - icon: github
+        href: https://github.com/unusual-data/
+        target: _blank
+        aria-label: "Github"
 
 format:
   html:
